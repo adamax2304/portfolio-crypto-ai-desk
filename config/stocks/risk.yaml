@@ -1,0 +1,172 @@
+# Stocks risk rules.
+#
+# Read by StockRiskAgent during scoring and by StockTradeIdeaAgent at the
+# final tiering/cap step. These are absolute go/no-go rules; soft penalties
+# live in config/stocks/scoring.yaml (risk_penalties).
+
+# ---------------------------------------------------------------------------
+# Earnings rules. "earnings_days_ahead" counts trading days until the next
+# scheduled report. Today = 0, tomorrow's session = 1, etc.
+# ---------------------------------------------------------------------------
+earnings:
+  intraday:
+    block_if_during_earnings_window: false  # can trade reaction but flag risk
+    high_risk_warning_if_days_ahead_le: 0
+    require_explicit_acknowledgement: true
+  swing:
+    block_if_days_ahead_le: 2               # do not propose swings into earnings
+    downgrade_unless_explicit_strategy: true
+  invest:
+    block_if_days_ahead_le: 0               # only block on event-day
+    tolerate_single_earnings: true          # invest can ride through
+
+# ---------------------------------------------------------------------------
+# Market regime rules. Read from StocksMarketRegimeAgent output.
+# ---------------------------------------------------------------------------
+regime:
+  risk_off:
+    long_requires_exceptional_rs: true      # only longs with strong RS pass
+    short_default_bias: true
+  bullish:
+    short_requires_explicit_setup: true     # don't fight uptrend without cause
+  chop:
+    require_clear_invalidation: true
+    avoid_breakout_chases: true
+  high_volatility:
+    require_widened_stops: true
+    halve_default_size: true
+
+# ---------------------------------------------------------------------------
+# Index and sector confirmation. If the dominant index or the symbol's sector
+# ETF moves opposite to the trade direction, apply caps below.
+# ---------------------------------------------------------------------------
+confirmation:
+  index_contradicts_direction:
+    reduce_score: true
+    cap_tier_at: "B"
+  sector_contradicts_direction:
+    reduce_score: true
+    cap_tier_at: "C"
+  both_contradict:
+    reject: true
+
+# ---------------------------------------------------------------------------
+# Liquidity and structure rules. Hard rejects for low-quality setups.
+# ---------------------------------------------------------------------------
+liquidity:
+  min_avg_dollar_volume_30d: 25_000_000
+  min_price: 5.0
+  reject_if_relative_volume_lt: 0.5
+
+structure:
+  require_invalidation_for_ab_tier: true
+  require_rr_to_tp1_gte: 1.5             # HARD gate: below this an idea can never be A/B (→ C watchlist)
+  reject_if_more_than_atr_from_entry: 2.0
+
+# ---------------------------------------------------------------------------
+# Read-only rolling performance guards for stocks INTRADAY (paper / actionability only).
+# NEVER touches live/auto-live/manual-live and NEVER affects crypto. All thresholds are computed
+# from paper_execution_r in paper_execution_outcomes (NOT legacy final_r). A guard demotes NEW A/B
+# to C (watchlist/review) with a cap_reason — it never deletes signals or changes scoring math.
+# ---------------------------------------------------------------------------
+intraday_guards:
+  # Reset epoch for the redesigned stocks-intraday paper regime. Historical A/B outcomes before
+  # this timestamp stay in the DB/report archive, but do not trip the rolling paper guard for the
+  # new forward test.
+  reset_at_utc: "2026-07-08T19:55:00+00:00"
+  # Paper-only data provenance policy. The free stock feed is delayed, but the
+  # tracker still revalidates the latest executable price immediately before
+  # entry. Keep this cohort explicitly labelled so it is never confused with
+  # a live-grade quote and can be disabled with one config change.
+  paper_entry_provenance:
+    accept_provider_delayed_current_bar: true
+  enforce_rr_hard_gate: true            # rr_to_tp1 < structure.require_rr_to_tp1_gte → cap tier at C
+  # Calibration 2026-08-20: do not let a weak long cohort freeze healthy shorts (or vice versa).
+  # The per-profile, per-direction guard below remains authoritative; it still stops a genuinely
+  # weak side once its own clean forward sample is sufficient.
+  global_guard_blocks_all_directions: false
+  # ATR-only TP1 (no structural level) can be B but never A without extra confirmation.
+  atr_only_tp1_blocks_a_tier: true
+  # Global 7-day drawdown circuit breaker (both directions).
+  circuit_breaker:
+    lookback_days: 7
+    demote_if_pf_below: 0.8
+    demote_if_netr_below: -3.0
+    min_cohort_trades: 6
+    # 2026-07-13 audit: unlike the per-direction guard (below), the global breaker had NO escape at
+    # all -- while triggered it demotes every new A/B (both directions) to C for the full
+    # lookback_days, purely time-gated recovery (old drawdown trades aging out of the window), with
+    # zero per-idea exception. Default OFF (opt-in): when true, a LONG idea that already clears the
+    # existing strict long_extra_confirmation bar also bypasses the GLOBAL block, not just the
+    # per-direction one. Reuses the SAME already-strict confirmation criteria below -- no new
+    # trading logic invented. Shorts have no confirmation escape (matches existing direction_guard
+    # asymmetry) and remain fully blocked while triggered.
+    long_confirmation_bypass: false
+  # Per-direction guard (long vs short cohorts evaluated independently).
+  direction_guard:
+    lookback_days: 14                   # primary window; also checks 7d
+    demote_if_pf_below: 0.8
+    demote_if_netr_below: -3.0
+    min_cohort_trades: 6
+  # A long can survive a weak-long cohort ONLY with extra confirmation (all must hold).
+  long_extra_confirmation:
+    require_rs_vs_spy_positive: true
+    require_sector_not_weak: true
+    max_atr_extension_from_entry: 2.0
+    min_volume_ratio: 1.1
+
+  # ---- Actionability gates SI-1..SI-5 (read-model; demote A/B → C only; explainable) ----------
+  # Master switch: when false, the new gates compute diagnostics but do NOT demote (observe-first).
+  actionability_gates:
+    enabled: true
+    # SI-1 Market Context
+    index_return_conflict_pct: 0.15       # SPY/QQQ RTH move (%) against the trade → conflict
+    # SI-2 Sector
+    sector_return_conflict_pct: 0.15      # sector ETF RTH move (%) breaking against the trade → conflict
+    # SI-4 RVOL + liquidity
+    min_rvol: 1.1                         # enough activity for Paper evidence; not a chase proxy
+    min_dollar_volume: 5000000            # main universe only; stale/DGL remains a hard block
+    max_spread_bps: 75                    # source is an intrabar proxy, not executable NBBO
+    max_data_age_sec: 900                 # candle freshness (15m) for actionable A/B
+    market_context_max_age_sec: 2700      # SPY/QQQ still current-session; tolerate one normal feed cycle
+    allow_unknown_spread_for_liquid_names: true    # only named liquid universe skips the proxy-spread check
+    liquidity_whitelist: [AAPL, MSFT, NVDA, TSLA, META, AMZN, GOOGL, AMD, NFLX, COIN, MSTR, PLTR, SMCI, AVGO, JPM, XOM, UNH, LLY, SPY, QQQ, IWM, DIA, SMH, XLK, XLF, XLE, XLY, XLV]
+    # SI-5 Catalyst quality
+    catalyst_max_age_minutes: 1440
+    # A short pullback without an explicit, fresh bearish catalyst is prone to
+    # becoming a squeeze entry. This is stricter only for that one setup.
+    short_pullback_require_bearish_catalyst: false # Paper: clean technical short can collect evidence when market+sector confirm
+    short_pullback_catalyst_max_age_minutes: 360
+    allow_pure_technical_ab: true         # weak/no catalyst can survive ONLY with full mkt+sector+RVOL confirm
+    allow_unknown_sector_for_pure_technical_ab: true # missing telemetry is not a sector conflict; true weakness still demotes
+    catalyst_strong_types: [earnings, guidance, fda, regulatory_approval, mna, merger, acquisition,
+                            major_contract, index_inclusion, analyst_action_major]
+    catalyst_medium_types: [analyst_action, product, partnership, sector_sympathy, macro]
+
+  # Outside-RTH intraday ideas are plans, never resting orders. During the
+  # early RTH window the monitor can recognize a same-plan, server-validated
+  # pre-US ACTIONABLE permission or link a separately rebuilt current-session
+  # A/B candidate. The bridge never creates an order itself.
+  intraday_rth_revalidation:
+    enabled: true
+    version: stocks_rth_revalidation_v2
+    min_minutes_after_open: 15
+    max_minutes_after_open: 90
+    # Finalize plans that never received a fresh RTH candidate instead of
+    # leaving an eternal AWAITING row after the confirmation window closes.
+    finalize_grace_minutes: 180
+    max_plan_age_hours: 20
+    require_pre_gate_ab: true
+
+  # SI-6 scheduled LLM review (advisory). Never blocks by default; enable after validation.
+  llm_review:
+    require_fresh_llm_review_for_stocks_intraday_ab: false
+    freshness_minutes: 90
+
+# 2026-07-13 audit: the previous gaps: / macro: / news: blocks here (require_retest_after_gap_pct,
+# block_new_entries_on_event_day, reject_rumor_only_catalyst, etc.) were never read by any code --
+# confirmed via a full grep of src/ for every key name, including the whole-block loader accessors
+# (gap_rules/macro_rules/news_rules in src/stocks/configs/loader.py, also removed). Deleted rather
+# than left in place, since a configured-looking gate that gates nothing is a false sense of
+# protection. Real gap/macro/news handling would need its own dedicated design pass (each rule has
+# its own thresholds/behavior to work out), not a config resurrection.

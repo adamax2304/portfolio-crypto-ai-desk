@@ -1,0 +1,59 @@
+# Session Risk Guard — always-on, time-of-day risk overlay (separate from the
+# day-based Weekend Mode in config/weekend_mode.yaml).
+#
+# Motivation (audit 2026-07-06, 627 crypto paper trades, 25.05–06.07):
+#   The 00–06 UTC "deep-Asia / pre-Europe" window is the worst liquidity window:
+#     - Asia 00–06 UTC: avgR +0.04, full-stop 37.9%
+#     - Europe 07–13 UTC: avgR +0.31, full-stop 16.7%  (BEST — never touch it)
+#     - US 13–21 UTC:     avgR +0.25, full-stop 30.9%
+#   Mode x time mismatch inside 00–06 UTC:
+#     - intraday: avgR -0.07, stop 47%   (but +0.39 / 31% rest-of-day)
+#     - scalp:    avgR -0.15, win 19%
+#     - swing:    avgR +0.26, win 38%    (tolerates the dead zone -> keep)
+#   Monday is the worst weekday overall (stop 38.5%, win 20.9%).
+#
+# Effect: the Asia window remains visible here, but intraday is no longer
+# hard-capped a second time. The quality overlay owns the calibrated
+# HALF_SIZE/FULL_SIZE routing. This guard never raises a tier or changes exits.
+
+enabled: true
+
+# --- Hard mode kill-switch (always off, ANY hour / ANY day) --------------------
+# Demotes the listed modes to 'rejected' in PRODUCTION (never registered, never
+# alerted) and skips them in the new-logic shadow branch. Independent of the
+# Asia dead-zone window below. Flip a mode off/on here with one line.
+#   2026-07-07: crypto scalp disabled — 14d audit: crypto scalp −4.4R / −$110,
+#   win 19% (weakest crypto mode); the profit is carried by intraday + swing.
+disabled_modes:
+  enabled: true
+  crypto:
+    - scalp
+
+asia_dead_zone:
+  enabled: true
+  # Window is [start, end) in UTC hours. 0..6 = 00:00–05:59 UTC.
+  utc_start_hour: 0
+  utc_end_hour: 6
+  # Only these asset classes are affected (stocks trade a different session).
+  asset_classes:
+    - crypto
+  # Modes demoted out of "actionable" (A/B) inside the window.
+  blocked_modes: []
+  # Keep the empty list explicit: it is a diagnostic window, not a second cap.
+  # Where blocked modes land: "C" (watchlist, not actionable) or "rejected".
+  demote_to_tier: C
+  # Risk multiplier applied to still-allowed modes (e.g. swing) inside window.
+  #   1.0 = unchanged. 0.5 = half risk. (Applied where sizing/risk is consumed.)
+  allowed_mode_risk_multiplier: 1.0
+
+  # Monday is the worst weekday — apply a stricter variant on Monday only.
+  monday_stricter:
+    enabled: true
+    # Extra modes blocked on Monday inside the window (union with blocked_modes).
+    # Leave empty to keep swing actionable on Monday too, or add "swing" to also
+    # cut swings on Monday morning.
+    extra_blocked_modes: []
+    # Risk multiplier for still-allowed modes on Monday inside the window.
+    allowed_mode_risk_multiplier: 0.5
+
+  banner: "SESSION GUARD (Asia dead-zone 00–06 UTC): diagnostic context; intraday size is routed by the quality overlay. Scalp remains disabled."

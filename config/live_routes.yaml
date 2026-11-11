@@ -1,0 +1,57 @@
+live_routes:
+  version: live_routes_v1
+  routes:
+    crypto_swing_breakout:
+      enabled: false
+      mode: swing
+      entry_mode: BREAKOUT_CONTINUATION
+      risk_usdt: 5.0
+      evidence_state: paper_only_pending_live_loser_research
+    crypto_swing_limit_then_taker:
+      enabled: false
+      mode: swing
+      entry_mode: LIMIT_THEN_TAKER_TIMEOUT
+      risk_usdt: 5.0
+      evidence_state: paused_live_pending_v3_execution_parity_evidence
+    crypto_swing_pullback:
+      enabled: false
+      mode: swing
+      entry_mode: PULLBACK_LIMIT
+      risk_usdt: 5.0
+      evidence_state: disabled_pending_pullback_v2_paper_evidence
+    crypto_intraday_level_hold_v2:
+      enabled: false
+      mode: intraday
+      entry_mode: LEVEL_HOLD_V2
+      risk_usdt: 5.0
+      evidence_state: disabled_live_compatible_pf_negative
+    crypto_intraday_breakout:
+      enabled: false
+      mode: intraday
+      entry_mode: BREAKOUT_CONTINUATION
+      risk_usdt: 5.0
+      evidence_state: paused_live_negative_realized_pf_pending_v3_evidence
+    crypto_intraday_pullback:
+      enabled: false
+      mode: intraday
+      entry_mode: PULLBACK_LIMIT
+      risk_usdt: 5.0
+      evidence_state: paused_live_insufficient_realized_evidence
+    stocks_intraday_breakout:
+      enabled: false
+      mode: stock_intraday
+      entry_mode: BREAKOUT_CONTINUATION
+      risk_usdt: 5.0
+      evidence_state: paused_live_negative_legacy_cohort_pending_v2_evidence
+    crypto_liquidity_sweep:
+      enabled: false
+      mode: liquidity_sweep
+      entry_mode: LIQUIDITY_SWEEP
+      risk_usdt: 2.5
+      evidence_state: archived_negative_live_and_shadow_pf_2026_09_30
+    crypto_invest:
+      enabled: false
+      mode: invest
+      entry_mode: REGIME_RECLAIM
+      risk_usdt: 5.0
+      evidence_state: paused_live_insufficient_realized_evidence

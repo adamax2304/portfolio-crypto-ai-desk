@@ -1,0 +1,30 @@
+# Crypto swing breakout reclaim v2 — Paper only.
+#
+# The old swing BREAKOUT_CONTINUATION was too permissive: the Paper book could
+# enter on the first historical touch of a breakout level. This lane waits for
+# a closed-bar reclaim/hold first, then allows only a bounded retest of that
+# level. Live routing remains disabled until this profile has its own evidence.
+crypto_swing_breakout_reclaim_paper:
+  enabled: false
+  live_enabled: false
+  activated_at: "2026-09-16T00:00:00+00:00"
+  asset_class: crypto
+  mode: swing
+  source_entry_mode: BREAKOUT_CONTINUATION
+  profile_id: crypto_swing_breakout_reclaim_paper_v2
+  entry_mode: BREAKOUT_RECLAIM_V2
+
+  # Confirmation must close beyond the level and still hold the level.
+  min_reclaim_close_distance_atr: 0.04
+  level_hold_buffer_atr: 0.12
+  min_confirmation_volume_ratio: 0.70
+  first_touch_rejection_wick_share: 0.40
+
+  # Entry after confirmation is a retest zone, not a market chase.
+  retest_zone_atr: 0.18
+  min_retest_zone_bps: 8.0
+  max_retest_bars: 8
+
+  # Do not use this as a hero-trade against confirmed BTC tape weakness.
+  block_confirmed_btc_countertrend: true
+  btc_conflict_return_pct: 0.35

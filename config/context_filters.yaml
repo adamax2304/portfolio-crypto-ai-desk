@@ -1,0 +1,103 @@
+# Versioned context/risk filters. Live routing is always locked elsewhere.
+context_filters:
+  version: context_filters_v1
+  live_enabled: false
+
+  token_unlock:
+    enabled: true
+    paper_routing_enabled: false
+    local_events_path: data/reference/token_unlocks.json
+    provider: defillama_public_calendar
+    provider_url_env: DEFILLAMA_UNLOCKS_URL
+    provider_key_env: DEFILLAMA_API_KEY
+    public_fallback_enabled: true
+    public_fallback_url: https://defillama.com/calendar
+    public_cache_path: data/reference/token_unlocks_defillama_cache.json
+    public_horizon_days: 45
+    public_cache_max_age_hours: 48
+    public_timeout_seconds: 45
+    public_max_payload_mb: 25
+    temporary_fallback_review_after: 2026-08-17
+    include_unlock_types: [cliff]
+    symbol_overrides:
+      ton: TON
+    max_source_age_hours: 36
+    warning_days: 30
+    half_size_days: 14
+    shadow_only_days: 3
+    min_pct_circulating: 5.0
+    min_unlock_adv_days: 3.0
+    high_risk_recipients: [vc, investor, private_sale, team]
+
+  stablecoin_depeg:
+    enabled: true
+    paper_routing_enabled: true
+    stablecoins: [USDT, USDC]
+    trusted_venues: [coinbase, kraken, gemini]
+    max_quote_age_seconds: 240
+    min_confirming_venues: 2
+    persistence_minutes: 10
+    watch_deviation_pct: 0.50
+    stress_deviation_pct: 1.00
+    crisis_deviation_pct: 2.00
+    stress_action: SHADOW_ONLY
+    crisis_action: SHADOW_ONLY
+
+  cross_exchange:
+    enabled: true
+    paper_routing_enabled: true
+    trusted_venues: [binance, bybit]
+    discovery_venues: [mexc]
+    max_quote_age_seconds: 240
+    min_fresh_trusted_venues: 2
+    persistence_samples: 2
+    persistence_max_minutes: 15
+    major_symbols: [BTC, ETH, SOL, BNB, XRP]
+    half_divergence_bps_major: 25
+    shadow_divergence_bps_major: 75
+    half_divergence_bps_alt: 50
+    shadow_divergence_bps_alt: 150
+
+  options_context:
+    enabled: true
+    paper_routing_enabled: false
+    crypto_underlyings: [BTC, ETH]
+    crypto_source: deribit
+    crypto_max_age_minutes: 150
+    realized_vol_lookback_days: 30
+    stocks_source_path: data/reference/stocks_options_context.json
+    stocks_public_fallback_enabled: true
+    stocks_public_source: yfinance_gex_proxy
+    stocks_public_underlyings: [SPY, QQQ]
+    stocks_max_age_minutes: 150
+    stocks_chain_max_dte_days: 45
+    stocks_chain_max_expirations: 6
+    stocks_gex_risk_free_rate: 0.045
+    temporary_fallback_review_after: 2026-08-17
+
+  gex:
+    enabled: true
+    paper_routing_enabled: false
+    underlyings: [SPY, QQQ]
+    positive_gamma_breakout_action: HALF_SIZE
+    near_wall_atr: 0.50
+    accepted_quality: [point_in_time, provisional_point_in_time]
+
+  insider_confirmation:
+    enabled: true
+    paper_routing_enabled: false
+    history_years: 3
+    cluster_window_days: 30
+    min_cluster_insiders: 2
+    min_total_purchase_usd: 50000
+    require_transaction_code: P
+    exclude_10b5_1: true
+
+  catalyst_overnight:
+    enabled: true
+    paper_routing_enabled: false
+    min_close_location: 0.80
+    require_above_vwap: true
+    require_positive_relative_strength: true
+    exclude_friday: true
+    excluded_event_types: [earnings, offering_dilution, legal_risk, fda, calendar_risk]

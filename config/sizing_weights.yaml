@@ -1,0 +1,75 @@
+# Playbook-Aware Sizing Weights
+# ----------------------------
+# REPORTING / PAPER-PnL LAYER ONLY.
+#
+# This config does NOT influence:
+#  - signal generation
+#  - scoring
+#  - tier thresholds
+#  - TP/SL geometry
+#  - Telegram alert eligibility
+#  - the proposed_signals / signal_outcomes tables
+#
+# It IS read by `src/signals/sizing.py` to compute a `sized_r` column
+# alongside the existing `raw_r` (= the tracker's recorded `final_r`) so
+# the dashboard / Performance-by-Mode / LLM packet can show what the
+# portfolio's R would look like under playbook-aware risk allocation.
+#
+# Weight semantics:
+#   1.0  → normal one-unit risk
+#   0.5  → half size (low-confidence cohort)
+#   0.0  → not traded in this scheme (paused mode, watchlist, shadow)
+#
+# Reference audit: reports/PROFITABILITY_LEVERS_AUDIT.md (Lever 1).
+
+version: 1
+notes: |
+  This is the v1 "playbook_aware" scheme from the Profitability Levers
+  Audit. Weights are derived from cohort audits (14d viability, 48h trade
+  audit, scalp deep-dive, A-tier overpromotion study). Adjust here only —
+  the helper module re-reads on every call.
+
+# Per-playbook base weights. Tier / direction overrides applied next.
+playbooks:
+  crypto_swing_narrative_rs_momentum: 1.0
+  crypto_intraday_catalyst_or_momentum: 1.0
+  crypto_failed_bounce_short: 1.0
+  crypto_rs_leader_long: 1.0
+  crypto_catalyst_backed_setup: 1.0
+  crypto_scalp_momentum_continuation: 0.0  # SHADOW ONLY — 12mo backtest net-negative
+                                           # after fees (WR 43% / PF 0.63 / avg -0.466R;
+                                           # train+val+OOS all negative; no exit/regime
+                                           # variant flips positive). Downgraded 2026-06-15
+                                           # per SCALP_KEEP_REWORK_DISABLE_DECISION.md.
+                                           # Generation/tracking kept; NOT actionable.
+  stocks_intraday_rth_momentum: 1.0        # base; A-tier-long override below
+  # deprecated_old_stocks_swing_invest_removed — these two legacy playbooks are REMOVED from
+  # active analysis (poor forward performance), not paused-to-return. Kept at 0.0 only so any
+  # stale rows never size. Replaced by the shadow-only stocks_swing_growth_breakout below.
+  stocks_swing_watchlist_rs_rotation: 0.0  # DEPRECATED/REMOVED (never sized)
+  stocks_invest_watchlist_30d_thesis: 0.0  # DEPRECATED/REMOVED (never sized)
+  # New Stocks Position Framework is SHADOW-ONLY (research) and is NOT sized — it never reaches
+  # proposed_signals or the paper book. Listed at 0× purely for explicitness.
+  stocks_swing_growth_breakout: 0.0        # shadow-only (Phase 1); not sized, not actionable
+  stocks_swing_event_rs_pullback: 1.0      # Paper-only medium-term stock swing event/RS pullback
+
+# Tier overrides — applied AFTER the playbook base.
+# Watchlist / shadow are never sized in v1.
+tier_overrides:
+  C: 0.0          # any C-tier / watchlist / shadow → 0
+  rejected: 0.0   # already excluded, but explicit
+
+# Per-(playbook × tier × direction) finer overrides.
+# These win over both `playbooks` and `tier_overrides`.
+fine_overrides:
+  # Stocks A-tier long intraday: A-tier overpromotion study found
+  # 21% WR / −6.2R / RTH-open chase. Half-size keeps the rare A-tier
+  # winners (UNH/LLY/AMD) at half cost while limiting drawdown.
+  - playbook: stocks_intraday_rth_momentum
+    tier: A
+    direction: long
+    weight: 0.5
+    reason: "A-tier overpromotion symptom (21% WR / −6.2R) — half size"
+
+# Catch-all default if nothing matches.
+default_weight: 1.0

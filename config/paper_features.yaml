@@ -1,0 +1,166 @@
+# Paper Feature Registry — single source of truth for what is ACTIVE in paper.
+# PAPER / ACCOUNTING / DISPLAY ONLY. Nothing here enables live, auto-live,
+# exchange execution, real orders, production exits, or production TP/SL.
+# `state` values: active_paper_accounting | active_paper_display | active_advisory
+#                 | keep_measuring | keep_shadow | archived | dangerous_locked
+# Reversible: flip any `active_*` to `off`/`keep_shadow` to disable. Default-safe.
+version: "2026-06-24"
+
+# Narrow paper-only authority. This is a new-entry floor, never a live switch,
+# never an exit/position-management command. If the registry cannot be read,
+# the code falls back to diagnostic-only behaviour.
+paper_risk_authority:
+  enabled: true
+  paper_only: true
+  live_enabled: false
+  crypto_modes: [intraday, swing]
+  circuit_breaker:
+    enabled: true
+    required_state: would_pause
+    min_level: 2
+    # Graduated Paper protection.  A mode-level losing streak slows new
+    # evidence collection to half size; only a much deeper crypto-book loss
+    # pauses all new crypto Paper entries.
+    l2_action: HALF_SIZE
+    l3_action: HALF_SIZE
+    # Intraday losses reduce intraday only; swing has an independent evidence
+    # lane. The asset-wide figure below is still evaluated as the hard stop.
+    scope: mode_isolated
+    global_pause_daily_r: -5.0
+    global_pause_action: SHADOW_ONLY
+
+features:
+  model_f_paper_execution:
+    state: active_paper_accounting
+    module: src/execution/paper_execution_accounting.py
+    what: "Authoritative paper PnL (early MFE-armed protection: BE@+0.6R, lock+0.5R@+1R, runner TP3)."
+    affects_trades: false        # accounting only; never moves a real stop
+    evidence: "replay actionable touch +6.2R -> +74.1R; PF~1.43; forward-validation pending"
+    decision_date: "2026-06-24"
+
+  touch_r_optimistic_label:
+    state: active_paper_display
+    module: trading-desk-control/backend/app/books.py
+    what: "Legacy final_r relabelled 'touch-based / optimistic / signal-quality' (NOT real PnL)."
+    affects_trades: false
+    evidence: "touch overstated vs realistic exits by ~+100..+143R"
+    decision_date: "2026-06-24"
+
+  lifecycle_status_clarity:
+    state: active_paper_display
+    module: src/status/display_status.py
+    what: "expired split (entered-unresolved vs no-entry), lifecycle-aware R, honest active/waiting."
+    affects_trades: false
+    evidence: "display correctness; UNKNOWN_INCONSISTENT 87->3"
+    decision_date: "2026-06-19"
+
+  risk_guard_warnings:
+    state: active_advisory          # alert-only annotations; fail-open, never block
+    module: src/risk/risk_guards.py
+    what: "Paper-entry alert warning lines: circuit-breaker would_pause, sector-cap would-bind, correlation stacking, profit-protection hint, catalyst integrity."
+    affects_trades: false
+    evidence: "advisory only; block versions remain shadow (need >=10 fires / net-positive)"
+    decision_date: "2026-06-19"
+
+  catalyst_labels_refresh:
+    state: active_advisory
+    module: src/signals/catalyst_label_refresh.py
+    what: "Re-derive news_supported/telegram_supported + catalyst integrity; data-quality."
+    affects_trades: false
+    evidence: "fixes scan-time ~5h news under-fire; display/measurement only"
+    decision_date: "2026-06-19"
+
+  cohort_guard_paper_review_only:
+    state: keep_measuring   # Authoritative config/cohort_guard.yaml is warn + routing_enabled=false.
+                            # This registry entry documents the actual non-routing state.
+    module: config/cohort_guard.yaml + src/execution/crypto_quality_overlay.py
+    what: "Measure the weak crypto_intraday catalyst/momentum cohort point-in-time; no paper routing
+      until its forward evidence gate passes and the operator explicitly enables it."
+    affects_trades: false   # affects PAPER sizing/routing, never a live/production trade
+    evidence: "+0.02R/trade under Model F (weakest actionable); catalyst-backed subset separately
+      profiled at WR50%/PF2.75/+7R vs no-catalyst WR23%/PF0.70/-3R in src/signals/playbooks.py"
+    decision_date: "2026-07-13"
+
+  # ---- kept shadow / measuring (NOT active in paper) ----
+  intelligence_layer:
+    state: keep_measuring
+    module: src/intelligence/
+    what: "Symbol timeline / derivatives trajectory / squeeze phase (compute + display)."
+    affects_trades: false
+    evidence: "NEED_MORE_DATA: <30 closed actionable; pre-decision context only"
+    decision_date: "2026-06-19"
+
+  circuit_breaker_block:
+    state: active_paper_accounting
+    module: src/risk/circuit_breaker.py
+    what: "Paper-only SHADOW floor for new crypto entries on explicit would_pause; existing positions and live remain untouched."
+    affects_trades: false
+    evidence: "Conservative monotone floor: only explicit L2+ would_pause; watch/one-stop/risk-off remain diagnostic."
+    decision_date: "2026-07-13"
+
+  sector_concentration_caps_block:
+    state: keep_shadow
+    module: src/signals/sector_cap_shadow.py
+    what: "Sector/concentration/correlation caps as block/size-down (vs warn-only)."
+    affects_trades: false
+    evidence: "NEED_MORE_DATA: enough binds + net-positive counterfactual"
+    decision_date: "2026-06-19"
+
+  position_advisor:
+    state: keep_measuring
+    module: src/risk/position_advisor.py
+    what: "Position/leverage advisor (label-only)."
+    affects_trades: false
+    evidence: "forward sizing evidence needed"
+    decision_date: "2026-06-19"
+
+  adaptive_tp3:
+    state: keep_measuring
+    module: scripts/tp_stop_replay.py
+    what: "Adaptive TP3 / TP policy (advisory/research)."
+    affects_trades: false
+    evidence: "TP3 reached ~3.7%; cohort-positive only; not an execution change"
+    decision_date: "2026-06-23"
+
+  # ---- archived (superseded) ----
+  shadow_exit_manager_variants:
+    state: archived
+    module: src/exits/shadow_exit_manager.py
+    what: "Old BE/partial/trailing/reentry variants A..I (research replay)."
+    affects_trades: false
+    evidence: "SUPERSEDED_BY_MODEL_F; armed at/after TP1 (worse). Kept for research, not promoted."
+    decision_date: "2026-06-24"
+
+  # ---- dangerous / locked (do not enable) ----
+  crypto_scalp_actionable:
+    state: dangerous_locked
+    module: config/signal_tracking.yaml
+    what: "Crypto scalp as actionable."
+    affects_trades: false
+    evidence: "net-negative under every model; operator-only"
+    decision_date: "2026-06-18"
+  stocks_c_tier_actionable:
+    state: dangerous_locked
+    module: config/signal_tracking.yaml
+    what: "Stocks intraday C-tier as actionable."
+    affects_trades: false
+    evidence: "30d C-tier = -34R drag"
+    decision_date: "2026-06-18"
+  stocks_swing_invest_actionable:
+    state: dangerous_locked
+    module: src/agents/trade_idea_agent.py
+    what: "Old stocks swing/invest (rs_rotation / 30d_thesis) as actionable."
+    affects_trades: false
+    evidence: "DEPRECATED/REMOVED from active analysis due to poor forward performance; not
+      paused-to-return. Replaced by the shadow-only stocks_position_framework. Actionability
+      stays hard-disabled."
+    decision_date: "2026-07-02"
+  stocks_position_framework_shadow:
+    state: keep_shadow
+    module: src/stocks/position_framework/
+    what: "New stocks_swing_growth_breakout position framework — shadow/research candidates only."
+    affects_trades: false
+    evidence: "shadow_only=true; writes separate stocks_position_candidates table, never
+      proposed_signals; no actionability, no live, no Telegram. Promotion requires forward
+      evidence gate + operator sign-off."
+    decision_date: "2026-07-02"

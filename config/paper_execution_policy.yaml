@@ -1,0 +1,30 @@
+# Paper execution policy — PAPER ONLY. Structural TP + fee-aware + maker-first.
+# Production TP generation, exits, scoring, routing are UNCHANGED. Reversible.
+
+paper_structural_tp:
+  enabled: true
+  apply_to_paper: true
+  production_unchanged: true
+  min_tp1_r_after_fees: 0.60
+  tp3_requires_runner: true
+  volume_profile_enabled: true     # used only when volume data is sufficient; never invented
+  fallback_to_atr: true
+
+paper_fee_aware_execution:
+  enabled: true
+  apply_to_paper: true
+  default_action: warn_and_cap
+  skip_fail_fee_survival: false
+  skip_extreme_fee_drag: true
+  max_fee_r_cost: 0.35
+
+paper_maker_first:
+  enabled: true
+  apply_to_paper: true
+  default_plan: maker_when_safe_taker_when_urgent
+  entry_timeout_candles: 2
+  allow_taker_fallback: true
+  stop_order_type: taker
+  tp_order_type_preference: maker
+  expired_close_preference: maker_if_non_urgent
+  conservative_fill_model: true

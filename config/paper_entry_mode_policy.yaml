@@ -1,0 +1,37 @@
+# Paper entry-mode policy — PAPER ONLY, forward-only.
+# Nothing here enables live, auto-live, manual-live, or exchange execution.
+
+enabled: true
+
+disabled_shadow:
+  # Crypto scalp is still net-negative; do not keep measuring the new-logic
+  # branch as a candidate for promotion.
+  - asset_class: crypto
+    mode: scalp
+    entry_modes: ["*"]
+    reason: crypto_scalp_disabled_by_policy
+
+  # Crypto new pullback / limit-then-taker were worse than current production B.
+  - asset_class: crypto
+    mode: "*"
+    entry_modes: ["PULLBACK_LIMIT", "LIMIT_THEN_TAKER_TIMEOUT"]
+    reason: crypto_entry_mode_disabled_by_policy
+
+  # Stocks intraday taker-style branches underperformed; keep them out of
+  # promoted paper and out of the shadow promotion candidate set.
+  - asset_class: stocks
+    mode: intraday
+    entry_modes: ["MOMENTUM_TAKER_NOW", "LIMIT_THEN_TAKER_TIMEOUT"]
+    reason: stocks_intraday_entry_mode_disabled_by_policy
+
+paper_production:
+  enabled: true
+  promoted:
+    - asset_class: stocks
+      mode: intraday
+      entry_modes: ["PULLBACK_LIMIT", "BREAKOUT_CONTINUATION"]
+      reason: stocks_intraday_entry_mode_promoted_to_paper
+    - asset_class: stocks
+      mode: swing
+      entry_modes: ["EVENT_RS_PULLBACK"]
+      reason: stocks_swing_event_rs_pullback_promoted_to_paper

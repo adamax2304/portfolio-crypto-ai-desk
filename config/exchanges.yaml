@@ -1,0 +1,53 @@
+# Per-exchange roles, endpoints, and behaviour for the multi-exchange research desk.
+#
+# Roles:
+#   - binance: primary liquidity anchor, structure reference, default OHLCV.
+#   - bybit:   derivatives/perp confirmation, funding/open-interest source.
+#   - mexc:    early momentum discovery, small/mid-cap radar, higher noise risk.
+#
+# The aggregator merges symbol universes from every enabled exchange. Per-exchange
+# `enabled: false` removes that venue without changing code.
+
+binance:
+  enabled: true
+  role: anchor
+  ccxt_id: binance
+  market_types: [spot]
+  quote_currency: USDT
+  weight: 1.0
+  trust: 0.95
+  notes: Reliable liquidity, core structure reference.
+
+bybit:
+  enabled: true
+  role: derivatives
+  ccxt_id: bybit
+  market_types: [spot, linear]
+  quote_currency: USDT
+  weight: 0.85
+  trust: 0.85
+  notes: Derivatives/perpetual confirmation, funding/open-interest source.
+
+mexc:
+  enabled: true
+  role: discovery
+  ccxt_id: mexc
+  market_types: [spot]
+  quote_currency: USDT
+  weight: 0.55
+  trust: 0.5
+  high_risk: true
+  notes: Early momentum + new listings. Higher noise. MEXC-only setups cap at B-tier.
+
+# Symbols whose ccxt id changes between exchanges (PEPE-style 1000-x base).
+# These map "canonical ccxt symbol" -> "exchange-native symbol" or futures symbol.
+symbol_aliases:
+  bybit:
+    PEPE/USDT: 1000PEPE/USDT
+    SHIB/USDT: 1000SHIB/USDT
+    BONK/USDT: 1000BONK/USDT
+    FLOKI/USDT: 1000FLOKI/USDT
+  mexc: {}
+  binance:
+    PEPE/USDT: PEPE/USDT
+    SHIB/USDT: SHIB/USDT

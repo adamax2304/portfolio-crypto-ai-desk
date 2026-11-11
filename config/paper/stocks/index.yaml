@@ -1,0 +1,30 @@
+asset_class: stocks
+description: Authoritative navigation index for isolated Production Paper stock lanes.
+live_routing:
+  authority: config/live_routes.yaml
+  enabled_routes: []
+strategies:
+  - strategy_id: stocks_liquidity_shock_reclaim_v1
+    mode: intraday
+    entry_mode: LIQUIDITY_SHOCK_RECLAIM
+    status: paper_active_research
+    config: config/paper/stocks/liquidity_shock_reclaim_v1.yaml
+    module: src.execution.stocks_liquidity_shock_reclaim_paper
+    profile_ids:
+      - stocks_liquidity_shock_held_1m_structure_targets_paper_v1
+    live_allowed: false
+  - strategy_id: stocks_intraday_pullback_vwap_paper_v2
+    mode: intraday
+    entry_mode: PULLBACK_LIMIT
+    status: paper_active_rth_research
+    config: config/paper/stocks/pullback_limit.yaml
+    module: src.execution.stocks_intraday_pullback_paper
+  - strategy_id: stocks_intraday_breakout_1bar_paper_v1
+    mode: intraday
+    entry_mode: BREAKOUT_CONTINUATION
+    status: paper_active_rth_research
+    config: config/stocks/intraday_breakout_1bar_paper.yaml
+    module: src.execution.stocks_intraday_breakout_1bar_paper
+shadow_controls: []
+execution_reference:
+  mexc_paper: config/stocks/mexc_stock_futures_paper.yaml

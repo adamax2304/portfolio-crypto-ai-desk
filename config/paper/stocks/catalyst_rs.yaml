@@ -1,0 +1,17 @@
+stocks_catalyst_rs_paper:
+  # Existing candidates still need deterministic lifecycle resolution.
+  enabled: false
+  new_signals_enabled: false
+  live_enabled: false
+  profile_id: stocks_catalyst_rs_paper_v1
+  strategy_id: stocks_catalyst_rs_paper_v1
+  paper_lane: paper_stocks_catalyst_rs
+  source_shadow_profile: stocks_catalyst_rs_profile_v2
+  allowed_evidence_cohorts: [strict_v1, exploratory_v1]
+  max_confirmation_age_minutes: 30
+  max_signals_per_symbol_session: 1
+  max_chase_r: 0.35
+  exploratory_size_label: HALF_SIZE
+  strict_size_label: FULL_SIZE
+  use_default_universe: true
+  paused_reason: single_active_stock_rth_research_lane

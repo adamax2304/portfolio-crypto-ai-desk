@@ -1,0 +1,108 @@
+experiment:
+  experiment_id: regime_conditioned_crypto_v2
+  expected_variants: 16
+  random_seed: 20260806
+  development_folds: 4
+  development_end: "2025-02-01T00:00:00Z"
+  validation_end: "2025-08-01T00:00:00Z"
+  known_audit_end: "2026-08-05T00:00:00Z"
+  warmup_days: 90
+  bootstrap_samples: 3000
+  fdr_q: 0.10
+
+strategy:
+  fvg_max_atr: 0.75
+  stop_buffer_atr: 0.20
+  min_stop_atr: 0.20
+  max_stop_atr: 1.50
+  max_stop_pct_crypto: 0.07
+  max_stop_pct_stocks: 0.04
+  max_entry_extension_atr: 0.35
+  min_stop_pct: 0.005
+  rsi_period: 14
+  atr_period: 14
+  adx_period: 14
+  ema_fast: 20
+  ema_slow: 50
+  ema_slope_bars: 8
+  ema_slope_min_atr: 0.10
+  pivot_left_bars: 2
+  pivot_right_bars: 2
+  rvol_period: 20
+  min_rvol: 1.0
+  derivatives_freshness_hours: 12
+  derivatives_funding_extreme_abs: 0.001
+  derivatives_oi_growth_24h_max_pct: 25.0
+  crypto_targets_r: [1.3, 2.3, 3.6]
+  stocks_targets_r: [1.5, 2.5, 4.0]
+  crypto_max_hold_hours: 72
+  stocks_force_flat_et: "15:55"
+  regime_rs_lookback_4h_bars: 6
+  regime_vol_median_4h_bars: 180
+  regime_vol_min_history_4h_bars: 120
+  rsi_profiles:
+    baseline:
+      long_reset_min: 40
+      long_reset_max: 55
+      long_current_max: 68
+      short_reset_min: 45
+      short_reset_max: 60
+      short_current_min: 32
+  model_f:
+    arm_breakeven_at_r: 0.6
+    lock_at_r: 1.0
+    lock_level_r: 0.5
+    partial_weights: [0.33, 0.33, 0.34]
+
+parameter_dimensions:
+  trend_filter: [ema_structure]
+  fvg_min_atr: [0.10]
+  retest_expiry_h1_bars: [12]
+  rsi_mode: [reset_confirm]
+  rsi_profile: [baseline]
+  stop_buffer_atr: [0.20]
+  min_stop_pct: [0.005]
+  targets_r:
+    - [1.3, 2.3, 3.6]
+  crypto_max_hold_hours: [72]
+  btc_adx_min: [10.0, 15.0]
+  btc_slope_min_atr: [0.05]
+  rs_24h_min_pct: [0.5, 1.0, 1.5, 2.0]
+  vol_ratio_min: [0.65, 0.80]
+
+costs:
+  crypto:
+    fee_profile: mexc_conservative_api
+    taker_fee_rate: 0.00060
+    maker_fee_rate: 0.00040
+    slippage_bps_base: 10.0
+    slippage_bps_stress: 15.0
+    risk_usd: 25.0
+
+selection:
+  min_clean_trades: 80
+  min_unique_days: 50
+  min_unique_symbols: 25
+  min_positive_folds: 3
+  pooled_profit_factor_min: 1.25
+  per_fold_profit_factor_floor: 0.90
+  max_drawdown_r: 12.0
+  max_top5_profit_share: 0.45
+  max_symbol_profit_share: 0.25
+  min_control_frequency_retention: 0.05
+
+forward:
+  activation_at: null
+  strategy_id: crypto_regime_conditioned_continuation_v2
+  shadow_lane: shadow_regime_conditioned_continuation_v2
+  min_clean_closed: 60
+  min_forward_days: 42
+  min_profit_factor: 1.25
+  max_drawdown_r: 10.0
+  max_latency_p90_seconds: 60
+  max_slippage_p90_bps: 15.0
+  # Runs begin just after each 15m close. A decision older than two minutes
+  # is recorded diagnostically but can never be bridged into live execution.
+  scan_start_delay_seconds: 5.0
+  clean_latency_seconds: 90.0
+  max_decision_latency_seconds: 120.0

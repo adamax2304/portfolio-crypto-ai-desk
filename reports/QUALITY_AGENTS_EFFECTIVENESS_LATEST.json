@@ -1,0 +1,146 @@
+{
+  "active_incidents": [],
+  "counterfactual": {
+    "half_size": {
+      "losses": 0,
+      "n": 9,
+      "net_delta_r_vs_full_size": -1.0161,
+      "pf": null,
+      "sum_r": 2.0322,
+      "wins": 2
+    },
+    "hard_block": {
+      "losses": 0,
+      "missed_winners": 0,
+      "n": 0,
+      "net_delta_r_if_omitted": 0,
+      "pf": null,
+      "saved_losers": 0,
+      "sum_r": 0,
+      "wins": 0
+    }
+  },
+  "effectiveness": {
+    "event_risk": {
+      "PASS": {
+        "losses": 8,
+        "n": 43,
+        "pf": 1.5463,
+        "sum_r": 4.3705,
+        "wins": 12
+      }
+    },
+    "execution_sanity": {
+      "PASS": {
+        "losses": 8,
+        "n": 43,
+        "pf": 1.5463,
+        "sum_r": 4.3705,
+        "wins": 12
+      }
+    },
+    "market_regime": {
+      "CAUTION": {
+        "losses": 0,
+        "n": 9,
+        "pf": null,
+        "sum_r": 2.0322,
+        "wins": 2
+      },
+      "INSUFFICIENT_DATA": {
+        "losses": 3,
+        "n": 13,
+        "pf": 1.8365,
+        "sum_r": 2.5094,
+        "wins": 5
+      },
+      "SUPPORT": {
+        "losses": 5,
+        "n": 21,
+        "pf": 0.9658,
+        "sum_r": -0.1711,
+        "wins": 5
+      }
+    },
+    "news_entity": {
+      "CAUTION": {
+        "losses": 1,
+        "n": 6,
+        "pf": 1.2449,
+        "sum_r": 0.2449,
+        "wins": 2
+      },
+      "INSUFFICIENT_DATA": {
+        "losses": 7,
+        "n": 37,
+        "pf": 1.5894,
+        "sum_r": 4.1256,
+        "wins": 10
+      }
+    }
+  },
+  "generated_at": "2026-11-11T21:11:36.196776+00:00",
+  "llm_assessments": [],
+  "llm_experiments": {},
+  "lookback_days": 30,
+  "post_trade": [
+    {
+      "n": 29,
+      "primary_category": "normal_loss",
+      "source_book": "paper",
+      "sum_r": -29.0,
+      "sum_usdt": -351.1
+    },
+    {
+      "n": 24,
+      "primary_category": "late_entry",
+      "source_book": "paper",
+      "sum_r": -8.021,
+      "sum_usdt": -305.48
+    },
+    {
+      "n": 187,
+      "primary_category": "normal_scratch",
+      "source_book": "paper",
+      "sum_r": 0.0,
+      "sum_usdt": -339.5
+    },
+    {
+      "n": 52,
+      "primary_category": "normal_win",
+      "source_book": "paper",
+      "sum_r": 31.234,
+      "sum_usdt": 349.16
+    }
+  ],
+  "runs": [
+    {
+      "agent_name": "event_risk",
+      "avg_ms": 0.526,
+      "errors": 0,
+      "max_ms": 30.05,
+      "n": 765
+    },
+    {
+      "agent_name": "execution_sanity",
+      "avg_ms": 0.425,
+      "errors": 0,
+      "max_ms": 16.076,
+      "n": 64
+    },
+    {
+      "agent_name": "market_regime",
+      "avg_ms": 4.19,
+      "errors": 0,
+      "max_ms": 280.033,
+      "n": 765
+    },
+    {
+      "agent_name": "news_entity",
+      "avg_ms": 175.862,
+      "errors": 0,
+      "max_ms": 12698.724,
+      "n": 765
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+# Derivatives Reset Continuation: isolated v3 event-sequence Shadow experiment.
+# It never routes to Paper or Live.
+crypto_derivreset_v3:
+  # Disabled 2026-08-12 after forward Shadow evidence failed:
+  # 115 clean closed, net -$1293.64, PF 0.16, WR 22.6%.
+  # Historical rows are preserved; re-enable only as a redesigned v4.
+  feature_flag: false
+  strategy_id: crypto_derivreset_v3
+  profile_id: crypto_derivreset_v3_event_sequence
+  shadow_lane: shadow_derivreset_v3
+  timeframe: 5m
+  primary_exchange: bybit
+  fallback_timeframes: [15m]
+  max_symbols: 40
+
+  # Fresh bars are observed in real time; a reset is then allowed to mature.
+  max_detection_latency_seconds: 420
+  derivative_freshness_minutes: 10
+  catalyst_freshness_hours: 24
+  event_expiry_minutes: 60
+  oi_peak_max_age_minutes: 120
+  min_history_points: 3
+
+  # These are deliberately separate time horizons. The initial flush must be
+  # visible now; OI/funding are allowed to reset during the next hour.
+  structure_lookback_bars: 24
+  flush_window_bars: 12
+  hold_bars: 2
+  min_flush_wick_pct: 0.15
+  min_post_reclaim_progress_pct: 0.15
+  max_post_reclaim_progress_pct: 2.0
+  max_stop_distance_pct: 3.0
+  min_rvol: 1.20
+
+  # A measurable reset, not merely an unchanged OI reading. A later OI rebuild
+  # is rejected when price has not progressed away from the reclaim level.
+  min_oi_drop_from_peak_pct: 0.50
+  max_oi_drop_from_peak_pct: 20.0
+  max_oi_rebuild_from_trough_pct: 0.50
+  min_safe_oi_progress_pct: 0.30
+  min_funding_extreme_abs: 0.00010
+  funding_neutral_ratio: 0.70
+
+  min_24h_quote_volume_usd: 10000000
+  max_static_spread_bps_major: 8.0
+  max_static_spread_bps_alt: 20.0
+  spread_vs_1h_average_max: 2.0
+  min_spread_history_samples: 3
+
+  block_sessions: [asia, "off"]
+  guard_mode: intraday
+  max_symbol_trades_per_12h: 1
+  symbol_trade_cooldown_hours: 12
+  original_stop_cooldown_hours: 24
+  target_r: [1.0, 2.0, 3.0]
+  max_holding_bars: 288
+  fee_profile: bybit_non_vip_usdt_perp
+  funding_exchange: bybit
+  funding_intervals: 1.0
+
+  min_clean_closed: 30
+  min_forward_days: 28
+  min_profit_factor: 1.25
+  max_review_drawdown_usd: 250.0
+  report_path: reports/CRYPTO_DERIVRESET_V3_SHADOW.md

@@ -1,0 +1,92 @@
+# Latency reduction + SLA thresholds (2026-07-05).
+# READ-MODEL / OPERATIONAL config only. Nothing here changes score/tier/actionability/TP/SL/sizing,
+# and nothing here unlocks live. The separately gated MEXC canary consumes only
+# point-in-time Paper decisions and has its own kill-switch/risk controls.
+
+pending_monitor:
+  # Fast pending-only entry loop (crypto). Runs ONLY the lightweight A/B pending-entry tracker
+  # (no re_evaluate / LLM / scoring / report). See `python -m src.cli pending-monitor`.
+  interval_seconds: 15            # fixed-rate fast path; mode-specific refresh keeps work inside budget
+  max_symbols_per_tick: 60        # bounded OHLCV refresh per tick (round-robin beyond this)
+  refresh_timeframes: ["1m", "5m", "15m", "1h"]   # 15m/1h remain structural; 1m is retained
+                                  # for current-price Paper-entry provenance on intraday candidates
+  concurrency: 8                  # bounded parallel OHLCV workers (4-8); rate-limited + fail-open
+  tracker_db_busy_timeout_ms: 5000 # bounded retry window absorbs brief report commits without skipping a whole tick
+  # per-(symbol,tf) cache TTL for intra-tick / rapid-iteration dedup. The tick CLAMPS the effective
+  # TTL to min(this, interval/2) so it can NEVER skip the next tick's refresh at the normal cadence —
+  # entry-detection freshness always wins. Only successfully-fetched pairs are cached (failures retry).
+  fetch_ttl_seconds: 60
+  backoff_seconds: 30             # extra sleep after a data-fetch failure / 429
+  max_consecutive_failures: 5     # after this many, back off harder (still fail-open, never crash)
+  # ccxt market metadata causes allocator growth in a long-lived Windows process even after
+  # sessions are closed. Rotate only after a fully completed tick; the CLI immediately replaces
+  # the worker and refreshes the scheduler PID file. No decision or candle state is carried here.
+  # Keep the Windows worker alive. The former 10-tick self-recycle spawned a
+  # detached replacement that could disappear with its parent job, leaving no
+  # fast entry monitor until the next two-hour scheduler cycle.
+  recycle_after_ticks: 0
+  leader_ttl_seconds: 180         # a second pending-monitor exits if a fresh leader lock exists
+  disk_guard:
+    # Atomic cache writes preserve the prior file. Below the critical threshold
+    # the fast tracker skips its tick instead of using a suspect cache.
+    warning_free_mb: 5120
+    critical_free_mb: 1024
+
+stocks_pending_monitor:
+  interval_seconds: 60            # existing A/B intraday entry/exit checks
+  report_refresh_minutes: 10      # heavier universe/scoring refresh remains bounded
+  refresh_timeframes: ["1m", "15m"]  # 1m execution observation + 15m deterministic fallback
+  max_symbols_per_tick: 40
+  provider: yfinance              # candle-capable feed; Finnhub remains primary for news/quotes
+
+sla:
+  # Target SLAs (the report flags when they are NOT met). LIVE stays blocked until these pass AND
+  # an operator signs off — the report never unlocks live by itself.
+  crypto_pending_detect_p50_sec: 60
+  crypto_pending_detect_p90_sec: 180
+  crypto_alert_after_entry_p90_sec: 180
+  stocks_intraday_data_gap_block_share: 0.30   # > this share ⇒ STOCKS_INTRADAY_DATA_GAP_BLOCKED
+  stocks_intraday_entry_detect_p90_sec: 300
+  # Acceptance is evidence-gated and read-only. Candle timestamps are bar opens, so the report
+  # publishes both a raw upper bound and a conservative after-bar-close lower bound.
+  crypto_min_detect_samples: 20
+  crypto_min_alert_samples: 10
+  crypto_required_fast_source: pending-monitor
+  crypto_fast_source_min_share: 0.80
+  stocks_intraday_min_detect_samples: 20
+  stocks_intraday_min_alert_samples: 5
+  stocks_required_fast_source: stocks-monitor-session
+  stocks_fast_source_min_share: 0.80
+  alert_dispatch_p90_sec: 30
+  # Acceptance after the bounded Telegram transport change is forward-only.
+  # Older 2x15s timeout rows remain visible in raw diagnostics.
+  alert_fast_path_activated_at: "2026-08-03T16:25:00+00:00"
+  signal_discovery_activated_at: "2026-08-04T17:05:00+00:00"
+
+stocks_realtime:
+  # Finnhub supplies fast news and current quotes under the installed entitlement, but its candle
+  # endpoint returns 403 for this account. Technical bars therefore stay on yfinance until a
+  # candle-capable provider is connected. Paid live-grade providers take precedence automatically.
+  default_provider: yfinance
+  providers:
+    - name: finnhub
+      live_grade: false
+      env_var: FINNHUB_API_KEY
+      reason: "fast news/current quote available; OHLCV candles not entitled on this account"
+    - name: yfinance
+      live_grade: false
+      env_var: null
+      reason: "free delayed/rolling-window feed — fallback only, not live-grade"
+    - name: alpaca
+      live_grade: true
+      env_var: ALPACA_API_KEY
+      secret_env_var: ALPACA_API_SECRET
+    - name: polygon
+      live_grade: true
+      env_var: POLYGON_API_KEY
+    - name: iex
+      live_grade: true
+      env_var: IEX_API_KEY
+    - name: ibkr
+      live_grade: true
+      env_var: IBKR_ACCOUNT

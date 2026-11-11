@@ -1,0 +1,27 @@
+# Production-Paper V2 entry profile for crypto-intraday pullbacks.  Live
+# eligibility is still controlled by config/mexc_live_canary.yaml.
+crypto_intraday_level_hold_paper:
+  enabled: false
+  live_enabled: false
+  profile_id: crypto_intraday_level_hold_v2_paper_v1
+  # Version boundary: historical/V1 rows are never rewritten as V2 evidence.
+  activated_at: "2026-08-24T00:00:00+00:00"
+  asset_class: crypto
+  mode: intraday
+  source_entry_mode: PULLBACK_LIMIT
+  confirmation_kind: level_hold_v2
+
+  # A controlled pullback must reclaim the middle of the original entry zone
+  # on a meaningful candle.  The next limit retest has 45 minutes (3 x 15m)
+  # to occur, so a stale bounce cannot become a later Paper fill.
+  v2:
+    max_zone_penetration_fraction: 0.25
+    min_confirmation_volume_ratio: 0.75
+    max_retest_bars: 3
+    market:
+      # This is not a new risk-off gate.  It rejects only a confirmed BTC move
+      # decisively against the setup; unknown/flat context is recorded and
+      # leaves the existing overlay as the authoritative sizing guard.
+      enabled: true
+      max_countertrend_btc_15m_return_pct: 0.25
+      max_countertrend_btc_1h_return_pct: 0.50

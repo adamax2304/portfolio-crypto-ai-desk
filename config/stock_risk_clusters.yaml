@@ -1,0 +1,64 @@
+# Stock risk-cluster / proxy map for the concentration cap overlay (2026-06-16).
+# ---------------------------------------------------------------------------
+# REPORTING / SIZING-ACTIONABILITY LAYER ONLY. This file does NOT influence:
+#   signal generation, scoring, tier thresholds, TP/SL geometry, or raw R.
+# It is read by src/stocks/risk_clusters.py + src/signals/portfolio_caps.py to
+# label correlated stock exposure and apply a portfolio-level effective-weight
+# cap (proxy-duplicate collapse + per-bucket exposure cap). Stocks only.
+#
+#   risk_bucket  — coarse correlated group (sector cap applies per bucket+dir)
+#   proxy_group  — near-identical exposure (proxy collapse keeps one per group)
+#                  *_proxy groups are redundant baskets (ETFs of the same thing);
+#                  *_single groups are individual names (collapse only vs itself).
+
+version: 1
+
+defaults:
+  risk_bucket: unknown
+  proxy_group: symbol_itself      # unknown symbols collapse only against themselves
+
+symbols:
+  # --- megacap tech: single names ---
+  AAPL:  {risk_bucket: megacap_tech, proxy_group: megacap_single}
+  MSFT:  {risk_bucket: megacap_tech, proxy_group: megacap_single}
+  META:  {risk_bucket: megacap_tech, proxy_group: megacap_single}
+  AMZN:  {risk_bucket: megacap_tech, proxy_group: megacap_single}
+  GOOGL: {risk_bucket: megacap_tech, proxy_group: megacap_single}
+  NFLX:  {risk_bucket: megacap_tech, proxy_group: megacap_single}
+  # --- megacap tech: redundant Nasdaq/tech ETFs (collapse to one) ---
+  QQQ:   {risk_bucket: megacap_tech, proxy_group: qqq_xlk_proxy}
+  XLK:   {risk_bucket: megacap_tech, proxy_group: qqq_xlk_proxy}
+  XLY:   {risk_bucket: megacap_tech, proxy_group: qqq_xlk_proxy}
+
+  # --- semiconductors ---
+  SMH:   {risk_bucket: semis, proxy_group: semis_proxy}    # semis ETF
+  AMD:   {risk_bucket: semis, proxy_group: semis_single}
+  NVDA:  {risk_bucket: semis, proxy_group: semis_single}
+  SMCI:  {risk_bucket: semis, proxy_group: semis_single}
+  AVGO:  {risk_bucket: semis, proxy_group: semis_single}
+
+  # --- broad index ETFs (redundant; collapse to one) ---
+  SPY:   {risk_bucket: broad_index, proxy_group: broad_index_proxy}
+  DIA:   {risk_bucket: broad_index, proxy_group: broad_index_proxy}
+  IWM:   {risk_bucket: broad_index, proxy_group: broad_index_proxy}
+
+  # --- high-beta / thematic singles ---
+  PLTR:  {risk_bucket: high_beta_ai, proxy_group: high_beta_single}
+  TSLA:  {risk_bucket: high_beta_consumer, proxy_group: high_beta_single}
+
+  # --- crypto-equities (move with BTC) ---
+  COIN:  {risk_bucket: crypto_equity, proxy_group: crypto_equity_single}
+  MSTR:  {risk_bucket: crypto_equity, proxy_group: crypto_equity_single}
+
+  # --- healthcare ---
+  LLY:   {risk_bucket: healthcare, proxy_group: healthcare_single}
+  UNH:   {risk_bucket: healthcare, proxy_group: healthcare_single}
+  XLV:   {risk_bucket: healthcare, proxy_group: healthcare_proxy}
+
+  # --- financials ---
+  JPM:   {risk_bucket: financials, proxy_group: financials_single}
+  XLF:   {risk_bucket: financials, proxy_group: financials_proxy}
+
+  # --- energy ---
+  XOM:   {risk_bucket: energy, proxy_group: energy_single}
+  XLE:   {risk_bucket: energy, proxy_group: energy_proxy}

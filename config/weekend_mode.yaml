@@ -1,0 +1,66 @@
+# Weekend Mode — automatic risk/scoring overlay for Saturdays and Sundays.
+#
+# Goal: caution, not paralysis.
+#
+# When active, the desk:
+#   - applies a confidence penalty to all ideas,
+#   - subtracts `a_tier_score_penalty` from scores >= 80 so A-tier requires
+#     a real margin, not a borderline read,
+#   - caps "weak" signals at B-tier (so a weak setup cannot stay A),
+#   - caps "weak MEXC-only" signals at C-tier (watchlist),
+#   - warns about overly tight stops, weekend liquidity, late chasing,
+#   - prefers retest entries over chasing impulse candles,
+#   - is strictest in scalp mode, lightest in swing / invest.
+#
+# Detection uses config/settings.yaml.project.timezone by default.
+# If that key is missing, falls back to UTC.
+
+enabled: true
+timezone: project_default
+
+active_days:
+  - Saturday
+  - Sunday
+
+# Numerical overlay knobs.
+confidence_penalty: 0.10              # subtracted from a normalized 0..1 confidence proxy.
+a_tier_score_penalty: 5               # subtracted from any final_score >= 80 (A-tier).
+overextension_penalty_multiplier: 1.25 # boosts the existing "overextended" penalty.
+
+# Tier caps applied during overlay.
+max_tier_for_weak_signals: B          # weak signals never stay A on weekends.
+max_tier_for_weak_mexc_only_signals: C # weak MEXC-only signals never stay above C.
+
+# Behavior toggles surfaced as warnings (no automatic structural detection;
+# the LLM and report reader apply them).
+require_retest_after_impulse: true    # warn against entering directly after an impulse.
+tight_stop_warning: true              # warn when the stop sits inside a wick/noise zone.
+prefer_structure_or_atr_stops: true   # prefer structural (support/resistance ± 0.15 ATR) over min stops.
+downgrade_chasing_entries: true       # demote setups that are > 2 ATR extended from EMA20.
+
+# Mode-specific magnitude.
+#   Scalp is strictest, swing is lightest, invest is informational only.
+mode_overrides:
+  scalp:
+    a_tier_score_penalty: 7
+    confidence_penalty: 0.15
+    extra_warnings:
+      - "Weekend scalp: demand immediate trigger + confirmation; avoid entries directly after a vertical 1m/5m candle."
+      - "Weekend scalp: max holding time should be explicit; do not let scalps drift past 2h."
+  intraday:
+    extra_warnings:
+      - "Weekend intraday: prefer pullback / retest setups; avoid chasing fresh breakouts without 15m / 1h acceptance."
+      - "Weekend intraday: confirm R/R to TP1 >= 1.2; weekend wicks can hit tight stops easily."
+  swing:
+    a_tier_score_penalty: 2
+    confidence_penalty: 0.05
+    extra_warnings:
+      - "Weekend liquidity is thinner; expect wider wicks. Higher-timeframe thesis still applies."
+  invest:
+    a_tier_score_penalty: 0
+    confidence_penalty: 0.0
+    extra_warnings:
+      - "Weekend execution quality is worse. Long-term thesis is not invalidated by weekend wicks, but consider waiting for Monday open for entries."
+
+# Operator banner emitted on every report when active.
+banner: "WEEKEND MODE ACTIVE: weekend liquidity is thinner. Demand cleaner structure, prefer retests, expect wider wicks. A-tier requires real margin."

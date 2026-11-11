@@ -1,0 +1,403 @@
+# Stocks entity aliases (PART 19, 2026-06-03).
+#
+# Read by ``EntityAliasMatcher.load_stocks(project_root)``. Used by the
+# catalyst layer / catalyst-scan / Opus reviews to map company names and
+# product references in news headlines back to the stocks universe
+# tickers so the catalyst stays symbol-aware.
+#
+# Schema (per ticker):
+#   <TICKER>:
+#     canonical_name: "..."        # display name (optional)
+#     aliases: [ "name1", "name2", ... ]   # case-insensitive unless the
+#                                          # alias is a short all-caps
+#                                          # ticker (handled by matcher)
+#     tags: [ ... ]                # optional sector / narrative tags
+#
+# False-positive safety: short tickers (≤4 chars) are matched case-
+# sensitively by the matcher so "AMD" hits "AMD" but not "amd"; common
+# words ("apple", "broadcom") are kept as multi-word aliases so a plain
+# noun match requires the full name.
+
+# ---------------------------------------------------------------------------
+# Mega caps
+# ---------------------------------------------------------------------------
+AAPL:
+  canonical_name: Apple Inc.
+  aliases:
+    - "Apple Inc"
+    - "Apple Computer"
+    - "Cupertino"
+    - "Tim Cook"
+  # Only accepted in official/reputable *stock headlines* by the resolver.
+  # Product / market context avoids matching agricultural "apple" headlines.
+  headline_aliases: [ "Apple", "Apple Maps", "Apple stock", "Apple shares" ]
+  headline_context_terms: [ "stock", "stocks", "share", "shares", "market value", "valuation", "earnings", "revenue", "iphone", "ipad", "mac", "company" ]
+  tags: [ technology, mega_cap ]
+
+MSFT:
+  canonical_name: Microsoft Corporation
+  aliases:
+    - Microsoft
+    - "MSFT"
+  tags: [ technology, mega_cap ]
+
+GOOGL:
+  canonical_name: Alphabet Inc.
+  aliases:
+    - "Alphabet Inc"
+    - "Alphabet's"
+    - "Google parent"
+    - "Alphabet"
+    - "Google"
+  tags: [ communications, mega_cap ]
+
+AMZN:
+  canonical_name: Amazon.com, Inc.
+  aliases:
+    - "Amazon.com"
+    - "Amazon Web Services"
+    - "AWS"
+    - "Amazon"
+  tags: [ consumer_discretionary, mega_cap ]
+
+META:
+  canonical_name: Meta Platforms, Inc.
+  aliases:
+    - "Meta Platforms"
+    - "Facebook parent"
+    - "Instagram parent"
+    - "Facebook"
+    - "Instagram"
+  tags: [ communications, mega_cap ]
+
+NFLX:
+  canonical_name: Netflix, Inc.
+  aliases:
+    - Netflix
+  tags: [ communications, mega_cap ]
+
+TSLA:
+  canonical_name: Tesla, Inc.
+  aliases:
+    - Tesla
+    - "Elon Musk"
+  tags: [ consumer_discretionary, ev, mega_cap ]
+
+# ---------------------------------------------------------------------------
+# AI / semiconductors
+# ---------------------------------------------------------------------------
+NVDA:
+  canonical_name: NVIDIA Corporation
+  aliases:
+    - "Nvidia"
+    - "NVIDIA"
+    - "Jensen Huang"
+  tags: [ semiconductors, ai_hardware ]
+
+AMD:
+  canonical_name: Advanced Micro Devices, Inc.
+  aliases:
+    - "AMD"
+    - "Advanced Micro Devices"
+    - "Lisa Su"
+  tags: [ semiconductors, ai_hardware ]
+
+AVGO:
+  canonical_name: Broadcom Inc.
+  aliases:
+    - "Broadcom"
+    - "Broadcom Inc"
+    - "Hock Tan"
+  tags: [ semiconductors, ai_networking ]
+
+SMCI:
+  canonical_name: Super Micro Computer, Inc.
+  aliases:
+    - "Super Micro Computer"
+    - "Supermicro"
+    - "Super Micro"
+  tags: [ ai_hardware, server ]
+
+PLTR:
+  canonical_name: Palantir Technologies Inc.
+  aliases:
+    - "Palantir"
+    - "Palantir Technologies"
+  tags: [ technology, ai_software ]
+
+# ---------------------------------------------------------------------------
+# Crypto-equity proxies
+# ---------------------------------------------------------------------------
+COIN:
+  canonical_name: Coinbase Global, Inc.
+  aliases:
+    - "Coinbase"
+    - "Coinbase Global"
+  tags: [ crypto_equity ]
+
+MSTR:
+  canonical_name: MicroStrategy Incorporated
+  aliases:
+    - "MicroStrategy"
+    - "Michael Saylor"
+    - "Saylor"
+  tags: [ crypto_equity ]
+
+# ---------------------------------------------------------------------------
+# Defensives / financials / healthcare / energy
+# ---------------------------------------------------------------------------
+JPM:
+  canonical_name: JPMorgan Chase & Co.
+  aliases:
+    - "JPMorgan Chase"
+    - "JPMorgan"
+    - "JP Morgan"
+    - "J.P. Morgan"
+    - "J.P. Morgan Asset Management"
+    - "Campbell Global"
+    - "Jamie Dimon"
+  tags: [ financials, mega_cap ]
+
+XOM:
+  canonical_name: Exxon Mobil Corporation
+  aliases:
+    - "Exxon Mobil"
+    - "ExxonMobil"
+  tags: [ energy ]
+
+UNH:
+  canonical_name: UnitedHealth Group Incorporated
+  aliases:
+    - "UnitedHealth"
+    - "UnitedHealth Group"
+  tags: [ healthcare ]
+
+LLY:
+  canonical_name: Eli Lilly and Company
+  aliases:
+    - "Eli Lilly"
+    - "Eli Lilly and Company"
+    - "Mounjaro"
+    - "Zepbound"
+  tags: [ healthcare, glp1 ]
+
+# ---------------------------------------------------------------------------
+# Major index ETFs
+# ---------------------------------------------------------------------------
+SPY:
+  canonical_name: SPDR S&P 500 ETF Trust
+  aliases:
+    - "SPDR S&P 500 ETF"
+    - "S&P 500 ETF"
+    - "SPY ETF"
+  tags: [ index_etf, broad_market ]
+
+QQQ:
+  canonical_name: Invesco QQQ Trust
+  aliases:
+    - "Invesco QQQ"
+    - "QQQ ETF"
+    - "Nasdaq-100 ETF"
+  tags: [ index_etf, broad_market ]
+
+IWM:
+  canonical_name: iShares Russell 2000 ETF
+  aliases:
+    - "iShares Russell 2000"
+    - "Russell 2000 ETF"
+    - "IWM ETF"
+  tags: [ index_etf, small_cap ]
+
+DIA:
+  canonical_name: SPDR Dow Jones Industrial Average ETF
+  aliases:
+    - "SPDR Dow Jones"
+    - "Dow Jones ETF"
+    - "DIA ETF"
+  tags: [ index_etf, broad_market ]
+
+# ---------------------------------------------------------------------------
+# Sector ETFs (kept narrow — common long-form names only)
+# ---------------------------------------------------------------------------
+SMH:
+  canonical_name: VanEck Semiconductor ETF
+  aliases:
+    - "VanEck Semiconductor ETF"
+    - "Semiconductor ETF"
+    - "SMH ETF"
+  tags: [ sector_etf, semiconductors ]
+
+XLK:
+  canonical_name: Technology Select Sector SPDR Fund
+  aliases:
+    - "Technology Select Sector SPDR"
+    - "XLK ETF"
+  tags: [ sector_etf, technology ]
+
+XLF:
+  canonical_name: Financial Select Sector SPDR Fund
+  aliases:
+    - "Financial Select Sector SPDR"
+    - "XLF ETF"
+  tags: [ sector_etf, financials ]
+
+XLE:
+  canonical_name: Energy Select Sector SPDR Fund
+  aliases:
+    - "Energy Select Sector SPDR"
+    - "XLE ETF"
+  tags: [ sector_etf, energy ]
+
+XLV:
+  canonical_name: Health Care Select Sector SPDR Fund
+  aliases:
+    - "Health Care Select Sector SPDR"
+    - "XLV ETF"
+  tags: [ sector_etf, healthcare ]
+
+XLY:
+  canonical_name: Consumer Discretionary Select Sector SPDR Fund
+  aliases:
+    - "Consumer Discretionary Select Sector SPDR"
+    - "XLY ETF"
+  tags: [ sector_etf, consumer_discretionary ]
+
+# ---------------------------------------------------------------------------
+# Production universe expansion (2026-07-04) — company-name → ticker for the
+# full stocks universe so news headlines mapping company NAMES land on tickers.
+# Names are multi-word / >=5 chars (case-insensitive per matcher rules).
+# ---------------------------------------------------------------------------
+ORCL:
+  canonical_name: Oracle Corp
+  # Bare "oracle" is a common DeFi/technology noun and produced false ORCL
+  # catalysts. Require an issuer/product/market context.
+  aliases: [ "Oracle Corp", "Oracle Corporation", "Oracle Cloud", "Oracle shares", "Oracle stock" ]
+  # Plain Oracle remains forbidden in body/social text; headline use is narrowly gated.
+  headline_aliases: [ "Oracle" ]
+  tags: [ technology ]
+CRM: { canonical_name: Salesforce, aliases: [ "Salesforce" ], tags: [ technology ] }
+ADBE: { canonical_name: Adobe, aliases: [ "Adobe" ], tags: [ technology ] }
+ACN: { canonical_name: Accenture, aliases: [ "Accenture" ], tags: [ technology ] }
+CSCO: { canonical_name: Cisco, aliases: [ "Cisco", "Cisco Systems" ], tags: [ technology ] }
+IBM: { canonical_name: IBM, aliases: [ "International Business Machines" ], tags: [ technology ] }
+NOW: { canonical_name: ServiceNow, aliases: [ "ServiceNow" ], tags: [ technology ] }
+INTU: { canonical_name: Intuit, aliases: [ "Intuit" ], tags: [ technology ] }
+TXN: { canonical_name: Texas Instruments, aliases: [ "Texas Instruments" ], tags: [ semiconductors ] }
+QCOM: { canonical_name: Qualcomm, aliases: [ "Qualcomm" ], tags: [ semiconductors ] }
+AMAT: { canonical_name: Applied Materials, aliases: [ "Applied Materials" ], tags: [ semiconductors ] }
+PANW: { canonical_name: Palo Alto Networks, aliases: [ "Palo Alto Networks" ], tags: [ technology, security ] }
+MU: { canonical_name: Micron, aliases: [ "Micron", "Micron Technology" ], tags: [ semiconductors ] }
+LRCX: { canonical_name: Lam Research, aliases: [ "Lam Research" ], tags: [ semiconductors ] }
+KLAC: { canonical_name: KLA Corp, aliases: [ "KLA Corporation", "KLA-Tencor" ], tags: [ semiconductors ] }
+MRVL: { canonical_name: Marvell, aliases: [ "Marvell", "Marvell Technology" ], tags: [ semiconductors ] }
+DIS: { canonical_name: Walt Disney, aliases: [ "Walt Disney", "Disney" ], tags: [ media ] }
+TMUS: { canonical_name: T-Mobile, aliases: [ "T-Mobile" ], tags: [ telecom ] }
+CMCSA: { canonical_name: Comcast, aliases: [ "Comcast" ], tags: [ media ] }
+HD: { canonical_name: Home Depot, aliases: [ "Home Depot" ], tags: [ retail ] }
+MCD: { canonical_name: McDonald's, aliases: [ "McDonald's", "McDonalds" ], tags: [ consumer ] }
+NKE: { canonical_name: Nike, aliases: [ "Nike Inc" ], headline_aliases: [ "Nike" ], tags: [ consumer ] }
+LOW: { canonical_name: Lowe's, aliases: [ "Lowe's Companies", "Lowes" ], tags: [ retail ] }
+SBUX: { canonical_name: Starbucks, aliases: [ "Starbucks" ], tags: [ consumer ] }
+BKNG: { canonical_name: Booking Holdings, aliases: [ "Booking Holdings", "Booking.com" ], tags: [ travel ] }
+BAC: { canonical_name: Bank of America, aliases: [ "Bank of America" ], tags: [ financials ] }
+WFC: { canonical_name: Wells Fargo, aliases: [ "Wells Fargo" ], tags: [ financials ] }
+GS: { canonical_name: Goldman Sachs, aliases: [ "Goldman Sachs" ], tags: [ financials ] }
+MS: { canonical_name: Morgan Stanley, aliases: [ "Morgan Stanley" ], tags: [ financials ] }
+V: { canonical_name: Visa, aliases: [ "Visa Inc" ], tags: [ financials ] }
+MA: { canonical_name: Mastercard, aliases: [ "Mastercard" ], tags: [ financials ] }
+AXP: { canonical_name: American Express, aliases: [ "American Express", "AmEx" ], tags: [ financials ] }
+BLK: { canonical_name: BlackRock, aliases: [ "BlackRock" ], tags: [ financials ] }
+JNJ: { canonical_name: Johnson & Johnson, aliases: [ "Johnson & Johnson", "Johnson and Johnson" ], tags: [ healthcare ] }
+ABBV: { canonical_name: AbbVie, aliases: [ "AbbVie" ], tags: [ healthcare ] }
+MRK: { canonical_name: Merck, aliases: [ "Merck" ], tags: [ healthcare ] }
+TMO: { canonical_name: Thermo Fisher, aliases: [ "Thermo Fisher" ], tags: [ healthcare ] }
+ABT: { canonical_name: Abbott, aliases: [ "Abbott Laboratories" ], tags: [ healthcare ] }
+CVX: { canonical_name: Chevron, aliases: [ "Chevron" ], tags: [ energy ] }
+COP: { canonical_name: ConocoPhillips, aliases: [ "ConocoPhillips" ], tags: [ energy ] }
+CAT: { canonical_name: Caterpillar, aliases: [ "Caterpillar" ], tags: [ industrials ] }
+BA: { canonical_name: Boeing, aliases: [ "Boeing" ], tags: [ industrials ] }
+GE: { canonical_name: GE Aerospace, aliases: [ "General Electric", "GE Aerospace" ], tags: [ industrials ] }
+HON: { canonical_name: Honeywell, aliases: [ "Honeywell" ], tags: [ industrials ] }
+UPS: { canonical_name: United Parcel Service, aliases: [ "United Parcel Service" ], tags: [ industrials ] }
+RTX:
+  canonical_name: RTX Corp
+  aliases: [ "Raytheon", "RTX Corporation" ]
+  # Bare ticker only in a vetted stock headline, never general prose.
+  headline_aliases: [ "RTX" ]
+  tags: [ industrials, defense ]
+PG: { canonical_name: Procter & Gamble, aliases: [ "Procter & Gamble", "Procter and Gamble" ], tags: [ consumer ] }
+KO: { canonical_name: Coca-Cola, aliases: [ "Coca-Cola", "Coca Cola" ], tags: [ consumer ] }
+PEP: { canonical_name: PepsiCo, aliases: [ "PepsiCo", "Pepsi" ], tags: [ consumer ] }
+COST: { canonical_name: Costco, aliases: [ "Costco" ], tags: [ retail ] }
+WMT: { canonical_name: Walmart, aliases: [ "Walmart" ], tags: [ retail ] }
+NEE: { canonical_name: NextEra Energy, aliases: [ "NextEra Energy" ], tags: [ utilities ] }
+
+# --- 2026-07-08 entity-resolver expansion: crypto-adjacent + missing megacaps ---
+INTC:
+  canonical_name: Intel
+  aliases: [Intel, Intel Corporation]
+  tags: [semiconductors]
+HOOD:
+  canonical_name: Robinhood
+  aliases: [Robinhood, Robinhood Markets]
+  tags: [fintech, crypto_adjacent]
+RIOT:
+  canonical_name: Riot Platforms
+  aliases: [Riot Platforms, Riot Blockchain]
+  tags: [crypto_mining, crypto_adjacent]
+MARA:
+  canonical_name: MARA Holdings
+  aliases: [Marathon Digital, MARA Holdings]
+  tags: [crypto_mining, crypto_adjacent]
+CLSK:
+  canonical_name: CleanSpark
+  aliases: [CleanSpark]
+  tags: [crypto_mining, crypto_adjacent]
+HUT:
+  canonical_name: Hut 8
+  aliases: [Hut 8]
+  tags: [crypto_mining, crypto_adjacent]
+CIFR:
+  canonical_name: Cipher Mining
+  aliases: [Cipher Mining, Cipher Digital]
+  tags: [crypto_mining, crypto_adjacent]
+WULF:
+  canonical_name: TeraWulf
+  aliases: [TeraWulf]
+  tags: [crypto_mining, crypto_adjacent]
+CRCL:
+  canonical_name: Circle
+  aliases: [Circle Internet, Circle Internet Group]
+  tags: [stablecoin, crypto_adjacent]
+
+# --- 2026-08-07 shared liquid-universe expansion ---
+ARM: { canonical_name: Arm Holdings, aliases: [Arm Holdings, Arm Ltd], tags: [semiconductors] }
+ANET: { canonical_name: Arista Networks, aliases: [Arista Networks, Arista], tags: [technology] }
+APP: { canonical_name: AppLovin, aliases: [AppLovin, AppLovin Corporation], tags: [technology] }
+ASML: { canonical_name: ASML Holding, aliases: [ASML Holding, ASML], tags: [semiconductors] }
+TSM: { canonical_name: Taiwan Semiconductor Manufacturing, aliases: [Taiwan Semiconductor, TSMC], tags: [semiconductors] }
+DELL: { canonical_name: Dell Technologies, aliases: [Dell Technologies, Dell], tags: [technology] }
+DDOG: { canonical_name: Datadog, aliases: [Datadog], tags: [technology] }
+NET: { canonical_name: Cloudflare, aliases: [Cloudflare], tags: [technology] }
+SNOW: { canonical_name: Snowflake, aliases: [Snowflake Inc, Snowflake], tags: [technology] }
+PYPL: { canonical_name: PayPal, aliases: [PayPal, PayPal Holdings], tags: [financials, fintech] }
+SOFI: { canonical_name: SoFi Technologies, aliases: [SoFi Technologies, SoFi], tags: [financials, fintech] }
+AFRM: { canonical_name: Affirm Holdings, aliases: [Affirm Holdings, Affirm], tags: [financials, fintech] }
+BX: { canonical_name: Blackstone, aliases: [Blackstone, Blackstone Inc], tags: [financials] }
+UBER: { canonical_name: Uber Technologies, aliases: [Uber Technologies, Uber], tags: [consumer_discretionary] }
+ABNB: { canonical_name: Airbnb, aliases: [Airbnb], tags: [consumer_discretionary] }
+MAR: { canonical_name: Marriott International, aliases: [Marriott International, Marriott], tags: [consumer_discretionary] }
+SHOP: { canonical_name: Shopify, aliases: [Shopify], tags: [consumer_discretionary] }
+RDDT: { canonical_name: Reddit, aliases: [Reddit Inc, Reddit], tags: [communications] }
+AMGN: { canonical_name: Amgen, aliases: [Amgen], tags: [healthcare] }
+GILD: { canonical_name: Gilead Sciences, aliases: [Gilead Sciences, Gilead], tags: [healthcare] }
+ISRG: { canonical_name: Intuitive Surgical, aliases: [Intuitive Surgical], tags: [healthcare] }
+REGN: { canonical_name: Regeneron Pharmaceuticals, aliases: [Regeneron Pharmaceuticals, Regeneron], tags: [healthcare] }
+BIIB: { canonical_name: Biogen, aliases: [Biogen], tags: [healthcare] }
+VRTX: { canonical_name: Vertex Pharmaceuticals, aliases: [Vertex Pharmaceuticals, Vertex Pharma], tags: [healthcare] }
+DXCM: { canonical_name: DexCom, aliases: [DexCom, Dexcom], tags: [healthcare] }
+NVO: { canonical_name: Novo Nordisk, aliases: [Novo Nordisk], tags: [healthcare] }
+ETN: { canonical_name: Eaton, aliases: [Eaton Corporation, Eaton], tags: [industrials] }
+VRT: { canonical_name: Vertiv Holdings, aliases: [Vertiv Holdings, Vertiv], tags: [industrials] }
+LMT: { canonical_name: Lockheed Martin, aliases: [Lockheed Martin], tags: [industrials, defense] }
+AXON: { canonical_name: Axon Enterprise, aliases: [Axon Enterprise, Axon], tags: [industrials] }

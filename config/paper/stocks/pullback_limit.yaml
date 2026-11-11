@@ -1,0 +1,26 @@
+stocks_intraday_pullback_paper:
+  # Retained as one of the two positive-evidence RTH Paper controls.
+  enabled: true
+  new_signals_enabled: true
+  live_enabled: false
+  profile_id: stocks_intraday_pullback_vwap_paper_v2
+  legacy_profile_ids: [stocks_intraday_pullback_vwap_paper_v1]
+  source_shadow_profile: pullback_vwap_hold_15m_v1
+  strategy_id: stocks_intraday_pullback_vwap_paper_v2
+  paper_lane: paper_stocks_intraday_pullback_vwap
+  activated_at: "2026-08-18T23:20:00+00:00"
+  paused_reason: null
+  timeframe: 15m
+  require_vwap: true
+  use_default_universe: true
+  max_signals_per_symbol_session: 1
+  include_preopen_ab_plans: true
+  max_chase_r: 0.30
+  # V2 keeps the broad A/B candidate stream. It waits for a reclaim candle
+  # whose body agrees with the trade, then sizes weak-quality confirmations
+  # at HALF rather than deleting the trade from Paper evidence.
+  require_directional_body: true
+  min_full_size_confirmation_rvol: 0.80
+  max_full_size_atr_extension: 3.50
+  require_full_size_sector_confirmed: true
+  weak_size_weight: 0.50

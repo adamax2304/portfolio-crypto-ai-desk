@@ -1,0 +1,571 @@
+{
+  "generated_at": "2026-10-04T12:43:34.681782+00:00",
+  "period": [
+    "2026-09-07T22:40:00+00:00",
+    "2026-09-28T20:45:00+00:00"
+  ],
+  "source_rows": 1159,
+  "distinct_events": 608,
+  "profile": "FAST_1M_RECLAIM",
+  "split": {
+    "train_end": "2026-09-21T07:30:00+00:00",
+    "validation_end": "2026-09-26T13:10:00+00:00"
+  },
+  "method": {
+    "chronological_split": "60/20/20",
+    "cascade_adjustment": "one strongest trade per 15-minute market episode",
+    "intrabar_assumption": "stop_first",
+    "costs": "preserved from original point-in-time replay"
+  },
+  "axis_bands": {
+    "flush_pct_bands": {
+      "micro_0.20_0.60pct": {
+        "train": {
+          "trades": 5,
+          "net_usd": 5.47,
+          "net_r": 0.547,
+          "pf": 1.554,
+          "winrate": 0.8,
+          "max_drawdown_usd": 9.87,
+          "costs_usd": 11.45
+        },
+        "validation": {
+          "trades": 3,
+          "net_usd": 8.91,
+          "net_r": 0.891,
+          "pf": null,
+          "winrate": 1.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 5.98
+        },
+        "test": {
+          "trades": 0,
+          "net_usd": 0,
+          "net_r": 0,
+          "pf": null,
+          "winrate": 0.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 0
+        },
+        "all": {
+          "trades": 8,
+          "net_usd": 14.38,
+          "net_r": 1.438,
+          "pf": 2.457,
+          "winrate": 0.875,
+          "max_drawdown_usd": 9.87,
+          "costs_usd": 17.43
+        }
+      },
+      "shallow_0.60_1.00pct": {
+        "train": {
+          "trades": 8,
+          "net_usd": 16.37,
+          "net_r": 1.637,
+          "pf": 1.871,
+          "winrate": 0.625,
+          "max_drawdown_usd": 12.35,
+          "costs_usd": 15.99
+        },
+        "validation": {
+          "trades": 3,
+          "net_usd": 4.27,
+          "net_r": 0.427,
+          "pf": 1.368,
+          "winrate": 0.667,
+          "max_drawdown_usd": 11.58,
+          "costs_usd": 5.03
+        },
+        "test": {
+          "trades": 4,
+          "net_usd": -18.84,
+          "net_r": -1.883,
+          "pf": 0.272,
+          "winrate": 0.25,
+          "max_drawdown_usd": 25.87,
+          "costs_usd": 7.46
+        },
+        "all": {
+          "trades": 15,
+          "net_usd": 1.8,
+          "net_r": 0.18,
+          "pf": 1.032,
+          "winrate": 0.533,
+          "max_drawdown_usd": 30.42,
+          "costs_usd": 28.49
+        }
+      },
+      "ordinary_1.00_1.50pct": {
+        "train": {
+          "trades": 16,
+          "net_usd": -7.74,
+          "net_r": -0.774,
+          "pf": 0.888,
+          "winrate": 0.562,
+          "max_drawdown_usd": 37.63,
+          "costs_usd": 33.91
+        },
+        "validation": {
+          "trades": 9,
+          "net_usd": 6.78,
+          "net_r": 0.678,
+          "pf": 1.249,
+          "winrate": 0.667,
+          "max_drawdown_usd": 15.76,
+          "costs_usd": 17.53
+        },
+        "test": {
+          "trades": 5,
+          "net_usd": -3.59,
+          "net_r": -0.359,
+          "pf": 0.81,
+          "winrate": 0.6,
+          "max_drawdown_usd": 18.86,
+          "costs_usd": 9.65
+        },
+        "all": {
+          "trades": 30,
+          "net_usd": -4.55,
+          "net_r": -0.455,
+          "pf": 0.96,
+          "winrate": 0.6,
+          "max_drawdown_usd": 37.63,
+          "costs_usd": 61.08
+        }
+      },
+      "deep_1.50_2.75pct": {
+        "train": {
+          "trades": 23,
+          "net_usd": 0.89,
+          "net_r": 0.088,
+          "pf": 1.012,
+          "winrate": 0.609,
+          "max_drawdown_usd": 32.32,
+          "costs_usd": 41.21
+        },
+        "validation": {
+          "trades": 12,
+          "net_usd": 37.56,
+          "net_r": 3.756,
+          "pf": 2.578,
+          "winrate": 0.833,
+          "max_drawdown_usd": 12.21,
+          "costs_usd": 22.03
+        },
+        "test": {
+          "trades": 10,
+          "net_usd": 10.76,
+          "net_r": 1.076,
+          "pf": 1.306,
+          "winrate": 0.7,
+          "max_drawdown_usd": 23.14,
+          "costs_usd": 16.43
+        },
+        "all": {
+          "trades": 45,
+          "net_usd": 49.2,
+          "net_r": 4.92,
+          "pf": 1.363,
+          "winrate": 0.689,
+          "max_drawdown_usd": 32.32,
+          "costs_usd": 79.67
+        }
+      },
+      "ultra_2.75_5.00pct": {
+        "train": {
+          "trades": 2,
+          "net_usd": -3.23,
+          "net_r": -0.323,
+          "pf": 0.719,
+          "winrate": 0.5,
+          "max_drawdown_usd": 11.48,
+          "costs_usd": 2.88
+        },
+        "validation": {
+          "trades": 0,
+          "net_usd": 0,
+          "net_r": 0,
+          "pf": null,
+          "winrate": 0.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 0
+        },
+        "test": {
+          "trades": 2,
+          "net_usd": -3.43,
+          "net_r": -0.343,
+          "pf": 0.711,
+          "winrate": 0.5,
+          "max_drawdown_usd": 11.88,
+          "costs_usd": 3.08
+        },
+        "all": {
+          "trades": 4,
+          "net_usd": -6.66,
+          "net_r": -0.666,
+          "pf": 0.715,
+          "winrate": 0.5,
+          "max_drawdown_usd": 15.1,
+          "costs_usd": 5.96
+        }
+      }
+    },
+    "flush_atr_bands": {
+      "small_0.65_1.50atr": {
+        "train": {
+          "trades": 10,
+          "net_usd": -1.86,
+          "net_r": -0.186,
+          "pf": 0.962,
+          "winrate": 0.6,
+          "max_drawdown_usd": 36.7,
+          "costs_usd": 19.76
+        },
+        "validation": {
+          "trades": 7,
+          "net_usd": 22.06,
+          "net_r": 2.206,
+          "pf": 2.904,
+          "winrate": 0.857,
+          "max_drawdown_usd": 11.58,
+          "costs_usd": 13.69
+        },
+        "test": {
+          "trades": 6,
+          "net_usd": -18.45,
+          "net_r": -1.845,
+          "pf": 0.473,
+          "winrate": 0.5,
+          "max_drawdown_usd": 26.57,
+          "costs_usd": 9.3
+        },
+        "all": {
+          "trades": 23,
+          "net_usd": 1.75,
+          "net_r": 0.175,
+          "pf": 1.018,
+          "winrate": 0.652,
+          "max_drawdown_usd": 36.7,
+          "costs_usd": 42.75
+        }
+      },
+      "moderate_1.50_2.50atr": {
+        "train": {
+          "trades": 20,
+          "net_usd": 16.77,
+          "net_r": 1.677,
+          "pf": 1.303,
+          "winrate": 0.7,
+          "max_drawdown_usd": 25.8,
+          "costs_usd": 39.76
+        },
+        "validation": {
+          "trades": 11,
+          "net_usd": 28.97,
+          "net_r": 2.897,
+          "pf": 2.259,
+          "winrate": 0.818,
+          "max_drawdown_usd": 11.58,
+          "costs_usd": 19.77
+        },
+        "test": {
+          "trades": 7,
+          "net_usd": -24.41,
+          "net_r": -2.441,
+          "pf": 0.439,
+          "winrate": 0.429,
+          "max_drawdown_usd": 37.22,
+          "costs_usd": 14.51
+        },
+        "all": {
+          "trades": 38,
+          "net_usd": 21.33,
+          "net_r": 2.133,
+          "pf": 1.175,
+          "winrate": 0.684,
+          "max_drawdown_usd": 37.22,
+          "costs_usd": 74.04
+        }
+      },
+      "deep_2.50_4.00atr": {
+        "train": {
+          "trades": 13,
+          "net_usd": 41.93,
+          "net_r": 4.193,
+          "pf": 2.451,
+          "winrate": 0.769,
+          "max_drawdown_usd": 12.65,
+          "costs_usd": 24.03
+        },
+        "validation": {
+          "trades": 8,
+          "net_usd": 21.94,
+          "net_r": 2.194,
+          "pf": 2.392,
+          "winrate": 0.75,
+          "max_drawdown_usd": 15.76,
+          "costs_usd": 15.71
+        },
+        "test": {
+          "trades": 7,
+          "net_usd": 24.7,
+          "net_r": 2.47,
+          "pf": 3.08,
+          "winrate": 0.857,
+          "max_drawdown_usd": 11.88,
+          "costs_usd": 11.47
+        },
+        "all": {
+          "trades": 28,
+          "net_usd": 88.57,
+          "net_r": 8.857,
+          "pf": 2.567,
+          "winrate": 0.786,
+          "max_drawdown_usd": 18.92,
+          "costs_usd": 51.21
+        }
+      },
+      "extreme_4.00_7.00atr": {
+        "train": {
+          "trades": 9,
+          "net_usd": -25.1,
+          "net_r": -2.51,
+          "pf": 0.385,
+          "winrate": 0.333,
+          "max_drawdown_usd": 27.21,
+          "costs_usd": 17.09
+        },
+        "validation": {
+          "trades": 0,
+          "net_usd": 0,
+          "net_r": 0,
+          "pf": null,
+          "winrate": 0.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 0
+        },
+        "test": {
+          "trades": 1,
+          "net_usd": 8.21,
+          "net_r": 0.821,
+          "pf": null,
+          "winrate": 1.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 1.44
+        },
+        "all": {
+          "trades": 10,
+          "net_usd": -16.89,
+          "net_r": -1.689,
+          "pf": 0.586,
+          "winrate": 0.4,
+          "max_drawdown_usd": 27.21,
+          "costs_usd": 18.53
+        }
+      },
+      "disorderly_7.00_12.00atr": {
+        "train": {
+          "trades": 1,
+          "net_usd": 0.31,
+          "net_r": 0.031,
+          "pf": null,
+          "winrate": 1.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 1.83
+        },
+        "validation": {
+          "trades": 0,
+          "net_usd": 0,
+          "net_r": 0,
+          "pf": null,
+          "winrate": 0.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 0
+        },
+        "test": {
+          "trades": 0,
+          "net_usd": 0,
+          "net_r": 0,
+          "pf": null,
+          "winrate": 0.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 0
+        },
+        "all": {
+          "trades": 1,
+          "net_usd": 0.31,
+          "net_r": 0.031,
+          "pf": null,
+          "winrate": 1.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 1.83
+        }
+      }
+    }
+  },
+  "candidates": {
+    "shallow": {
+      "parameters": {
+        "min_rvol": 1.0,
+        "min_oi_drop_pct": 1.0,
+        "max_oi_drop_pct": 5.0,
+        "min_liq_percentile": 0.8,
+        "max_spread_bps": 18.0,
+        "min_stop_distance_pct": 0.005,
+        "max_stop_distance_pct": 0.015,
+        "sessions": [
+          "europe",
+          "us"
+        ],
+        "min_flush_atr": 1.25,
+        "max_flush_atr": 2.25,
+        "min_flush_pct": 0.6,
+        "max_flush_pct": 1.2
+      },
+      "results": {
+        "train": {
+          "trades": 9,
+          "net_usd": 24.32,
+          "net_r": 2.432,
+          "pf": 1.945,
+          "winrate": 0.778,
+          "max_drawdown_usd": 13.51,
+          "costs_usd": 21.04
+        },
+        "validation": {
+          "trades": 5,
+          "net_usd": 29.23,
+          "net_r": 2.923,
+          "pf": null,
+          "winrate": 1.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 10.92
+        },
+        "test": {
+          "trades": 3,
+          "net_usd": -5.95,
+          "net_r": -0.595,
+          "pf": 0.499,
+          "winrate": 0.667,
+          "max_drawdown_usd": 11.88,
+          "costs_usd": 7.15
+        },
+        "all": {
+          "trades": 17,
+          "net_usd": 47.6,
+          "net_r": 4.76,
+          "pf": 2.266,
+          "winrate": 0.824,
+          "max_drawdown_usd": 13.51,
+          "costs_usd": 39.11
+        }
+      }
+    },
+    "deep": {
+      "parameters": {
+        "min_rvol": 1.0,
+        "min_oi_drop_pct": 0.25,
+        "max_oi_drop_pct": 5.0,
+        "min_liq_percentile": 0.9,
+        "max_spread_bps": 18.0,
+        "min_stop_distance_pct": 0.0075,
+        "max_stop_distance_pct": 0.015,
+        "sessions": [
+          "europe",
+          "us"
+        ],
+        "min_flush_atr": 2.0,
+        "max_flush_atr": 5.0,
+        "min_flush_pct": 1.5,
+        "max_flush_pct": 2.75
+      },
+      "results": {
+        "train": {
+          "trades": 11,
+          "net_usd": 45.5,
+          "net_r": 4.55,
+          "pf": 4.764,
+          "winrate": 0.818,
+          "max_drawdown_usd": 11.61,
+          "costs_usd": 18.13
+        },
+        "validation": {
+          "trades": 9,
+          "net_usd": 21.31,
+          "net_r": 2.131,
+          "pf": 1.895,
+          "winrate": 0.778,
+          "max_drawdown_usd": 14.97,
+          "costs_usd": 17.43
+        },
+        "test": {
+          "trades": 5,
+          "net_usd": 33.34,
+          "net_r": 3.334,
+          "pf": null,
+          "winrate": 1.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 8.6
+        },
+        "all": {
+          "trades": 25,
+          "net_usd": 100.15,
+          "net_r": 10.015,
+          "pf": 3.791,
+          "winrate": 0.84,
+          "max_drawdown_usd": 14.98,
+          "costs_usd": 44.15
+        }
+      }
+    }
+  },
+  "deep_neighborhood": {
+    "eligible_configurations": 3826,
+    "positive_train_pct": 0.8542,
+    "positive_validation_pct": 0.7253,
+    "positive_test_pct": 0.7525,
+    "positive_all_three_pct": 0.511,
+    "median_test_trades": 3.0,
+    "median_test_net_r": 0.949,
+    "median_all_net_r": 3.628
+  },
+  "deep_concentration": {
+    "summary": {
+      "trades": 25,
+      "net_usd": 100.15,
+      "net_r": 10.015,
+      "pf": 3.791,
+      "winrate": 0.84,
+      "max_drawdown_usd": 14.98,
+      "costs_usd": 44.15
+    },
+    "unique_symbols": 15,
+    "symbol_counts": {
+      "ARB/USDT": 4,
+      "NEAR/USDT": 4,
+      "DASH/USDT": 3,
+      "BCH/USDT": 2,
+      "ZEC/USDT": 2,
+      "WLD/USDT": 1,
+      "XLM/USDT": 1,
+      "ADA/USDT": 1,
+      "INJ/USDT": 1,
+      "AVAX/USDT": 1,
+      "ENA/USDT": 1,
+      "ONDO/USDT": 1,
+      "XPL/USDT": 1,
+      "UNI/USDT": 1,
+      "QNT/USDT": 1
+    },
+    "top_symbol_share": 0.16,
+    "without_top_symbol": {
+      "trades": 21,
+      "net_usd": 75.79,
+      "net_r": 7.579,
+      "pf": 3.112,
+      "winrate": 0.81,
+      "max_drawdown_usd": 14.98,
+      "costs_usd": 36.45
+    }
+  }
+}

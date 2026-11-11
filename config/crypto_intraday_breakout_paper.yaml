@@ -1,0 +1,14 @@
+# Versioned production-Paper profile for the previously isolated
+# crypto-intraday BREAKOUT_CONTINUATION path. It changes no geometry: the
+# point-in-time tracker remains the entry authority. The profile exists so the
+# MEXC handoff can only mirror an explicit, auditable Paper route.
+crypto_intraday_breakout_paper:
+  enabled: true
+  # Intraday breakout is canary-live eligible only through the explicit
+  # live_routes.yaml + mexc_live_canary.yaml allowlist.
+  live_enabled: false
+  profile_id: crypto_intraday_breakout_paper_v1
+  activated_at: "2026-08-05T14:10:00+00:00"
+  asset_class: crypto
+  mode: intraday
+  source_entry_mode: BREAKOUT_CONTINUATION

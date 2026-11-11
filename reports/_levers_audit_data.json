@@ -1,0 +1,304 @@
+{
+  "generated_at": "2026-06-10T17:14:12+00:00",
+  "scalp_simulation": {
+    "n_triggered": 40,
+    "policies": [
+      {
+        "policy": "baseline",
+        "n_triggered": 40,
+        "W": 0,
+        "L": 9,
+        "closed": 9,
+        "netR": -9.0,
+        "avgR": -0.225,
+        "WR_closed": 0.0,
+        "reduced_losses": 0,
+        "lost_wins": 0
+      },
+      {
+        "policy": "tp1_at_0.5R",
+        "n_triggered": 40,
+        "W": 13,
+        "L": 9,
+        "closed": 22,
+        "netR": -2.5,
+        "avgR": -0.062,
+        "WR_closed": 59.0,
+        "reduced_losses": 0,
+        "lost_wins": 0
+      },
+      {
+        "policy": "partial_at_0.5R",
+        "n_triggered": 40,
+        "W": 14,
+        "L": 9,
+        "closed": 23,
+        "netR": -4.75,
+        "avgR": -0.119,
+        "WR_closed": 61.0,
+        "reduced_losses": 1,
+        "lost_wins": 0
+      },
+      {
+        "policy": "be_after_0.6R",
+        "n_triggered": 40,
+        "W": 0,
+        "L": 9,
+        "closed": 9,
+        "netR": -9.0,
+        "avgR": -0.225,
+        "WR_closed": 0.0,
+        "reduced_losses": 0,
+        "lost_wins": 0
+      },
+      {
+        "policy": "trail_after_0.7R",
+        "n_triggered": 40,
+        "W": 8,
+        "L": 9,
+        "closed": 17,
+        "netR": -6.2,
+        "avgR": -0.155,
+        "WR_closed": 47.0,
+        "reduced_losses": 0,
+        "lost_wins": 0
+      },
+      {
+        "policy": "expiry_4h",
+        "n_triggered": 40,
+        "W": 14,
+        "L": 9,
+        "closed": 23,
+        "netR": -5.5,
+        "avgR": -0.138,
+        "WR_closed": 61.0,
+        "reduced_losses": 0,
+        "lost_wins": 0
+      }
+    ],
+    "intrabar_excluded": {
+      "n_clean": 40,
+      "n_intrabar": 0,
+      "W": 0,
+      "L": 9,
+      "WR_closed_clean": 0.0,
+      "netR_clean": -9.0
+    }
+  },
+  "expansion_quality": {
+    "expansion_n": 25,
+    "skipped_scalp": 0,
+    "skipped_in_top_setups": 28,
+    "promoted_to_ab_within_48h": [
+      {
+        "symbol": "SAHARA/USDT",
+        "tier": "B",
+        "created_at": "2026-06-10T14:58:34+00:00"
+      },
+      {
+        "symbol": "BABY/USDT",
+        "tier": "B",
+        "created_at": "2026-06-09T16:58:09+00:00"
+      },
+      {
+        "symbol": "ALLO/USDT",
+        "tier": "B",
+        "created_at": "2026-06-09T06:02:34+00:00"
+      },
+      {
+        "symbol": "ALLO/USDT",
+        "tier": "B",
+        "created_at": "2026-06-09T06:02:34+00:00"
+      },
+      {
+        "symbol": "WLD/USDT",
+        "tier": "B",
+        "created_at": "2026-06-09T08:48:06+00:00"
+      },
+      {
+        "symbol": "TAO/USDT",
+        "tier": "B",
+        "created_at": "2026-06-10T12:02:23+00:00"
+      },
+      {
+        "symbol": "BTC/USDT",
+        "tier": "B",
+        "created_at": "2026-06-10T08:54:38+00:00"
+      },
+      {
+        "symbol": "STG/USDT",
+        "tier": "B",
+        "created_at": "2026-06-10T02:46:31+00:00"
+      },
+      {
+        "symbol": "STG/USDT",
+        "tier": "B",
+        "created_at": "2026-06-10T02:46:31+00:00"
+      },
+      {
+        "symbol": "STG/USDT",
+        "tier": "B",
+        "created_at": "2026-06-10T02:46:31+00:00"
+      },
+      {
+        "symbol": "STG/USDT",
+        "tier": "B",
+        "created_at": "2026-06-10T02:46:31+00:00"
+      }
+    ]
+  },
+  "alias_candidates": [
+    {
+      "token": "FIFA",
+      "count": 4,
+      "sample_titles": [
+        "Son Heung-min joins LAFC as crypto brands circle the 2026 FIFA World Cup",
+        "California becomes the epicenter of the 2026 FIFA World Cup, and crypto is coming along for the ride",
+        "FIFA denies inclusion-themed armbands at 2026 World Cup as eight stars advocate for LGBTQ rights"
+      ]
+    },
+    {
+      "token": "IEM",
+      "count": 2,
+      "sample_titles": [
+        "Team Liquid faces decline after early exit from IEM Cologne Major",
+        "Team Vitality crowned final bosses of IEM Cologne Major 2026"
+      ]
+    },
+    {
+      "token": "NYSE",
+      "count": 2,
+      "sample_titles": [
+        "SpaceX IPO Could Open at $1,000 Despite \u2018Frothy\u2019 Valuation, NYSE Veteran Predicts",
+        "Benchmark says Securitize \u2018poised to be a positive outlier,\u2019 sets $16 target as NYSE listing nears"
+      ]
+    },
+    {
+      "token": "EEA",
+      "count": 1,
+      "sample_titles": [
+        "European Central Bank temporarily restricts Revolut\u2019s product launches in the EEA"
+      ]
+    },
+    {
+      "token": "IAEA",
+      "count": 1,
+      "sample_titles": [
+        "IAEA board passes Iran nuclear resolution with 21 votes as geopolitical tensions simmer"
+      ]
+    },
+    {
+      "token": "LAFC",
+      "count": 1,
+      "sample_titles": [
+        "Son Heung-min joins LAFC as crypto brands circle the 2026 FIFA World Cup"
+      ]
+    },
+    {
+      "token": "AFC",
+      "count": 1,
+      "sample_titles": [
+        "AFC Bournemouth signs Lazio goalkeeper Christos Mandas on loan with option to buy"
+      ]
+    },
+    {
+      "token": "CPI",
+      "count": 1,
+      "sample_titles": [
+        "After the #CPI data release, whale 0x97f8 fully closed his $147.6M #SP500 short for a $1.66M profit. https://x.com/looko"
+      ]
+    },
+    {
+      "token": "FBI",
+      "count": 1,
+      "sample_titles": [
+        "FBI Launches Operation Riptide to Disrupt $20 Billion Cybercrime Networks"
+      ]
+    },
+    {
+      "token": "MORPHO",
+      "count": 1,
+      "sample_titles": [
+        "How MORPHO\u2019s 10% price rally could turn into a full trend reversal"
+      ]
+    },
+    {
+      "token": "IRGC",
+      "count": 1,
+      "sample_titles": [
+        "Iran\u2019s IRGC releases missile strike footage targeting US bases as crypto markets shrug off escalation"
+      ]
+    },
+    {
+      "token": "DOJ",
+      "count": 1,
+      "sample_titles": [
+        "Sen. Tom Cotton urges DOJ to investigate Chinese influence on US AI infrastructure"
+      ]
+    },
+    {
+      "token": "MTN",
+      "count": 1,
+      "sample_titles": [
+        "MTN finalizes spinoffs of Nigerian and Ugandan fintech operations for Mastercard investment"
+      ]
+    },
+    {
+      "token": "LGBTQ",
+      "count": 1,
+      "sample_titles": [
+        "FIFA denies inclusion-themed armbands at 2026 World Cup as eight stars advocate for LGBTQ rights"
+      ]
+    },
+    {
+      "token": "HPC",
+      "count": 1,
+      "sample_titles": [
+        "\u2018Market integrity\u2019 or DeFi risk? Paradigm, HPC question stablecoin rule scope"
+      ]
+    },
+    {
+      "token": "SIREN",
+      "count": 1,
+      "sample_titles": [
+        "Why is SIREN\u2019s price down today? $0.70 support could shape what\u2019s next"
+      ]
+    }
+  ],
+  "unmapped_news_count": 80,
+  "sizing_simulation": [
+    {
+      "scheme": "equal_1R",
+      "n_sized": 371,
+      "totalR": -30.8,
+      "max_dd_R": -139.1,
+      "vol_per_trade": 0.98,
+      "wins": 72,
+      "losses": 153,
+      "WR_closed": 32.0,
+      "PF": 0.78
+    },
+    {
+      "scheme": "playbook_aware",
+      "n_sized": 278,
+      "totalR": 33.6,
+      "max_dd_R": -65.2,
+      "vol_per_trade": 0.97,
+      "wins": 66,
+      "losses": 89,
+      "WR_closed": 43.0,
+      "PF": 1.51
+    },
+    {
+      "scheme": "aggressive",
+      "n_sized": 278,
+      "totalR": 45.3,
+      "max_dd_R": -93.1,
+      "vol_per_trade": 1.33,
+      "wins": 66,
+      "losses": 89,
+      "WR_closed": 43.0,
+      "PF": 1.49
+    }
+  ]
+}

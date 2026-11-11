@@ -1,0 +1,22 @@
+crypto_invest_live:
+  enabled: false
+  route_id: crypto_invest_regime_conditioned_live_v1
+  source_strategy_id: crypto_regime_conditioned_continuation_v2
+  source_profile_hash: cf89424a1ef4143655eb5a500ef907fdd85b4e7cf88772a5f8c5e11b0413c1cf
+  live_strategy_version: crypto_invest_regime_conditioned_v1
+  mode: invest
+  entry_mode: REGIME_RECLAIM
+  risk_bucket: crypto_invest
+  risk_multiplier: 0.5
+  fixed_risk_usdt: 10.0
+  allowed_directions: [long, short]
+  require_clean_forward_decision: true
+  max_capture_age_seconds: 180
+  max_mexc_spread_bps: 20
+  universe_config: config/crypto_invest_universe.yaml
+  # This is an explicit operator override requested on 2026-08-07. Historical
+  # research is promising but forward readiness is still accumulating.
+  evidence_status: paused_live_insufficient_realized_evidence
+  bypass_standard_crypto_overlay: true
+  bypass_standard_paper_risk_guard: true
+  bypass_mode_daily_loss_guard: true

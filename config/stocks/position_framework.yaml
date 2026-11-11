@@ -1,0 +1,196 @@
+# Stocks Position Framework — SHADOW-ONLY research config.
+#
+# This is NOT the old stocks swing/invest (stocks_swing_watchlist_rs_rotation /
+# stocks_invest_watchlist_30d_thesis) — those are DEPRECATED/REMOVED from active analysis,
+# sizing, reports and prompt context due to poor forward performance. This new framework is a
+# separate shadow lane: NO live, NO auto-live, NO Telegram, NO actionability, NO promotions.
+# Authoritative profitability is USD net PnL; legacy final_r is diagnostic only.
+#
+# Phase 1 activates ONLY `stocks_swing_growth_breakout`. Earnings-drift and invest-stage2 are
+# disabled architecture placeholders (do not activate).
+
+position_framework:
+  enabled: false
+  shadow_only: true
+  write_proposed_signals: false          # never touch proposed_signals / actionability
+  # Daily after-US-close scan in scripts/run_default_market_schedule.py. It remains isolated
+  # shadow evidence until the forward gate passes. The
+  # scheduler runs it fail-open (a failure never blocks the cycle); still no Telegram/live/actionability.
+  scheduler_enabled: false
+  active_playbooks:
+    - stocks_swing_growth_breakout
+
+  disabled_playbooks:
+    stocks_swing_earnings_drift:
+      reason: "Phase 2 only; requires earnings reaction validation"
+    stocks_invest_stage2_position:
+      reason: "Phase 3 only; requires 2-6 months forward horizon"
+
+  universe:
+    max_symbols: 75
+    include_default_symbols: true
+    include_sector_etfs: false
+    min_price: 10
+    min_avg_dollar_volume_30d: 25000000
+    # Curated liquid US large/mega-caps (~68). No sector ETFs as trade candidates. Uses the
+    # existing yfinance collectors only — no new/paid data providers. The runner prefers this
+    # list; if absent it falls back to the stocks default_symbols.
+    symbols: [
+      AAPL, MSFT, ORCL, CRM, ADBE, ACN, CSCO, IBM, NOW, INTU, TXN, QCOM, AMAT, PANW, PLTR,
+      NVDA, AVGO, AMD, MU, LRCX, KLAC, MRVL,
+      GOOGL, META, NFLX, DIS, TMUS, CMCSA,
+      AMZN, TSLA, HD, MCD, NKE, LOW, SBUX, BKNG,
+      JPM, BAC, WFC, GS, MS, V, MA, AXP, BLK, COIN,
+      LLY, UNH, JNJ, ABBV, MRK, TMO, ABT,
+      XOM, CVX, COP,
+      CAT, BA, GE, HON, UPS, RTX,
+      PG, KO, PEP, COST, WMT,
+      NEE ]
+
+  # Framework-local symbol → sector-ETF map (self-contained; does NOT touch the shared
+  # config/stocks/universe.yaml used by intraday). Every ETF here is one the SectorETFCollector
+  # already fetches, so the sector gate always has data.
+  sector_map:
+    AAPL: XLK
+    MSFT: XLK
+    ORCL: XLK
+    CRM: XLK
+    ADBE: XLK
+    ACN: XLK
+    CSCO: XLK
+    IBM: XLK
+    NOW: XLK
+    INTU: XLK
+    TXN: XLK
+    QCOM: XLK
+    AMAT: XLK
+    PANW: XLK
+    PLTR: XLK
+    NVDA: SMH
+    AVGO: SMH
+    AMD: SMH
+    MU: SMH
+    LRCX: SMH
+    KLAC: SMH
+    MRVL: SMH
+    GOOGL: XLC
+    META: XLC
+    NFLX: XLC
+    DIS: XLC
+    TMUS: XLC
+    CMCSA: XLC
+    AMZN: XLY
+    TSLA: XLY
+    HD: XLY
+    MCD: XLY
+    NKE: XLY
+    LOW: XLY
+    SBUX: XLY
+    BKNG: XLY
+    JPM: XLF
+    BAC: XLF
+    WFC: XLF
+    GS: XLF
+    MS: XLF
+    V: XLF
+    MA: XLF
+    AXP: XLF
+    BLK: XLF
+    COIN: XLF
+    LLY: XLV
+    UNH: XLV
+    JNJ: XLV
+    ABBV: XLV
+    MRK: XLV
+    TMO: XLV
+    ABT: XLV
+    XOM: XLE
+    CVX: XLE
+    COP: XLE
+    CAT: XLI
+    BA: XLI
+    GE: XLI
+    HON: XLI
+    UPS: XLI
+    RTX: XLI
+    PG: XLP
+    KO: XLP
+    PEP: XLP
+    COST: XLP
+    WMT: XLP
+    NEE: XLU
+
+  market_filter:
+    require_spy_above_50d: true
+    require_qqq_above_50d: false
+    reject_if_spy_below_200d: true
+    reject_if_vix_above: 30
+    warn_if_vix_above: 22
+
+  sector_filter:
+    require_sector_above_50d: true
+    require_sector_rs_positive_vs_spy: true
+    max_sector_exposure_pct: 35
+
+  stock_filter:
+    require_above_50d: true
+    require_above_200d: true
+    require_rs_positive_vs_spy: true
+    require_rs_positive_vs_sector: false
+    near_high_lookbacks: [63, 126, 252]
+    near_high_max_pct_below: 12
+    min_volume_ratio: 1.1
+
+  setups:
+    breakout:
+      enabled: true
+      lookback_days: 20
+      require_volume_ratio: 1.2
+      max_extension_atr: 2.0
+    pullback_21d_50d:
+      enabled: true
+      max_distance_to_ema21_pct: 3.0
+      max_distance_to_sma50_pct: 5.0
+      require_close_above_ma: true
+    reclaim_after_shakeout:
+      enabled: true
+      lookback_days: 10
+    consolidation_continuation:
+      enabled: true
+      min_consolidation_days: 5
+      max_range_atr: 2.5
+
+  risk:
+    paper_risk_pct: 0.0025
+    max_positions: 5
+    stop_atr_multiple_min: 1.5
+    stop_atr_multiple_max: 2.5
+    stop_buffer_atr: 0.25
+    gap_risk_multiplier: 1.25
+    reject_if_stop_distance_pct_above: 12
+
+  exits:
+    partial_1_r: 2.0
+    partial_1_pct: 0.5
+    partial_2_r: 3.0
+    partial_2_pct: 0.25
+    trail_ema_days: 21
+    hard_exit_below_sma_days: 50
+    max_holding_days: 40
+
+  # Phase 1 outcome engine — SHADOW / read-model only. Realistic daily-bar execution, USD net PnL.
+  execution:
+    entry_valid_days: 5           # bars after the scan in which the entry may fill; else no_entry
+    slippage_bps: 5               # per side (US equity shadow model)
+    commission_per_share: 0.0     # commission-free brokers
+    min_forward_bars: 3           # fewer forward bars than this → outcome stays pending (no fake fill)
+
+  evidence_gate:
+    min_forward_days: 28
+    min_forward_trades: 30
+    require_net_usd_positive: true
+    require_better_than_old_stocks_swing: true
+    require_drawdown_acceptable: true
+
+  # Paper sizing base (USD net is authoritative). Not wired to live/actionability.
+  paper_equity_usd: 5000

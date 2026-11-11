@@ -1,0 +1,126 @@
+exchange: binance
+preferred_quote: USDT
+timeframes:
+  - 15m
+  - 1h
+  - 4h
+  - 1d
+minimum_quote_volume_usd: 10000000
+dynamic_universe:
+  # PART 20 (2026-06): widened so the monitored/analyzed pool is larger.
+  enabled: true
+  max_symbols: 60
+  top_liquid_count: 32
+  lower_volume_count: 28
+  min_quote_volume_usd: 1500000
+  lower_volume_min_usd: 1500000
+  lower_volume_max_usd: 50000000
+  exclude_symbols:
+    - FDUSD/USDT
+    - USDC/USDT
+    - TUSD/USDT
+    - USDP/USDT
+    - DAI/USDT
+    - EUR/USDT
+    - AEUR/USDT
+    - USD1/USDT
+    - RLUSD/USDT
+    - USDE/USDT
+    - PAXG/USDT
+    - XAUT/USDT
+# PART 20 (2026-06): expanded 20 → 45 to broaden the monitored set (these are
+# the symbols the WatchlistMonitor re-evaluates for A/B Telegram alerts and the
+# guaranteed-analyzed set for the default intraday path). Kept in sync with
+# config/universe.yaml `preferred_symbols`.
+symbols:
+  - BTC/USDT
+  - ETH/USDT
+  - SOL/USDT
+  - BNB/USDT
+  - XRP/USDT
+  - DOGE/USDT
+  - LINK/USDT
+  - AVAX/USDT
+  - NEAR/USDT
+  - INJ/USDT
+  - TAO/USDT
+  - WIF/USDT
+  - PEPE/USDT
+  - ARB/USDT
+  - OP/USDT
+  - TIA/USDT
+  - SUI/USDT
+  - SEI/USDT
+  - APT/USDT
+  - ENA/USDT
+  - ADA/USDT
+  - DOT/USDT
+  - LTC/USDT
+  - BCH/USDT
+  - ATOM/USDT
+  - UNI/USDT
+  - AAVE/USDT
+  - FET/USDT
+  - RENDER/USDT
+  - FIL/USDT
+  - ICP/USDT
+  - HBAR/USDT
+  - IMX/USDT
+  - STX/USDT
+  - TON/USDT
+  - JUP/USDT
+  - PYTH/USDT
+  - WLD/USDT
+  - ONDO/USDT
+  - RUNE/USDT
+  - ETC/USDT
+  - LDO/USDT
+  - DYDX/USDT
+  - GALA/USDT
+  - ALGO/USDT
+
+inactive_symbols:
+  # HYPE is kept here because it is useful to watch later, but Binance spot
+  # does not list HYPE/USDT in this local MVP exchange profile.
+  - HYPE/USDT
+
+narratives:
+  AI:
+    symbols: [TAO, FET, RENDER, NEAR, ICP]
+    keywords:
+      - AI
+      - artificial intelligence
+      - machine learning
+      - compute
+  RWA:
+    symbols: [ONDO, LINK, PYTH]
+    keywords:
+      - real world assets
+      - tokenization
+      - treasuries
+  L2:
+    symbols: [ARB, OP]
+    keywords:
+      - layer 2
+      - rollup
+      - optimistic
+      - arbitrum
+      - optimism
+  Memes:
+    symbols: [DOGE, PEPE, WIF]
+    keywords:
+      - meme
+      - dog
+      - cat
+      - pepe
+      - wif
+  DePIN:
+    symbols: []
+    keywords:
+      - depin
+      - decentralized infrastructure
+  Gaming:
+    symbols: []
+    keywords:
+      - gaming
+      - gamefi

@@ -1,0 +1,443 @@
+# MEXC futures canary. Paper remains the strategy/routing authority.
+# Real order submission requires BOTH submission_enabled=true and the exact
+# MEXC_LIVE_CANARY_ARMED environment value checked by config.py.
+mexc_live_canary:
+  capture_enabled: true
+  submission_enabled: true
+  execution_mode: live
+  exchange: mexc
+  # Multi-venue live execution. Paper remains the only strategy authority and
+  # one immutable decision is submitted to exactly one venue. MEXC stays the
+  # tie-breaker; Bybit wins only when it is the sole eligible venue or its
+  # executable all-in entry cost is materially better.
+  venue_routing:
+    enabled: true
+    preference_order: [mexc, bybit]
+    min_cost_improvement_bps: 2.0
+    latency_tiebreak_cost_band_bps: 1.0
+    min_latency_improvement_ms: 75
+    compare_timeout_seconds: 3.0
+    never_split_order: true
+    bybit:
+      enabled: true
+      submission_enabled: true
+      api_base_url: https://api.bybit.com
+      # Bybit defaults to 5s. Use a still-bounded 10s window so a brief
+      # network wobble cannot invalidate an otherwise safe pre-submission GET;
+      # timestamps remain regenerated for every request and the host is NTP-synced.
+      recv_window_ms: 10000
+      request_timeout_seconds: 4.0
+      safe_read_retry_attempts: 2
+      safe_read_retry_backoff_seconds: 0.2
+      category: linear
+      account_type: UNIFIED
+      position_idx: 0
+      # Stock perpetuals are routed only through explicit, verified aliases
+      # frozen into the live decision. Do not synthesize AAPLUSDT-style symbols
+      # for stocks; most of them are invalid on Bybit.
+      require_explicit_stock_symbol: true
+      stock_symbol_aliases:
+        AAPL: AAPLUSDT
+        ADBE: ADBEUSDT
+        AMAT: AMATUSDT
+        AMGN: AMGNUSDT
+        AMZN: AMZNUSDT
+        APP: APPSTOCKUSDT
+        ASML: ASMLUSDT
+        AVGO: AVGOUSDT
+        BIIB: BIIBUSDT
+        BX: BXUSDT
+        COST: COSTUSDT
+        CRCL: CRCLUSDT
+        CRM: CRMUSDT
+        CRWD: CRWDUSDT
+        DDOG: DDOGUSDT
+        DELL: DELLUSDT
+        GE: GEUSDT
+        GOOGL: GOOGLUSDT
+        GS: GSUSDT
+        HD: HDUSDT
+        HOOD: HOODUSDT
+        INTC: INTCUSDT
+        IWM: IWMUSDT
+        KLAC: KLACUSDT
+        KO: KOUSDT
+        LRCX: LRCXUSDT
+        MA: MAUSDT
+        MARA: MARAUSDT
+        MCD: MCDUSDT
+        META: METAUSDT
+        MRVL: MRVLUSDT
+        MSTR: MSTRUSDT
+        MU: MUUSDT
+        NFLX: NFLXUSDT
+        NOW: NOWUSDT
+        NVDA: NVDAUSDT
+        NVO: NVOUSDT
+        PANW: PANWUSDT
+        PEP: PEPUSDT
+        QCOM: QCOMUSDT
+        REGN: REGNUSDT
+        RIOT: RIOTUSDT
+        SHOP: SHOPUSDT
+        SNOW: SNOWUSDT
+        SOFI: SOFIUSDT
+        TSM: TSMUSDT
+        TXN: TXNUSDT
+        V: VUSDT
+        VRTX: VRTXSTOCKUSDT
+        WMT: WMTUSDT
+        XLK: XLKUSDT
+        XOM: XOMUSDT
+      # Bybit is a second venue for the same live decision, not a separate
+      # strategy account. It inherits the shared $10 FULL / $5 HALF risk.
+      symbol_aliases:
+        PEPE/USDT: 1000PEPEUSDT
+        SHIB/USDT: SHIB1000USDT
+        BONK/USDT: 1000BONKUSDT
+        FLOKI/USDT: 1000FLOKIUSDT
+      fallback_maker_fee_rate: 0.0002
+      fallback_taker_fee_rate: 0.00055
+      credentials:
+        access_key_env: BYBIT_LIVE_ACCESS_KEY
+        secret_key_env: BYBIT_LIVE_SECRET
+        fallback_access_key_env: BYBIT_API_KEY
+        fallback_secret_key_env: BYBIT_API_SECRET
+        arm_env: BYBIT_LIVE_ARMED
+        arm_value: I_UNDERSTAND_REAL_BYBIT_ORDERS
+  # The account's API gateway. ``contract.mexc.com`` documents the futures
+  # endpoints but returns an HTML WAF denial for authenticated POSTs from this
+  # environment; this gateway returns the documented JSON contract response.
+  api_base_url: https://api.mexc.com
+
+  allocated_equity_usdt: 100.0
+  capital_basis: min_exchange_equity_and_allocation
+  # Fixed loss at the original stop: FULL_SIZE = $10, HALF_SIZE = $5.
+  # The paper size weight is the only multiplier applied to this amount.
+  fixed_risk_per_trade_usdt: 10.0
+  # Aggregate risk across all canary-owned open positions. This is deliberately
+  # independent of the $100 test allocation: up to five FULL_SIZE ($10-risk)
+  # positions, or the equivalent mix of FULL/HALF Paper allocations, may coexist.
+  fixed_max_concurrent_risk_usdt: 50.0
+  # Align the daily breaker with the explicit $50 account-wide risk budget.
+  # The former 3% fallback was only $3 on this test allocation and could stop
+  # the route after a single normal HALF_SIZE loss.
+  fixed_daily_loss_limit_usdt: 50.0
+  # Stop-based aggregate risk is the only portfolio cap. A second local margin
+  # ceiling caused valid, risk-capped swing entries to be rejected while MEXC
+  # still reported available isolated margin. MEXC remains authoritative for
+  # available margin; liquidation-buffer and per-position leverage checks stay
+  # mandatory.
+  max_total_margin_usdt: null
+  # No portfolio-wide notional ceiling. It was independent of stop-risk and
+  # blocked valid fixed-risk positions merely because another bot position was
+  # open. Aggregate risk, aggregate margin, liquidation buffer and same-symbol
+  # protections remain mandatory.
+  max_gross_notional_usdt: null
+  max_open_same_symbol: 1
+  # The account can also hold manual discretionary positions. They remain
+  # visible in diagnostics, but do not block an otherwise valid bot order.
+  # Bot sizing/risk limits still apply to every canary-owned position.
+  allow_manual_exchange_positions: true
+
+  margin_mode: isolated
+  position_mode: hedge
+  # null means use the maximum permitted by each exchange contract, but never
+  # above the leverage justified by the stop-to-liquidation safety buffer.
+  exchange_leverage_ceiling: null
+  liquidation_buffer_to_stop: 3.0
+  min_stop_to_liquidation_buffer_pct: 0.005
+  min_stop_distance_pct: 0.0035
+  max_stop_distance_pct: 0.08
+  # Swing structure can require a wider invalidation than intraday. A wider
+  # stop lowers notional under the same fixed USD risk; it does not raise it.
+  stop_distance_limits_by_mode:
+    swing:
+      max_stop_distance_pct: 0.12
+    stock_intraday:
+      min_stop_distance_pct: 0.005
+      max_stop_distance_pct: 0.06
+
+  strategy_profile: production_t130_targets
+  strategy_version: crypto_swing_paper_t130_v1
+  allowed_asset_class: crypto
+  # Explicitly routed Paper routes below are the only crypto modes that may
+  # reach an exchange. Swing BREAKOUT_CONTINUATION is demoted to Paper-only
+  # while its live loser cohort is researched. Intraday breakout and pullback
+  # are canary-live only after the canonical Paper guard proves a fresh,
+  # current-price entry with a versioned Paper profile.
+  allowed_modes: [swing, intraday, invest]
+  allowed_strategy_versions_by_mode:
+    swing: [crypto_swing_paper_t130_v1]
+    intraday: [crypto_intraday_breakout_paper_v1, crypto_intraday_pullback_paper_v1]
+    invest: [crypto_invest_regime_conditioned_v1]
+  allowed_directions: [long, short]
+  allowed_tiers: [A, B]
+  # Live is intentionally narrower than Paper. Only explicitly routed canary
+  # modes may reach an exchange; liquidity sweep v2 is Paper-only while it
+  # collects stats.
+  allowed_entry_modes: [LIMIT_THEN_TAKER_TIMEOUT, BREAKOUT_CONTINUATION, PULLBACK_LIMIT, REGIME_RECLAIM, LIQUIDITY_SWEEP]
+  allowed_entry_modes_by_mode:
+    swing: [LIMIT_THEN_TAKER_TIMEOUT]
+    intraday: [BREAKOUT_CONTINUATION, PULLBACK_LIMIT]
+    invest: [REGIME_RECLAIM]
+  # Mirror every fresh Production-Paper swing. Shadow/guard-routed entries have
+  # a different telegram_channel and are never live eligible. Paper fractional
+  # sizing is preserved as a multiplier of the 2% live risk budget.
+  allowed_paper_actions: [FULL_SIZE, HALF_SIZE]
+  # Paper may still model symbols that are not listed on MEXC futures. Live
+  # must fail before queueing those names instead of letting preflight look
+  # like a delayed order. Do not alias LUNA to LUNC: they are different assets.
+  blocked_symbols: [LUNA/USDT, LUNA_USDT]
+  # Breakout experiments are Paper-only while the live loser cohort is
+  # researched. Unknown experiments remain rejected.
+  allowed_paper_experiments: []
+  # Every operator-approved route remains a $5 live canary (HALF_SIZE) even
+  # when the Paper overlay used FULL_SIZE.
+  route_risk_caps:
+    - mode: swing
+      entry_mode: LIMIT_THEN_TAKER_TIMEOUT
+      paper_profiles: [crypto_swing_paper_t130_v1]
+      max_risk_multiplier: 0.50
+    - mode: intraday
+      entry_mode: BREAKOUT_CONTINUATION
+      paper_profiles: [crypto_intraday_breakout_paper_v1]
+      max_risk_multiplier: 0.50
+    - mode: intraday
+      entry_mode: PULLBACK_LIMIT
+      paper_profiles: [crypto_intraday_pullback_paper_v1]
+      max_risk_multiplier: 0.50
+  # Canonical desk symbol -> MEXC native futures contract. MEXC keeps an old,
+  # closed PUMP_USDT contract alongside the active Pump.fun contract named
+  # PUMPFUN_USDT, so direct BASE_USDT normalization is ambiguous here.
+  symbol_aliases:
+    PUMP/USDT: PUMPFUN_USDT
+  # Both values are deterministic point-in-time provenance. The second is
+  # emitted only by a versioned Paper execution profile whose confirmed entry
+  # mode is checked again by the live profile allowlist.
+  required_preentry_sources: [entry_path, paper_execution_profile]
+  required_preentry_data_quality: ok
+  # ``DETECTION_LATENCY`` is a diagnostic measurement, not automatically a
+  # data-quality failure. Live still requires a fresh, point-in-time quote and
+  # rejects genuine DATA_GAP/NO_DATA failures through the authoritative audit.
+  rejected_latency_causes: [DATA_GAP_LATE, DATA_GAP, NO_DATA]
+  max_data_gap_minutes: 60
+
+  max_entry_age_seconds:
+    BREAKOUT_CONTINUATION: 45
+    LIMIT_THEN_TAKER_TIMEOUT: 300
+    LIQUIDITY_SWEEP: 300
+  max_entry_drift_bps:
+    # The capped IOC never pays worse than this limit. Breakout remains bounded
+    # even when live recovery reprices a fresh Paper signal.
+    BREAKOUT_CONTINUATION: 15
+    LIMIT_THEN_TAKER_TIMEOUT: 15
+    LIQUIDITY_SWEEP: 75
+  # A favourable MEXC quote is accepted when the frozen structural stop remains
+  # valid. The adverse IOC cap above still bounds worst-case fill and USD risk.
+  # Mode-specific breakout handoff windows. The IOC remains capped and sizes
+  # off its actual executable price, so a small cross-venue move cannot raise
+  # the fixed USD stop risk. A larger move still fails instead of chasing.
+  entry_limits_by_mode:
+    swing:
+      max_entry_age_seconds: {BREAKOUT_CONTINUATION: 300, LIMIT_THEN_TAKER_TIMEOUT: 300}
+      max_entry_drift_bps: {BREAKOUT_CONTINUATION: 75, LIMIT_THEN_TAKER_TIMEOUT: 75}
+      max_reprice_adverse_drift_bps: {BREAKOUT_CONTINUATION: 75, LIMIT_THEN_TAKER_TIMEOUT: 100}
+    intraday:
+      max_entry_age_seconds: {BREAKOUT_CONTINUATION: 90, PULLBACK_LIMIT: 180}
+      max_entry_drift_bps: {BREAKOUT_CONTINUATION: 75, PULLBACK_LIMIT: 75}
+    stock_intraday:
+      max_entry_age_seconds: {BREAKOUT_CONTINUATION: 300}
+      max_entry_drift_bps: {BREAKOUT_CONTINUATION: 100}
+    invest:
+      max_entry_age_seconds: {REGIME_RECLAIM: 180}
+      max_entry_drift_bps: {REGIME_RECLAIM: 50}
+  min_live_entry_to_stop_buffer_pct: 0.0035
+  enforce_stop_buffer_entry_modes: [BREAKOUT_CONTINUATION, LIMIT_THEN_TAKER_TIMEOUT, REGIME_RECLAIM]
+  # Keep MEXC live preflight aligned with the active crypto-quality overlay:
+  # tight majors remain strict; a small fixed-risk alt entry may use up to 20 bps.
+  liquid_major_bases: [BTC, ETH, SOL, XRP, BNB]
+  max_spread_bps_major: 8
+  max_spread_bps_alt: 20
+  max_spread_bps_stock_futures: 50
+  max_spread_bps: 15  # legacy fallback for an unversioned config only
+  # Crypto Invest is an operator-authorized independent route. Losses in other
+  # Paper/live modes do not pause it, while the account-wide $50 open-risk cap,
+  # contract checks, stop/TP installation and emergency kill switch remain.
+  daily_loss_exempt_risk_buckets: [crypto_invest]
+  execution_limits_by_risk_bucket:
+    crypto_invest:
+      # Tight but valid 0.5%-1% structural stops need more than $500 notional
+      # to express a true $10 stop-risk budget. There is deliberately no gross
+      # notional cap: exchange available margin and liquidation protection are
+      # authoritative at preflight.
+      max_total_margin_usdt: null
+    stock_intraday_breakout:
+      # $5 fixed-risk stock futures can require more notional than crypto when
+      # the stop is tight. Keep risk, margin and liquidation checks authoritative.
+      max_total_margin_usdt: null
+    stock_preus_news_long:
+      # Isolated small-risk route for the pre-US news continuation book.
+      # The account-wide stop, open-risk and liquidation checks still apply.
+      max_total_margin_usdt: null
+  # Retry transient pre-submission reads from either live venue only inside
+  # the frozen entry window; every retry repeats price, parity and risk checks.
+  spread_retry_interval_seconds: 3
+  max_spread_retry_attempts: 4
+  transient_preflight_retry_interval_seconds: 1
+  transient_preflight_retry_backoff_multiplier: 1.5
+  transient_preflight_retry_max_interval_seconds: 5
+  # Never add account risk while an existing position cannot be reconciled.
+  # The decision stays queued and the same monitor tick keeps retrying the
+  # position read; this gate does not consume preflight retry attempts.
+  block_new_entries_when_open_position_reconciliation_stale: true
+  open_position_reconciliation_entry_block_seconds: 60
+  # A timeout must not serially consume a whole burst of valid signals. The
+  # monitor claims two rows in parallel; every retry rechecks book/parity/risk.
+  preflight_parallel_workers: 2
+  preflight_batch_size: 2
+  # Drain up to six newly captured decisions in one monitor tick (3 x 2).
+  # Every MEXC entry carries a native stop; the monitor then installs/verifies
+  # the three TP legs once for the bounded burst.  This removes the former
+  # full-cycle wait for the third and later fresh signal.
+  preflight_max_batches_per_tick: 3
+  # Fallback for a newly promoted mode before it receives a dedicated budget.
+  # It inherits the same pre-submission, freshness-bounded three attempts.
+  max_transient_preflight_retry_attempts: 3
+  transient_preflight_retry_attempts_by_mode:
+    # A valid swing is usable for five minutes. Preserve that opportunity when
+    # MEXC is briefly slow, but always repeat all price/parity/risk checks.
+    swing: 8
+    intraday: 3
+    stock_intraday: 3
+    invest: 3
+  swing_live_recovery:
+    enabled: true
+    # On a small adverse MEXC move, rebuild only the outgoing crypto-swing
+    # plan with the same stop distance and target R-multiples. This never
+    # affects intraday/stocks or changes the original Paper evidence.
+    # A reprice preserves the original stop percentage and exact three-TP R
+    # ladder. It is allowed only for the versioned live swing routes.
+    entry_modes: [LIMIT_THEN_TAKER_TIMEOUT]
+    max_adverse_drift_bps: {LIMIT_THEN_TAKER_TIMEOUT: 100}
+  liquidity_sweep_live_recovery:
+    enabled: false
+    # Archived after negative clean Paper and Live evidence on 2026-09-30.
+    entry_modes: []
+    max_adverse_drift_bps: {}
+  swing_live_reprice:
+    enabled: true
+    description: "Late crypto-swing alerts may be re-frozen at current MEXC executable price if adverse drift, geometry and parity remain valid."
+  stock_intraday_live_recovery:
+    enabled: true
+    # A stock quote can move beyond a frozen Paper TP increment before venue
+    # preflight, and a venue price tick can compound that issue. Rebuild only
+    # the outgoing live SL/3-TP ladder from the confirmed Paper entry; Paper
+    # outcomes and strategy eligibility stay put.
+    entry_modes: [BREAKOUT_CONTINUATION]
+    max_adverse_drift_bps: {BREAKOUT_CONTINUATION: 150}
+  order_ttl_seconds: 20
+
+  # MEXC API futures fee schedule effective 2026-06-01. Contract metadata is
+  # checked too, but API fees take precedence over app/web promotions.
+  fallback_maker_fee_rate: 0.0006
+  fallback_taker_fee_rate: 0.0008
+  fallback_slippage_bps: 5
+  recv_window_seconds: 10
+  # Normal MEXC reads are sub-second. A shorter bounded timeout preserves the
+  # entry window during a gateway wobble; safe GETs are retried below while
+  # order POSTs remain exactly-once.
+  request_timeout_seconds: 4
+  # Safe GET reads can be retried; POST order creation is deliberately never
+  # retried automatically because MEXC could have accepted the first request.
+  safe_read_retry_attempts: 2
+  safe_read_retry_backoff_seconds: 0.25
+  # MEXC can acknowledge an entry before its stop-plan/order read endpoints
+  # expose the new records. Wait briefly and verify identity instead of
+  # treating normal read-after-write lag as an unsafe exit-install failure.
+  exit_visibility_timeout_seconds: 24
+  exit_visibility_poll_seconds: 0.75
+  exit_visibility_transient_backoff_seconds: 1.5
+  # The exchange owns the attached stop and three close-limit TPs. Re-verify
+  # their exact state frequently, but not on every 3s price/Model-F tick.
+  exit_leg_verify_interval_seconds: 12
+  position_reconcile_lease_seconds: 60
+  # Applies only to SQLite leases and monitor-state writes, never order POSTs.
+  position_reconcile_db_busy_timeout_ms: 5000
+  position_reconcile_db_retry_attempts: 10
+  position_reconcile_db_retry_backoff_seconds: 0.25
+  # PROCESSING rows without an exchange footprint are automatically expired;
+  # the worker never waits for a manual watchdog command to release them.
+  stale_queue_maintenance_interval_seconds: 15
+  # A position is still reconciled every monitor tick. This affects only the
+  # frequency of duplicate error-journal entries for one continuous outage.
+  position_reconcile_error_event_cooldown_seconds: 300
+  watchdog:
+    enabled: true
+    send_telegram_on_monitor_tick: true
+    # Trade Telegram is live-only: rejected preflights stay in the live journal
+    # and dashboard, while fills/protection/watchdog-critical issues still alert.
+    alert_preflight_rejections: false
+    preflight_rejection_lookback_minutes: 60
+    preflight_transport_failure_lookback_seconds: 180
+    preflight_transport_failure_threshold: 2
+    alert_cooldown_seconds: 900
+    persistent_alert_repeat_seconds: 21600
+    send_recovery_alerts: false
+    heartbeat_stale_seconds: 120
+    processing_stale_seconds: 45
+    lifecycle_integrity_enabled: true
+    lifecycle_integrity_grace_seconds: 45
+    max_alerts_per_tick: 1
+    open_position_reconcile_stale_seconds: 180
+    unprotected_position_grace_seconds: 60
+    critical_event_lookback_minutes: 60
+    aggregate_recent_critical_events: true
+    suppress_recent_event_types:
+      - OPEN_POSITION_MONITOR_DEGRADED
+      - POSITION_RECONCILE_ERROR
+
+  # Explicit operator-only order-path probe. It posts the minimum BTC contract
+  # well below market, cancels it immediately and trips the kill switch if its
+  # terminal state cannot be proven.
+  operator_probe_offset_bps: 500
+  operator_probe_timeout_seconds: 8
+
+  model_f:
+    arm_breakeven_at_r: 0.6
+    lock_profit_at_r: 1.0
+    lock_level_r: 0.5
+    runner_target: tp3
+
+  # Strategy-native live exit: one position-wide protective stop plus three
+  # documented hedge-mode close-limit TP orders. Model F moves only the stop.
+  partial_take_profit:
+    enabled: true
+    profile_id: mexc_partial_tp_33_33_34_v1
+    weights: [0.33, 0.33, 0.34]
+    # This MEXC gateway reliably accepts two position-bound close-limit orders.
+    # TP3 remains the same 34% target and is closed by the live monitor; the
+    # native position stop continues to protect all remaining contracts.
+    native_limit_legs: 2
+    require_exactly_three_verified_legs: true
+    # If the native stop is already visible, a temporary close-limit TP
+    # read-after-write failure is not an unprotected position. Keep the trade
+    # open, record a degraded protection event and retry TP installation on the
+    # next reconcile tick instead of emergency-closing a valid entry.
+    keep_open_on_tp_install_failure_with_verified_stop: true
+
+  # A live submission is allowed only after a point-in-time MEXC contract,
+  # order-book, spread, drift, lot split and USD-cost snapshot is persisted.
+  mexc_native_parity:
+    required_before_submit: true
+    evidence_class: forward_post_activation
+    early_review_clean_closed: 20
+    minimum_review_clean_closed: 30
+    minimum_profit_factor: 1.25
+    require_positive_net_pnl_usdt: true
+
+  credentials:
+    access_key_env: MEXC_CANARY_ACCESS_KEY
+    secret_key_env: MEXC_CANARY_SECRET
+    arm_env: MEXC_LIVE_CANARY_ARMED
+    arm_value: I_UNDERSTAND_REAL_MEXC_ORDERS

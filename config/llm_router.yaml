@@ -1,0 +1,64 @@
+llm_router:
+  # LLM inference is intentionally disabled for the currently tested
+  # liquidity-sweep / fast Paper strategies. Deterministic logic remains active.
+  enabled: false
+  provider: openrouter
+  api_key_env: OPENROUTER_API_KEY
+  base_url: https://openrouter.ai/api/v1/chat/completions
+  key_status_url: https://openrouter.ai/api/v1/key
+  http_referer: https://local.crypto-ai-desk
+  app_title: Crypto AI Desk LLM Router
+
+  # This is the complete production whitelist. Concrete model identifiers
+  # must not appear in agents, schedulers, or any other runtime config.
+  models:
+    routine:
+      id: deepseek/deepseek-v4.1-flash
+      input_cost_per_million: 0.15
+      output_cost_per_million: 0.60
+      supports_tools: true
+      supports_vision: true
+      supports_structured_output: true
+    analyst:
+      id: google/gemini-3.8-flash
+      input_cost_per_million: 0.75
+      output_cost_per_million: 3.75
+      supports_tools: true
+      supports_vision: true
+      supports_structured_output: true
+    review:
+      id: meta/muse-spark-1.1
+      input_cost_per_million: 1.25
+      output_cost_per_million: 4.25
+      supports_tools: true
+      supports_vision: true
+      supports_structured_output: true
+
+  request:
+    timeout_seconds: 30
+    max_tokens: 900
+    temperature: 0
+    max_retries: 2
+    retry_backoff_seconds: 0.75
+
+  # UTC-day application budgets. Reaching a per-tier or hard total limit
+  # disables only the optional LLM overlay; deterministic market, risk and
+  # execution logic continues unchanged.
+  budget:
+    enabled: true
+    routine_daily_usd: 0.10
+    analyst_daily_usd: 0.50
+    review_daily_usd: 0.05
+    total_soft_daily_usd: 0.65
+    total_hard_daily_usd: 0.80
+
+  policy:
+    muse_max_share: 0.05
+    distribution_warning_min_calls: 20
+    distribution_shift_percentage_points: 20
+    low_confidence_threshold: 0.45
+
+  retention:
+    request_days: 180
+    replay_days: 180
+    store_replay_payloads: true

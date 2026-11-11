@@ -1,0 +1,82 @@
+{
+ "n_total": 146,
+ "n_covered": 146,
+ "coverage_pct": 100.0,
+ "tf_used": {
+  "5m": 146
+ },
+ "variants": {
+  "A_current": {
+   "n": 146,
+   "net_R": -39.19,
+   "PF": 0.68,
+   "winrate": 16.4,
+   "avg_win": 3.42,
+   "avg_loss": -0.99
+  },
+  "B_BE_0.5R": {
+   "n": 146,
+   "net_R": -1.16,
+   "PF": 0.97,
+   "winrate": 6.8,
+   "avg_win": 3.58,
+   "avg_loss": -1.0
+  },
+  "C_BE_1R": {
+   "n": 146,
+   "net_R": -21.93,
+   "PF": 0.72,
+   "winrate": 11.0,
+   "avg_win": 3.44,
+   "avg_loss": -1.0
+  },
+  "D_partial50_1R": {
+   "n": 146,
+   "net_R": -20.48,
+   "PF": 0.73,
+   "winrate": 30.1,
+   "avg_win": 1.28,
+   "avg_loss": -1.0
+  },
+  "E_33_33_runner": {
+   "n": 146,
+   "net_R": -34.45,
+   "PF": 0.66,
+   "winrate": 23.3,
+   "avg_win": 1.95,
+   "avg_loss": -0.9
+  },
+  "F_trail_1R": {
+   "n": 146,
+   "net_R": -35.83,
+   "PF": 0.53,
+   "winrate": 47.3,
+   "avg_win": 0.6,
+   "avg_loss": -1.0
+  },
+  "G_candle_close_stop": {
+   "n": 146,
+   "net_R": -30.67,
+   "PF": 0.74,
+   "winrate": 17.8,
+   "avg_win": 3.41,
+   "avg_loss": -0.99
+  },
+  "H_one_reentry": {
+   "n": 146,
+   "net_R": -30.67,
+   "PF": 0.74,
+   "winrate": 17.8,
+   "avg_win": 3.41,
+   "avg_loss": -0.99
+  },
+  "I_no_reentry": {
+   "n": 146,
+   "net_R": -39.19,
+   "PF": 0.68,
+   "winrate": 16.4,
+   "avg_win": 3.42,
+   "avg_loss": -0.99
+  }
+ }
+}

@@ -1,0 +1,49 @@
+# Crypto swing confirmed-pullback Paper profiles.
+# PAPER ONLY. This never enables live orders.
+crypto_swing_pullback_paper:
+  enabled: false
+  live_enabled: false
+  activated_at: "2026-09-02T00:00:00+00:00"
+  asset_class: crypto
+  mode: swing
+  source_entry_mode: PULLBACK_LIMIT
+
+  # Keep the same production swing R ladder. Fixed USD risk is preserved by
+  # position sizing: wider structural stops reduce contracts, not risk.
+  target_multipliers: [1.30, 2.30, 3.60]
+
+  profiles:
+    # Higher-priority branch. Used only when the pre-signal chart shows a
+    # strong directional 1h swing impulse and price later defends the
+    # 0.50-0.618 Fibonacci retracement zone.
+    fib_impulse_retest:
+      enabled: false
+      profile_id: crypto_swing_fib_impulse_retest_paper_v1
+      entry_mode: FIB_IMPULSE_RETEST
+      lookback_bars: 8
+      max_impulse_bars: 4
+      min_directional_bars: 1
+      min_impulse_atr: 1.60
+      min_impulse_pct: 0.018
+      max_extension_from_impulse_high_atr: 0.75
+      fib_entry_shallow: 0.50
+      fib_entry_deep: 0.618
+      fib_cancel: 0.786
+      stop_buffer_atr_fraction: 0.10
+      max_stop_width_multiplier: 1.75
+      max_retest_bars: 10
+      min_confirmation_volume_ratio: 0.60
+
+    # Fallback branch for ordinary production pullback signals. It requires
+    # zone touch + rejection/reclaim, then waits for a real retest instead of
+    # crediting the first blind touch as an entry.
+    confirmed_retest:
+      enabled: false
+      profile_id: crypto_swing_pullback_confirmed_retest_paper_v1
+      entry_mode: PULLBACK_CONFIRMED_RETEST
+      max_zone_penetration_fraction: 0.65
+      reclaim_fraction: 0.50
+      min_confirmation_volume_ratio: 0.60
+      stop_buffer_atr_fraction: 0.10
+      max_stop_width_multiplier: 1.60
+      max_retest_bars: 8

@@ -1,0 +1,196 @@
+quote_currency: USDT
+market_type: spot
+
+# Stage 1: broad discovery
+enabled: true
+include_spot: true
+include_perpetuals: false
+exclude_inactive: true
+exclude_very_new_without_volume: true
+
+# Multi-exchange aggregation. Per-venue tuning lives in config/exchanges.yaml.
+# enabled_exchanges drives which collectors actually run during update-universe.
+# Order matters: anchor first, then derivatives confirmation, then discovery.
+enabled_exchanges: [binance, bybit, mexc]
+anchor_exchange: binance
+
+# Per-exchange 24h quote-volume floor for Stage 1 broad discovery.
+# Stricter on Binance (liquid), looser on MEXC (early discovery surface).
+# PART 20 (2026-06): floors lowered ~40-50% to widen the candidate net.
+# The wider pool still passes the same per-candle volume / spread / ATR
+# risk-flag gates downstream, so junk is filtered later, not at the door.
+min_24h_quote_volume_per_exchange:
+  binance: 5000000
+  bybit: 3000000
+  mexc: 1000000
+
+# Legacy single-exchange fallback used by the old BinanceUniverseCollector.
+min_24h_quote_volume: 2000000
+min_recent_candle_quote_volume:
+  scalp: 20000
+  intraday: 75000
+  swing: 150000
+max_spread_pct: 0.35
+min_atr_percent:
+  scalp: 0.12
+  intraday: 0.35
+  swing: 0.8
+
+# Tier 1 funnel sizing. Wider scan keeps discovery surface, tighter deep tier
+# keeps agent cost manageable on Windows + ccxt over public endpoints.
+# PART 20 (2026-06): widened so more genuine movers reach full analysis.
+# rank_scan 120→180, deep 30→40, trade_ideas 15→20. Runtime grows with the
+# deep tier (extra OHLCV fetches) — watch the scalp step timeout.
+max_symbols_broad_scan: 1000
+max_symbols_for_rank_scan: 180
+max_symbols_for_deep_analysis: 40
+max_symbols_for_trade_ideas: 20
+
+# PART 21 (2026-06): opportunity_score is long-biased (rising coins rank
+# higher), so in a selloff the biggest losers — prime SHORT candidates — get
+# buried below the deep-analysis cut and never reach the agents. Reserve up to
+# this many extra deep slots for the weakest anchor-listed fallers so shorts
+# are always analysed (and their MEXC/Bybit derivatives fallback fetched).
+max_short_reserved_candidates: 8
+max_final_trade_ideas:
+  scalp: 3
+  intraday: 4
+  swing: 3
+
+# Exchanges that should never produce A-tier on their own (capped at B unless
+# at least one other exchange confirms the move or liquidity is exceptional).
+high_risk_exchanges: [mexc]
+
+# Discovery mode overrides — activated via --discovery flag.
+# Widens the scan to surface mid-cap and early-stage coins that normally
+# fall below the standard volume floor. MEXC-only cap stays at B-tier max.
+discovery_overrides:
+  max_symbols_for_rank_scan: 250
+  max_symbols_for_deep_analysis: 50
+  max_symbols_for_trade_ideas: 20
+  min_24h_quote_volume_per_exchange:
+    binance: 5000000
+    bybit: 2000000
+    mexc: 500000
+
+modes:
+  scalp:
+    timeframes: [1m, 5m, 15m]
+    primary_timeframe: 5m
+    horizon: 1-2 hours
+  intraday:
+    timeframes: [15m, 1h, 4h]
+    primary_timeframe: 1h
+    horizon: 4-24 hours
+  swing:
+    timeframes: [1h, 4h, 1d]
+    primary_timeframe: 4h
+    horizon: several days
+
+# PART 20 (2026-06): expanded 20 → 45. `preferred_symbols` are always kept in
+# the rank-scan regardless of the 24h volume floor, so this guarantees the
+# desk always evaluates the liquid majors + the most-traded alts even on a
+# quiet day. The dynamic discovery surface (Binance/Bybit/MEXC universes) is
+# still scanned on top of this set.
+preferred_symbols:
+  - BTC/USDT
+  - ETH/USDT
+  - SOL/USDT
+  - BNB/USDT
+  - XRP/USDT
+  - DOGE/USDT
+  - LINK/USDT
+  - AVAX/USDT
+  - NEAR/USDT
+  - INJ/USDT
+  - TAO/USDT
+  - WIF/USDT
+  - PEPE/USDT
+  - ARB/USDT
+  - OP/USDT
+  - TIA/USDT
+  - SUI/USDT
+  - SEI/USDT
+  - APT/USDT
+  - ENA/USDT
+  - ADA/USDT
+  - DOT/USDT
+  - LTC/USDT
+  - BCH/USDT
+  - ATOM/USDT
+  - UNI/USDT
+  - AAVE/USDT
+  - FET/USDT
+  - RENDER/USDT
+  - FIL/USDT
+  - ICP/USDT
+  - HBAR/USDT
+  - IMX/USDT
+  - STX/USDT
+  - TON/USDT
+  - JUP/USDT
+  - PYTH/USDT
+  - WLD/USDT
+  - ONDO/USDT
+  - RUNE/USDT
+  - ETC/USDT
+  - LDO/USDT
+  - DYDX/USDT
+  - GALA/USDT
+  - ALGO/USDT
+
+excluded_symbols:
+  - FDUSD/USDT
+  - USDC/USDT
+  - TUSD/USDT
+  - USDP/USDT
+  - DAI/USDT
+  - EUR/USDT
+  - AEUR/USDT
+  - USD1/USDT
+  - RLUSD/USDT
+  - USDE/USDT
+  - PAXG/USDT
+  - XAUT/USDT
+
+excluded_keywords:
+  - UP
+  - DOWN
+  - BULL
+  - BEAR
+  - 3L
+  - 3S
+  - 5L
+  - 5S
+  - BNSOL
+  - WBETH
+  - WBTC
+
+stable_or_fiat_bases:
+  - USDC
+  - FDUSD
+  - TUSD
+  - USDP
+  - DAI
+  - USD1
+  - RLUSD
+  - USDE
+  - EUR
+  - AEUR
+  - TRY
+  - BRL
+  - UAH
+  - ZAR
+  - IDRT
+  - BIDR
+  - PAXG
+  - XAUT
+  - BFUSD
+  - BNSOL
+  - WBETH
+  - WBTC
+  - FRAX
+  - USDS
+  - XUSD
+  - EURI
+  - U

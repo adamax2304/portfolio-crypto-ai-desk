@@ -1,0 +1,258 @@
+# Stocks/Indices universe configuration.
+#
+# This file lives alongside config/universe.yaml (crypto). The two are loaded
+# independently — the stocks pipeline never reads the crypto file and vice
+# versa. Edit freely; symbols/sectors are just lists.
+
+enabled: true
+
+# Symbols the stocks pipeline will scan by default. Mix of mega-caps, AI/
+# semis, crypto-equity proxies, major indices ETFs, and broad sector ETFs.
+default_symbols:
+  # Liquid single names. This is the one shared scan universe for stock
+  # Paper/Shadow lanes; strategy-specific configs may narrow it, never fork it.
+  - AAPL
+  - MSFT
+  - NVDA
+  - TSLA
+  - META
+  - AMZN
+  - GOOGL
+  - AMD
+  - NFLX
+  - COIN
+  - MSTR
+  - PLTR
+  - SMCI
+  - AVGO
+  - ADBE
+  - AMAT
+  - BAC
+  - COST
+  - CRM
+  - CRWD
+  - GE
+  - GS
+  - LMT
+  - LRCX
+  - MA
+  - MU
+  - NOW
+  - ORCL
+  - PANW
+  - UBER
+  - V
+  - WMT
+  - JPM
+  - XOM
+  - UNH
+  - LLY
+  - INTC
+  - QCOM
+  - ARM
+  - ANET
+  - APP
+  - ASML
+  - TSM
+  - MRVL
+  - KLAC
+  - DELL
+  - DDOG
+  - NET
+  - SNOW
+  - IBM
+  - INTU
+  - PYPL
+  - HOOD
+  - SOFI
+  - AFRM
+  - BX
+  - BLK
+  - AXP
+  - MS
+  - HD
+  - MCD
+  - NKE
+  - SBUX
+  - BKNG
+  - ABNB
+  - DIS
+  - MAR
+  - SHOP
+  - RDDT
+  - AMGN
+  - GILD
+  - ISRG
+  - REGN
+  - BIIB
+  - VRTX
+  - DXCM
+  - NVO
+  - BA
+  - ETN
+  - VRT
+  - PEP
+  - KO
+  - RIOT
+  - MARA
+  - CLSK
+  - HUT
+  - CRCL
+  - CSCO
+  - CMCSA
+  - COP
+  - TXN
+  # Market/sector benchmarks. They are context inputs and are not implicitly
+  # made trade candidates by any strategy.
+  - SPY
+  - QQQ
+  - IWM
+  - DIA
+  - SMH
+  - XLK
+  - XLF
+  - XLE
+  - XLY
+  - XLV
+  - XLC
+  - XLI
+  - XLU
+
+# Index ETFs used by StocksMarketRegimeAgent to classify risk-on / risk-off.
+indices:
+  - SPY
+  - QQQ
+  - IWM
+  - DIA
+
+# VIX (or its proxy) — pulled if available for volatility regime.
+volatility_index: ^VIX
+
+# Sector ETF map. SectorRotationAgent ranks these for sector strength and
+# StockRelativeStrengthAgent uses them as a per-symbol benchmark.
+sector_etfs:
+  technology: XLK
+  semiconductors: SMH
+  financials: XLF
+  energy: XLE
+  consumer_discretionary: XLY
+  healthcare: XLV
+  communications: XLC
+  industrials: XLI
+  utilities: XLU
+  real_estate: XLRE
+  materials: XLB
+  consumer_staples: XLP
+
+# Symbol → sector classification. Drives sector-confirmation scoring and
+# rotation alignment checks. The `crypto_equity` and `ai_*` buckets are
+# project-local labels, not GICS categories.
+symbol_sector_map:
+  ADBE: technology
+  AMAT: semiconductors
+  BAC: financials
+  CAT: industrials
+  COST: consumer_staples
+  CRM: technology
+  CRWD: technology
+  GE: industrials
+  GS: financials
+  LMT: industrials
+  LRCX: semiconductors
+  MA: financials
+  MU: semiconductors
+  NOC: industrials
+  NOW: technology
+  ORCL: technology
+  PANW: technology
+  UBER: consumer_discretionary
+  V: financials
+  WMT: consumer_staples
+  NVDA: semiconductors
+  AMD: semiconductors
+  AVGO: semiconductors
+  SMCI: ai_hardware
+  AAPL: technology
+  MSFT: technology
+  META: communications
+  GOOGL: communications
+  NFLX: communications
+  AMZN: consumer_discretionary
+  TSLA: consumer_discretionary
+  JPM: financials
+  XOM: energy
+  LLY: healthcare
+  UNH: healthcare
+  COIN: crypto_equity
+  MSTR: crypto_equity
+  PLTR: ai_software
+  INTC: semiconductors
+  QCOM: semiconductors
+  ARM: semiconductors
+  ASML: semiconductors
+  TSM: semiconductors
+  MRVL: semiconductors
+  KLAC: semiconductors
+  TXN: semiconductors
+  ANET: technology
+  APP: technology
+  DELL: technology
+  DDOG: technology
+  NET: technology
+  SNOW: technology
+  IBM: technology
+  INTU: technology
+  CSCO: technology
+  PYPL: financials
+  HOOD: financials
+  SOFI: financials
+  AFRM: financials
+  BX: financials
+  BLK: financials
+  AXP: financials
+  MS: financials
+  HD: consumer_discretionary
+  MCD: consumer_discretionary
+  NKE: consumer_discretionary
+  SBUX: consumer_discretionary
+  BKNG: consumer_discretionary
+  ABNB: consumer_discretionary
+  MAR: consumer_discretionary
+  SHOP: consumer_discretionary
+  DIS: communications
+  RDDT: communications
+  CMCSA: communications
+  AMGN: healthcare
+  GILD: healthcare
+  ISRG: healthcare
+  REGN: healthcare
+  BIIB: healthcare
+  VRTX: healthcare
+  DXCM: healthcare
+  NVO: healthcare
+  BA: industrials
+  ETN: industrials
+  VRT: industrials
+  PEP: consumer_staples
+  KO: consumer_staples
+  COP: energy
+  RIOT: crypto_equity
+  MARA: crypto_equity
+  CLSK: crypto_equity
+  HUT: crypto_equity
+  CRCL: crypto_equity
+
+# Per-mode timeframe map. Used by data collectors to decide which intervals
+# to pull from the source. yfinance intraday windows are limited (60d max
+# for 15m, ~730d for 1h); the swing/invest modes lean on daily.
+mode_timeframes:
+  intraday: ["15m", "1h", "1d"]
+  swing: ["1h", "1d"]
+  invest: ["1d", "1wk"]
+
+# Liquidity / risk floors. Symbols below these gates get demoted to
+# watchlist or rejected outright. Tune by experience.
+min_avg_dollar_volume_30d: 25_000_000   # avg dollar volume over 30 trading days
+min_price: 5.0                          # avoid penny-stock noise
+max_recent_gap_pct: 25.0                # symbols that gapped > X% in last session
+                                        # need explicit gap-aware handling

@@ -1,0 +1,67 @@
+stock_swing_event_rs_pullback_research:
+  strategy_id: stocks_swing_event_rs_pullback_v1
+  profile_id: stocks_swing_event_rs_pullback_research_v1
+
+  data:
+    price_root: data/raw/stocks
+    universe_config: config/stocks/universe.yaml
+    db_path: db/crypto_ai_desk.sqlite
+    artifacts_dir: research_labs/stocks_swing_event_rs_pullback/artifacts
+    research_db: research_labs/stocks_swing_event_rs_pullback/research.sqlite
+    study_start: "2025-03-01"
+    study_end: "2026-09-08"
+
+  universe:
+    min_price: 5.0
+    min_avg_dollar_volume_30d: 25000000
+
+  risk:
+    risk_usd_full: 10.0
+    neutral_size_weight: 0.5
+    risk_off_size_weight: 0.5
+    slippage_bps_per_side: 7.0
+    commission_bps_per_side: 0.0
+    stop_buffer_atr: 0.25
+    max_stop_pct: 15.0
+
+  execution:
+    max_pullback_days: 10
+    impulse_cluster_days: 3
+    entry_timeout_days: 1
+    same_bar_policy: stop_first
+
+  news:
+    local_lookback_days: 7
+    reconstructed_delay_minutes: 30
+    reconstructed_cache: research_labs/stocks_swing_event_rs_pullback/artifacts/reconstructed_finnhub_news.jsonl
+    bullish_event_types:
+      - earnings
+      - guidance
+      - analyst_action
+      - partnership
+      - mna
+      - product_launch
+      - contract_award
+      - strategic_investment
+      - fda_clinical
+      - buyback
+    blocking_event_types:
+      - legal_risk
+      - offering_dilution
+      - exchange_delisting
+      - margin_delisting
+      - sec_filing
+      - calendar_risk
+    trusted_source_qualities:
+      - regulator
+      - primary
+      - company_pr
+      - reputable
+      - secondary
+
+  selection:
+    min_test_closed: 15
+    min_test_pf: 1.10
+    min_test_net_usd: 0.0
+    max_top_symbol_profit_share: 0.45
+    min_local_news_closed_for_news_claim: 10

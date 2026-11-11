@@ -1,0 +1,97 @@
+# Stocks scoring configuration.
+#
+# Mirrors the structure of config/scoring.yaml but with stock-specific
+# components. No funding/OI/derivatives weights — those are crypto-only.
+# Earnings risk is unique to stocks and can swing the score significantly.
+
+# Base component weights (sum to ~100 before penalties).
+weights:
+  market_regime_alignment: 15   # SPY/QQQ trend agrees with our direction
+  index_confirmation: 10        # the dominant index for the symbol confirms
+  sector_confirmation: 10       # sector ETF (XLK/SMH/...) confirms
+  relative_strength: 15         # RS vs SPY/QQQ/sector ETF
+  technical_setup: 20           # trend, EMA stack, ATR, structure, RR
+  volume_relative_volume: 10    # relative volume vs 20-day average
+  news_catalyst: 10             # fresh, verified, not yet priced in
+  earnings_risk_adjustment: 0   # signed; can add up to +10 or subtract -20
+  risk_reward: 10               # planned RR multiple
+  data_confidence: 10           # coverage + freshness
+
+# Risk penalties (subtractive). Stacking applies; cap defined in caps section.
+risk_penalties:
+  earnings_today: -20
+  earnings_next_session: -12
+  earnings_within_3_days_for_swing: -10
+  gap_unfilled_recent: -8
+  contradicts_index_trend: -8
+  contradicts_sector_trend: -6
+  low_relative_volume: -6
+  weak_relative_strength: -6
+  no_clean_invalidation: -10
+  macro_event_imminent: -8
+  overextended_post_gap: -6
+
+# Caps and floors applied after weight sum + penalties.
+caps:
+  max_score_if_data_partial: 70
+  max_score_if_earnings_active: 60
+  max_score_if_macro_event_today: 70
+  min_score_floor: 0
+  max_score_ceiling: 100
+
+# Mode-specific multipliers. Multiplies the base component weight before sum.
+# Earnings-related multipliers reflect how each mode tolerates the event:
+#   - intraday: can trade around earnings but needs explicit awareness
+#   - swing:    must avoid holding through earnings by default
+#   - invest:   tolerant of a single earnings; valuation/quality dominate
+mode_weights:
+  intraday:
+    technical_setup: 1.10
+    volume_relative_volume: 1.15
+    news_catalyst: 1.10
+    earnings_risk_adjustment: 0.80   # less penalty on intraday earnings plays
+    relative_strength: 1.05
+  swing:
+    sector_confirmation: 1.10
+    index_confirmation: 1.05
+    relative_strength: 1.10
+    earnings_risk_adjustment: 1.30   # strong penalty for holding through earnings
+    technical_setup: 0.95
+  invest:
+    market_regime_alignment: 1.10
+    sector_confirmation: 0.90
+    technical_setup: 0.85
+    earnings_risk_adjustment: 0.60   # invest tolerates a single earnings event
+
+# Regime multipliers. Stocks regime classifications differ from crypto
+# (no "altcoin breadth"); these match StocksMarketRegimeAgent output labels.
+regime_weights:
+  bullish:
+    relative_strength: 1.05
+    technical_setup: 1.05
+  risk_on:
+    relative_strength: 1.10
+    technical_setup: 1.05
+    sector_confirmation: 1.05
+  risk_off:
+    relative_strength: 1.15        # winners stand out more in weak tape
+    earnings_risk_adjustment: 1.10
+    technical_setup: 0.95
+  chop:
+    technical_setup: 0.90
+    volume_relative_volume: 1.05
+  transition:
+    technical_setup: 0.95
+    index_confirmation: 1.05
+  high_volatility:
+    risk_reward: 1.10
+    earnings_risk_adjustment: 1.10
+  low_volatility:
+    technical_setup: 1.05
+
+# Tier thresholds (post-cap final score).
+tiering:
+  a_tier: 80
+  b_tier: 65
+  c_tier: 50
+  reject_below: 50

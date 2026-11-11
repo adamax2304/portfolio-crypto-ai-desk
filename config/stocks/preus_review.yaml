@@ -1,0 +1,94 @@
+# Pre-US-open LLM review overlay (stocks intraday only).
+#
+# Read by src/execution/stocks_preus_review.py. This overlay NEVER writes to
+# proposed_signals / signal_outcomes / the Paper ledger / any live module. It
+# records an audit-trail assessment in the quality-agent ledger. The
+# deterministic baseline alone owns the narrow pre-open hand-off. LLM output
+# cannot change score, tier, blocks, Paper eligibility, or live routing.
+
+preus_review:
+  enabled: true
+
+  # Candidate window: how far back a plan/candidate may have been created and
+  # still be eligible for review (spec: max 20h, after prior RTH close /
+  # after-hours / premarket).
+  max_candidate_age_hours: 20
+
+  # How long a recorded verdict stays usable before the paper-entry gate must
+  # fall back to the deterministic (pre-overlay) path. Chosen so the 08:50 ET
+  # review stays fresh through the 09:15 ET decision window and early RTH.
+  review_ttl_minutes: 90
+
+  # The LLM needs its real 20-minute budget. Start at 08:50 ET, accept its
+  # structured hand-off through 09:12 ET, then make Paper decisions at 09:15.
+  # The longer enriched report can continue after the narrow hand-off.
+  review_target_et: "08:50"
+  review_deadline_et: "09:12"
+  review_freshness_minutes: 30
+
+  # Derived actionability is only relevant for the overnight/pre-US hand-off.
+  # Keep historical audit rows, but do not rewrite every old review on each
+  # morning refresh as that would turn a short deadline-bound job into a
+  # linearly growing SQLite write burst.
+  actionability_refresh_lookback_hours: 48
+
+  # BLOCK verdicts live in a separate table with their own (shorter) TTL —
+  # a veto should not quietly persist all day.
+  block_ttl_minutes: 240
+
+  # Score-adjustment ranges per verdict. The LLM proposes a value; the code
+  # clamps it into this range regardless of what was requested.
+  adjustments:
+    SUPPORT: {min: 0, max: 5}
+    NEUTRAL: {min: 0, max: 0}
+    CAUTION: {min: -7, max: -3}
+    INSUFFICIENT_DATA: {min: 0, max: 0}
+
+  # Final adjusted-score bounds (spec: clamp to 0..100).
+  score_floor: 0
+  score_ceiling: 100
+
+  # Positive (SUPPORT) adjustments additionally require ALL of these to hold,
+  # re-verified server-side at ingest time (not just at candidate-selection
+  # time). Missing any one silently clamps the adjustment to 0 and appends
+  # "server_clamped_missing_precondition" to the stored reason codes — it
+  # never raises or blocks the rest of the pipeline.
+  support_requires:
+    - catalyst_entity_resolved
+    - catalyst_fresh
+    - market_context_fresh
+    - no_hard_cap
+    - relative_strength_confirmed
+
+  # Catalyst / context freshness ceilings used by the candidate-selection hard
+  # gate (independent of the SI-1..SI-5 gates already applied at scoring time;
+  # this is the pre-US-specific freshness check for the review itself).
+  catalyst_max_age_hours: 24
+  market_context_max_age_minutes: 45
+
+  # Autonomous structured review. The model receives one candidate per call;
+  # code still owns every hard gate, score clamp, tier, and execution decision.
+  llm_agent:
+    # Keep deterministic pre-US baseline; no paid LLM overlay for current modes.
+    enabled: false
+    # Keep the optional model experiment, but its output is context only. It
+    # cannot overwrite the deterministic baseline review, change a score/tier,
+    # create a block, or affect Paper/live actionability.
+    advisory_only: true
+    apply_to_score: false
+    apply_to_actionability: false
+    # The ten strongest candidates form a point-in-time Paper experiment.
+    # At most five receive Gemini; matched controls retain the same deterministic
+    # baseline. Candidates outside the experiment remain baseline-only.
+    max_candidates: 10
+    ab_test:
+      enabled: true
+      experiment_name: stocks_preus_gemini_v1
+      treatment_share: 0.50
+      max_paid_candidates: 5
+      assignment_salt: preus-gemini-v1
+    max_workers: 3
+    max_tokens: 400
+    # Exactly one financial analysis per candidate/session. The deterministic
+    # baseline remains usable when the optional LLM overlay fails.
+    max_attempts_per_candidate_per_session: 1

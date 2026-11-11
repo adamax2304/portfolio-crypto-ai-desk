@@ -1,0 +1,300 @@
+# Curated crypto entity aliases for catalyst / news symbol detection.
+#
+# Each key is the canonical ticker (uppercased, no /USDT — the matcher
+# appends /USDT when emitting symbols for downstream code).
+#
+# `aliases` is a list of strings that will be matched against news titles
+# via word-boundary regex.
+#
+# Matching rules (enforced by src/catalysts/entity_aliases.py):
+#   * Aliases that are ALL UPPERCASE and ≤ 4 chars are matched
+#     CASE-SENSITIVELY (so "BTC" matches but "btc" doesn't). This
+#     protects common-word collisions ("one", "near", "link", "flow").
+#   * Aliases with a space OR length ≥ 5 are matched CASE-INSENSITIVELY
+#     ("Bitcoin", "Binance Coin", "Cardano").
+#   * Longer aliases are tried before shorter ones (greedy).
+#
+# Keep this list focused on names that actually show up in scheduled
+# RSS feeds. Curated, not exhaustive.
+
+BTC:
+  canonical_name: Bitcoin
+  aliases: [Bitcoin, BTC]
+  tags: [store_of_value, majors]
+
+ETH:
+  canonical_name: Ethereum
+  aliases: [Ethereum, Ether, ETH]
+  tags: [l1, smart_contracts, majors]
+
+BNB:
+  canonical_name: BNB
+  aliases: [Binance Coin, BNB Chain, Binance Smart Chain, BSC, BNB]
+  tags: [exchange_token, bnb_chain]
+
+SOL:
+  canonical_name: Solana
+  aliases: [Solana, SOL]
+  tags: [l1, majors]
+
+XRP:
+  canonical_name: XRP
+  aliases: [Ripple, XRP]
+  tags: [payments]
+
+ADA:
+  canonical_name: Cardano
+  aliases: [Cardano, ADA]
+  tags: [l1]
+
+AVAX:
+  canonical_name: Avalanche
+  aliases: [Avalanche, AVAX]
+  tags: [l1]
+
+DOT:
+  canonical_name: Polkadot
+  aliases: [Polkadot, DOT]
+  tags: [l1]
+
+EGLD:
+  canonical_name: MultiversX
+  aliases: [MultiversX, MultiverseX, Elrond, EGLD]
+  tags: [l1]
+
+LINK:
+  canonical_name: Chainlink
+  aliases: [Chainlink, LINK]
+  tags: [oracle, defi]
+
+ATOM:
+  canonical_name: Cosmos
+  aliases: [Cosmos, ATOM]
+  tags: [l1, ibc]
+
+NEAR:
+  canonical_name: NEAR Protocol
+  # "NEAR" UPPERCASE is matched case-sensitively (so common word "near"
+  # is NOT a hit). "NEAR Protocol" is a phrase — case-insensitive.
+  aliases: [NEAR Protocol, NEAR]
+  tags: [l1, ai]
+
+SUI:
+  canonical_name: Sui
+  aliases: [Sui Foundation, Sui Network, Sui, SUI]
+  tags: [l1]
+
+APT:
+  canonical_name: Aptos
+  aliases: [Aptos, APT]
+  tags: [l1]
+
+ARB:
+  canonical_name: Arbitrum
+  aliases: [Arbitrum, ARB]
+  tags: [l2]
+
+OP:
+  canonical_name: Optimism
+  # OP is a common 2-letter token — only match the multi-word alias to
+  # avoid false positives on "OP" inside everything.
+  aliases: [Optimism]
+  tags: [l2]
+
+INJ:
+  canonical_name: Injective
+  aliases: [Injective, INJ]
+  tags: [defi, perps]
+
+TIA:
+  canonical_name: Celestia
+  aliases: [Celestia, TIA]
+  tags: [modular, da]
+
+SEI:
+  canonical_name: Sei
+  aliases: [Sei Network, SEI]
+  tags: [l1]
+
+FET:
+  canonical_name: Fetch.ai
+  aliases: [Fetch.ai, Fetch AI, FET]
+  tags: [ai]
+
+RENDER:
+  canonical_name: Render Network
+  aliases: [Render Network, Render, RENDER, RNDR]
+  tags: [ai, depin]
+
+TAO:
+  canonical_name: Bittensor
+  aliases: [Bittensor, TAO]
+  tags: [ai]
+
+ONDO:
+  canonical_name: Ondo Finance
+  aliases: [Ondo Finance, Ondo, ONDO]
+  tags: [rwa]
+
+WLD:
+  canonical_name: Worldcoin
+  aliases: [Worldcoin, World App, WLD]
+  tags: [ai, identity]
+
+HYPE:
+  canonical_name: Hyperliquid
+  aliases: [Hyperliquid, HYPE]
+  tags: [perps, dex]
+
+ASTER:
+  canonical_name: Aster
+  aliases: [Aster DEX, Aster, ASTER]
+  tags: [perps, dex, bnb_chain]
+
+TON:
+  canonical_name: Toncoin
+  # Pure "TON" is risky — also a common 3-letter token. Use multi-word
+  # aliases plus the strict UPPERCASE TON for catalyst headlines.
+  aliases: [Toncoin, The Open Network, Telegram Open Network, TON Foundation, TON]
+  tags: [l1, telegram]
+
+PEPE:
+  canonical_name: Pepe
+  aliases: [Pepe Coin, Pepe, PEPE]
+  tags: [meme]
+
+DOGE:
+  canonical_name: Dogecoin
+  aliases: [Dogecoin, DOGE]
+  tags: [meme]
+
+SHIB:
+  canonical_name: Shiba Inu
+  aliases: [Shiba Inu, Shiba, SHIB]
+  tags: [meme]
+
+BCH:
+  canonical_name: Bitcoin Cash
+  aliases: [Bitcoin Cash, BCH]
+  tags: [fork]
+
+LTC:
+  canonical_name: Litecoin
+  aliases: [Litecoin, LTC]
+  tags: [legacy]
+
+UNI:
+  canonical_name: Uniswap
+  aliases: [Uniswap, UNI]
+  tags: [defi, dex]
+
+AAVE:
+  canonical_name: Aave
+  aliases: [Aave, AAVE]
+  tags: [defi, lending]
+
+MKR:
+  canonical_name: Maker
+  aliases: [MakerDAO, Maker, MKR]
+  tags: [defi, stablecoin]
+
+CRV:
+  canonical_name: Curve
+  aliases: [Curve Finance, Curve DAO, Curve, CRV]
+  tags: [defi, dex]
+
+LDO:
+  canonical_name: Lido
+  aliases: [Lido Finance, Lido DAO, Lido, LDO]
+  tags: [defi, staking]
+
+XLM:
+  canonical_name: Stellar
+  aliases: [Stellar Development Foundation, Stellar, XLM]
+  tags: [payments, rwa]
+
+ALGO:
+  canonical_name: Algorand
+  aliases: [Algorand, ALGO]
+  tags: [l1]
+
+FIL:
+  canonical_name: Filecoin
+  aliases: [Filecoin, FIL]
+  tags: [depin, storage]
+
+IMX:
+  canonical_name: Immutable
+  aliases: [Immutable X, Immutable, IMX]
+  tags: [gaming, l2]
+
+STG:
+  canonical_name: Stargate Finance
+  aliases: [Stargate Finance, Stargate, STG]
+  tags: [bridge, defi]
+
+ZRO:
+  canonical_name: LayerZero
+  aliases: [LayerZero, ZRO]
+  tags: [bridge, interop]
+
+ZEC:
+  canonical_name: Zcash
+  aliases: [Zcash, ZEC]
+  tags: [privacy]
+
+# --- 2026-07-08 entity-resolver expansion: commonly-fed alts ---
+ENA:
+  canonical_name: Ethena
+  aliases: [Ethena, ENA]
+  tags: [defi, stablecoin_yield]
+PENGU:
+  canonical_name: Pudgy Penguins
+  aliases: [Pudgy Penguins, PENGU]
+  tags: [nft, memecoin]
+JUP:
+  canonical_name: Jupiter
+  aliases: [Jupiter Exchange, JUP]
+  tags: [defi, solana]
+BONK:
+  canonical_name: Bonk
+  aliases: [BONK]
+  tags: [memecoin, solana]
+PYTH:
+  canonical_name: Pyth Network
+  aliases: [Pyth Network, PYTH]
+  tags: [oracle]
+JTO:
+  canonical_name: Jito
+  aliases: [Jito, JTO]
+  tags: [solana, staking]
+STRK:
+  canonical_name: Starknet
+  aliases: [Starknet, STRK]
+  tags: [l2, ethereum]
+
+# --- 2026-07-13 vetted resolver coverage: established assets present in the local exchange universe ---
+HBAR:
+  canonical_name: Hedera
+  aliases: [Hedera Hashgraph, Hedera, HBAR]
+  tags: [l1]
+LPT:
+  canonical_name: Livepeer
+  aliases: [Livepeer, LPT]
+  tags: [depin, ai]
+MAGIC:
+  canonical_name: Treasure
+  aliases: [Treasure DAO, Treasure Chain]
+  tags: [gaming, metaverse]
+MASK:
+  canonical_name: Mask Network
+  aliases: [Mask Network, MASK]
+  tags: [social, web3]
+SUSHI:
+  canonical_name: SushiSwap
+  aliases: [SushiSwap, Sushi Swap]
+  tags: [defi, dex]
+SKY:
+  canonical_name: Sky Protocol
+  aliases: [Sky Protocol, Sky Ecosystem, SKY]
+  tags: [defi, stablecoin]

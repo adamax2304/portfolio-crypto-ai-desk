@@ -1,0 +1,50 @@
+# Paper portfolio config — PAPER / ACCOUNTING ONLY. No live, no real orders.
+# Drives the derived paper-portfolio ledger + position sizing. Reversible.
+paper_portfolio:
+  initial_equity_usdt: 5000
+  risk_per_trade_pct: 0.005          # 0.5% of equity at entry = 25 USDT on 5000
+  risk_basis: equity                  # equity (compounding) | fixed_deposit
+  # ---- SAFE MAX-5X LEVERAGE POLICY (2026-06-24) ----
+  # Leverage does NOT define risk. Risk = position size × stop distance.
+  # Leverage only sets the margin requirement + the liquidation distance. The engine
+  # picks the MINIMUM leverage needed to keep margin within the cap, clamped at 5x.
+  # If 0.5% risk can't fit, the position is REDUCED (risk_capped) — never levered up.
+  # If liquidation would sit too close to the stop (< 3× the stop distance), the trade
+  # is reduced / flagged (liquidation_buffer_fail), optionally skipped.
+  max_leverage: 5
+  max_margin_per_trade_pct: 0.25      # margin used <= 25% of equity per trade
+  max_notional_per_trade_pct: 1.50    # notional <= 150% of equity per trade
+  liquidation_buffer_to_stop: 3.0     # liq distance must be >= 3x the stop distance
+  min_liquidation_distance_multiple_of_stop: 3.0
+  skip_if_liquidation_too_close: true
+  leverage_policy: max_5x_safe
+  skip_if_risk_capped: false          # true → risk-capped paper trades become review-only
+  too_tight_stop_pct: 0.0035          # < 0.35% stop → fees dominate → flag/skip-cap
+  too_wide_stop_pct: 0.08             # > 8% stop → position too small / not intraday → flag
+  fee_profile: bybit_non_vip_usdt_perp  # key in config/fee_profiles.yaml (override per account)
+  default_slippage:
+    major: 0.0002      # 0.02%
+    liquid_alt: 0.0005 # 0.05%
+    illiquid_alt: 0.0010 # 0.10%
+  majors: [BTC, ETH, SOL, BNB, XRP]
+  stock_futures_fee_profile: mexc_default_futures
+  stock_futures_slippage:
+    major: 0.0003
+    liquid_alt: 0.0008
+    illiquid_alt: 0.0015
+  fee_aware_breakeven:
+    enabled: true
+    asset_modes: ["crypto:intraday"]
+  funding:
+    default_rate_per_interval: 0.0001
+    interval_hours: 8
+    intervals_by_mode:
+      scalp: 0
+      intraday: 1
+      swing: 6
+      invest: 0
+    actual_events_enabled: true
+    exchange_by_fee_profile:
+      bybit_non_vip_usdt_perp: bybit
+      bybit_structural_maker_first: bybit
+      mexc_default_futures: mexc

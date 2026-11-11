@@ -1,0 +1,132 @@
+crypto_invest_universe:
+  version: crypto_invest_liquid_60_v1
+  enabled: true
+  quote_currency: USDT
+  selection_count: 60
+  refresh_policy: manual_weekly_or_biweekly
+  last_reviewed_at: "2026-08-06T22:49:55.239870Z"
+
+  # Liquidity is ranked across the market, but a symbol is eligible for this
+  # MEXC-live lane only when both the Binance data contract and MEXC execution
+  # contract have enough history and are active.
+  selection_rules:
+    max_market_cap_rank: 250
+    min_market_cap_usd: 200000000
+    min_global_volume_24h_usd: 5000000
+    min_binance_futures_age_days: 365
+    min_mexc_contract_age_days: 180
+    require_binance_usdt_perpetual: true
+    require_mexc_api_contract: true
+    min_active_derivatives_venues: 2
+    score_weights:
+      global_volume: 0.45
+      aggregate_derivatives_volume: 0.30
+      market_cap: 0.20
+      venue_breadth: 0.05
+
+  excluded_bases:
+    - USDT
+    - USDC
+    - DAI
+    - FDUSD
+    - TUSD
+    - USDE
+    - USDS
+    - USDD
+    - PYUSD
+    - USDF
+    - USD1
+    - RLUSD
+    - FRAX
+    - LUSD
+    - EURC
+    - PAXG
+    - XAUT
+    - WBTC
+    - WETH
+    - WEETH
+    - STETH
+    - WSTETH
+    - RETH
+    - CBETH
+    - BNSOL
+    - JITOSOL
+    - MSOL
+    - EZETH
+    - SOLVBTC
+    - SUSDE
+    - SYRUPUSDC
+    - USYC
+    - BUIDL
+
+  # Explicit and human-reviewable. The refresh command proposes/replaces this
+  # list only when invoked with --apply; no scheduler mutates it automatically.
+  selected_symbols:
+    - BTC/USDT
+    - ETH/USDT
+    - SOL/USDT
+    - XRP/USDT
+    - BNB/USDT
+    - ADA/USDT
+    - HYPE/USDT
+    - DOGE/USDT
+    - ZEC/USDT
+    - TRX/USDT
+    - LINK/USDT
+    - AVAX/USDT
+    - SUI/USDT
+    - UNI/USDT
+    - XLM/USDT
+    - PEPE/USDT
+    - NEAR/USDT
+    - AAVE/USDT
+    - LTC/USDT
+    - TAO/USDT
+    - WLD/USDT
+    - ENA/USDT
+    - ONDO/USDT
+    - XMR/USDT
+    - SHIB/USDT
+    - DOT/USDT
+    - BCH/USDT
+    - FET/USDT
+    - HBAR/USDT
+    - PENGU/USDT
+    - INJ/USDT
+    - ETC/USDT
+    - ARB/USDT
+    - APT/USDT
+    - VIRTUAL/USDT
+    - DASH/USDT
+    - CRV/USDT
+    - RENDER/USDT
+    - ATOM/USDT
+    - LDO/USDT
+    - KAITO/USDT
+    - POL/USDT
+    - ICP/USDT
+    - ZRO/USDT
+    - ALGO/USDT
+    - TIA/USDT
+    - DEXE/USDT
+    - ETHFI/USDT
+    - JTO/USDT
+    - SEI/USDT
+    - AERO/USDT
+    - JUP/USDT
+    - JST/USDT
+    - PENDLE/USDT
+    - MORPHO/USDT
+    - CAKE/USDT
+    - VVV/USDT
+    - FLOKI/USDT
+    - KAS/USDT
+    - PYTH/USDT
+
+  source_endpoints:
+    coingecko: https://api.coingecko.com/api/v3/coins/markets
+    binance_tickers: https://fapi.binance.com/fapi/v1/ticker/24hr
+    binance_contracts: https://fapi.binance.com/fapi/v1/exchangeInfo
+    bybit_tickers: https://api.bybit.com/v5/market/tickers
+    mexc_tickers: https://api.mexc.com/api/v1/contract/ticker
+    mexc_contracts: https://api.mexc.com/api/v1/contract/detail

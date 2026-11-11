@@ -1,0 +1,138 @@
+thresholds:
+  # Legacy single-value system (still respected by old code paths).
+  strong_idea: 85
+  valid_idea: 70
+  watchlist_only: 55
+  no_trade: 0
+  # Explicit A/B/C tier cutoffs. A-tier also requires no active score caps.
+  a_tier: 80
+  b_tier: 65
+  c_tier: 50
+
+weights:
+  market_regime: 15
+  technical_setup: 20
+  momentum: 15
+  derivatives: 15
+  catalyst_news: 15
+  narrative: 10
+  execution_quality: 10
+
+# Per-regime multipliers applied to the base weights above.
+# Values are gentle nudges (0.7-1.3 range), not full overrides — they make the
+# desk prefer continuation in bull tape, mean reversion in chop, etc.
+regime_weights:
+  bullish trend:
+    momentum: 1.25
+    technical_setup: 1.10
+    derivatives: 0.95
+  bearish trend:
+    momentum: 1.15
+    technical_setup: 1.10
+    catalyst_news: 0.85
+    narrative: 0.85
+  range/chop:
+    momentum: 0.75
+    technical_setup: 1.15
+    execution_quality: 1.20
+    narrative: 0.85
+  transition:
+    momentum: 0.85
+    derivatives: 1.10
+    narrative: 0.90
+  high-volatility danger:
+    momentum: 0.85
+    execution_quality: 1.25
+    derivatives: 1.15
+    narrative: 0.80
+  high-volatility trend:
+    # Direction and breadth are already confirmed by MarketRegimeAgent.  Keep
+    # momentum below a clean bull regime and reward only clean structure and
+    # execution; Paper routes any resulting entry to reduced size.
+    momentum: 1.00
+    technical_setup: 1.10
+    execution_quality: 1.10
+    derivatives: 1.05
+  low-volatility compression:
+    technical_setup: 1.15
+    momentum: 0.90
+    derivatives: 1.05
+
+# Per-mode multipliers. Scalp leans on momentum + execution, swing leans on
+# narrative + catalysts, intraday is the balanced default.
+mode_weights:
+  scalp:
+    momentum: 1.20
+    execution_quality: 1.20
+    catalyst_news: 0.80
+    narrative: 0.75
+  intraday: {}
+  swing:
+    narrative: 1.30
+    catalyst_news: 1.20
+    momentum: 0.90
+    market_regime: 1.15
+
+missing_data_baselines:
+  derivatives: 0.6
+  catalyst_news: 0.45
+  narrative: 0.5
+
+risk_penalties:
+  regime_conflict: 8
+  overextended: 8
+  poor_risk_reward: 10
+  low_liquidity: 8
+  no_clear_invalidation: 15
+  missing_derivatives: 2
+  missing_news: 2
+  too_many_warnings: 5
+
+execution:
+  minimum_rr_to_tp1: 1.0
+  ideal_rr_to_tp2: 2.0
+  max_atr_extension_for_entry: 2.0
+
+# PART 20 (2026-06): relative-strength leader gate. A coin rising AGAINST a
+# weak BTC tape is showing strength, not conflicting with the regime. When a
+# long candidate clears this gate it is allowed to trade counter-tape with
+# discipline: fair regime alignment, reduced (not zero) risk penalty, and a
+# hard B-tier ceiling (never a clean A against the broad market).
+#   min_rs_btc          – minimum relative strength vs BTC (%) over the
+#                         momentum window to qualify.
+#   require_positive_24h – also require the coin to actually be rising (24h
+#                         return > 0), not merely falling slower than BTC.
+relative_strength_gate:
+  min_rs_btc: 5.0
+  require_positive_24h: true
+
+# A high ATR percentile alone is not a dangerous market direction.  These
+# settings classify a separate high-volatility trend only when both BTC/ETH
+# and breadth agree.  Any disagreement retains the existing danger label.
+regime_classifier:
+  high_volatility:
+    atr_percentile_min: 80
+    large_btc_move_pct: 4.0
+    # Percentages from only BTC/ETH plus one or two alts are not market breadth.
+    min_breadth_symbols: 6
+    trend_min_breadth_ema20_pct: 55
+    trend_min_positive_24h_pct: 55
+    trend_max_breadth_ema20_pct: 45
+    trend_max_positive_24h_pct: 45
+
+# PART 22 (2026-06): crypto short squeeze-risk guard. Conservative cap-to-C
+# safety layer for SHORTS only — never touches longs, never widens stops, never
+# hard-rejects. A short is capped to C/watchlist (no A/B Telegram) when it is
+# fired into a bounce, on a thin/illiquid tape, on a high-upper-wick coin, or
+# with no derivatives on a thin tape. `cap_to` (60) sits below b_tier (65) so
+# the cap demotes to C while keeping the idea on the watchlist. Thresholds only;
+# the global A/B thresholds above are unchanged.
+short_squeeze_guard:
+  cap_to: 60.0
+  bounce_1h_pct: 1.5
+  bounce_dist_atr: 0.5
+  min_quote_volume_usd: 15000000
+  max_upper_wick_atr: 1.5
+  thin_volume_ratio: 0.6
+  exhaustion_dist_atr: -1.8
+  exhaustion_24h_pct: -10.0

@@ -1,0 +1,349 @@
+rss_feeds:
+  # ----- crypto sources -----
+  # `asset_class` defaults to 'crypto' when omitted; legacy entries kept tag-less.
+  - name: Binance Announcements
+    url: https://www.binance.com/bapi/composite/v1/public/cms/article/list/query?type=1&catalogId=48&pageNo=1&pageSize=20
+    type: binance_announcements
+    primary_source: true
+    asset_class: crypto
+  - name: Coinbase Blog
+    url: https://www.coinbase.com/blog/rss.xml
+    primary_source: true
+    enabled: false
+    asset_class: crypto
+    disabled_reason: Coinbase RSS currently returns Cloudflare 403 to local CLI requests.
+  - name: CoinDesk
+    url: https://www.coindesk.com/arc/outboundfeeds/rss/
+    primary_source: false
+    asset_class: crypto
+  - name: Cointelegraph
+    url: https://cointelegraph.com/rss
+    primary_source: false
+    asset_class: crypto
+  - name: Decrypt
+    url: https://decrypt.co/feed
+    primary_source: false
+    asset_class: crypto
+  # ----- PART 5 fix: expanded crypto sources -----
+  - name: The Block
+    url: https://www.theblock.co/rss.xml
+    primary_source: false
+    asset_class: crypto
+  - name: BeInCrypto
+    url: https://beincrypto.com/feed/
+    primary_source: false
+    asset_class: crypto
+  - name: AMBCrypto
+    url: https://ambcrypto.com/feed/
+    primary_source: false
+    asset_class: crypto
+  - name: CryptoSlate
+    url: https://cryptoslate.com/feed/
+    primary_source: false
+    asset_class: crypto
+    request_timeout_seconds: 12
+    retry_attempts: 3
+    retry_backoff_seconds: 1
+    # This is a redundant editorial feed. Keep a transient transport failure
+    # visible as DEGRADED while its own publications are still fresh.
+    transport_error_grace_hours: 6
+  - name: CryptoBriefing
+    url: https://cryptobriefing.com/feed/
+    primary_source: false
+    asset_class: crypto
+
+  # ----- stocks sources -----
+  # Enable by flipping `enabled: true`. When enabled, items are tagged
+  # asset_class='stocks' and the stocks universe tickers (config/stocks/universe.yaml)
+  # are matched in addition to the crypto universe so company-specific news lands
+  # in news_items with the right tag and a populated detected_symbols list.
+  # PART 6 fix — stocks news coverage was effectively zero (11 rows
+  # all-time, 0 from auto-RSS). Enabling existing + adding 5 more.
+  - name: MarketWatch Top Stories
+    url: https://feeds.content.dowjones.io/public/rss/mw_topstories
+    primary_source: false
+    asset_class: stocks
+    enabled: true
+  - name: Yahoo Finance Top Stories
+    url: https://finance.yahoo.com/news/rssindex
+    primary_source: false
+    asset_class: stocks
+    enabled: true
+  - name: Seeking Alpha Market Currents
+    url: https://seekingalpha.com/market_currents.xml
+    primary_source: false
+    asset_class: stocks
+    enabled: true
+  - name: CNBC Markets
+    url: https://www.cnbc.com/id/100727362/device/rss/rss.html
+    primary_source: false
+    asset_class: stocks
+    enabled: true
+  - name: Reuters Business
+    url: https://www.reutersagency.com/feed/?best-topics=business-finance&post_type=best
+    primary_source: false
+    asset_class: stocks
+    enabled: false
+    disabled_reason: "Reuters Agency feed returns HTTP 404 in the current endpoint; disabled explicitly so health does not present a known-broken feed as active. Stock coverage remains through CNBC, Yahoo Finance, MarketWatch, Benzinga, SEC EDGAR, GlobeNewswire, PR Newswire, and Business Wire."
+  - name: Benzinga Movers
+    url: https://www.benzinga.com/feed
+    primary_source: false
+    asset_class: stocks
+    enabled: true
+  - name: The Motley Fool Investing
+    url: https://www.fool.com/feeds/index.aspx
+    primary_source: false
+    asset_class: stocks
+    enabled: true
+  - name: SEC EDGAR Filings
+    url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=8-K&dateb=&owner=include&count=40&action=getcompany&output=atom
+    primary_source: true
+    asset_class: stocks
+    enabled: false
+    disabled_reason: "Generic browse-edgar Atom returned 0 rows. Replaced by src/news/edgar.py (CIK-mapped data.sec.gov submissions API) — run `sec-edgar-refresh`. Kept here for source-health visibility."
+    note: 8-K filings = primary source for material events. Now ingested reliably via src/news/edgar.py.
+
+  # ----- corporate press-release wires (item 4, 2026-07-03) — company PRIMARY sources. Enabled with
+  # health checks; source-health flags OK/DEAD. Advisory/shadow only, never a buy signal by itself.
+  - name: GlobeNewswire (Stocks)
+    url: https://www.globenewswire.com/RssFeed/orgclass/1/feedTitle/GlobeNewswire%20-%20News%20about%20Public%20Companies
+    primary_source: true
+    asset_class: stocks
+    enabled: false
+    disabled_reason: "Endpoint repeatedly times out from this host. Coverage remains through PR Newswire, Business Wire, Finnhub company news, SEC EDGAR and public Telegram fallback."
+    source_quality: primary_or_company_pr
+  - name: PR Newswire (Stocks)
+    url: https://www.prnewswire.com/rss/news-releases-list.rss
+    primary_source: true
+    asset_class: stocks
+    enabled: true
+    request_timeout_seconds: 12
+    retry_attempts: 2
+    retry_backoff_seconds: 1
+    transport_error_grace_hours: 6
+    note: Official company press-release wire; transient fetch failures degrade while fresh publications remain present.
+    source_quality: primary_or_company_pr
+  - name: Business Wire (Stocks)
+    url: https://feed.businesswire.com/rss/home/?rss=G1QFDERJXkJeGVtRWQ==
+    primary_source: true
+    asset_class: stocks
+    enabled: true
+    request_timeout_seconds: 12
+    retry_attempts: 2
+    retry_backoff_seconds: 1
+    transport_error_grace_hours: 6
+    note: Secondary company press-release wire; kept behind symbol matching/news-quality gates.
+    source_quality: primary_or_company_pr
+
+  # ----- crypto exchange announcements (item 6, 2026-07-03). Binance has a working JSON feed above.
+  # Bybit/OKX/MEXC do NOT publish a reliable public RSS — their announcements arrive via the telegram
+  # primary channels below. Listed here (disabled, with reason) so source-health shows WHY, instead of
+  # silently missing. Do NOT rely on telegram alone: Binance JSON is the crypto-primary RSS anchor.
+  - name: Bybit Announcements
+    url: https://announcements.bybit.com/en-US/
+    primary_source: true
+    asset_class: crypto
+    enabled: false
+    disabled_reason: "No reliable public RSS/JSON announcements endpoint; covered via telegram Bybit_Announcements (see source-health)."
+  - name: OKX Announcements
+    url: https://www.okx.com/help/section/announcements-latest-announcements
+    primary_source: true
+    asset_class: crypto
+    enabled: false
+    disabled_reason: "No reliable public RSS/JSON announcements endpoint; monitor via telegram / manual."
+  - name: MEXC Announcements
+    url: https://www.mexc.com/support/sections/360000254192
+    primary_source: true
+    asset_class: crypto
+    enabled: false
+    disabled_reason: "No reliable public RSS/JSON announcements endpoint; covered via telegram MEXC_OfficialAnnouncements (see source-health)."
+
+# ----- telegram sources -----
+# PART 7 — Telegram realtime news layer. 18 curated channels (crypto +
+# stocks + exchange listings + security + macro). Requires Telethon auth via
+# scripts/setup_telegram_auth.py (one-time). Uses a separate `.session` file
+# from any other Telegram-enabled project on this machine — DO NOT share the
+# news_trader session file (SQLite-lock contention).
+#
+# Channel weight semantics (mirrors news_trader convention):
+#   weight >= 0.8 → high-priority, treated as primary-quality source.
+#   weight 0.5-0.79 → normal single-source coverage.
+# asset_class is set per channel so news_items get the right tag.
+telegram_channels:
+  enabled: true               # PART 7 auth completed 2026-06-01
+  session_name: crypto_ai_desk_tg
+  # Separate Telethon authorization keys for the PC and server.
+  per_host_session: true
+  session_path: data/telegram # directory for the .session file; created if missing
+  poll_keepalive_seconds: 30
+  # Continuity path for public channels when Telegram revokes the Telethon
+  # session. Event-driven Telethon remains primary; HTML polls never invent a
+  # fresh publisher timestamp and use the same durable URL dedupe.
+  public_html_fallback_enabled: true
+  public_html_poll_seconds: 120
+  channels:
+    # ---- STOCKS / macro (fastest equity headlines) ----
+    - handle: WalterBloomberg
+      asset_class: stocks
+      weight: 0.85
+    - handle: forexlive
+      asset_class: stocks
+      weight: 0.80
+    - { handle: zerohedge, asset_class: stocks, category: macro_geopolitical_risk, weight: 0.82 }
+    # ---- CRYPTO exchange / listings ----
+    - handle: binance_announcements
+      asset_class: crypto
+      weight: 0.95
+      # Official Binance Announcements RSS/JSON is the primary path above.
+      # This public Telegram mirror is valuable redundancy, but may be quiet
+      # or access-limited without representing a loss of exchange coverage.
+      primary_source: false
+    - handle: Bybit_Announcements
+      asset_class: crypto
+      weight: 0.85
+      primary_source: true
+    - handle: BWEnews
+      asset_class: crypto
+      weight: 0.95
+    - handle: BWEtradfi
+      asset_class: stocks
+      category: tradfi_fast_news
+      weight: 0.90
+    - handle: MonitoringSituation
+      asset_class: stocks
+      category: geopolitical_risk
+      weight: 0.80
+    - handle: wublockchainenglish
+      asset_class: crypto
+      weight: 0.85
+    - handle: AstronomicaNews
+      asset_class: crypto
+      category: crypto_fast_news
+      weight: 0.88
+    # ---- CRYPTO security / hacks ----
+    - handle: zachxbt
+      asset_class: crypto
+      weight: 0.90
+    - handle: peckshield
+      asset_class: crypto
+      weight: 0.90
+    # ---- CRYPTO whale / on-chain ----
+    - handle: lookonchain
+      asset_class: crypto
+      weight: 0.90
+    # ---- CRYPTO general news ----
+    - handle: WatcherGuru
+      asset_class: crypto
+      weight: 0.70
+    - handle: cointelegraph
+      asset_class: crypto
+      weight: 0.65
+    # ---- GEOPOLITICS / market-risk breaking news ----
+    - { handle: disclosetv, asset_class: stocks, category: geopolitical_risk, weight: 0.78 }
+    - { handle: OSINTdefender, asset_class: stocks, category: geopolitical_risk, weight: 0.78 }
+    - { handle: ClashReport, asset_class: stocks, category: geopolitical_risk, weight: 0.72 }
+    - { handle: Middle_East_Spectator, asset_class: stocks, category: geopolitical_risk, weight: 0.72 }
+    # ---- production expansion (2026-07-04). Unreachable/renamed channels are NOT errors — they
+    # surface as DEAD in source-health with a reason. category is metadata for the health dashboard.
+    - { handle: FinancialJuice, asset_class: stocks, category: macro_headlines, weight: 0.85 }
+    - { handle: marketfeed, asset_class: stocks, category: stocks_headlines, weight: 0.70 }
+    - { handle: cryptoquant_official, asset_class: crypto, category: onchain, weight: 0.85 }
+    - { handle: glassnode, asset_class: crypto, category: onchain, weight: 0.85 }
+    - { handle: CryptoRankNews, asset_class: crypto, category: events, weight: 0.70 }
+    - { handle: CoinMarketCapAnnouncements, asset_class: crypto, category: listings, weight: 0.80, primary_source: true }
+    - { handle: coin_listing, asset_class: crypto, category: cex_listing_aggregator, weight: 0.86, primary_source: true }
+    - { handle: CexAlerts, asset_class: crypto, category: cex_listing_aggregator, weight: 0.84, primary_source: true }
+    - { handle: whale_alert_io, asset_class: crypto, category: onchain_whale, weight: 0.80 }
+    - { handle: OKXAnnouncements, asset_class: crypto, category: exchange_announcements, weight: 0.85, primary_source: true }
+    - { handle: MEXC_OfficialAnnouncements, asset_class: crypto, category: exchange_announcements, weight: 0.85, primary_source: true }
+
+# Low-latency API sources are collected by scripts/fast_news_monitor.py rather
+# than waiting for the two-hour report cycle.
+fast_api_sources:
+  - name: Finnhub market-news
+    asset_class: stocks
+    primary_source: false
+    enabled: true
+  - name: Finnhub company-news
+    asset_class: stocks
+    primary_source: false
+    enabled: true
+
+public_endpoints:
+  binance_spot: https://api.binance.com
+  binance_futures: https://fapi.binance.com
+  bybit: https://api.bybit.com
+  okx: https://www.okx.com
+  mexc_futures: https://api.mexc.com  # MEXC futures domain active since 2026-01-12
+
+derivatives_symbol_aliases:
+  binance_futures:
+    PEPE/USDT: 1000PEPEUSDT
+  bybit:
+    PEPE/USDT: 1000PEPEUSDT
+
+social_sources:
+  - name: Reddit CryptoCurrency
+    url: https://www.reddit.com/r/CryptoCurrency/hot.json?limit=50
+    type: reddit_json
+  - name: Reddit Bitcoin
+    url: https://www.reddit.com/r/Bitcoin/hot.json?limit=30
+    type: reddit_json
+  - name: Reddit Ethereum
+    url: https://www.reddit.com/r/ethereum/hot.json?limit=30
+    type: reddit_json
+
+macro_keywords:
+  risk_off:
+    - war
+    - military attack
+    - sanctions
+    - escalation
+    - airstrike
+    - missile
+    - blockade
+    - strait of hormuz
+    - military strike
+    - retaliation
+    - recession
+    - inflation
+    - rate hike
+    - dollar surge
+    - treasury yields
+    - sec lawsuit
+    - regulation
+    - exploit
+    - hack
+    - liquidation
+  risk_on:
+    - rate cut
+    - dovish
+    - etf inflow
+    - liquidity
+    - stimulus
+    - easing
+    - approval
+    - settlement
+    - institutional adoption
+    - treasury buyback
+  neutral_watch:
+    - fed
+    - cpi
+    - pce
+    - jobs report
+    - fomc
+    - election
+    - tariffs
+    - oil
+    - dollar
+    - yields
+
+optional_paid_sources:
+  coinglass: disabled
+  coinalyze: disabled
+  lunarcrush: disabled
+  santiment: disabled
+  glassnode: disabled
+  cryptoquant: disabled
+  dune: disabled
+  tokenunlocks: disabled

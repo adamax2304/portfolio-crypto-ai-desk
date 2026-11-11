@@ -1,0 +1,40 @@
+archived_strategy_profiles:
+  archived_at: "2026-10-19T23:04:22+00:00"
+  policy: "Run only sweep/reclaim research plus positive-evidence intraday controls"
+  live_routes_enabled: []
+  active_paper:
+    crypto:
+      - crypto_intraday_breakout_paper_v1
+      - crypto_fast_flush_reclaim_fast_1m_paper_v3
+      - crypto_fast_flush_reclaim_asia_1m_paper_v1
+      - crypto_fast_flush_reclaim_europe_1m_paper_v1
+      - crypto_fast_flush_reclaim_shallow_1m_paper_v1
+      - crypto_fast_flush_reclaim_shallow_flex_1m_paper_v1
+    stocks:
+      - stocks_intraday_breakout_1bar_paper_v1
+      - stocks_intraday_pullback_vwap_paper_v2
+      - stocks_liquidity_shock_held_1m_structure_targets_paper_v1
+  archived:
+    - crypto_swing_t130
+    - crypto_swing_breakout_reclaim_v2
+    - crypto_swing_pullback_confirmed_retest
+    - crypto_swing_fib_impulse_retest
+    - crypto_intraday_level_hold_v2
+    - crypto_intraday_pullback_paper_v1
+    - crypto_derivreset_v3
+    - crypto_short_retest_v1
+    - crypto_liquidity_sweep_v1
+    - crypto_liquidity_sweep_reclaim_v2
+    - crypto_htf_liquidity_reclaim_v1
+    - stocks_catalyst_rs_v1
+    - stocks_catalyst_rs_paper_v1
+    - stocks_earnings_gap_continuation_v2
+    - stocks_intraday_variants_v1
+    - stocks_swing_event_rs_pullback_paper_v1
+    - stocks_position_framework
+    - stocks_position_swing_v2
+  immutable_ledgers_retained:
+    - proposed_signals
+    - paper_shadow_execution_outcomes
+    - mexc_canary_decisions
+    - mexc_canary_parity_outcomes

@@ -1,0 +1,143 @@
+signal_id,symbol,mode,day,btc_day_pct,regime_label,result_R,btc_intraday_risk_off,would_throttle_long
+sig_f4904a8c524cd0ee,HMSTR/USDT,scalp,2026-06-10,-0.35,,0,False,False
+sig_14191573ca883e84,STG/USDT,swing,2026-06-11,3.44,,3.0,False,False
+sig_5c8793762b0ed853,HMSTR/USDT,intraday,2026-06-11,3.44,,-1.0,False,False
+sig_5b8d96d85858a78e,CRV/USDT,scalp,2026-06-11,3.44,range/chop,0,False,False
+sig_152ac53d04cafcfe,ID/USDT,intraday,2026-06-11,3.44,range/chop,-1.0,False,False
+sig_d46308fc1e5a464c,CRV/USDT,swing,2026-06-11,3.44,,1.0,False,False
+sig_08c44b6d9d8686cf,ATOM/USDT,swing,2026-06-11,3.44,,2.0,False,False
+sig_a973e7e12c20bb7e,EPIC/USDT,intraday,2026-06-12,-0.07,,-1.0,False,False
+sig_ed8a6043d3c1360c,PYTH/USDT,intraday,2026-06-12,-0.07,,-1.0,False,False
+sig_958a906fae834cd6,XPL/USDT,intraday,2026-06-12,-0.07,,-1.0,False,False
+sig_11067cb0dfa8c125,XPL/USDT,swing,2026-06-12,-0.07,,-1.0,False,False
+sig_dbfc3a10c6517c43,ENJ/USDT,swing,2026-06-12,-0.07,,-1.0,False,False
+sig_94214c6a3e3df00c,ALLO/USDT,swing,2026-06-12,-0.07,,-1.0,False,False
+sig_5fe7964186f68c58,ALLO/USDT,intraday,2026-06-12,-0.07,range/chop,-1.0,False,False
+sig_0e689658d1242881,MEGA/USDT,intraday,2026-06-13,1.38,,-1.0,False,False
+sig_5f7cdf63d3e0af1c,NOT/USDT,swing,2026-06-13,1.38,transition,1.0,False,False
+sig_e2b84d46c9dad798,RIF/USDT,scalp,2026-06-14,2.0,,0,False,False
+sig_ea74dd08ef3f11b4,RIF/USDT,swing,2026-06-14,2.0,transition,-1.0,False,False
+sig_4f1fa02075701c86,TAO/USDT,swing,2026-06-14,2.0,transition,3.0,False,False
+sig_24a2b4d84a763ead,PHA/USDT,swing,2026-06-14,2.0,transition,-1.0,False,False
+sig_adf63369bc8de9a3,OPG/USDT,swing,2026-06-14,2.0,,-1.0,False,False
+sig_8af9a8598dd98bbe,FET/USDT,swing,2026-06-14,2.0,,-1.0,False,False
+sig_307fe9b99e16e750,WLD/USDT,swing,2026-06-14,2.0,,-1.0,False,False
+sig_ae64f4828b8a537b,MEGA/USDT,intraday,2026-06-14,2.0,,-1.0,False,False
+sig_98b4c50fa96d6026,OPG/USDT,intraday,2026-06-14,2.0,,-1.0,False,False
+sig_17d2fd956bc89ab1,EIGEN/USDT,scalp,2026-06-14,2.0,bullish trend,0,False,False
+sig_aca9a4919eb50dc3,MEME/USDT,scalp,2026-06-14,2.0,bullish trend,0,False,False
+sig_0faf6e298fe822fe,MITO/USDT,scalp,2026-06-14,2.0,bullish trend,0,False,False
+sig_36083478c94592a4,TAO/USDT,scalp,2026-06-14,2.0,bullish trend,0,False,False
+sig_5983b7f1345ae692,CHIP/USDT,scalp,2026-06-14,2.0,bullish trend,0,False,False
+sig_659d3ac304eef62e,EIGEN/USDT,intraday,2026-06-14,2.0,bullish trend,3.0,False,False
+sig_c7967aebcad4ac15,TAO/USDT,intraday,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_996cdb28b3466ba5,WLD/USDT,intraday,2026-06-15,0.89,bullish trend,3.0,False,False
+sig_3aa3e9240bf7da62,CHIP/USDT,intraday,2026-06-15,0.89,bullish trend,3.0,False,False
+sig_6f142f931d172ca9,SUI/USDT,scalp,2026-06-15,0.89,bullish trend,0,False,False
+sig_928c5b47c0519600,OPG/USDT,scalp,2026-06-15,0.89,bullish trend,0,False,False
+sig_2b08b73f230edcac,MEME/USDT,scalp,2026-06-15,0.89,bullish trend,0,False,False
+sig_eb69f4e6f1c7a541,EDEN/USDT,scalp,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_05c0e0e23dfb6e38,EDEN/USDT,intraday,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_a404ac46ac00ee72,MEME/USDT,intraday,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_5aabbc0903cc4717,OPG/USDT,swing,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_9b2f1828aa34887a,CHIP/USDT,swing,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_4880b78cabef64c4,MEME/USDT,swing,2026-06-15,0.89,bullish trend,1.0,False,False
+sig_4a4a23bad950c796,TAO/USDT,swing,2026-06-15,0.89,bullish trend,1.0,False,False
+sig_b1424ea4c0ffbef7,MITO/USDT,swing,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_c300b739fe1a2cbb,EDEN/USDT,swing,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_a02e8f8d71d496db,BANANAS31/USDT,swing,2026-06-15,0.89,bullish trend,1.0,False,False
+sig_efb60005c5ad7bb0,XPL/USDT,swing,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_cfad151b59be10f5,MITO/USDT,intraday,2026-06-15,0.89,,-1.0,False,False
+sig_67d3c6573153dbcf,XPL/USDT,intraday,2026-06-15,0.89,,-1.0,False,False
+sig_403116c1de9f09f2,XPL/USDT,scalp,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_68c5dbf59cb12ffe,TAO/USDT,scalp,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_a493e7f78fe7b703,TAO/USDT,intraday,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_278670f75a0da6fa,BTC/USDT,scalp,2026-06-15,0.89,,0,False,False
+sig_735565b7374cf551,ETH/USDT,scalp,2026-06-15,0.89,,0,False,False
+sig_07dad5f7273f166e,BABY/USDT,intraday,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_da8622dd6495c29d,GENIUS/USDT,intraday,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_baf47c7e183d4636,BANANAS31/USDT,intraday,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_141866e1f1ef85cb,TON/USDT,intraday,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_e6cf0dd6fc04b113,SUI/USDT,intraday,2026-06-15,0.89,,2.0,False,False
+sig_e547e8e956fa987f,PUMP/USDT,intraday,2026-06-15,0.89,,1.0,False,False
+sig_789e4f86434bd1ea,BANANAS31/USDT,scalp,2026-06-15,0.89,bullish trend,0,False,False
+sig_1164f2c7864abd4b,TON/USDT,scalp,2026-06-15,0.89,bullish trend,0,False,False
+sig_d2d82e02f3e17c1f,WLD/USDT,scalp,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_7379668865d7500b,WLD/USDT,intraday,2026-06-15,0.89,bullish trend,2.0,False,False
+sig_a11331846717cd05,EIGEN/USDT,scalp,2026-06-15,0.89,bullish trend,0,False,False
+sig_9c37de1250c02f4f,MEGA/USDT,swing,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_45c77fd91b9c2117,BABY/USDT,swing,2026-06-15,0.89,bullish trend,1.0,False,False
+sig_874ec7ea5c685704,WLD/USDT,swing,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_8a320b428bda38b5,DASH/USDT,swing,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_b0b27635a9a97487,GPS/USDT,swing,2026-06-15,0.89,bullish trend,3.0,False,False
+sig_ec75ec4cd55a3970,NIGHT/USDT,swing,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_b24ada194ad669f3,ONDO/USDT,swing,2026-06-15,0.89,,-1.0,False,False
+sig_b2f5242b816f5815,NEAR/USDT,swing,2026-06-15,0.89,,1.0,False,False
+sig_d2661d35b32651bf,ZRO/USDT,swing,2026-06-15,0.89,,-1.0,False,False
+sig_9b477862402e6f3e,BTC/USDT,swing,2026-06-15,0.89,,-1.0,False,False
+sig_54bd00aee6ac7e7b,NEAR/USDT,intraday,2026-06-15,0.89,bullish trend,-1.0,False,False
+sig_e3a7554313a1eff6,PENGU/USDT,intraday,2026-06-15,0.89,,-1.0,False,False
+sig_61b1a384681e50be,HOME/USDT,intraday,2026-06-15,0.89,,2.0,False,False
+sig_97c5c92b2c248447,ZRO/USDT,scalp,2026-06-15,0.89,bullish trend,0,False,False
+sig_02559e6c41c7161e,ZEC/USDT,scalp,2026-06-15,0.89,bullish trend,0,False,False
+sig_e0cf6363dd8b9e4d,JTO/USDT,scalp,2026-06-15,0.89,bullish trend,0,False,False
+sig_d2fe0e754b460a13,ZRO/USDT,intraday,2026-06-15,0.89,bullish trend,2.0,False,False
+sig_37393c0c5e5d2af9,ZEC/USDT,intraday,2026-06-16,-0.99,bullish trend,2.0,True,True
+sig_8e025cd71ca921d3,ZRO/USDT,intraday,2026-06-16,-0.99,bullish trend,3.0,True,True
+sig_2beff2f35a16747b,ZRO/USDT,swing,2026-06-16,-0.99,bullish trend,3.0,True,True
+sig_d276501bce8e208f,SOL/USDT,swing,2026-06-16,-0.99,bullish trend,2.0,True,True
+sig_795e11a401333af6,NIGHT/USDT,swing,2026-06-16,-0.99,bullish trend,2.0,True,True
+sig_18c8f1b13f0fc9f4,BCH/USDT,intraday,2026-06-16,-0.99,,1.0,True,True
+sig_e97033a7853c4c14,GPS/USDT,intraday,2026-06-16,-0.99,bullish trend,1.0,True,True
+sig_eb45c882c3f6f3c7,XPL/USDT,scalp,2026-06-16,-0.99,bullish trend,0,True,True
+sig_ef13bfddcefbc565,GPS/USDT,scalp,2026-06-16,-0.99,bullish trend,-1.0,True,True
+sig_be9afd8bebb28a9a,SOL/USDT,scalp,2026-06-16,-0.99,bullish trend,-1.0,True,True
+sig_ad0e3a3e74ff38d7,ALLO/USDT,scalp,2026-06-16,-0.99,bullish trend,0,True,True
+sig_516cc865e80fadb5,FIDA/USDT,scalp,2026-06-16,-0.99,bullish trend,0,True,True
+sig_714e5c0b6ad5a7bd,ASTER/USDT,scalp,2026-06-16,-0.99,bullish trend,0,True,True
+sig_0da2a65849fd7906,PENGU/USDT,intraday,2026-06-16,-0.99,bullish trend,-1.0,True,True
+sig_7f14a6436c67ea43,ALLO/USDT,intraday,2026-06-16,-0.99,bullish trend,-1.0,True,True
+sig_2a841e84d1622b79,ASTER/USDT,intraday,2026-06-16,-0.99,bullish trend,-1.0,True,True
+sig_367b03e3f4cc0e49,RIF/USDT,swing,2026-06-16,-0.99,bullish trend,-1.0,True,True
+sig_767de73923e3fa4a,XPL/USDT,swing,2026-06-16,-0.99,bullish trend,-1.0,True,True
+sig_acc7ec3196f171e5,ALLO/USDT,swing,2026-06-16,-0.99,bullish trend,-1.0,True,True
+sig_2886dde27e77cdb0,SYN/USDT,swing,2026-06-16,-0.99,bullish trend,-1.0,True,True
+sig_a223d543348efcd2,HMSTR/USDT,swing,2026-06-16,-0.99,,-1.0,True,True
+sig_7bb10f4fda167887,HMSTR/USDT,scalp,2026-06-16,-0.99,bullish trend,0,True,True
+sig_a7290316c127f86c,RIF/USDT,scalp,2026-06-16,-0.99,bullish trend,0,True,True
+sig_a98419ed949f86ff,SENT/USDT,scalp,2026-06-16,-0.99,bullish trend,0,True,True
+sig_579da1f4370576a4,SENT/USDT,intraday,2026-06-16,-0.99,bullish trend,-1.0,True,True
+sig_fdcfbcca4d2d57ec,FIL/USDT,intraday,2026-06-16,-0.99,bullish trend,1.0,True,True
+sig_038d5b303057d049,PORTAL/USDT,intraday,2026-06-17,-0.96,bullish trend,-1.0,True,True
+sig_06491859f6b98370,WLD/USDT,scalp,2026-06-17,-0.96,bullish trend,1.0,True,True
+sig_1788c3ee3bfbfbce,JTO/USDT,scalp,2026-06-17,-0.96,bullish trend,-1.0,True,True
+sig_b781bb8874a6e708,PORTAL/USDT,scalp,2026-06-17,-0.96,bullish trend,0,True,True
+sig_e119ada1311f07e5,HMSTR/USDT,scalp,2026-06-17,-0.96,bullish trend,-1.0,True,True
+sig_3175e080a3f7e6cb,WLD/USDT,intraday,2026-06-17,-0.96,bullish trend,1.0,True,True
+sig_da3e69f4abc59faf,JTO/USDT,intraday,2026-06-17,-0.96,bullish trend,-1.0,True,True
+sig_3732f09533f66f19,WLD/USDT,swing,2026-06-17,-0.96,bullish trend,1.0,True,True
+sig_78242add59190cc4,SENT/USDT,swing,2026-06-17,-0.96,bullish trend,-1.0,True,True
+sig_34ee9a2276ca393c,FIL/USDT,swing,2026-06-17,-0.96,bullish trend,1.0,True,True
+sig_e07cf994ec5721bb,HMSTR/USDT,swing,2026-06-17,-0.96,bullish trend,-1.0,True,True
+sig_3ff0d3c66fd53164,PORTAL/USDT,swing,2026-06-17,-0.96,bullish trend,-1.0,True,True
+sig_a938871d7ad64082,GPS/USDT,swing,2026-06-17,-0.96,bullish trend,3.0,True,True
+sig_3a700eeac83b0b6e,SUI/USDT,swing,2026-06-17,-0.96,,-1.0,True,True
+sig_1963bb7604160d97,XLM/USDT,swing,2026-06-17,-0.96,,-1.0,True,True
+sig_459baf03896afcb8,SUI/USDT,scalp,2026-06-17,-0.96,bullish trend,0,True,True
+sig_45f47bc738dd5da7,XLM/USDT,scalp,2026-06-17,-0.96,bullish trend,1.0,True,True
+sig_2204a5d355db859d,XPL/USDT,scalp,2026-06-17,-0.96,bullish trend,0,True,True
+sig_d4a5098a1d03cc12,PENGU/USDT,scalp,2026-06-17,-0.96,bullish trend,0,True,True
+sig_d01a8790a0140c25,FIL/USDT,scalp,2026-06-17,-0.96,bullish trend,0,True,True
+sig_bba5ab4f511759f1,DOT/USDT,scalp,2026-06-17,-0.96,bullish trend,0,True,True
+sig_fabc1f91d0b29cf7,EPIC/USDT,intraday,2026-06-17,-0.96,bullish trend,1.0,True,True
+sig_d14319a1e6db1742,PORTAL/USDT,intraday,2026-06-17,-0.96,bullish trend,-1.0,True,True
+sig_9f6799e671e4b510,ASTER/USDT,intraday,2026-06-17,-0.96,,-1.0,True,True
+sig_72a62f00fc9e1132,TIA/USDT,intraday,2026-06-17,-0.96,bullish trend,1.0,True,True
+sig_bd26bd27c7a5e549,FIL/USDT,intraday,2026-06-17,-0.96,,-1.0,True,True
+sig_9430eed918a3bae7,PENGU/USDT,intraday,2026-06-17,-0.96,,-1.0,True,True
+sig_fcee1e578ede246b,DOT/USDT,intraday,2026-06-17,-0.96,,-1.0,True,True
+sig_231fa0d4c61c394a,TIA/USDT,scalp,2026-06-17,-0.96,bullish trend,-1.0,True,True
+sig_5f31365bbe57a07d,EPIC/USDT,scalp,2026-06-17,-0.96,bullish trend,0,True,True
+sig_87b91764c70b09f5,ID/USDT,scalp,2026-06-17,-0.96,range/chop,0,True,True
+sig_f61744ec17e501d7,ID/USDT,intraday,2026-06-17,-0.96,range/chop,0,True,True
+sig_5a935c243cf56934,UNI/USDT,scalp,2026-06-17,-0.96,range/chop,0,True,True

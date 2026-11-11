@@ -1,0 +1,82 @@
+stocks_intraday_variants:
+  # Research only. This never enters proposed_signals, the Paper ledger, or a
+  # notification/routing path. The existing Paper PULLBACK_LIMIT and
+  # BREAKOUT_CONTINUATION rules remain unchanged.
+  # Disabled 2026-08-12 after all raw profiles were negative in forward Shadow:
+  # 1bar PF 0.91, 2bar PF 0.88, retest PF 0.82, VWAP-hold PF 0.78.
+  # Keep historical tables for diagnostics; do not generate fresh candidates.
+  feature_flag: false
+  strategy_id: stocks_intraday_variants_v1
+  shadow_lane: shadow_stocks_intraday_variants
+  fee_profile: stock_etf_default
+  timeframe: 15m
+  refresh_min_interval_minutes: 15
+  min_clean_closed: 30
+  min_forward_days: 28
+  min_profit_factor: 1.25
+  max_review_drawdown_usd: 250.0
+
+  # A liquid, sector-mapped research expansion. These names are deliberately
+  # not added to default_symbols, so the Paper stock pipeline cannot route an
+  # idea merely because it was seen by this Shadow scout.
+  shadow_symbols:
+    - ADBE
+    - AMAT
+    - BAC
+    - CAT
+    - COST
+    - CRM
+    - CRWD
+    - GE
+    - GS
+    - LMT
+    - LRCX
+    - MA
+    - MU
+    - NOC
+    - NOW
+    - ORCL
+    - PANW
+    - UBER
+    - V
+    - WMT
+
+  # Four independent profiles. Results are never pooled across profiles.
+  profiles:
+    - profile_id: pullback_vwap_hold_15m_v1
+      entry_mode: PULLBACK_LIMIT
+      rule: pullback_vwap_hold
+    - profile_id: breakout_confirm_1bar_15m_v1
+      entry_mode: BREAKOUT_CONTINUATION
+      rule: breakout_confirm
+      confirmation_bars: 1
+    - profile_id: breakout_confirm_2bar_15m_v1
+      entry_mode: BREAKOUT_CONTINUATION
+      rule: breakout_confirm
+      confirmation_bars: 2
+    - profile_id: breakout_retest_15m_v1
+      entry_mode: BREAKOUT_CONTINUATION
+      rule: breakout_retest
+    # These are deliberately separate from the controls above. They test a
+    # quality-confirmed breakout and never alter the active Paper entry path.
+    - profile_id: breakout_context_quality_1bar_15m_v1
+      entry_mode: BREAKOUT_CONTINUATION
+      rule: breakout_confirm
+      confirmation_bars: 1
+      require_market_sector_confirmed: true
+      min_body_atr: 0.10
+      min_close_location: 0.65
+      min_rvol: 1.20
+      rvol_lookback: 8
+      max_trigger_extension_atr: 0.35
+      max_stop_atr: 1.20
+    - profile_id: breakout_context_quality_retest_15m_v1
+      entry_mode: BREAKOUT_CONTINUATION
+      rule: breakout_retest
+      require_market_sector_confirmed: true
+      min_body_atr: 0.10
+      min_close_location: 0.65
+      min_rvol: 1.20
+      rvol_lookback: 8
+      max_trigger_extension_atr: 0.35
+      max_stop_atr: 1.20

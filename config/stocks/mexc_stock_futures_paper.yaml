@@ -1,0 +1,119 @@
+# MEXC US stock futures event lane. PAPER ONLY: public MEXC market data is
+# consumed, but no private endpoint and no real order submission are allowed.
+mexc_stock_futures_paper:
+  enabled: true
+  strategy_id: stocks_mexc_preopen_news_v1
+  paper_lane: paper_mexc_stock_futures
+  execution_mode: paper
+  api_base_url: https://api.mexc.com
+  request_timeout_seconds: 8
+
+  # The pre-US LLM hand-off starts at 08:50 and can take ~20 minutes. Warm
+  # sources immediately, then stage eligible Paper orders at 09:15 ET.
+  preopen_refresh_start_et: "08:50"
+  preopen_decision_start_et: "09:10"
+  preopen_decision_end_et: "09:30"
+  # Pre-US review still creates plans before RTH, but no plan executes into
+  # the opening auction. At 09:35 ET the first five-minute bar must close
+  # through the trigger with directional conviction, otherwise it is dropped.
+  opening_protection_enabled: true
+  opening_protection_minutes: 5
+  opening_confirmation_min_close_location: 0.60
+  opening_confirmation_min_body_fraction: 0.35
+  opening_max_positions: 1
+  opening_risk_multiplier: 0.50
+  # Alert if an ACTIONABLE pre-US candidate has not produced an auditable
+  # Paper staging/rejection record by this point in the decision window.
+  preopen_health_alert_after_et: "09:20"
+  intraday_event_end_et: "15:30"
+  force_flat_et: "15:55"
+  # Keep observing a few minutes after the forced-exit time so a still-open
+  # 15:55 candle cannot leave a Paper position stranded overnight.
+  monitor_end_et: "16:05"
+  report_refresh_minutes: 15
+
+  require_pre_gate_ab: true
+  min_source_score: 65
+  max_source_signal_age_hours: 18
+  max_news_age_hours: 18
+  min_news_confidence: 0.68
+  allowed_source_qualities: [regulator, primary, company_pr, reputable]
+  allowed_content_levels: [full_body, summary_only]
+  allowed_event_types:
+    - guidance
+    - analyst_action
+    - mna
+    - fda_clinical
+    - product_launch
+    - partnership
+    - sec_filing
+  # These need their own forward evidence or are risk/review events.
+  blocked_event_types:
+    - earnings
+    - legal_risk
+    - offering_dilution
+    - management_change
+
+  allowed_setup_types: [continuation, breakout, pullback, retest]
+  allowed_directions: [long, short]
+  max_orders_per_symbol_session: 1
+  max_open_positions: 3
+
+  # Point-in-time MEXC parity. Stock contracts are discovered dynamically from
+  # the exchange metadata; no ticker is assumed to exist.
+  active_contract_states: [0]
+  max_spread_bps: 35
+  max_fair_index_deviation_bps: 60
+  max_source_entry_drift_bps: 500
+  min_top5_depth_usdt: 250
+  min_hold_volume: 1000
+  # Small-account Paper collection: book depth, exchange hold volume and
+  # spread no longer decide whether an otherwise valid candidate is staged.
+  # A current valid bid/ask, fair/index sanity, stop geometry and news/risk
+  # gates remain mandatory, so this cannot create a fictitious fill.
+  execution_liquidity_gates_enabled: false
+  contract_catalog_ttl_minutes: 30
+  # A small independent public-data heartbeat. A listed contract without
+  # bid/ask/depth is not execution-ready and is reported as unhealthy.
+  quote_health_ttl_minutes: 5
+  health_probe_tickers: [AAPL, MSFT, NVDA, TSLA, PLTR]
+  premarket_range_minutes: 60
+
+  # Existing setup type chooses the deterministic entry mechanic.
+  pullback_setup_types: [pullback, retest]
+  breakout_setup_types: [continuation, breakout]
+  breakout_limit_cushion_bps: 8
+  pullback_offset_bps: 20
+  min_stop_distance_pct: 0.005
+  normalize_too_tight_source_stop: true
+  max_stop_distance_pct: 0.04
+  default_target_r: [1.5, 2.5, 4.0]
+  order_ttl_minutes: 25
+  preopen_order_ttl_minutes: 50
+  max_replacements: 2
+
+  # Same Paper capital model as the rest of the desk. This lane participates in
+  # the common equity curve when its positions close.
+  risk_per_trade_pct: 0.005
+  max_concurrent_risk_pct: 0.025
+  max_margin_per_trade_pct: 0.25
+  max_notional_per_trade_pct: 1.50
+  max_leverage: 5
+  liquidation_buffer_to_stop: 3.0
+  fee_profile: mexc_default_futures
+  slippage:
+    major: 0.0003
+    liquid_alt: 0.0008
+    illiquid_alt: 0.0015
+
+  partial_take_profit:
+    weights: [0.33, 0.33, 0.34]
+  model_f:
+    arm_breakeven_at_r: 0.6
+    lock_profit_at_r: 1.0
+    lock_level_r: 0.5
+
+  # Paper fills are still written to the Paper ledger/report. Telegram is now
+  # reserved for live-routed trade confirmations to avoid paper/live confusion.
+  send_fill_telegram: false
+  report_path: reports/MEXC_STOCK_FUTURES_PAPER_LATEST.md

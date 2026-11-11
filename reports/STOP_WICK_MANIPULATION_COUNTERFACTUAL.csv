@@ -1,0 +1,73 @@
+signal_id,symbol,mode,dir,regime,result_R_current,mae_r,mfe_r,survives_1.25x_stop,survives_1.5x_stop,reached_tp1,be_after_tp1_R,partial0.5_tp1_R
+sig_a38c868327ddecd5,NEAR/USDT,intraday,short,,-1.0,-1.189578266438445,0.5473946968825847,True,True,False,-1.0,-1.0
+sig_80a2e6159037e56b,ZEC/USDT,intraday,short,,-1.0,-1.0823325010673575,0.2684113370695656,True,True,False,-1.0,-1.0
+sig_5c8793762b0ed853,HMSTR/USDT,intraday,long,,-1.0,-0.7328419384734958,0.396787347902778,True,True,False,-1.0,-1.0
+sig_152ac53d04cafcfe,ID/USDT,intraday,long,range/chop,-1.0,-1.0783969518012946,0.8859700543163072,True,True,False,-1.0,-1.0
+sig_a973e7e12c20bb7e,EPIC/USDT,intraday,long,,-1.0,-5.189522067382419,0.997266651231585,False,False,False,-1.0,-1.0
+sig_ed8a6043d3c1360c,PYTH/USDT,intraday,long,,-1.0,-1.3236806917665522,0.15572714020782874,False,True,False,-1.0,-1.0
+sig_958a906fae834cd6,XPL/USDT,intraday,long,,-1.0,-1.0527472527472537,0.8373626373626362,True,True,False,-1.0,-1.0
+sig_11067cb0dfa8c125,XPL/USDT,swing,long,,-1.0,-1.208669608259576,0.806812763854815,True,True,False,-1.0,-1.0
+sig_dbfc3a10c6517c43,ENJ/USDT,swing,long,,-1.0,-1.1367453931324103,1.0607271873655086,True,True,True,0.0,0.5
+sig_94214c6a3e3df00c,ALLO/USDT,swing,long,,-1.0,-1.6495416218837806,1.1453215839476194,False,False,True,0.0,0.5
+sig_5fe7964186f68c58,ALLO/USDT,intraday,long,range/chop,-1.0,-1.0203389830508462,0.7665859564164653,True,True,False,-1.0,-1.0
+sig_0e689658d1242881,MEGA/USDT,intraday,long,,-1.0,-1.2743728471521505,0.0,False,True,False,-1.0,-1.0
+sig_ea74dd08ef3f11b4,RIF/USDT,swing,long,transition,-1.0,-1.7473440032792407,0.3789420730003178,False,False,False,-1.0,-1.0
+sig_24a2b4d84a763ead,PHA/USDT,swing,long,transition,-1.0,-1.0,0.8999999999999972,True,True,False,-1.0,-1.0
+sig_adf63369bc8de9a3,OPG/USDT,swing,long,,-1.0,-1.0338417854169886,0.77579138548806,True,True,False,-1.0,-1.0
+sig_8af9a8598dd98bbe,FET/USDT,swing,long,,-1.0,-1.2133611882696558,1.232931530015944,True,True,True,0.0,0.5
+sig_307fe9b99e16e750,WLD/USDT,swing,long,,-1.0,-1.404743083003952,0.3976284584980205,False,True,False,-1.0,-1.0
+sig_ae64f4828b8a537b,MEGA/USDT,intraday,long,,-1.0,-1.0213319899571436,1.3208846685758548,True,True,True,0.0,0.5
+sig_98b4c50fa96d6026,OPG/USDT,intraday,long,,-1.0,-0.9907151674335861,0.5052647353911319,True,True,False,-1.0,-1.0
+sig_c7967aebcad4ac15,TAO/USDT,intraday,long,bullish trend,-1.0,-1.819375673902583,2.264585578268753,False,False,True,0.0,0.5
+sig_eb69f4e6f1c7a541,EDEN/USDT,scalp,long,bullish trend,-1.0,-1.0393421402932197,0.19999724591247464,True,True,False,-1.0,-1.0
+sig_05c0e0e23dfb6e38,EDEN/USDT,intraday,long,bullish trend,-1.0,-1.3506339881442904,0.4658240073721613,False,True,False,-1.0,-1.0
+sig_a404ac46ac00ee72,MEME/USDT,intraday,long,bullish trend,-1.0,-1.2738095238095268,1.1071428571428603,False,True,True,0.0,0.5
+sig_5aabbc0903cc4717,OPG/USDT,swing,long,bullish trend,-1.0,-1.4534400432326955,0.5747361563003965,False,True,False,-1.0,-1.0
+sig_9b2f1828aa34887a,CHIP/USDT,swing,long,bullish trend,-1.0,-1.0217799588028615,0.7704975968334764,True,True,False,-1.0,-1.0
+sig_b1424ea4c0ffbef7,MITO/USDT,swing,long,bullish trend,-1.0,-0.9952482137918185,0.6377318651481565,True,True,False,-1.0,-1.0
+sig_c300b739fe1a2cbb,EDEN/USDT,swing,long,bullish trend,-1.0,-1.4856160919970776,0.05953027550427854,False,True,False,-1.0,-1.0
+sig_efb60005c5ad7bb0,XPL/USDT,swing,long,bullish trend,-1.0,-1.3416666666666672,0.40833333333333127,False,True,False,-1.0,-1.0
+sig_cfad151b59be10f5,MITO/USDT,intraday,long,,-1.0,-1.0254924426034475,0.5939496761115762,True,True,False,-1.0,-1.0
+sig_67d3c6573153dbcf,XPL/USDT,intraday,long,,-1.0,-1.021233804242523,0.03404112680808505,True,True,False,-1.0,-1.0
+sig_403116c1de9f09f2,XPL/USDT,scalp,long,bullish trend,-1.0,-1.021233804242523,0.03404112680808505,True,True,False,-1.0,-1.0
+sig_68c5dbf59cb12ffe,TAO/USDT,scalp,long,bullish trend,-1.0,-1.5018348626916964,1.3131498476492853,False,False,True,0.0,0.5
+sig_07dad5f7273f166e,BABY/USDT,intraday,long,bullish trend,-1.0,-2.090243061541114,0.21231561060900994,False,False,False,-1.0,-1.0
+sig_da8622dd6495c29d,GENIUS/USDT,intraday,long,bullish trend,-1.0,-1.0215842659967216,0.537542815719216,True,True,False,-1.0,-1.0
+sig_baf47c7e183d4636,BANANAS31/USDT,intraday,long,bullish trend,-1.0,-0.9289223445157105,0.8811628409416439,True,True,False,-1.0,-1.0
+sig_141866e1f1ef85cb,TON/USDT,intraday,long,bullish trend,-1.0,-1.5452575658815775,1.034688513245371,False,False,True,0.0,0.5
+sig_d2d82e02f3e17c1f,WLD/USDT,scalp,long,bullish trend,-1.0,-1.0024233068534145,0.5442621462206495,True,True,False,-1.0,-1.0
+sig_9c37de1250c02f4f,MEGA/USDT,swing,long,bullish trend,-1.0,-1.1710272899392855,0.55091564927858,True,True,False,-1.0,-1.0
+sig_874ec7ea5c685704,WLD/USDT,swing,long,bullish trend,-1.0,-1.154203398410605,0.5003870559812965,True,True,False,-1.0,-1.0
+sig_8a320b428bda38b5,DASH/USDT,swing,long,bullish trend,-1.0,-1.2628780878982386,0.315490369822251,False,True,False,-1.0,-1.0
+sig_ec75ec4cd55a3970,NIGHT/USDT,swing,long,bullish trend,-1.0,-1.0641058053913928,0.8320481623107873,True,True,False,-1.0,-1.0
+sig_b24ada194ad669f3,ONDO/USDT,swing,long,,-1.0,-1.9790455491909051,0.2854536546738437,False,False,False,-1.0,-1.0
+sig_d2661d35b32651bf,ZRO/USDT,swing,long,,-1.0,-0.7693761161782943,0.0,True,True,False,-1.0,-1.0
+sig_9b477862402e6f3e,BTC/USDT,swing,long,,-1.0,-1.0627784361793893,0.5283629732786144,True,True,False,-1.0,-1.0
+sig_54bd00aee6ac7e7b,NEAR/USDT,intraday,long,bullish trend,-1.0,-1.4308901985691436,0.3465969916120961,False,True,False,-1.0,-1.0
+sig_e3a7554313a1eff6,PENGU/USDT,intraday,long,,-1.0,-1.3798048922539312,0.5203115899825334,False,True,False,-1.0,-1.0
+sig_ef13bfddcefbc565,GPS/USDT,scalp,long,bullish trend,-1.0,-1.1560140731510682,1.1528622736934706,True,True,True,0.0,0.5
+sig_be9afd8bebb28a9a,SOL/USDT,scalp,long,bullish trend,-1.0,-1.357235410057435,1.0315334574747443,False,True,True,0.0,0.5
+sig_0da2a65849fd7906,PENGU/USDT,intraday,long,bullish trend,-1.0,-1.4368538938663076,0.6220709855272306,False,True,False,-1.0,-1.0
+sig_7f14a6436c67ea43,ALLO/USDT,intraday,long,bullish trend,-1.0,-1.004460966542751,1.0698884758364307,True,True,True,0.0,0.5
+sig_2a841e84d1622b79,ASTER/USDT,intraday,long,bullish trend,-1.0,-1.2267519626761523,0.7350324764496747,True,True,False,-1.0,-1.0
+sig_367b03e3f4cc0e49,RIF/USDT,swing,long,bullish trend,-1.0,-1.0116788321167878,0.20000000000000162,True,True,False,-1.0,-1.0
+sig_767de73923e3fa4a,XPL/USDT,swing,long,bullish trend,-1.0,-1.0115399371344316,0.9740427135847478,True,True,False,-1.0,-1.0
+sig_acc7ec3196f171e5,ALLO/USDT,swing,long,bullish trend,-1.0,-1.2535155248643577,0.5699854384198454,False,True,False,-1.0,-1.0
+sig_2886dde27e77cdb0,SYN/USDT,swing,long,bullish trend,-1.0,-1.0273680919183865,0.13966776911186435,True,True,False,-1.0,-1.0
+sig_a223d543348efcd2,HMSTR/USDT,swing,long,,-1.0,-1.1717451523545723,1.1689750692520846,True,True,True,0.0,0.5
+sig_579da1f4370576a4,SENT/USDT,intraday,long,bullish trend,-1.0,-1.5282701888541284,0.731027690881705,False,False,False,-1.0,-1.0
+sig_038d5b303057d049,PORTAL/USDT,intraday,long,bullish trend,-1.0,-1.0179752121423027,0.5479963594507059,True,True,False,-1.0,-1.0
+sig_1788c3ee3bfbfbce,JTO/USDT,scalp,long,bullish trend,-1.0,-0.8521127134126838,0.09329701241744727,True,True,False,-1.0,-1.0
+sig_e119ada1311f07e5,HMSTR/USDT,scalp,long,bullish trend,-1.0,-1.0152027027026995,0.5557432432432442,True,True,False,-1.0,-1.0
+sig_da3e69f4abc59faf,JTO/USDT,intraday,long,bullish trend,-1.0,-1.3709876543209887,0.5765432098765444,False,True,False,-1.0,-1.0
+sig_78242add59190cc4,SENT/USDT,swing,long,bullish trend,-1.0,-1.094043622587723,1.034573620149661,True,True,True,0.0,0.5
+sig_e07cf994ec5721bb,HMSTR/USDT,swing,long,bullish trend,-1.0,-1.3901639344262267,0.3803278688524568,False,True,False,-1.0,-1.0
+sig_3ff0d3c66fd53164,PORTAL/USDT,swing,long,bullish trend,-1.0,-1.1045468285155193,0.7568210382296332,True,True,False,-1.0,-1.0
+sig_3a700eeac83b0b6e,SUI/USDT,swing,long,,-1.0,-1.0628608525097416,0.8116976396348808,True,True,False,-1.0,-1.0
+sig_1963bb7604160d97,XLM/USDT,swing,long,,-1.0,-1.0034378184093768,0.7415458549617739,True,True,False,-1.0,-1.0
+sig_d14319a1e6db1742,PORTAL/USDT,intraday,long,bullish trend,-1.0,-1.03500503882862,0.8619657359653825,True,True,False,-1.0,-1.0
+sig_9f6799e671e4b510,ASTER/USDT,intraday,long,,-1.0,-0.9829964083053577,0.3686236531145091,True,True,False,-1.0,-1.0
+sig_bd26bd27c7a5e549,FIL/USDT,intraday,long,,-1.0,-1.1296086571581376,1.1385467537221188,True,True,True,0.0,0.5
+sig_9430eed918a3bae7,PENGU/USDT,intraday,long,,-1.0,-1.4261079342387355,0.7540207290922062,False,True,False,-1.0,-1.0
+sig_fcee1e578ede246b,DOT/USDT,intraday,long,,-1.0,-1.1999998352941719,0.7764702878893338,True,True,False,-1.0,-1.0
+sig_231fa0d4c61c394a,TIA/USDT,scalp,long,bullish trend,-1.0,-1.0342106668975393,0.5776318625346953,True,True,False,-1.0,-1.0

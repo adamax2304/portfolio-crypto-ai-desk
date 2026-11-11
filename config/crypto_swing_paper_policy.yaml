@@ -1,0 +1,46 @@
+# Crypto swing paper/shadow policy.
+# PAPER / READ-MODEL ONLY. No live orders.
+crypto_swing_paper_policy:
+  enabled: false
+  live_enabled: false
+
+  # Production-Paper swing target profile. This applies only to newly registered
+  # Paper signals. The MEXC canary independently requires this exact version.
+  canonical_target_override_enabled: true
+  main_paper_enforcement_enabled: false
+
+  production_profile:
+    name: production_t130_targets
+    version: crypto_swing_paper_t130_v1
+    target_multipliers: [1.30, 2.30, 3.60]
+
+  # Narrow Paper/live experiment sourced from the positive Shadow breakout
+  # cohort. It never creates a second signal: it only caps an already
+  # actionable, point-in-time swing BREAKOUT_CONTINUATION at half size.
+  breakout_paper_experiment:
+    enabled: false
+    experiment_id: crypto_swing_breakout_paper_experiment_v1
+    entry_mode: BREAKOUT_CONTINUATION
+    size_weight: 0.50
+    require_latency_audit: true
+    # A swing can validly wait hours for its planned level. The latency audit
+    # calls that LEGITIMATE_LATE, which is not a data hole. Real gaps are
+    # rejected by cause below; live separately requires a fresh revalidation
+    # when the entry actually triggers.
+    # Detection lag is only diagnostic when the entry itself is frozen from a
+    # current price. Missing/late bars remain a hard Paper/live-quality block.
+    reject_latency_causes: [DATA_GAP_LATE, DATA_GAP, NO_DATA]
+
+  # Shadow/counterfactual profiles. None of these may alter proposed_signals,
+  # signal_outcomes, the active paper ledger, or live routing.
+  shadow_profiles:
+    target_t140:
+      version: crypto_swing_shadow_t140_v2
+      target_multipliers: [1.40, 2.40, 3.80]
+    target_t130:
+      version: crypto_swing_shadow_t130_v2
+      target_multipliers: [1.30, 2.30, 3.60]
+    allow_half_size:
+      version: crypto_swing_shadow_t140_allow_half_v2
+    allow_no_overlay:
+      version: crypto_swing_shadow_t140_no_overlay_v2

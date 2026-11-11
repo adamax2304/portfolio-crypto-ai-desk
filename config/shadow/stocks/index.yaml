@@ -1,0 +1,14 @@
+asset_class: stocks
+description: Isolated stock research lanes; none is auto-promoted.
+strategies: []
+retired_strategies:
+  - strategy_id: stocks_catalyst_rs_v1
+    reason: archived after weak or inconclusive forward evidence
+  - strategy_id: stocks_earnings_gap_continuation_v2
+    reason: archived after weak or inconclusive forward evidence
+  - strategy_id: stocks_intraday_variants_v1
+    reason: raw variants disabled after cohort review
+  - strategy_id: stocks_position_framework
+    reason: negative forward USD edge; scheduler disabled
+  - strategy_id: stocks_position_swing_v2
+    reason: long-horizon lane not required; scheduler disabled

@@ -1,0 +1,116 @@
+stocks_position_swing_v2:
+  enabled: false
+  scheduler_enabled: false
+  shadow_only: true
+  write_proposed_signals: false
+  strategy_id: stocks_position_swing_v2
+  shadow_lane: shadow_stocks_position_swing_v2
+  # New forward cohort: wider medium-term entry window. Prior observations
+  # retain their recorded profile_version and remain separate evidence.
+  profile_version: stocks_position_swing_v2@2026-08-05_swing_entry_window_v2
+
+  universe:
+    use_position_framework_universe: true
+    max_symbols: 75
+    min_price: 10
+    min_avg_dollar_volume_30d: 25000000
+
+  market:
+    risk_on:
+      allow_breakout_retest: true
+      allow_trend_pullback_reclaim: true
+      size_weight: 1.0
+    neutral:
+      allow_breakout_retest: false
+      allow_trend_pullback_reclaim: true
+      size_weight: 0.5
+    risk_off:
+      allow_breakout_retest: false
+      allow_trend_pullback_reclaim: false
+      size_weight: 0.0
+    warn_vix_above: 22
+    risk_off_vix_above: 30
+
+  stock_filter:
+    require_above_50d: true
+    require_above_200d: true
+    require_weekly_above_30w: true
+    require_rs_positive_vs_spy: true
+    require_rs_positive_vs_sector: true
+    max_pct_below_52w_high: 15
+
+  data_quality:
+    # Shared OHLCV is deliberately raw/unadjusted. A split-like discontinuity
+    # makes long-horizon averages non-comparable, so V2 fails closed.
+    corporate_action_lookback_days: 252
+    split_ratio_tolerance_pct: 8
+    split_ratios: [0.2, 0.25, 0.333333, 0.5, 2.0, 3.0, 4.0, 5.0]
+
+  setups:
+    breakout_retest:
+      enabled: true
+      base_lookback_days: 20
+      breakout_volume_ratio_min: 1.2
+      retest_tolerance_atr: 0.35
+      max_extension_atr: 0.5
+      entry_buffer_atr: 0.05
+    trend_pullback_reclaim:
+      enabled: true
+      reclaim_levels: [ema21, sma50]
+      touch_tolerance_atr: 0.25
+      max_extension_atr: 1.0
+      confirmation_volume_ratio_min: 1.0
+      entry_buffer_atr: 0.05
+
+  event_risk:
+    earnings_block_trading_days: 7
+    require_earnings_calendar_available: true
+    blocking_event_types:
+      - legal_risk
+      - offering_dilution
+      - exchange_delisting
+      - margin_delisting
+      - fda_clinical
+    event_lookback_days: 30
+
+  risk:
+    paper_equity_usd: 5000
+    risk_pct: 0.0025
+    max_open_positions: 5
+    max_sector_exposure_pct: 35
+    max_total_open_risk_pct: 0.0125
+    stop_atr_min: 1.0
+    stop_atr_max: 2.5
+    stop_buffer_atr: 0.25
+    max_stop_distance_pct: 12
+    gap_risk_multiplier: 1.25
+
+  exits:
+    tp1_r: 2.0
+    tp1_pct: 0.50
+    tp2_r: 3.0
+    tp2_pct: 0.25
+    trail_ema_days: 21
+    hard_exit_sma_days: 50
+    max_holding_days: 40
+
+  execution:
+    profile_id: us_equity_commission_free_7bps_swing_entry_window_v2
+    entry_valid_sessions: 5
+    max_chase_atr: 0.75
+    slippage_bps: 7
+    commission_per_share: 0.0
+    min_forward_bars: 3
+    same_bar_policy: stop_first
+
+  evidence_gate:
+    # This is a 5-40 session holding strategy. A 28-day observation window can
+    # contain many still-open positions and is not a credible regime sample.
+    min_forward_days: 90
+    min_clean_closed_trades: 30
+    min_clean_closed_per_setup: 10
+    min_profit_factor: 1.25
+    require_net_usd_positive: true
+    require_max_drawdown_acceptable: true
+    max_drawdown_pct_of_equity: 8
+    verdict_before_gate: REVIEW_ONLY

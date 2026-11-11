@@ -1,0 +1,107 @@
+stocks_swing_event_rs_pullback_paper:
+  enabled: false
+  live_enabled: false
+  strategy_id: stocks_swing_event_rs_pullback_paper_v1
+  paper_lane: paper_stocks_swing_event_rs_pullback
+  source_research: research_labs/stocks_swing_event_rs_pullback/artifacts/STOCKS_SWING_EVENT_RS_PULLBACK_RESEARCH.md
+  activated_at: "2026-09-08T00:00:00+00:00"
+  timeframe: 1d
+  tracker_timeframe: 1d
+  entry_mode: EVENT_RS_PULLBACK
+  use_default_universe: true
+  symbols: []
+  scan_recent_confirmations_days: 3
+  max_signals_per_profile_run: 12
+  validity_window_hours: 600
+
+  universe:
+    min_price: 5.0
+    min_avg_dollar_volume_30d: 25000000
+
+  risk:
+    neutral_size_weight: 0.5
+    risk_off_size_weight: 0.5
+    stop_buffer_atr: 0.25
+    max_stop_pct: 15.0
+
+  execution:
+    max_pullback_days: 10
+    impulse_cluster_days: 3
+    max_hold_days: 25
+    entry_timeout_days: 1
+    same_bar_policy: stop_first
+
+  news:
+    lookback_days: 7
+    score_boost_max: 8
+    bullish_event_types:
+      - earnings
+      - guidance
+      - analyst_action
+      - partnership
+      - mna
+      - product_launch
+      - contract_award
+      - strategic_investment
+      - fda_clinical
+      - buyback
+    blocking_event_types:
+      - legal_risk
+      - offering_dilution
+      - exchange_delisting
+      - margin_delisting
+      - sec_filing
+      - calendar_risk
+    trusted_source_qualities:
+      - regulator
+      - primary
+      - company_pr
+      - reputable
+      - secondary
+
+  profiles:
+    - name: quality
+      profile_id: stocks_swing_event_rs_pullback_quality_paper_v1
+      variant_id: imp050_ema21_stop15_tp20
+      base_score: 78
+      sleeve_size_weight: 1.0
+      impulse_return_min: 0.05
+      impulse_atr_min: 1.25
+      volume_ratio_min: 1.2
+      rs20_min: 0.02
+      rs63_min: 0.0
+      rs_sector_min: 0.0
+      pullback_level: ema21
+      touch_tolerance_atr: 0.20
+      require_green_reclaim: false
+      min_stop_atr: 1.5
+      max_stop_atr: 2.8
+      max_chase_atr: 0.75
+      tp1_r: 2.0
+      tp2_r: 3.0
+      tp3_r: 4.0
+      allow_neutral: true
+      allow_risk_off: false
+
+    - name: flow
+      profile_id: stocks_swing_event_rs_pullback_flow_paper_v1
+      variant_id: imp025_ema21_stop15_tp20
+      base_score: 69
+      sleeve_size_weight: 0.5
+      impulse_return_min: 0.025
+      impulse_atr_min: 1.0
+      volume_ratio_min: 1.0
+      rs20_min: 0.0
+      rs63_min: 0.0
+      rs_sector_min: -0.03
+      pullback_level: ema21
+      touch_tolerance_atr: 0.20
+      require_green_reclaim: false
+      min_stop_atr: 1.5
+      max_stop_atr: 2.8
+      max_chase_atr: 0.75
+      tp1_r: 2.0
+      tp2_r: 3.0
+      tp3_r: 4.0
+      allow_neutral: true
+      allow_risk_off: false

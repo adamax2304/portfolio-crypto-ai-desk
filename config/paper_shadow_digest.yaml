@@ -1,0 +1,9 @@
+# Paper-shadow A/B daily Telegram digest (observability only — never trades / promotes B / changes scoring).
+paper_shadow_telegram_digest:
+  # Phone trade feed is live-only. Shadow/Paper evidence remains available in
+  # the dashboard/reports, but the daily digest no longer pushes to Telegram.
+  enabled: false
+  cadence: daily
+  send_time_local: "09:00"      # local time of day to send the once-daily digest
+  include_backfill: false        # forward is the only valid evidence; backfill stays off by default
+  include_top_examples: true     # include best/worst B mode line

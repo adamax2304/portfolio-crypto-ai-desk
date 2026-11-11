@@ -1,0 +1,300 @@
+{
+  "crypto_invest": {
+    "available": false,
+    "reason": "research.sqlite missing"
+  },
+  "generated_at": "2026-11-11T21:42:37.466272+00:00",
+  "hours": 96,
+  "limit_then_taker_quality": {
+    "available": true,
+    "missed_or_unfilled": [],
+    "quality": []
+  },
+  "liquidity_sweep_v2": {
+    "available": true,
+    "evaluations": [],
+    "observations": [],
+    "outcomes": [],
+    "slices": []
+  },
+  "live_compatible_paper_pf": {
+    "available": true,
+    "by_route": [],
+    "excluded": [
+      {
+        "n": 21,
+        "reason": "LEGACY_PAPER_EXIT_MODEL"
+      },
+      {
+        "n": 3,
+        "reason": "CURRENT_LIVE_ROUTE_DISABLED"
+      },
+      {
+        "n": 1,
+        "reason": "NON_ACTIONABLE_CLOSE_REASON"
+      }
+    ],
+    "overall": {
+      "closed": 0,
+      "gross_loss_r": 0,
+      "gross_win_r": 0,
+      "losses": 0,
+      "net_r": 0,
+      "profit_factor": null,
+      "winrate": null,
+      "wins": 0
+    },
+    "rows_seen": 25
+  },
+  "live_config": {
+    "allowed_entry_modes": [
+      "BREAKOUT_CONTINUATION",
+      "LIMIT_THEN_TAKER_TIMEOUT",
+      "LIQUIDITY_SWEEP",
+      "PULLBACK_LIMIT",
+      "REGIME_RECLAIM"
+    ],
+    "allowed_modes": [
+      "intraday",
+      "invest",
+      "swing"
+    ],
+    "armed_venues": [
+      "mexc",
+      "bybit"
+    ],
+    "capture_enabled": true,
+    "execution_mode": "live",
+    "max_concurrent_risk_usdt": 50.0,
+    "risk_per_trade_usdt": 10.0,
+    "submission_enabled": true,
+    "venue_order": [
+      "mexc",
+      "bybit"
+    ]
+  },
+  "live_routes": {
+    "crypto_intraday_breakout": {
+      "enabled": false,
+      "entry_mode": "BREAKOUT_CONTINUATION",
+      "mode": "intraday",
+      "risk_bucket": null
+    },
+    "crypto_intraday_level_hold_v2": {
+      "enabled": false,
+      "entry_mode": "LEVEL_HOLD_V2",
+      "mode": "intraday",
+      "risk_bucket": null
+    },
+    "crypto_intraday_pullback": {
+      "enabled": false,
+      "entry_mode": "PULLBACK_LIMIT",
+      "mode": "intraday",
+      "risk_bucket": null
+    },
+    "crypto_invest": {
+      "enabled": false,
+      "entry_mode": "REGIME_RECLAIM",
+      "mode": "invest",
+      "risk_bucket": null
+    },
+    "crypto_liquidity_sweep": {
+      "enabled": false,
+      "entry_mode": "LIQUIDITY_SWEEP",
+      "mode": "liquidity_sweep",
+      "risk_bucket": null
+    },
+    "crypto_swing_breakout": {
+      "enabled": false,
+      "entry_mode": "BREAKOUT_CONTINUATION",
+      "mode": "swing",
+      "risk_bucket": null
+    },
+    "crypto_swing_limit_then_taker": {
+      "enabled": false,
+      "entry_mode": "LIMIT_THEN_TAKER_TIMEOUT",
+      "mode": "swing",
+      "risk_bucket": null
+    },
+    "crypto_swing_pullback": {
+      "enabled": false,
+      "entry_mode": "PULLBACK_LIMIT",
+      "mode": "swing",
+      "risk_bucket": null
+    },
+    "stocks_intraday_breakout": {
+      "enabled": false,
+      "entry_mode": "BREAKOUT_CONTINUATION",
+      "mode": "stock_intraday",
+      "risk_bucket": null
+    }
+  },
+  "paper_live_reconciliation": {
+    "available": true,
+    "live_rejected": [],
+    "missing_live_decision": [],
+    "paper_execution_columns_present": [
+      "close_event",
+      "close_reason",
+      "computed_at",
+      "current_price_revalidated",
+      "decision_at",
+      "economic_trade_key",
+      "effective_expires_at",
+      "entry_at",
+      "entry_bar_open_at",
+      "entry_drift_bps",
+      "entry_price_used",
+      "entry_time_basis",
+      "evidence_class",
+      "execution_validity",
+      "exit_at",
+      "exit_at_source",
+      "first_event",
+      "first_executable_price",
+      "frozen_at",
+      "giveback",
+      "highest_tp_touched",
+      "lifecycle_state",
+      "lock_armed",
+      "lock_level_r",
+      "paper_entry_profile",
+      "paper_execution_entry_mode",
+      "paper_execution_outcome",
+      "paper_execution_r",
+      "path_data_quality",
+      "path_gap_seconds",
+      "path_last_candle_at",
+      "path_max_mfe_r",
+      "path_realized_r",
+      "path_remaining_fraction",
+      "path_tp1_filled",
+      "path_tp2_filled",
+      "path_tp3_filled",
+      "protection_armed",
+      "protection_level_r",
+      "risk_model",
+      "same_candle_ambiguous",
+      "signal_id",
+      "signal_snapshot_json",
+      "stop_current_r",
+      "stop_initial",
+      "touch_r",
+      "version"
+    ],
+    "summary": {
+      "live_queued_or_processing": 0,
+      "live_rejected": 0,
+      "live_routable": 0,
+      "live_submitted_or_active": 0,
+      "missing_live_decision": 0,
+      "not_live_route": 5,
+      "paper_rows": 5
+    }
+  },
+  "recent_live": {
+    "decisions": [
+      {
+        "eligible": 0,
+        "entry_mode": "BREAKOUT_CONTINUATION",
+        "mode": "intraday",
+        "n": 3,
+        "state": "REJECTED"
+      },
+      {
+        "eligible": 0,
+        "entry_mode": "PULLBACK_LIMIT",
+        "mode": "intraday",
+        "n": 3,
+        "state": "REJECTED"
+      }
+    ],
+    "orders": [],
+    "positions": [],
+    "recent_rejections": [
+      {
+        "captured_at": "2026-11-11T15:35:10.717055+00:00",
+        "entry_mode": "PULLBACK_LIMIT",
+        "mode": "intraday",
+        "rejection_reasons_json": "[\"LIVE_ROUTE_DISABLED\", \"PAPER_STRATEGY_VERSION_MISSING\"]",
+        "signal_id": "sig_4275932dbb6015c3",
+        "state": "REJECTED",
+        "symbol": "ZEC/USDT"
+      },
+      {
+        "captured_at": "2026-11-11T15:14:34.247074+00:00",
+        "entry_mode": "BREAKOUT_CONTINUATION",
+        "mode": "intraday",
+        "rejection_reasons_json": "[\"LIVE_ROUTE_DISABLED\", \"PAPER_ACTION_NOT_LIVE_ENABLED\", \"PAPER_NOT_ACTIONABLE\", \"PAPER_STRATEGY_VERSION_MISSING\"]",
+        "signal_id": "sig_0c0a5b75057d9f0c",
+        "state": "REJECTED",
+        "symbol": "PEPE/USDT"
+      },
+      {
+        "captured_at": "2026-11-11T13:19:41.051500+00:00",
+        "entry_mode": "PULLBACK_LIMIT",
+        "mode": "intraday",
+        "rejection_reasons_json": "[\"LIVE_ROUTE_DISABLED\", \"PAPER_STRATEGY_VERSION_MISSING\"]",
+        "signal_id": "sig_fbfc3e7a6e5e810c",
+        "state": "REJECTED",
+        "symbol": "UNI/USDT"
+      },
+      {
+        "captured_at": "2026-11-10T02:47:52.553020+00:00",
+        "entry_mode": "BREAKOUT_CONTINUATION",
+        "mode": "intraday",
+        "rejection_reasons_json": "[\"LIVE_ROUTE_DISABLED\", \"PAPER_ACTION_NOT_LIVE_ENABLED\", \"PAPER_NOT_ACTIONABLE\"]",
+        "signal_id": "sig_7d0323f346a072ec",
+        "state": "REJECTED",
+        "symbol": "ZEC/USDT"
+      },
+      {
+        "captured_at": "2026-11-09T16:50:45.365365+00:00",
+        "entry_mode": "BREAKOUT_CONTINUATION",
+        "mode": "intraday",
+        "rejection_reasons_json": "[\"LIVE_ROUTE_DISABLED\", \"PAPER_ACTION_NOT_LIVE_ENABLED\", \"PAPER_NOT_ACTIONABLE\"]",
+        "signal_id": "sig_13f8c626de773f3c",
+        "state": "REJECTED",
+        "symbol": "ZEC/USDT"
+      },
+      {
+        "captured_at": "2026-11-08T03:00:40.647662+00:00",
+        "entry_mode": "PULLBACK_LIMIT",
+        "mode": "intraday",
+        "rejection_reasons_json": "[\"LIVE_ROUTE_DISABLED\", \"PAPER_STRATEGY_VERSION_MISSING\"]",
+        "signal_id": "sig_6d8d6be8e7968d06",
+        "state": "REJECTED",
+        "symbol": "ZEC/USDT"
+      }
+    ],
+    "rejection_reasons": [
+      {
+        "n": 6,
+        "reason": "LIVE_ROUTE_DISABLED"
+      },
+      {
+        "n": 4,
+        "reason": "PAPER_STRATEGY_VERSION_MISSING"
+      },
+      {
+        "n": 3,
+        "reason": "PAPER_ACTION_NOT_LIVE_ENABLED"
+      },
+      {
+        "n": 3,
+        "reason": "PAPER_NOT_ACTIONABLE"
+      }
+    ],
+    "venue_attempts": []
+  },
+  "since": "2026-11-07T21:42:37.466272+00:00",
+  "stock_post_filter_cohort": {
+    "available": true,
+    "by_entry_mode": [],
+    "cohort_start": "2026-11-07T21:42:37.466272+00:00",
+    "decisions": [],
+    "filter_version": "stock_live_structural_alignment_v2",
+    "positions": [],
+    "recent_rejections": []
+  }
+}

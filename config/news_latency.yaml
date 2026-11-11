@@ -1,0 +1,16 @@
+fast_news:
+  enabled: true
+  poll_seconds: 120
+  request_timeout_seconds: 10
+  fast_rss_timeout_seconds: 7
+  fast_rss_sources:
+    - Binance Announcements
+  finnhub:
+    enabled: true
+    key_env: FINNHUB_API_KEY
+    base_url: https://finnhub.io/api/v1
+    global_category: general
+    global_limit: 80
+    company_symbols_per_tick: 8
+    company_lookback_days: 1
+    max_company_items_per_symbol: 20

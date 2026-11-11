@@ -1,0 +1,32 @@
+# Bad-cohort guard. PAPER/ROUTING-ONLY. Never affects scoring, geometry or live.
+# `warn` records point-in-time evidence without changing paper size/routing.
+cohort_guard:
+  # off | warn | paper_review_only. The broad 2026-07-13 rule demoted almost every
+  # crypto intraday long merely for lacking news, including profitable technical
+  # pullbacks. Keep routing in warn until the narrow slice passes the evidence gate.
+  mode: warn
+  enabled: true
+  # Second, explicit operator key. Changing `mode` alone must never alter paper routing.
+  feature_flag: paper_cohort_guard.enabled
+  routing_enabled: false
+  policy_version: cohort_guard_v2
+  evidence_gate:
+    min_resolved_forward: 30
+    profit_factor_max: 0.80
+    require_negative_avg_r: true
+    evidence_source: point_in_time_post_v2
+  guarded:
+    crypto_intraday_catalyst_or_momentum:
+      reason: "unconfirmed breakout-long sub-cohort; catalyst is a booster, not a universal entry requirement"
+      action_when_enabled: SHADOW_ONLY
+      guarded_entry_modes: [BREAKOUT_CONTINUATION]
+      excluded_entry_modes: [PULLBACK_LIMIT, STRUCTURAL_RETEST]
+      escape_if_any: [catalyst_confirmed, strong_confirmation]
+      # LIMIT_THEN_TAKER_TIMEOUT and NO_CHASE_SKIP remain SHADOW_ONLY through the
+      # authoritative entry-mode policy. MOMENTUM_TAKER_NOW remains HALF_SIZE/cautious.
+  # Already-shadow cohorts (NOT changed here — listed for completeness).
+  already_shadow:
+    - crypto_scalp_momentum
+    - stocks_swing_watchlist_rs
+    - stocks_invest_watchlist_30d
+    - tier_C

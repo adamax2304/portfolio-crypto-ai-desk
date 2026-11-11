@@ -1,0 +1,80 @@
+# Passive Signal Tracking & Performance Analytics
+#
+# This module is PASSIVE. It records proposed A/B signals (and watchlist with
+# clear triggers) and reconciles their outcomes against later candles, so we
+# can measure whether the desk's signals actually work. It NEVER auto-edits
+# scoring weights, NEVER disables strategies, NEVER touches stops/targets.
+# Any rule change must be reviewed and applied manually.
+
+enabled: true
+
+# Which tiers are auto-registered after a report.
+track_tiers:
+  - A
+  - B
+
+# Every directional A/B/C candidate with a concrete entry and structural stop
+# becomes a quiet Armed Watch (`waiting_for_entry`). C-tier remains watch-only:
+# it cannot create an entry-ready Telegram alert or any trade. Candidates
+# without complete/internally valid geometry stay research-only.
+track_watchlist_with_trigger: true
+track_rejected_by_default: false
+
+# How long an unfilled signal is considered "still waiting".
+default_validity_hours:
+  scalp: 2
+  intraday: 24
+  swing: 168    # 7d
+  invest: 720   # 30d
+
+# Suggested candle frequency for outcome polling. Informational — the tracker
+# itself uses the freshest cached OHLCV available; this is here so future
+# schedulers know roughly how often to poll each mode.
+check_intervals:
+  scalp: [15m, 30m, 1h, 2h]
+  intraday: [1h, 4h, 12h, 24h]
+  swing: [1d, 3d, 7d]
+  invest: [1w, 1M]
+
+# Same-candle ambiguity handling. When a single OHLCV candle touches both
+# stop and TP1 (high/low straddle), we can't know the order without tick data.
+# "conservative" => mark stop hit when ambiguous; flag the outcome as ambiguous
+# so it can be excluded from confident winrate calculations.
+outcome_model:
+  default: conservative
+  ambiguous_same_candle: conservative
+
+# R model. TP/stop expressed as multiples of the signal's risk-per-unit, so
+# performance is comparable across symbols & price levels.
+r_model:
+  stop_loss_r: -1
+  tp1_r: 1
+  tp2_r: 2
+  tp3_r: 3
+
+# Stage 1+2 treat every signal as a single full-position win/loss at the worst
+# outcome reached. Partial exits (a la 40/40/20) are off by default — turn on
+# once we trust the data.
+partial_exit_model:
+  enabled: false
+  tp1_size: 0.4
+  tp2_size: 0.4
+  tp3_size: 0.2
+
+# Tier routing policy (FAST SAFE ACCELERATION 2026-06-17). Routing/actionability
+# ONLY — never changes scoring, TP/SL, size, or the signal's tier. A 30d
+# diagnostic showed stocks-intraday C-tier is the book's drag (-34R vs B +132R);
+# this makes the long-standing "C-tier not actionable" behavior an explicit,
+# labeled policy. "shadow_review_only" = registered + tracked + labeled, never
+# pushed as an actionable alert. "actionable" would restore C-tier alerting.
+# Crypto and A/B stocks are unaffected.
+tier_policy:
+  stocks_intraday_c_tier: shadow_review_only   # shadow_review_only | actionable
+
+# Sample-size guards for the review/analytics layer.
+minimum_sample_size_for_recommendations: 30
+minimum_sample_size_for_rule_change_suggestions: 50
+
+# Hard safety: these MUST stay false. The module is observation-only.
+automatic_rule_changes: false
+automatic_scoring_weight_changes: false

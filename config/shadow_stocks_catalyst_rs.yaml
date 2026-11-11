@@ -1,0 +1,71 @@
+stocks_catalyst_rs:
+  feature_flag: false
+  strategy_id: stocks_catalyst_rs_v1
+  profile_id: stocks_catalyst_rs_profile_v2
+  shadow_lane: shadow_catalyst_rs
+  timeframe: 15m
+  catalyst_lookback_hours: 168
+  catalyst_freshness_hours: 24
+  trusted_source_qualities: [company_pr, regulator, reputable, primary]
+  min_secondary_corroboration: 2
+  exploratory_single_secondary_enabled: true
+  exploratory_secondary_event_types:
+    - mna
+    - partnership
+    - product_launch
+    - strategic_investment
+    - contract_award
+    - guidance
+    - management_change
+    - fda_clinical
+  exploratory_blocked_title_markers:
+    - "?"
+    - "could "
+    - "might "
+    - "should you"
+    - "is it time"
+    - "better buy"
+  confirmation_minutes: 15
+  impulse_window_minutes: 20
+  # Broader Shadow observation thresholds. Strict v1 eligibility is retained
+  # separately below and remains the only cohort that can reach REVIEW_ONLY.
+  min_gap_or_impulse_pct: 2.0
+  min_rvol: 1.25
+  rvol_baseline_bars: 20
+  min_rs_spy_pct: 0.10
+  min_rs_sector_pct: 0.05
+  strict_min_gap_or_impulse_pct: 5.0
+  strict_min_rvol: 1.5
+  strict_min_rs_spy_pct: 0.25
+  strict_min_rs_sector_pct: 0.15
+  sector_benchmark_overrides:
+    ai_hardware: SMH
+    ai_software: XLK
+    crypto_equity: QQQ
+  min_dollar_volume: 25000000
+  max_market_data_age_minutes: 20
+  max_entry_data_gap_minutes: 20
+  excluded_event_types:
+    - earnings
+    - legal_risk
+    - offering_dilution
+    - sec_filing
+    - analyst_action
+    - calendar_risk
+    - macro_headline
+    - geopolitical_risk
+    - cpi
+    - fed
+    - jobs
+  allowed_directions: [long]
+  max_stop_adr_multiple: 1.0
+  adr_lookback_days: 20
+  target_r: [1.0, 2.0, 3.0]
+  fee_profile: stock_etf_default
+  force_same_day_exit: true
+  log_next_session_close: true
+  min_clean_closed: 30
+  min_forward_days: 28
+  min_profit_factor: 1.25
+  max_review_drawdown_usd: 250.0
+  report_path: reports/STOCKS_CATALYST_RS_SHADOW.md

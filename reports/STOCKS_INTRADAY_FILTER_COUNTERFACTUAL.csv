@@ -1,0 +1,448 @@
+signal_id,symbol,tier,direction,created_at,session,regime,risk_bucket,catalyst,legal_flag,final_r,final_outcome
+sig_2785b4d1845eb6f2,XLV,C,long,2026-05-26T10:43:09+00:00,premarket,bullish,healthcare,False,False,-1.0,loss
+sig_0fddd30c23015bdc,XLV,C,long,2026-05-26T10:31:25+00:00,premarket,bullish,healthcare,False,False,-1.0,loss
+sig_3995ac1c07197088,XLV,C,long,2026-05-26T10:14:57+00:00,premarket,bullish,healthcare,False,False,-1.0,loss
+sig_80a5d215bac7c05e,XLV,C,long,2026-05-26T10:00:49+00:00,premarket,bullish,healthcare,False,False,-1.0,loss
+sig_01bbb1d4b34ac168,XLV,C,long,2026-05-26T09:43:19+00:00,premarket,bullish,healthcare,False,False,-1.0,loss
+sig_d55f111ab13f0f30,XLV,C,long,2026-05-26T09:30:33+00:00,premarket,bullish,healthcare,False,False,-1.0,loss
+sig_6c92b0ea7d94608d,XLV,C,long,2026-05-25T23:23:39+00:00,holiday,bullish,healthcare,False,False,-1.0,loss
+sig_3131d5d9ab515299,XLV,C,long,2026-05-25T23:09:22+00:00,holiday,bullish,healthcare,False,False,-1.0,loss
+sig_8578d0ac402a0161,XLV,C,long,2026-05-25T22:55:26+00:00,holiday,bullish,healthcare,False,False,-1.0,loss
+sig_76be93037c9c2538,XLV,C,long,2026-05-25T22:40:44+00:00,holiday,bullish,healthcare,False,False,-1.0,loss
+sig_afed7c8ca32b22bd,XLV,C,long,2026-05-25T22:27:09+00:00,holiday,bullish,healthcare,False,False,-1.0,loss
+sig_08bd0557ee163b5b,XLV,C,long,2026-05-25T22:14:12+00:00,holiday,bullish,healthcare,False,False,-1.0,loss
+sig_d202ed19b9302e7c,XLV,C,long,2026-05-25T21:00:26+00:00,holiday,bullish,healthcare,False,False,-1.0,loss
+sig_428099fb398a5f2a,XLV,C,long,2026-05-25T19:48:46+00:00,holiday,bullish,healthcare,False,False,-1.0,loss
+sig_fe1b061cccd2f5d8,XLV,C,long,2026-05-25T17:33:49+00:00,holiday,bullish,healthcare,False,False,-1.0,loss
+sig_c29bd703299faa3f,XLV,C,long,2026-05-25T17:31:23+00:00,holiday,bullish,healthcare,False,False,-1.0,loss
+sig_65afb227077e1532,XLV,C,long,2026-05-25T16:45:56+00:00,holiday,bullish,healthcare,False,False,-1.0,loss
+sig_c65aa9a3150c7121,XLV,C,long,2026-05-25T14:12:59+00:00,holiday,bullish,healthcare,False,False,-1.0,loss
+sig_03f2e226be061a78,MSTR,C,short,2026-05-25T14:12:59+00:00,holiday,bullish,crypto_equity,False,False,-1.0,loss
+sig_f14cb96c04bf386f,LLY,B,long,2026-05-26T16:45:44+00:00,regular session,bullish,healthcare,False,False,-1.0,loss
+sig_eda2ef895d569d7e,AAPL,A,long,2026-05-26T16:45:44+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_7878450829655c66,AAPL,A,long,2026-05-26T16:07:45+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_eb6c0984f7fb3d9a,AAPL,A,long,2026-05-26T15:53:26+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_b12cd0b1551f6ea0,AMD,A,long,2026-05-27T14:05:10+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_3436f43c62f0613f,SMH,B,long,2026-05-27T14:05:10+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_e9d1fde8f325f7a9,XLK,B,long,2026-05-27T14:05:10+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_dd303880c7d42ae0,AVGO,B,long,2026-05-27T13:48:39+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_86f8e58090b8df39,AMD,B,long,2026-05-27T13:43:24+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_e32165a42eba9d54,SMH,B,long,2026-05-27T13:43:24+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_ad436f40f3395118,AVGO,B,long,2026-05-27T13:43:24+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_1aea0f0ec58378a7,XLK,A,long,2026-05-27T11:52:52+00:00,premarket,bullish,megacap_tech,False,False,-1.0,loss
+sig_346c0997665a9610,AMD,B,long,2026-05-27T11:52:52+00:00,premarket,bullish,semis,False,False,-1.0,loss
+sig_3950295e4abaf556,XLK,B,long,2026-05-26T17:05:32+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_d518a26e55552854,XLV,C,long,2026-05-27T14:20:40+00:00,regular session,bullish,healthcare,False,False,-1.0,loss
+sig_ba4742f03215fee1,XLV,C,long,2026-05-27T13:48:39+00:00,regular session,bullish,healthcare,False,False,-1.0,loss
+sig_88f51f96eed1cc08,GOOGL,B,long,2026-05-27T16:55:09+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_80ad5082b3fab761,AAPL,A,long,2026-05-27T15:19:17+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_c3626a2d5002338a,AAPL,A,long,2026-05-27T15:10:17+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_92b9570990988098,AAPL,A,long,2026-05-27T14:53:30+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_9b2ec3620a61fc0a,AAPL,A,long,2026-05-27T14:36:48+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_40c3bd9d18f55fad,AAPL,A,long,2026-05-27T14:20:40+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_0af2329a6c1b5842,XLY,C,long,2026-05-28T11:12:28+00:00,premarket,bullish,megacap_tech,False,False,-1.0,loss
+sig_3a800993c5ea5e63,IWM,C,long,2026-05-28T11:12:28+00:00,premarket,bullish,broad_index,False,False,-1.0,loss
+sig_15b3ad2f12174282,AMZN,C,long,2026-05-28T11:12:28+00:00,premarket,bullish,megacap_tech,False,False,-1.0,loss
+sig_f551aeadd5590a50,XLY,C,long,2026-05-28T09:09:08+00:00,premarket,bullish,megacap_tech,False,False,-1.0,loss
+sig_52c7b3019930b8b6,IWM,C,long,2026-05-28T09:09:08+00:00,premarket,bullish,broad_index,False,False,-1.0,loss
+sig_90a2048a377f6016,AMZN,C,long,2026-05-28T09:09:08+00:00,premarket,bullish,megacap_tech,False,False,-1.0,loss
+sig_0715cb817bc58bc7,XLY,C,long,2026-05-28T07:10:11+00:00,premarket,bullish,megacap_tech,False,False,-1.0,loss
+sig_8cf3c47b9df701b6,IWM,C,long,2026-05-28T07:10:11+00:00,premarket,bullish,broad_index,False,False,-1.0,loss
+sig_947c1a9f6248cbd4,AMZN,C,long,2026-05-28T07:10:11+00:00,premarket,bullish,megacap_tech,False,False,-1.0,loss
+sig_a9cf39d7348cc4e9,XLY,C,long,2026-05-28T05:14:17+00:00,premarket,bullish,megacap_tech,False,False,-1.0,loss
+sig_102589bfe6f61ed8,IWM,C,long,2026-05-28T05:14:17+00:00,premarket,bullish,broad_index,False,False,-1.0,loss
+sig_9e0dc1a1f76b279a,AMZN,C,long,2026-05-28T05:14:17+00:00,premarket,bullish,megacap_tech,False,False,-1.0,loss
+sig_17569bd5b8cb6d7a,XLY,C,long,2026-05-28T03:04:48+00:00,after-hours,bullish,megacap_tech,False,False,-1.0,loss
+sig_6e3a673b82ec399e,IWM,C,long,2026-05-28T03:04:48+00:00,after-hours,bullish,broad_index,False,False,-1.0,loss
+sig_c134ffd716881990,AMZN,C,long,2026-05-28T03:04:48+00:00,after-hours,bullish,megacap_tech,False,False,-1.0,loss
+sig_67fd5df54b3d0726,XLY,C,long,2026-05-28T01:02:56+00:00,after-hours,bullish,megacap_tech,False,False,-1.0,loss
+sig_bc1909ce1d61195f,IWM,C,long,2026-05-28T01:02:56+00:00,after-hours,bullish,broad_index,False,False,-1.0,loss
+sig_8d88189ac23e1bfb,AMZN,C,long,2026-05-28T01:02:56+00:00,after-hours,bullish,megacap_tech,False,False,-1.0,loss
+sig_b6e5eaacc2479adc,XLY,C,long,2026-05-27T22:42:28+00:00,after-hours,bullish,megacap_tech,False,False,-1.0,loss
+sig_d3db6583c7df5a5b,IWM,C,long,2026-05-27T22:42:28+00:00,after-hours,bullish,broad_index,False,False,-1.0,loss
+sig_e1047a2b4e7fb9b1,AMZN,C,long,2026-05-27T22:42:28+00:00,after-hours,bullish,megacap_tech,False,False,-1.0,loss
+sig_debe2a5f09f0cfdd,AVGO,B,long,2026-05-29T14:03:36+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_fe2d1f139b49663e,SMH,B,long,2026-05-29T14:03:36+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_f7e2dfea2636e77b,IWM,C,long,2026-05-29T14:03:36+00:00,regular session,bullish,broad_index,False,False,-1.0,loss
+sig_96281af79dfb3b19,TSLA,B,long,2026-05-29T13:41:04+00:00,regular session,bullish,high_beta_consumer,False,False,-1.0,loss
+sig_82550a8fc34f36ca,TSLA,B,long,2026-05-29T13:34:01+00:00,regular session,bullish,high_beta_consumer,False,False,-1.0,loss
+sig_29640044a687b537,LLY,B,long,2026-05-29T10:40:51+00:00,premarket,bullish,healthcare,False,False,-1.0,loss
+sig_a85964e2b1822d4b,TSLA,B,long,2026-05-29T10:40:51+00:00,premarket,bullish,high_beta_consumer,False,False,-1.0,loss
+sig_007202ab13d675b6,XLV,C,long,2026-05-29T10:40:51+00:00,premarket,bullish,healthcare,False,False,-1.0,loss
+sig_ac036add4fee52fa,IWM,C,long,2026-05-29T10:40:51+00:00,premarket,bullish,broad_index,False,False,-1.0,loss
+sig_4be4b3fdee1d84f5,XLY,C,long,2026-05-29T10:40:51+00:00,premarket,bullish,megacap_tech,False,False,-1.0,loss
+sig_964a65efac14d1f1,LLY,B,long,2026-05-28T21:01:11+00:00,after-hours,bullish,healthcare,False,False,-1.0,loss
+sig_923e4f066103c32e,TSLA,B,long,2026-05-28T21:01:11+00:00,after-hours,bullish,high_beta_consumer,False,False,-1.0,loss
+sig_bd05998feee8d102,XLV,C,long,2026-05-28T21:01:11+00:00,after-hours,bullish,healthcare,False,False,-1.0,loss
+sig_9d2481b6768943af,IWM,C,long,2026-05-28T21:01:11+00:00,after-hours,bullish,broad_index,False,False,-1.0,loss
+sig_c9715efd5fb27e31,XLY,C,long,2026-05-28T21:01:11+00:00,after-hours,bullish,megacap_tech,False,False,-1.0,loss
+sig_ec74fb110f8135c9,AAPL,B,long,2026-05-29T14:41:34+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_aecd5f4a24decc28,AMD,B,long,2026-05-29T14:23:38+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_21f1ca9d56982ff6,SMH,B,long,2026-05-29T14:23:38+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_59b0e363df47d401,AAPL,A,long,2026-05-29T14:23:38+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_e14e01c7ff176d58,SMCI,A,long,2026-05-29T14:03:36+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_2e9f5c553b10195c,AAPL,A,long,2026-05-29T14:03:36+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_c9d17921b02a9b1c,AMD,B,long,2026-05-29T14:03:36+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_95567000404f1b0b,XLK,B,long,2026-05-29T14:03:36+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_0f76be7ede38db17,LLY,B,long,2026-05-29T14:03:36+00:00,regular session,bullish,healthcare,False,False,-1.0,loss
+sig_90cfeb5f8180b4c1,SPY,C,long,2026-05-29T14:03:36+00:00,regular session,bullish,broad_index,False,False,-1.0,loss
+sig_38788fd75ac83a89,AAPL,B,long,2026-05-29T13:41:04+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_3ea2e417d2a20186,AMD,B,long,2026-05-29T13:41:04+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_7533d0023cebc69f,SMH,B,long,2026-05-29T13:41:04+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_3c3fa7ce3cee901b,LLY,B,long,2026-05-29T13:41:04+00:00,regular session,bullish,healthcare,False,False,-1.0,loss
+sig_d01d3df7a386d263,AMD,B,long,2026-05-29T13:34:01+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_d193340e25faa9a3,SMH,B,long,2026-05-29T13:34:01+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_9061e4308828accd,LLY,B,long,2026-05-29T13:34:01+00:00,regular session,bullish,healthcare,False,False,-1.0,loss
+sig_6d74c4dd48ecc815,AMZN,C,long,2026-05-29T13:34:01+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_f5340243b211d99e,AMD,B,long,2026-05-29T10:40:51+00:00,premarket,bullish,semis,False,False,-1.0,loss
+sig_dbd829883b498d76,AMZN,C,long,2026-05-29T10:40:51+00:00,premarket,bullish,megacap_tech,False,False,-1.0,loss
+sig_8a0914c5b7d63793,AMD,B,long,2026-05-28T21:01:11+00:00,after-hours,bullish,semis,False,False,-1.0,loss
+sig_3e0561b39c9b5439,AMZN,C,long,2026-05-28T21:01:11+00:00,after-hours,bullish,megacap_tech,False,False,-1.0,loss
+sig_30d960dc016fe676,AAPL,B,long,2026-05-29T13:34:01+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_5be8ff74498e2ca1,AAPL,B,long,2026-05-29T10:40:51+00:00,premarket,bullish,megacap_tech,False,False,-1.0,loss
+sig_41a9ffb609eb030a,AAPL,B,long,2026-05-28T21:01:11+00:00,after-hours,bullish,megacap_tech,False,False,-1.0,loss
+sig_7d182b4333c41cdd,PLTR,B,long,2026-06-02T01:56:53+00:00,after-hours,bullish,high_beta_ai,False,False,-1.0,loss
+sig_c27390408882be41,PLTR,B,long,2026-06-01T23:22:15+00:00,after-hours,bullish,high_beta_ai,False,False,-1.0,loss
+sig_51ca145aaec9c270,PLTR,B,long,2026-06-01T21:23:18+00:00,after-hours,bullish,high_beta_ai,False,False,-1.0,loss
+sig_40453e6a1c60f2ef,MSFT,A,long,2026-06-01T15:48:05+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_13f2200aa0b317a8,PLTR,B,long,2026-06-01T15:48:05+00:00,regular session,bullish,high_beta_ai,False,False,-1.0,loss
+sig_6af0d157af213f3c,DIA,C,long,2026-06-03T13:46:12+00:00,regular session,bullish,broad_index,False,False,-1.0,loss
+sig_59577df02f5296c2,SMCI,C,long,2026-06-03T12:15:57+00:00,premarket,bullish,semis,False,True,-1.0,loss
+sig_6bab0bb11a05713f,SMCI,A,long,2026-06-03T09:35:03+00:00,premarket,bullish,semis,False,False,-1.0,loss
+sig_ac8cff5669402c4f,SMCI,B,long,2026-06-03T01:06:05+00:00,after-hours,bullish,semis,False,False,-1.0,loss
+sig_52ead07989b8ce25,NVDA,B,long,2026-06-03T01:06:05+00:00,after-hours,bullish,semis,False,False,-1.0,loss
+sig_dfa58a02fbb13386,SPY,C,long,2026-06-03T01:06:05+00:00,after-hours,bullish,broad_index,False,False,-1.0,loss
+sig_dcc4dcfa9585d9ab,JPM,C,long,2026-06-02T20:09:30+00:00,after-hours,bullish,financials,False,False,-1.0,loss
+sig_b00a64d61052e2b5,DIA,C,long,2026-06-02T18:20:50+00:00,regular session,bullish,broad_index,False,False,-1.0,loss
+sig_f4bd4322c109a3b2,UNH,C,short,2026-06-02T17:30:05+00:00,regular session,bullish,healthcare,False,False,-1.0,loss
+sig_cd5e692a6d69713d,NVDA,A,long,2026-06-02T14:42:11+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_016e022f3e4082ae,QQQ,C,long,2026-06-02T14:42:11+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_71bfe0a850895a99,IWM,C,long,2026-06-02T14:42:11+00:00,regular session,bullish,broad_index,False,False,-1.0,loss
+sig_eba2515a09289b5b,NVDA,B,long,2026-06-02T01:56:53+00:00,after-hours,bullish,semis,False,False,-1.0,loss
+sig_e4c38a262c20e3e4,SMCI,B,long,2026-06-02T01:56:53+00:00,after-hours,bullish,semis,False,False,-1.0,loss
+sig_c7faa1f08b7c0724,TSLA,B,long,2026-06-03T15:00:38+00:00,regular session,bullish,high_beta_consumer,False,False,-1.0,loss
+sig_4280078746780144,AAPL,A,long,2026-06-03T13:46:12+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_af2e61fac6e1af03,AAPL,B,long,2026-06-02T15:54:04+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_3420e733bdbe8e97,AAPL,B,long,2026-06-03T01:06:05+00:00,after-hours,bullish,megacap_tech,False,False,-1.0,loss
+sig_b4ed2224cf510d39,SMH,B,long,2026-06-03T01:06:05+00:00,after-hours,bullish,semis,False,False,-1.0,loss
+sig_e403c7ca2f8d0dc8,AMD,B,long,2026-06-03T01:06:05+00:00,after-hours,bullish,semis,False,False,-1.0,loss
+sig_8f380aa080e928e0,SMH,A,long,2026-06-03T14:12:59+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_25198924e952d77c,AMD,A,long,2026-06-03T13:46:12+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_653349e9723209d1,QQQ,C,long,2026-06-03T13:46:12+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_fe06d6c03d141aec,META,C,long,2026-06-04T00:29:11+00:00,after-hours,bullish,megacap_tech,False,False,-1.0,loss
+sig_5c335abf0ff32012,XLK,C,short,2026-06-04T14:14:53+00:00,regular session,bullish,megacap_tech,False,False,-1.0,loss
+sig_ea808f6e7b1b8568,NVDA,B,long,2026-06-04T18:17:21+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_6c0c9d7a7dd083b4,XOM,C,long,2026-06-05T00:09:44+00:00,after-hours,bullish,energy,False,False,-1.0,loss
+sig_9bd5c6e59d58d97b,SPY,C,long,2026-06-04T19:30:25+00:00,regular session,bullish,broad_index,False,False,-1.0,loss
+sig_7876f8027bad0c22,SMCI,C,long,2026-06-04T15:41:43+00:00,regular session,bullish,semis,False,True,-1.0,loss
+sig_3242328baec66e55,XLE,C,long,2026-06-04T15:16:05+00:00,regular session,bullish,energy,False,False,-1.0,loss
+sig_f4cf0690bbf49e05,XOM,C,long,2026-06-04T15:16:05+00:00,regular session,bullish,energy,False,False,-1.0,loss
+sig_0d063090300ee7bf,IWM,C,long,2026-06-04T15:16:05+00:00,regular session,bullish,broad_index,False,False,-1.0,loss
+sig_1ff7ed35eef7c6bd,META,C,long,2026-06-05T09:11:18+00:00,premarket,bullish,megacap_tech,False,False,-1.0,loss
+sig_27592cc0735e534b,XLE,C,long,2026-06-05T00:09:44+00:00,after-hours,bullish,energy,False,False,-1.0,loss
+sig_cbfa65b34f3cd3b6,DIA,C,long,2026-06-04T15:16:05+00:00,regular session,bullish,broad_index,False,False,-1.0,loss
+sig_b47b078b4cce3b60,AAPL,A,long,2026-06-05T13:49:34+00:00,regular session,risk_on,megacap_tech,False,False,-1.0,loss
+sig_05a1c79f3e2bd34a,LLY,A,long,2026-06-05T13:49:34+00:00,regular session,risk_on,healthcare,False,False,-1.0,loss
+sig_98dd2222edbafb92,XLV,B,long,2026-06-05T13:49:34+00:00,regular session,risk_on,healthcare,False,False,-1.0,loss
+sig_3fd1c6444f2df39b,AAPL,C,long,2026-06-05T00:09:44+00:00,after-hours,risk_off,megacap_tech,False,False,-1.0,loss
+sig_ce669b4d82331955,AAPL,C,long,2026-06-04T21:19:01+00:00,after-hours,bullish,megacap_tech,False,False,-1.0,loss
+sig_38f70f53bdab5c5b,XLY,C,short,2026-06-07T22:32:23+00:00,weekend,risk_off,megacap_tech,False,False,-1.0,loss
+sig_b04ba02ae58457e6,DIA,C,short,2026-06-07T22:32:23+00:00,weekend,risk_off,broad_index,False,False,-1.0,loss
+sig_cc94b327340bc317,AAPL,C,long,2026-06-08T17:19:54+00:00,regular session,chop,megacap_tech,False,False,-1.0,loss
+sig_e198d2ff75bf180b,SPY,C,short,2026-06-08T01:00:38+00:00,weekend,risk_off,broad_index,False,False,-1.0,loss
+sig_7edf83a471474fa0,MSFT,C,short,2026-06-08T01:00:38+00:00,weekend,risk_off,megacap_tech,False,False,-1.0,loss
+sig_49e8aea9ca24affc,XOM,B,long,2026-06-08T18:19:23+00:00,regular session,risk_on,energy,False,False,-1.0,loss
+sig_cc8bc83e27b4f28e,XOM,C,long,2026-06-08T17:56:39+00:00,regular session,chop,energy,False,False,-1.0,loss
+sig_a919a377526bf433,XLE,C,long,2026-06-08T17:19:55+00:00,regular session,chop,energy,False,False,-1.0,loss
+sig_cf4842734f0f1262,XOM,A,long,2026-06-08T14:35:03+00:00,regular session,risk_on,energy,False,False,-1.0,loss
+sig_12581d0cf1b42262,GOOGL,B,short,2026-06-08T14:35:03+00:00,regular session,risk_on,megacap_tech,False,False,-1.0,loss
+sig_bf50ffe78ae96997,TSLA,C,short,2026-06-08T01:00:38+00:00,weekend,chop,high_beta_consumer,False,False,-1.0,loss
+sig_fd4fe5da9543a3fd,IWM,C,short,2026-06-08T01:00:38+00:00,weekend,risk_off,broad_index,False,False,-1.0,loss
+sig_a87dd9be8300ece6,XLY,C,short,2026-06-08T01:00:38+00:00,weekend,risk_off,megacap_tech,False,False,-1.0,loss
+sig_5f3c540e8583ea15,GOOGL,C,short,2026-06-08T01:00:38+00:00,weekend,risk_off,megacap_tech,False,False,-1.0,loss
+sig_d398cac5c64a97b1,SMCI,C,long,2026-06-08T18:41:39+00:00,regular session,chop,semis,False,True,-1.0,loss
+sig_802d686a294dd96c,META,C,short,2026-06-08T01:00:38+00:00,weekend,risk_off,megacap_tech,False,False,-1.0,loss
+sig_020021e4a82068a8,QQQ,C,short,2026-06-08T01:00:38+00:00,weekend,risk_off,megacap_tech,False,False,-1.0,loss
+sig_3c4a8069cd4b30fd,AVGO,C,short,2026-06-08T01:00:38+00:00,weekend,risk_off,semis,False,False,-1.0,loss
+sig_48f609a4ba44b9ea,XLF,B,long,2026-06-09T14:13:38+00:00,regular session,risk_on,financials,False,False,-1.0,loss
+sig_8ba36d3d6cbb4f90,JPM,B,long,2026-06-09T13:57:14+00:00,regular session,risk_on,financials,False,False,-1.0,loss
+sig_9ebe226e00fd9a7e,XLY,B,short,2026-06-09T17:12:42+00:00,regular session,risk_off,megacap_tech,False,False,-1.0,loss
+sig_34e6f4fa9b92acfe,XLF,C,long,2026-06-09T13:57:14+00:00,regular session,chop,financials,False,False,-1.0,loss
+sig_6652e56a69b8072f,XLY,C,short,2026-06-09T02:15:13+00:00,after-hours,chop,megacap_tech,False,False,-1.0,loss
+sig_cbd33aa9e9842c41,UNH,C,long,2026-06-09T02:15:13+00:00,after-hours,chop,healthcare,False,True,-1.0,loss
+sig_d415fd24e7ca453a,COIN,B,short,2026-06-09T15:26:08+00:00,regular session,risk_off,crypto_equity,False,False,-1.0,loss
+sig_0da20267f6cc7456,NFLX,C,short,2026-06-09T14:33:50+00:00,regular session,chop,megacap_tech,False,False,-1.0,loss
+sig_c301429d9c7c546b,XOM,C,short,2026-06-09T14:13:38+00:00,regular session,chop,energy,False,False,-1.0,loss
+sig_298070fa16c13992,XLE,C,short,2026-06-09T14:13:38+00:00,regular session,risk_off,energy,False,False,-1.0,loss
+sig_21128df1a5d7bb20,QQQ,B,short,2026-06-09T17:12:42+00:00,regular session,risk_off,megacap_tech,False,False,-1.0,loss
+sig_ca4e141fc9e361a4,IWM,C,long,2026-06-10T13:59:20+00:00,regular session,chop,broad_index,False,False,-1.0,loss
+sig_452e7a995a6490ad,XLV,C,long,2026-06-10T01:20:18+00:00,after-hours,chop,healthcare,False,False,-1.0,loss
+sig_dd58671b68775569,XLV,C,long,2026-06-09T14:29:49+00:00,regular session,chop,healthcare,False,False,-1.0,loss
+sig_3dc2f07e6fc7825b,XLF,C,long,2026-06-10T01:20:18+00:00,after-hours,chop,financials,False,False,-1.0,loss
+sig_f42678607bc609bc,MSTR,C,short,2026-06-10T06:25:22+00:00,premarket,risk_off,crypto_equity,False,False,-1.0,loss
+sig_e9173a3a0f928412,XLK,C,short,2026-06-10T06:25:22+00:00,premarket,risk_off,megacap_tech,False,False,-1.0,loss
+sig_ed7e76f85420b112,COIN,C,short,2026-06-10T06:25:22+00:00,premarket,risk_off,crypto_equity,False,False,-1.0,loss
+sig_2fc29475c1b39815,MSFT,C,short,2026-06-10T01:20:18+00:00,after-hours,risk_off,megacap_tech,False,False,-1.0,loss
+sig_0fac370f21884a94,IWM,C,short,2026-06-10T18:10:11+00:00,regular session,risk_off,broad_index,False,False,-1.0,loss
+sig_43ea67b192e9c550,LLY,C,long,2026-06-10T13:59:20+00:00,regular session,risk_off,healthcare,False,False,-1.0,loss
+sig_6c254815564f1d00,AAPL,C,short,2026-06-11T14:33:38+00:00,regular session,risk_off,megacap_tech,False,False,-1.0,loss
+sig_f5f63600c1495b18,NVDA,C,short,2026-06-11T04:45:17+00:00,premarket,risk_off,semis,False,False,-1.0,loss
+sig_45f24feecfa61f23,AMD,C,short,2026-06-11T04:45:17+00:00,premarket,risk_off,semis,False,False,-1.0,loss
+sig_8528b283bdeb4afa,XLY,C,short,2026-06-11T01:48:49+00:00,after-hours,risk_off,megacap_tech,False,False,-1.0,loss
+sig_0498dafe708b8668,DIA,C,short,2026-06-11T01:48:49+00:00,after-hours,risk_off,broad_index,False,False,-1.0,loss
+sig_8e96490ab575f81e,QQQ,C,short,2026-06-11T01:48:49+00:00,after-hours,risk_off,megacap_tech,False,False,-1.0,loss
+sig_50eef01b4e9fb4ab,AMZN,C,short,2026-06-11T01:48:49+00:00,after-hours,risk_off,megacap_tech,False,False,-1.0,loss
+sig_96e43e831b2ebcef,XLK,C,short,2026-06-11T01:48:49+00:00,after-hours,risk_off,megacap_tech,False,False,-1.0,loss
+sig_7186d6fc0256ad31,SPY,C,short,2026-06-11T01:48:49+00:00,after-hours,risk_off,broad_index,False,False,-1.0,loss
+sig_d3869522a6ee256c,COIN,C,short,2026-06-11T01:48:49+00:00,after-hours,chop,crypto_equity,False,False,-1.0,loss
+sig_8b0e8e8f949d6af4,TSLA,B,short,2026-06-10T15:19:17+00:00,regular session,risk_off,high_beta_consumer,False,False,-1.0,loss
+sig_c358b8b1b912d742,GOOGL,B,short,2026-06-11T14:07:51+00:00,regular session,risk_off,megacap_tech,False,False,-1.0,loss
+sig_0580d23b748befa4,SMH,C,short,2026-06-11T01:48:49+00:00,after-hours,risk_off,semis,False,False,-1.0,loss
+sig_002c7a2082fa758b,AVGO,C,short,2026-06-10T09:40:14+00:00,premarket,risk_off,semis,False,False,-1.0,loss
+sig_c050451f277c6879,TSLA,B,short,2026-06-11T14:07:51+00:00,regular session,risk_off,high_beta_consumer,False,False,-1.0,loss
+sig_4cd0ecfe9b3141df,TSLA,C,short,2026-06-11T01:48:49+00:00,after-hours,chop,high_beta_consumer,False,False,-1.0,loss
+sig_20f54a26eda9dd6c,MSFT,C,short,2026-06-11T01:48:49+00:00,after-hours,chop,megacap_tech,False,False,-1.0,loss
+sig_8bd76234c87cbff8,NVDA,C,short,2026-06-10T18:10:11+00:00,regular session,risk_off,semis,False,False,-1.0,loss
+sig_3bfc065e4f432e8d,XOM,C,short,2026-06-11T17:37:00+00:00,regular session,chop,energy,False,False,-1.0,loss
+sig_76f19238d391d1d3,META,B,short,2026-06-11T14:07:51+00:00,regular session,risk_off,megacap_tech,False,False,-1.0,loss
+sig_975eab8a5b4192ea,LLY,B,long,2026-06-11T19:25:21+00:00,regular session,chop,healthcare,False,False,-1.0,loss
+sig_7b3d60f23b3fd26b,NFLX,B,short,2026-06-11T14:33:38+00:00,regular session,risk_off,megacap_tech,False,False,-1.0,loss
+sig_22c6578c594cebf2,META,B,short,2026-06-12T14:17:07+00:00,regular session,chop,megacap_tech,False,False,-1.0,loss
+sig_4caffb0c5ff2f8af,NFLX,B,short,2026-06-12T14:17:07+00:00,regular session,chop,megacap_tech,False,False,-1.0,loss
+sig_9ce3611002ecbbc7,LLY,C,long,2026-06-11T14:49:08+00:00,regular session,chop,healthcare,False,False,-1.0,loss
+sig_9cfd5ee9a7a76589,LLY,B,long,2026-06-12T14:17:07+00:00,regular session,chop,healthcare,False,False,-1.0,loss
+sig_6fd0156a6c2f6d5e,PLTR,C,short,2026-06-12T00:05:26+00:00,after-hours,chop,high_beta_ai,False,False,-1.0,loss
+sig_f357910a5b522099,NFLX,C,short,2026-06-12T00:05:26+00:00,after-hours,chop,megacap_tech,False,False,-1.0,loss
+sig_4f58950202fcaf03,XLF,B,long,2026-06-15T14:32:52+00:00,regular session,risk_on,financials,False,False,-1.0,loss
+sig_27a92c9a8d9ecc28,AMD,B,long,2026-06-15T15:30:17+00:00,regular session,risk_on,semis,False,False,-1.0,loss
+sig_e3f3170c0a4a6a49,PLTR,B,long,2026-06-15T15:30:17+00:00,regular session,risk_on,high_beta_ai,True,False,-1.0,loss
+sig_104cb486b7059421,SMH,B,long,2026-06-15T15:30:17+00:00,regular session,risk_on,semis,False,False,-1.0,loss
+sig_fb6f8a8143e99253,XLK,B,long,2026-06-15T14:32:52+00:00,regular session,risk_on,megacap_tech,False,False,-1.0,loss
+sig_8eba98a9df26be49,PLTR,C,long,2026-06-15T17:02:02+00:00,regular session,risk_on,high_beta_ai,True,False,-1.0,loss
+sig_9e805c63006e7d7f,NVDA,C,long,2026-06-15T15:30:17+00:00,regular session,risk_on,semis,True,False,-1.0,loss
+sig_fca232e92c95382c,MSTR,C,long,2026-06-15T14:32:52+00:00,regular session,risk_on,crypto_equity,True,False,-1.0,loss
+sig_ccf89ca539c58413,TSLA,C,long,2026-06-15T14:32:52+00:00,regular session,risk_on,high_beta_consumer,True,False,-1.0,loss
+sig_77ac7e01bcae675c,AMD,C,long,2026-06-15T02:16:53+00:00,weekend,risk_on,semis,True,False,-1.0,loss
+sig_b0ae476a7ba21c7f,SMH,C,long,2026-06-15T02:16:53+00:00,weekend,risk_on,semis,False,False,-1.0,loss
+sig_0918cb3bf8b86aa4,XLK,C,long,2026-06-15T02:16:53+00:00,weekend,risk_on,megacap_tech,False,False,-1.0,loss
+sig_3a0bf106769d0729,NFLX,C,short,2026-06-15T02:16:53+00:00,weekend,risk_on,megacap_tech,False,False,-1.0,loss
+sig_81bcaa7a3dd37d11,QQQ,C,long,2026-06-15T02:16:53+00:00,weekend,risk_on,megacap_tech,False,False,-1.0,loss
+sig_97697973795f27e5,AMD,B,long,2026-06-16T14:19:35+00:00,regular session,risk_on,semis,False,False,-1.0,loss
+sig_09a1b5069c81f861,SMH,B,long,2026-06-16T14:19:35+00:00,regular session,bullish,semis,False,False,-1.0,loss
+sig_6117ce2bc91554c7,IWM,C,long,2026-06-15T02:16:53+00:00,weekend,risk_on,broad_index,False,False,-1.0,loss
+sig_c1f5d60cb6977176,TSLA,C,long,2026-06-16T05:09:13+00:00,premarket,bullish,high_beta_consumer,True,False,1.0,win
+sig_a144c46005e6e30f,XLY,C,long,2026-06-16T01:53:48+00:00,after-hours,bullish,megacap_tech,False,False,1.0,win
+sig_142516d6fcdddd49,DIA,C,long,2026-06-15T02:16:53+00:00,weekend,risk_on,broad_index,False,False,1.0,win
+sig_38c09a15dba3a701,XLE,C,short,2026-06-12T00:05:26+00:00,after-hours,chop,energy,False,False,1.0,win
+sig_16e30e5be8137843,DIA,C,long,2026-06-11T19:25:21+00:00,regular session,chop,broad_index,False,False,1.0,win
+sig_7eea48c5ce75f4c7,IWM,C,long,2026-06-11T17:37:00+00:00,regular session,chop,broad_index,False,False,1.0,win
+sig_331888b7c6ca54f4,PLTR,C,short,2026-06-11T01:48:49+00:00,after-hours,chop,high_beta_ai,False,False,1.0,win
+sig_c23d3503ff19d31c,GOOGL,C,short,2026-06-11T01:48:49+00:00,after-hours,chop,megacap_tech,False,False,1.0,win
+sig_4b20e8ea0e929d5d,UNH,C,long,2026-06-10T01:20:18+00:00,after-hours,chop,healthcare,False,True,1.0,win
+sig_acd3d668be5850b1,TSLA,C,short,2026-06-09T14:55:27+00:00,regular session,chop,high_beta_consumer,False,False,1.0,win
+sig_a8d48d83aa2f96b1,COIN,C,short,2026-06-09T14:55:27+00:00,regular session,chop,crypto_equity,False,False,1.0,win
+sig_47b55dc92a583d54,JPM,C,long,2026-06-08T14:35:03+00:00,regular session,chop,financials,False,False,1.0,win
+sig_1aa57360a07e63d9,LLY,C,long,2026-06-08T01:00:38+00:00,weekend,risk_off,healthcare,False,False,1.0,win
+sig_eedf1d8d6ed01b1a,MSFT,C,short,2026-06-07T22:32:23+00:00,weekend,risk_off,megacap_tech,False,False,1.0,win
+sig_bef9c60efc5afd7b,UNH,C,long,2026-06-07T22:32:23+00:00,weekend,risk_off,healthcare,False,True,1.0,win
+sig_865cd7567253350f,DIA,C,long,2026-06-05T00:09:44+00:00,after-hours,bullish,broad_index,False,False,1.0,win
+sig_7f2e735c0526d677,JPM,C,long,2026-06-05T00:09:44+00:00,after-hours,risk_on,financials,False,False,1.0,win
+sig_21589d9b859a46bf,COIN,C,short,2026-06-03T14:12:59+00:00,regular session,bullish,crypto_equity,False,False,1.0,win
+sig_d219a2cae8bda69e,AVGO,C,long,2026-06-03T01:06:05+00:00,after-hours,bullish,semis,False,False,1.0,win
+sig_68e79424fc0ecbcb,AVGO,C,long,2026-06-02T01:56:53+00:00,after-hours,bullish,semis,False,False,1.0,win
+sig_90c660489f8a022d,QQQ,C,long,2026-06-01T15:48:05+00:00,regular session,bullish,megacap_tech,False,False,1.0,win
+sig_5511aa0a77afa7f4,SPY,C,long,2026-06-01T13:14:33+00:00,premarket,bullish,broad_index,False,False,1.0,win
+sig_c56f2ba5412c7c73,SPY,C,long,2026-06-01T10:43:51+00:00,premarket,bullish,broad_index,False,False,1.0,win
+sig_5aad304435465d7d,SPY,C,long,2026-06-01T08:06:53+00:00,premarket,bullish,broad_index,False,False,1.0,win
+sig_3e0f7c177de4ce4d,SPY,C,long,2026-06-01T05:45:15+00:00,premarket,bullish,broad_index,False,False,1.0,win
+sig_1875b4f02bf0acd4,SPY,C,long,2026-06-01T03:09:50+00:00,weekend,bullish,broad_index,False,False,1.0,win
+sig_c7b15269f94738e3,SPY,C,long,2026-06-01T00:41:52+00:00,weekend,bullish,broad_index,False,False,1.0,win
+sig_4919946e6dcbb217,SPY,C,long,2026-05-31T22:00:30+00:00,weekend,bullish,broad_index,False,False,1.0,win
+sig_ed959ab12a0f4d9b,AVGO,C,long,2026-05-29T18:16:12+00:00,regular session,bullish,semis,False,False,1.0,win
+sig_21e828beafd7c2eb,DIA,C,long,2026-05-29T14:23:38+00:00,regular session,bullish,broad_index,False,False,1.0,win
+sig_1a7354c0d8a298fc,QQQ,C,long,2026-05-28T11:12:28+00:00,premarket,bullish,megacap_tech,False,False,1.0,win
+sig_0508855d00bcd207,SPY,C,long,2026-05-28T11:12:28+00:00,premarket,bullish,broad_index,False,False,1.0,win
+sig_6dd795d06e864b59,QQQ,C,long,2026-05-28T09:09:08+00:00,premarket,bullish,megacap_tech,False,False,1.0,win
+sig_1971ed3ebc46bb8d,SPY,C,long,2026-05-28T09:09:08+00:00,premarket,bullish,broad_index,False,False,1.0,win
+sig_90b5170dcb687aa6,QQQ,C,long,2026-05-28T07:10:11+00:00,premarket,bullish,megacap_tech,False,False,1.0,win
+sig_c02df4a5d1dc5f4a,SPY,C,long,2026-05-28T07:10:11+00:00,premarket,bullish,broad_index,False,False,1.0,win
+sig_59d9a88dac8be4ef,QQQ,C,long,2026-05-28T05:14:17+00:00,premarket,bullish,megacap_tech,False,False,1.0,win
+sig_2652c6bcc0336511,SPY,C,long,2026-05-28T05:14:17+00:00,premarket,bullish,broad_index,False,False,1.0,win
+sig_9871e3e5e8836a62,QQQ,C,long,2026-05-28T03:04:48+00:00,after-hours,bullish,megacap_tech,False,False,1.0,win
+sig_0c558579ae0f2f94,SPY,C,long,2026-05-28T03:04:48+00:00,after-hours,bullish,broad_index,False,False,1.0,win
+sig_c6de36bb1f6aa97e,QQQ,C,long,2026-05-28T01:02:56+00:00,after-hours,bullish,megacap_tech,False,False,1.0,win
+sig_6123722dcbbf5cf2,SPY,C,long,2026-05-28T01:02:56+00:00,after-hours,bullish,broad_index,False,False,1.0,win
+sig_7636d76d766abded,QQQ,C,long,2026-05-27T22:42:28+00:00,after-hours,bullish,megacap_tech,False,False,1.0,win
+sig_9d3f2085c1ca9e70,SPY,C,long,2026-05-27T22:42:28+00:00,after-hours,bullish,broad_index,False,False,1.0,win
+sig_6dea1fcef59039b3,DIA,C,long,2026-05-27T13:48:39+00:00,regular session,bullish,broad_index,False,False,1.0,win
+sig_22f357af9eac5c36,AVGO,C,long,2026-05-26T17:05:32+00:00,regular session,bullish,semis,False,False,1.0,win
+sig_a646f24e962080e5,QQQ,C,long,2026-05-26T16:45:44+00:00,regular session,bullish,megacap_tech,False,False,1.0,win
+sig_21156e9e3cff8067,PLTR,B,short,2026-06-10T18:10:11+00:00,regular session,risk_off,high_beta_ai,False,False,1.0,win
+sig_ace30cc1b320df0f,NVDA,B,short,2026-06-09T18:06:47+00:00,regular session,risk_off,semis,False,False,1.0,win
+sig_bede7797d799d4a7,PLTR,B,short,2026-06-09T17:31:18+00:00,regular session,risk_off,high_beta_ai,False,False,1.0,win
+sig_af48842aa2ffea46,GOOGL,B,short,2026-06-09T15:26:08+00:00,regular session,risk_off,megacap_tech,False,False,1.0,win
+sig_e422c0b4a6218099,AVGO,B,short,2026-06-09T15:26:08+00:00,regular session,risk_off,semis,False,False,1.0,win
+sig_106be9af37b14565,AMZN,B,short,2026-06-09T15:26:08+00:00,regular session,risk_off,megacap_tech,False,False,1.0,win
+sig_08c3cc094f7e8fb1,XLV,B,long,2026-06-09T13:57:14+00:00,regular session,risk_on,healthcare,False,False,1.0,win
+sig_b73117626022aa93,AAPL,B,long,2026-06-08T15:45:23+00:00,regular session,chop,megacap_tech,False,False,1.0,win
+sig_0459408ccf3cb61a,JPM,B,long,2026-06-08T15:25:36+00:00,regular session,bullish,financials,False,False,1.0,win
+sig_47767d5ac68dd1ba,QQQ,B,short,2026-06-05T17:18:45+00:00,regular session,risk_off,megacap_tech,False,False,1.0,win
+sig_72d0a7b0356a2ec1,XLK,B,short,2026-06-05T17:18:45+00:00,regular session,risk_off,megacap_tech,False,False,1.0,win
+sig_2c019daa744ce0bd,MSFT,B,short,2026-06-05T16:41:42+00:00,regular session,risk_off,megacap_tech,False,False,1.0,win
+sig_e754ba024026292e,AAPL,B,long,2026-06-04T18:17:21+00:00,regular session,bullish,megacap_tech,False,False,1.0,win
+sig_aba948056b8fc1ab,UNH,A,long,2026-06-04T15:16:05+00:00,regular session,bullish,healthcare,False,False,1.0,win
+sig_fa7a9449bbb68dca,UNH,B,long,2026-06-04T14:14:53+00:00,regular session,bullish,healthcare,False,False,1.0,win
+sig_2c07b36f002561d7,AVGO,B,long,2026-06-03T09:35:03+00:00,premarket,bullish,semis,False,False,1.0,win
+sig_834e7695d929cb9d,QQQ,B,long,2026-06-03T01:06:05+00:00,after-hours,bullish,megacap_tech,False,False,1.0,win
+sig_f0a37922e9e3b122,XLK,B,long,2026-06-03T01:06:05+00:00,after-hours,bullish,megacap_tech,False,False,1.0,win
+sig_b011a63033f69aee,AVGO,B,long,2026-06-02T17:30:05+00:00,regular session,bullish,semis,False,False,1.0,win
+sig_f71a636fa722b99d,XLK,B,long,2026-06-01T15:48:05+00:00,regular session,bullish,megacap_tech,False,False,1.0,win
+sig_6d87d1c3640c0678,PLTR,B,long,2026-06-01T13:14:33+00:00,premarket,bullish,high_beta_ai,False,False,1.0,win
+sig_2fc665b4095f6033,PLTR,B,long,2026-06-01T10:43:51+00:00,premarket,bullish,high_beta_ai,False,False,1.0,win
+sig_c131f583445a09ba,PLTR,B,long,2026-06-01T08:06:53+00:00,premarket,bullish,high_beta_ai,False,False,1.0,win
+sig_9b04589f43d617a2,PLTR,B,long,2026-06-01T05:45:15+00:00,premarket,bullish,high_beta_ai,False,False,1.0,win
+sig_f68b0147105afaac,PLTR,B,long,2026-06-01T03:09:50+00:00,weekend,bullish,high_beta_ai,False,False,1.0,win
+sig_006ce0b3e3de0730,PLTR,B,long,2026-06-01T00:41:52+00:00,weekend,bullish,high_beta_ai,False,False,1.0,win
+sig_c09803bf4c682d01,PLTR,B,long,2026-05-31T22:00:30+00:00,weekend,bullish,high_beta_ai,False,False,1.0,win
+sig_affb4572d4ebf7f0,MSFT,B,long,2026-05-29T18:16:12+00:00,regular session,bullish,megacap_tech,False,False,1.0,win
+sig_d481b686a4ffc12a,AMD,B,long,2026-05-29T18:07:16+00:00,regular session,bullish,semis,False,False,1.0,win
+sig_3c9d0848b38c136b,MSFT,B,long,2026-05-29T18:07:16+00:00,regular session,bullish,megacap_tech,False,False,1.0,win
+sig_10936603bdb5c744,PLTR,B,long,2026-05-29T14:03:36+00:00,regular session,bullish,high_beta_ai,False,False,1.0,win
+sig_a6199c371ea326ad,XLK,B,long,2026-05-28T11:12:28+00:00,premarket,bullish,megacap_tech,False,False,1.0,win
+sig_ab5baebdb9e2e850,XLK,B,long,2026-05-28T09:09:08+00:00,premarket,bullish,megacap_tech,False,False,1.0,win
+sig_d633e4bea50d277b,XLK,B,long,2026-05-28T07:10:11+00:00,premarket,bullish,megacap_tech,False,False,1.0,win
+sig_c1fede62ff3ec512,XLK,B,long,2026-05-28T05:14:17+00:00,premarket,bullish,megacap_tech,False,False,1.0,win
+sig_3982433d93bda87d,XLK,B,long,2026-05-28T03:04:48+00:00,after-hours,bullish,megacap_tech,False,False,1.0,win
+sig_292e3cee99dd2a74,XLK,B,long,2026-05-28T01:02:56+00:00,after-hours,bullish,megacap_tech,False,False,1.0,win
+sig_c652ae21cb02f18d,XLK,B,long,2026-05-27T22:42:28+00:00,after-hours,bullish,megacap_tech,False,False,1.0,win
+sig_d704820006abe950,AAPL,A,long,2026-05-27T13:43:24+00:00,regular session,bullish,megacap_tech,False,False,1.0,win
+sig_360c9733b8e10580,SMCI,B,long,2026-05-27T11:52:52+00:00,premarket,bullish,semis,False,False,1.0,win
+sig_79c6ac3d8dc11a72,AAPL,A,long,2026-05-26T17:05:32+00:00,regular session,bullish,megacap_tech,False,False,1.0,win
+sig_ab9207bf8b894aa7,SMCI,B,long,2026-05-26T17:05:32+00:00,regular session,bullish,semis,False,False,1.0,win
+sig_426a982a3f3444f6,SMH,B,long,2026-05-26T17:05:32+00:00,regular session,bullish,semis,False,False,1.0,win
+sig_aa9782b7c686ea90,AMD,B,long,2026-05-26T16:45:44+00:00,regular session,bullish,semis,False,False,1.0,win
+sig_49bcd954bceb7ce7,SMCI,B,long,2026-05-26T16:45:44+00:00,regular session,bullish,semis,False,False,1.0,win
+sig_7c05fa3b58184fe0,SMH,B,long,2026-05-26T16:27:23+00:00,regular session,bullish,semis,False,False,1.0,win
+sig_bb1109fbc40074d0,AAPL,A,long,2026-05-26T16:27:22+00:00,regular session,bullish,megacap_tech,False,False,1.0,win
+sig_99b83c5e98c281c8,AMD,B,long,2026-05-26T16:27:22+00:00,regular session,bullish,semis,False,False,1.0,win
+sig_2e6e343764a25c80,SMH,B,long,2026-05-26T16:07:45+00:00,regular session,bullish,semis,False,False,1.0,win
+sig_c04850c33f366575,AMD,B,long,2026-05-26T15:53:26+00:00,regular session,bullish,semis,False,False,1.0,win
+sig_64cf7525f62abf18,QQQ,B,long,2026-05-26T15:53:26+00:00,regular session,bullish,megacap_tech,False,False,1.0,win
+sig_6abcc959680ec750,LLY,A,long,2026-05-26T10:43:09+00:00,premarket,bullish,healthcare,False,False,1.0,win
+sig_e08c3122d089d437,LLY,A,long,2026-05-26T10:31:25+00:00,premarket,bullish,healthcare,False,False,1.0,win
+sig_d479a56f6bc83ace,LLY,A,long,2026-05-26T10:14:57+00:00,premarket,bullish,healthcare,False,False,1.0,win
+sig_2731a29b3e49b201,LLY,A,long,2026-05-26T10:00:49+00:00,premarket,bullish,healthcare,False,False,1.0,win
+sig_d227364b649dcf05,LLY,A,long,2026-05-26T09:43:19+00:00,premarket,bullish,healthcare,False,False,1.0,win
+sig_beec0d7b2395e644,LLY,A,long,2026-05-26T09:30:32+00:00,premarket,bullish,healthcare,False,False,1.0,win
+sig_b1dfe14bf86ea0d2,LLY,A,long,2026-05-25T23:23:39+00:00,holiday,bullish,healthcare,False,False,1.0,win
+sig_856491f5bb3db33a,LLY,A,long,2026-05-25T23:09:22+00:00,holiday,bullish,healthcare,False,False,1.0,win
+sig_d5b0ed08d1a77a7e,LLY,A,long,2026-05-25T22:55:26+00:00,holiday,bullish,healthcare,False,False,1.0,win
+sig_737800cdd1b739ed,LLY,A,long,2026-05-25T22:40:44+00:00,holiday,bullish,healthcare,False,False,1.0,win
+sig_0f86321261f1f188,LLY,A,long,2026-05-25T22:27:09+00:00,holiday,bullish,healthcare,False,False,1.0,win
+sig_5dae91ae69c0231e,LLY,A,long,2026-05-25T22:14:12+00:00,holiday,bullish,healthcare,False,False,1.0,win
+sig_b4840839f445391d,LLY,A,long,2026-05-25T21:00:26+00:00,holiday,bullish,healthcare,False,False,1.0,win
+sig_f8684dbcc7a924d8,LLY,A,long,2026-05-25T19:48:45+00:00,holiday,bullish,healthcare,False,False,1.0,win
+sig_74045ff85a63c0fb,LLY,A,long,2026-05-25T17:33:48+00:00,holiday,bullish,healthcare,False,False,1.0,win
+sig_c1f4ff892765ef59,LLY,A,long,2026-05-25T17:31:23+00:00,holiday,bullish,healthcare,False,False,1.0,win
+sig_c208ae7d93979368,LLY,A,long,2026-05-25T16:45:56+00:00,holiday,bullish,healthcare,False,False,1.0,win
+sig_5b23b19447c498aa,LLY,A,long,2026-05-25T14:12:59+00:00,holiday,bullish,healthcare,False,False,1.0,win
+sig_8a2960bb46247bf3,XLF,C,long,2026-06-15T02:16:53+00:00,weekend,risk_on,financials,False,False,2.0,win
+sig_16883ece83b3ffbd,JPM,C,long,2026-06-11T17:37:00+00:00,regular session,chop,financials,False,False,2.0,win
+sig_c8bd18d7bb295a3d,XLF,C,long,2026-06-11T17:37:00+00:00,regular session,chop,financials,False,False,2.0,win
+sig_8f99a0848f567f93,NFLX,C,short,2026-06-11T14:07:51+00:00,regular session,chop,megacap_tech,False,False,2.0,win
+sig_dc5333b26ef1ae21,NVDA,C,short,2026-06-09T02:15:13+00:00,after-hours,chop,semis,False,False,2.0,win
+sig_758246f716e537d4,XLV,C,long,2026-06-08T14:35:03+00:00,regular session,chop,healthcare,False,False,2.0,win
+sig_71cb3dc4db969a72,XLF,C,long,2026-06-08T14:35:03+00:00,regular session,risk_on,financials,False,False,2.0,win
+sig_d61214e832435511,SMH,C,short,2026-06-08T01:00:38+00:00,weekend,risk_off,semis,False,False,2.0,win
+sig_633b3bf767541860,NVDA,C,short,2026-06-08T01:00:38+00:00,weekend,risk_off,semis,False,False,2.0,win
+sig_0f4c9a8d4c39ad28,XLV,C,long,2026-06-04T15:16:05+00:00,regular session,bullish,healthcare,False,False,2.0,win
+sig_7ad4d83188a80a5f,QQQ,C,long,2026-06-01T13:14:33+00:00,premarket,bullish,megacap_tech,False,False,2.0,win
+sig_a83d2b951df6258b,QQQ,C,long,2026-06-01T10:43:51+00:00,premarket,bullish,megacap_tech,False,False,2.0,win
+sig_5e9a905c7d3d48e8,QQQ,C,long,2026-06-01T08:06:53+00:00,premarket,bullish,megacap_tech,False,False,2.0,win
+sig_6d8f77abb4afb644,QQQ,C,long,2026-06-01T05:45:15+00:00,premarket,bullish,megacap_tech,False,False,2.0,win
+sig_37f4518fd3bc9a3c,QQQ,C,long,2026-06-01T03:09:50+00:00,weekend,bullish,megacap_tech,False,False,2.0,win
+sig_93490e5a055d8acb,QQQ,C,long,2026-06-01T00:41:52+00:00,weekend,bullish,megacap_tech,False,False,2.0,win
+sig_d6e548d57e7a4f04,QQQ,C,long,2026-05-31T22:00:30+00:00,weekend,bullish,megacap_tech,False,False,2.0,win
+sig_7e0010cbf4c2fdb0,AVGO,C,long,2026-05-29T13:34:01+00:00,regular session,bullish,semis,False,False,2.0,win
+sig_18747b8ef37f22c1,JPM,B,long,2026-06-16T14:51:07+00:00,regular session,bullish,financials,False,False,2.0,win
+sig_86c7a51172fd4fc4,JPM,A,long,2026-06-16T14:19:35+00:00,regular session,risk_on,financials,False,False,2.0,win
+sig_3b4841b9fccee3f9,XLF,B,long,2026-06-16T14:19:35+00:00,regular session,risk_on,financials,False,False,2.0,win
+sig_a3afd130a60dc42e,JPM,A,long,2026-06-15T14:32:52+00:00,regular session,risk_on,financials,False,False,2.0,win
+sig_ac63653b107e9de3,AMD,B,long,2026-06-11T19:25:21+00:00,regular session,chop,semis,False,False,2.0,win
+sig_bf1cd5d1a2726cfe,JPM,B,long,2026-06-11T18:28:11+00:00,regular session,chop,financials,False,False,2.0,win
+sig_79b935170f2ae8ec,XLV,B,long,2026-06-08T18:19:23+00:00,regular session,risk_on,healthcare,False,False,2.0,win
+sig_165f8a3256f6c675,SPY,B,short,2026-06-05T17:18:45+00:00,regular session,risk_off,broad_index,False,False,2.0,win
+sig_e495849699138824,AMZN,B,short,2026-06-05T16:41:42+00:00,regular session,risk_off,megacap_tech,False,False,2.0,win
+sig_384466b92ce053ce,META,B,short,2026-06-05T16:41:41+00:00,regular session,risk_off,megacap_tech,False,False,2.0,win
+sig_f68ae294cf1310dd,XLV,B,long,2026-06-04T14:14:53+00:00,regular session,bullish,healthcare,False,False,2.0,win
+sig_2495131d4875517e,AMD,A,long,2026-06-02T01:56:53+00:00,after-hours,bullish,semis,False,False,2.0,win
+sig_9dcac6df8be430e3,NVDA,B,long,2026-06-01T15:48:05+00:00,regular session,bullish,semis,False,False,2.0,win
+sig_7f647b6656ec74de,SMCI,B,long,2026-06-01T15:48:05+00:00,regular session,bullish,semis,False,False,2.0,win
+sig_ae38ff9bac4d025a,AVGO,B,long,2026-06-01T13:14:33+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_a02f6f18737bf02a,SMH,B,long,2026-06-01T13:14:33+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_3ce9b2c7f1685184,AVGO,B,long,2026-06-01T10:43:51+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_a8a35690b5004274,SMH,B,long,2026-06-01T10:43:51+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_ce58a8687858630e,AVGO,B,long,2026-06-01T08:06:53+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_eda9588bb617d663,SMH,B,long,2026-06-01T08:06:53+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_79bf3672562704d4,AVGO,B,long,2026-06-01T05:45:15+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_5b378d219e50f94b,SMH,B,long,2026-06-01T05:45:15+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_aae68d03e683101e,AVGO,B,long,2026-06-01T03:09:50+00:00,weekend,bullish,semis,False,False,2.0,win
+sig_6e6ae3f996c4df9d,SMH,B,long,2026-06-01T03:09:50+00:00,weekend,bullish,semis,False,False,2.0,win
+sig_cd60bb5cbe6724bf,AVGO,B,long,2026-06-01T00:41:52+00:00,weekend,bullish,semis,False,False,2.0,win
+sig_79f1693a7fe46dab,SMH,B,long,2026-06-01T00:41:52+00:00,weekend,bullish,semis,False,False,2.0,win
+sig_8defe70fb71952f4,AVGO,B,long,2026-05-31T22:00:30+00:00,weekend,bullish,semis,False,False,2.0,win
+sig_404686395ba5d75f,SMH,B,long,2026-05-31T22:00:30+00:00,weekend,bullish,semis,False,False,2.0,win
+sig_fc72edee7d479258,MSFT,B,long,2026-05-29T13:41:04+00:00,regular session,bullish,megacap_tech,False,False,2.0,win
+sig_33ec22a20870df24,AMD,B,long,2026-05-28T11:12:28+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_b738b7b8bba3aebf,AMD,B,long,2026-05-28T09:09:08+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_7faa5f8cab996d77,AMD,B,long,2026-05-28T07:10:11+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_c7308a4fb9de4540,AMD,B,long,2026-05-28T05:14:17+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_4b7e82ebf74294b4,AMD,B,long,2026-05-28T03:04:48+00:00,after-hours,bullish,semis,False,False,2.0,win
+sig_8046245e2207c12a,AMD,B,long,2026-05-28T01:02:56+00:00,after-hours,bullish,semis,False,False,2.0,win
+sig_9166c4bb275595f6,AMD,B,long,2026-05-27T22:42:28+00:00,after-hours,bullish,semis,False,False,2.0,win
+sig_37ac5218126f8c82,AAPL,A,long,2026-05-27T11:52:51+00:00,premarket,bullish,megacap_tech,False,False,2.0,win
+sig_126410b8241ccc98,TSLA,B,long,2026-05-26T17:05:32+00:00,regular session,bullish,high_beta_consumer,False,False,2.0,win
+sig_8bff33a3cff47f7b,TSLA,B,long,2026-05-26T16:45:44+00:00,regular session,bullish,high_beta_consumer,False,False,2.0,win
+sig_fbf95af89e412662,SMH,B,long,2026-05-26T16:45:44+00:00,regular session,bullish,semis,False,False,2.0,win
+sig_437d921a563e12b2,TSLA,B,long,2026-05-26T16:07:45+00:00,regular session,bullish,high_beta_consumer,False,False,2.0,win
+sig_7bfd62a65788fe6e,TSLA,B,long,2026-05-26T15:53:26+00:00,regular session,bullish,high_beta_consumer,False,False,2.0,win
+sig_4841523590626344,SMCI,B,long,2026-05-26T15:53:26+00:00,regular session,bullish,semis,False,False,2.0,win
+sig_34328e788c091791,SMH,B,long,2026-05-26T15:53:26+00:00,regular session,bullish,semis,False,False,2.0,win
+sig_5ea99e4e99ba40d6,SMCI,B,long,2026-05-26T10:43:09+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_12b1a29842cc8044,SMCI,B,long,2026-05-26T10:31:25+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_bb89068f718a6d1e,SMCI,B,long,2026-05-26T10:14:57+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_21984b2c08b6c804,SMCI,B,long,2026-05-26T10:00:49+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_98634595ea7cf3dc,SMCI,B,long,2026-05-26T09:43:19+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_f0d22868a063f4ef,SMCI,B,long,2026-05-26T09:30:32+00:00,premarket,bullish,semis,False,False,2.0,win
+sig_bf4e3228724b5c82,SMCI,B,long,2026-05-25T23:23:39+00:00,holiday,bullish,semis,False,False,2.0,win
+sig_94edc3a3e82302f7,SMCI,B,long,2026-05-25T23:09:22+00:00,holiday,bullish,semis,False,False,2.0,win
+sig_c08799bd47af648f,SMCI,B,long,2026-05-25T22:55:26+00:00,holiday,bullish,semis,False,False,2.0,win
+sig_8029a7cfe5b0991a,SMCI,B,long,2026-05-25T22:40:44+00:00,holiday,bullish,semis,False,False,2.0,win
+sig_06c4b4863a29b6b3,SMCI,B,long,2026-05-25T22:27:09+00:00,holiday,bullish,semis,False,False,2.0,win
+sig_cd45ffb93562624e,SMCI,B,long,2026-05-25T22:14:12+00:00,holiday,bullish,semis,False,False,2.0,win
+sig_95846b4c343bd439,SMCI,B,long,2026-05-25T21:00:26+00:00,holiday,bullish,semis,False,False,2.0,win
+sig_2b2220282e946a08,SMCI,B,long,2026-05-25T19:48:45+00:00,holiday,bullish,semis,False,False,2.0,win
+sig_d29eb463bb048742,SMCI,B,long,2026-05-25T17:33:48+00:00,holiday,bullish,semis,False,False,2.0,win
+sig_23afcbf08f13ca1d,SMCI,B,long,2026-05-25T17:31:23+00:00,holiday,bullish,semis,False,False,2.0,win
+sig_90fecd2592758087,SMCI,B,long,2026-05-25T16:45:56+00:00,holiday,bullish,semis,False,False,2.0,win
+sig_5513eaf3bbd4bef9,SMCI,B,long,2026-05-28T11:12:28+00:00,premarket,bullish,semis,False,False,3.0,win
+sig_d30e6b8d33819c9a,SMCI,B,long,2026-05-28T09:09:08+00:00,premarket,bullish,semis,False,False,3.0,win
+sig_79124a0d3df1eef3,SMCI,B,long,2026-05-28T07:10:11+00:00,premarket,bullish,semis,False,False,3.0,win
+sig_297ae600e55a1817,SMCI,B,long,2026-05-28T05:14:17+00:00,premarket,bullish,semis,False,False,3.0,win
+sig_d73d6f8310ec7599,SMCI,B,long,2026-05-28T03:04:48+00:00,after-hours,bullish,semis,False,False,3.0,win
+sig_2983bfb8912abcf9,SMCI,B,long,2026-05-28T01:02:56+00:00,after-hours,bullish,semis,False,False,3.0,win
+sig_b656af4645e66ae2,SMCI,B,long,2026-05-27T22:42:28+00:00,after-hours,bullish,semis,False,False,3.0,win
+sig_e0e741beba8a7c6c,SMCI,B,long,2026-05-27T15:10:18+00:00,regular session,bullish,semis,False,False,3.0,win
+sig_e4bc2f575ae3da59,SMCI,B,long,2026-05-27T14:36:48+00:00,regular session,bullish,semis,False,False,3.0,win
+sig_4d450ce0745c2000,LLY,B,long,2026-05-27T13:43:24+00:00,regular session,bullish,healthcare,False,False,3.0,win
+sig_b54692fbc1ab4bb3,SMH,B,long,2026-06-01T15:48:05+00:00,regular session,bullish,semis,False,False,3.0,win
+sig_c127fb01d896f53e,AVGO,B,long,2026-06-01T15:48:05+00:00,regular session,bullish,semis,False,False,3.0,win
+sig_8699e0a050d36a8f,UNH,C,long,2026-06-03T13:46:12+00:00,regular session,bullish,healthcare,False,False,3.0,win
+sig_c4205bd6d2e47e0f,LLY,B,long,2026-06-03T16:53:07+00:00,regular session,bullish,healthcare,False,False,3.0,win
+sig_d45691b281de6ee2,PLTR,C,short,2026-06-08T01:00:38+00:00,weekend,risk_off,high_beta_ai,False,False,3.0,win
+sig_cfcee22ccdd7a765,AMD,C,short,2026-06-08T01:00:38+00:00,weekend,risk_off,semis,False,False,3.0,win
+sig_2246db59f8de5bb7,XLK,C,short,2026-06-08T01:00:38+00:00,weekend,risk_off,megacap_tech,False,False,3.0,win
+sig_ff5ceee5a8dd7aa6,SMCI,C,short,2026-06-09T14:13:38+00:00,regular session,chop,semis,False,True,3.0,win
+sig_c9b95871ddebb771,MSFT,B,short,2026-06-10T18:10:11+00:00,regular session,risk_off,megacap_tech,False,False,3.0,win
+sig_f1d6d8aeb70ec893,JPM,B,long,2026-06-15T15:30:17+00:00,regular session,risk_on,financials,False,False,3.0,win
+sig_91f2ff5907bc222d,JPM,C,long,2026-06-15T02:16:53+00:00,weekend,risk_on,financials,True,False,3.0,win

@@ -1,0 +1,1 @@
+BLOCKED 11:30 EEST review: C: 0 bytes free (ENOSPC on every write >~10 bytes, confirmed repeatedly). Full review delivered via chat/task output + Telegram instead. Key finding: 19/28 open crypto positions through stop (worst TUT/USDT -66.3%), monitors down since 05:02 EEST disk-full. See TODO-disk-full, TODO-stop-monitor-breach.

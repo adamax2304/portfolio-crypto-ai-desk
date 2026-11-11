@@ -1,0 +1,87 @@
+# Multi-venue stock-futures live bridge (legacy filename retained for callers).
+# It mirrors only version-pinned stock Paper fills into the shared live
+# execution engine. MEXC symbols come from the MEXC stock-futures contract
+# table. Bybit stock symbols must be explicitly mapped; the bridge never
+# fabricates TICKERUSDT for stocks because many such contracts do not exist.
+# The bridge does not create signals or alter stock Paper strategy logic.
+mexc_stock_futures_live_bridge:
+  enabled: false
+  route_id: stocks_preus_news_long_live_v1
+  source_strategy_id: stocks_mexc_preopen_news_v1
+  allowed_source_profiles: [stocks_intraday_breakout_1bar_paper_v1]
+  # The established Pre-US book predates profile tagging for part of its
+  # history. The strategy id + long-only + entry-mode allowlists below remain
+  # mandatory; this accepts only its unprofiled future fills.
+  allow_unprofiled_source: true
+  allowed_entry_modes: [BREAKOUT_CONTINUATION]
+  allowed_directions: [long]
+  # Paper keeps the complete A/B sample. The small live canary uses the
+  # preregistered upper-quality slice; current 7-session sensitivity is
+  # supportive but remains explicitly underpowered.
+  min_score: 70
+  # Venue-local block only. AVGO may still route to Bybit when its AVGOUSDT
+  # stock perpetual passes the same point-in-time preflight.
+  blocked_mexc_symbols: [AVGOSTOCK_USDT]
+  allow_synthetic_bybit_stock_symbols: false
+
+  # Live-only quality filter. Paper still records the full strategy sample.
+  # Soft profile keeps deal flow: legacy/ATR stops are warnings unless the
+  # trade is also low-score and against the live SPY/QQQ intraday direction.
+  live_quality_filter:
+    enabled: true
+    version: stock_live_structural_alignment_v2
+    post_filter_cohort_start_at: "2026-09-14T00:00:00+00:00"
+    allow_news_supported_bypass: true
+    require_structural_stop_for_live: true
+    candidate_structural_stop_tolerance_bps: 10
+    require_intraday_actionability: true
+    min_score_to_bypass_missing_intraday_actionability: 95
+    require_sector_confirmation_for_live: true
+    live_allowed_sector_statuses: [confirmed]
+    min_score_for_unknown_sector_live: 92
+    block_against_intraday_broad: true
+    block_rth_open_without_confirmation: true
+    rth_open_session_phase_keywords: [rth_open, opening_range]
+    min_score_for_rth_open_confirmation: 85
+    min_score_to_bypass_broad_conflict: 90
+    long_disallowed_market_regimes: [risk_off, bearish, chop]
+    short_disallowed_market_regimes: [bullish, risk_on]
+    short_needs_confirmation_market_regimes: [transition, neutral, range, chop]
+    min_transition_short_score: 83
+    transition_short_requires_broad_intraday_down: true
+    min_broad_down_return_pct_for_transition_short: 0.10
+    reversal_setup_keywords: [reversal, fade, mean_reversion]
+    min_reversal_score: 85
+    legacy_stop_policy: block
+    block_low_confidence_stop_against_intraday_broad: true
+    min_score_for_low_conf_contra_broad: 83
+    min_broad_move_pct_for_low_conf_contra: 0.10
+    max_stale_legacy_stop_age_seconds: 90
+    min_score_for_stale_legacy_stop: 83
+    min_score_for_missing_context_legacy_stop: 85
+
+  # Global MEXC canary risk is currently $10.  This route deliberately uses
+  # half of it, so every full stock breakout live mirror risks about $5 at the
+  # original stop.  It cannot enlarge Paper size.
+  fixed_risk_usdt: 5.0
+  risk_multiplier: 0.5
+  risk_bucket: stock_preus_news_long
+
+  mode: stock_intraday
+  live_strategy_version: stocks_preus_news_long_live_v1
+  decision_context_type: point_in_time_stock_futures_fill
+  max_capture_age_seconds: 300
+
+  # The primary stocks Paper engine writes its confirmed entries directly to
+  # proposed_signals / paper_execution_outcomes, rather than through the
+  # MEXC-stock Paper simulator above. Mirror that version-pinned production
+  # lane too; the bridge still requires an active MEXC contract and the normal
+  # MEXC worker preflight before any order can be submitted.
+  standard_paper_breakout:
+    enabled: false
+    route_id: stocks_intraday_breakout_standard_paper_live_v1
+    allowed_source_profiles: [stocks_intraday_breakout_1bar_paper_v1]
+    allowed_entry_modes: [BREAKOUT_CONTINUATION]
+    allowed_directions: [long, short]
+    min_score: 70
+    max_capture_age_seconds: 300

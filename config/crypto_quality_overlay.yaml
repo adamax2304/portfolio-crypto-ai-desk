@@ -1,0 +1,187 @@
+# Crypto Quality / Risk Overlay — PAPER / READ-MODEL / ACTIONABILITY ONLY.
+# A soft circuit-breaker that routes crypto paper candidates to FULL_SIZE / HALF_SIZE / SHADOW_ONLY
+# / BLOCK based on regime, session, cooldowns, exposure and entry-mode quality. It NEVER touches live,
+# never rewrites signal generation / tier / final_r / signal_outcomes, and every decision is reversible
+# by the flags below.
+#
+# MISSING/STALE DATA is never treated as "good", but (after the surgical calibration) it does NOT
+# blanket-demote a clean primary setup — that would strangle runners. Instead unknown data:
+#   * lowers crypto_quality_score / verdict (so it is visible as lower confidence), AND
+#   * cannot let a RISKY entry mode (BREAKOUT/LIMIT_THEN_TAKER/MOMENTUM/NO_CHASE) be FULL_SIZE — those
+#     floor to `default_unknown_data_action`.
+# Size is otherwise demoted only on POSITIVE evidence of a bad regime, not on absence of good data.
+crypto_quality_overlay:
+  enabled: true
+  paper_actionability_enabled: true      # overlay may downgrade paper size/route
+  live_enabled: false                    # HARD OFF — overlay must never affect live
+  hard_block_enabled: false              # BLOCK only for explicit policy modes (below); else HALF/SHADOW
+  default_unknown_data_action: HALF_SIZE # when critical market data is UNKNOWN/MISSING → never FULL
+  session_cooldown_enabled: true
+  symbol_cooldown_enabled: true
+  exposure_guard_enabled: true
+  counterfactual_enabled: true
+  overlay_version: cqo_v1
+
+  # ---- market / regime thresholds ------------------------------------------------------------
+  regime:
+    btc_return_conflict_pct: 0.10        # |BTC 15m/1h return| beyond this counts as directional
+    btc_weak_states: [risk_off, chop, weak]            # only confirmed crypto_market_mode weakness
+    # Normalize technical fallback and dashboard aliases before any routing rule.
+    state_aliases:
+      risk-off: risk_off
+      btc_risk_off: risk_off
+      bearish: risk_off
+      downtrend: risk_off
+      risk-on: risk_on
+      bullish: risk_on
+      uptrend: risk_on
+      transition_down: weak
+      range: chop
+      ranging: chop
+    min_rvol_strong: 1.5                 # relative volume considered strong confirmation
+    max_spread_bps_major: 8.0            # spread ceiling (bps) for BTC/ETH/major names
+    max_spread_bps_alt: 20.0             # spread ceiling (bps) for alts
+    major_symbols: [BTC, ETH, SOL, BNB, XRP]
+
+  # ---- session quality (UTC buckets; bands from the 2026-07-06 session audit) ------------------
+  session:
+    # asia 00-06 UTC = worst (37.9% stop), europe 07-13 = best (16.7%), us 13-21 = mid (30.9%),
+    # off 21-24 = thin. quality ∈ strong/ok/weak.
+    buckets:
+      asia:   {start: 0,  end: 6,  quality: weak}
+      europe: {start: 7,  end: 13, quality: strong}
+      us:     {start: 13, end: 21, quality: ok}
+      "off":  {start: 21, end: 24, quality: weak}
+    monday_stricter: true                # Monday historically worst weekday
+
+  # ---- mode-specific rules (NOT a global score threshold) --------------------------------------
+  modes:
+    scalp:
+      disabled: true                     # crypto scalp stays shadow-only (matches existing policy)
+    swing:
+      full_score_min: 70                 # >=70 + normal swing regime → FULL
+      half_score_min: 65                 # 65-69 → HALF unless regime strong
+    intraday:
+      # score is NOT the primary filter for intraday — regime/session/volume/spread are. These bands
+      # are advisory only (never auto-cut 65-66; never auto-trust 70-74).
+      advisory_soft_low: 65
+      advisory_soft_high: 74
+
+  # ---- entry-mode policy (crypto) --------------------------------------------------------------
+  entry_modes:
+    intraday:
+      # Was shadow_only (hard-locked, no escape). The 2026-08-10 point-in-time audit
+      # (crypto_quality_overlay_decision_snapshots, decision_context_type=point_in_time,
+      # n=26 over ~4 weeks) showed real avg_r=+1.286 for this entry mode -- the second-best
+      # of all intraday entry modes, currently earning zero real paper weight because of the
+      # hard shadow lock. Downgraded to `cautious` (same treatment as MOMENTUM_TAKER_NOW):
+      # baseline HALF_SIZE instead of forced SHADOW_ONLY. Every other guard (exposure,
+      # regime, session, cooldown) still applies on top and can still push it to
+      # SHADOW_ONLY/BLOCK when independently justified -- this only removes the blanket lock.
+      LIMIT_THEN_TAKER_TIMEOUT: cautious
+      BREAKOUT_CONTINUATION: strong_confirm      # FULL only with full confirmation; else HALF/SHADOW
+      PULLBACK_LIMIT: primary                    # main candidate; FULL/HALF by quality
+      LEVEL_HOLD_V2: primary                     # confirmed pullback; V2 resolver owns entry quality
+      MOMENTUM_TAKER_NOW: cautious
+      STRUCTURAL_RETEST: primary
+      NO_CHASE_SKIP: shadow_only
+    swing:
+      LIMIT_THEN_TAKER_TIMEOUT: cooldown_dependent  # not hard-blocked; PF/stop-series → HALF/SHADOW
+      BREAKOUT_CONTINUATION: swing_confirm          # needs swing-regime confirm (not intraday BTC filter)
+      BREAKOUT_RECLAIM_V2: primary                  # Paper-only V2: reclaim/hold before breakout retest
+      PULLBACK_LIMIT: primary
+      PULLBACK_CONFIRMED_RETEST: primary            # Paper-only V2: pullback must be defended before entry
+      FIB_IMPULSE_RETEST: primary                   # Paper-only V2: impulse + 0.50-0.618 defended retrace
+      STRUCTURAL_RETEST: primary
+
+  # ---- exposure guard (soft sizing/routing, NOT a dumb daily trade cap) ------------------------
+  exposure:
+    max_open_crypto_intraday: 4
+    max_open_same_symbol_mode: 1
+    max_open_alt_beta_same_direction: 3
+    max_open_alt_beta_same_direction_btc_weak: 2   # tighten when BTC regime weak/unknown
+    over_limit_action: HALF_SIZE                    # soft; SHADOW only on hard same-symbol conflict
+    # 2026-08-10 root-cause of the hour-19-UTC loss cluster: 8 of 9 losing trades in that
+    # window had an exposure-guard reason (max_open_intraday / alt_beta_same_direction) AND
+    # a weak/unknown/conflicting BTC regime firing together. Neither condition alone was the
+    # problem -- the combination was. When both are true at once, use this stricter action
+    # instead of the plain over_limit_action above.
+    over_limit_action_btc_weak: SHADOW_ONLY
+    # Swing is slower than intraday. Weak/chop BTC + correlated exposure reduces
+    # size but does not by itself invalidate a fresh swing setup; hard risk-off,
+    # stale data and same-symbol conflicts still block separately.
+    swing_over_limit_action_btc_weak: HALF_SIZE
+
+  # ---- session cooldown (mode x session_bucket, rolling forward-only window) --------------------
+  session_cooldown:
+    lookback_hours: 8.0
+    min_sample: 5
+    consecutive_original_stops: 3        # only inside the trailing five real forward exits
+    streak_lookback_trades: 5
+    streak_ttl_hours: 4.0                # loss streak → short HALF_SIZE pause, never Shadow
+    net_r_floor: -2.0                    # cumulative paper_execution_r <= this → cooldown
+    profit_factor_floor: 0.7             # PF < this at N>=min_sample → cooldown
+    original_stop_rate_ceiling: 0.60     # stop-rate > this at N>=min_sample → cooldown
+    ttl_hours: 8.0                       # broader poor sample (not a streak) auto-expires after TTL
+    action: HALF_SIZE                    # default while active
+    action_btc_weak_risky_entry: HALF_SIZE # cooldown alone never routes Paper into Shadow
+
+  # ---- symbol+mode cooldown --------------------------------------------------------------------
+  symbol_cooldown:
+    lookback_hours: 36.0                 # forward-only, unique trades in this window
+    trigger_original_stops: 2            # 2 original_stop in window → cooldown
+    min_sample: 3                        # don't judge a symbol on a 1-2 trade window (2026-07-13 audit)
+    net_pnl_override_usd: 0.0            # recent_net_pnl_usd above this → suppress cooldown even if
+                                          # the stop-count trigger fired (a symbol that's still net
+                                          # profitable despite N stops shouldn't be sized down for it)
+    ttl_hours: 12.0
+    # Calibrated softer than the literal spec (SHADOW) after the counterfactual showed a blanket SHADOW
+    # on every 2-stop symbol was net-negative (killed too many subsequent winners). HALF by default;
+    # SHADOW only when the regime is ALSO confirmed-weak; strong confirmation keeps it at HALF (bypass).
+    action: HALF_SIZE
+    action_weak_regime: HALF_SIZE
+    action_strong_confirmation: HALF_SIZE
+    severe_original_stops: 3
+    action_severe: HALF_SIZE
+
+  # ---- intraday hardening from USD ledger audit (2026-07-12) -----------------------------------
+  intraday_session_gate:
+    enabled: true
+    weak_buckets: [asia, "off"]
+    action: HALF_SIZE
+    action_with_confirmation: FULL_SIZE
+
+  # A confirmed BTC risk-off tape was the clearest loss cohort in the forward
+  # intraday audit. This is intentionally narrower than the general weak-regime
+  # label: it does not block chop/unknown data, shorts, or swing. BLOCK means
+  # no Paper entry, no Telegram push, and no live-candidate capture.
+  intraday_risk_off_gate:
+    enabled: true
+    action: BLOCK
+    long_regime_states: [risk_off, btc_risk_off]
+
+  intraday_derivatives_gate:
+    enabled: true
+    no_squeeze_action: HALF_SIZE          # no-squeeze is not a FULL-size reason by itself
+
+  derivatives_quality_guard:
+    enabled: true
+    min_fresh_venues: 2
+    conflicting_oi_price_action: HALF_SIZE
+    max_cross_venue_funding_spread: 0.001
+
+  onchain_guard:
+    enabled: true
+    hard_block_verified_honeypot: true
+    hard_block_verified_blacklist: true
+    hard_block_sell_tax_pct: 25.0
+    soft_reduce_sell_tax_pct: 8.0
+    soft_reduce_top10_holder_pct: 70.0
+    soft_reduce_mintable: true
+
+  # ---- weak-session profit-protection counterfactual (DIAGNOSTIC ONLY — never applied) ----------
+  weak_session_profit_protection:
+    enabled: true
+    arm_after_r: 0.5                     # after +0.5R, move stop to...
+    protected_stop_r: 0.0                # ...breakeven (0.0) or -0.25R
+    scope: weak_session_or_cooldown_only # only simulate for weak-session / cooldown-warning trades

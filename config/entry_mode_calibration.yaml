@@ -1,0 +1,146 @@
+# Entry-mode calibration / forward-testing thresholds (READ-MODEL ONLY).
+#
+# Drives per-slice verdicts in src/execution/entry_mode_calibration.py. Nothing
+# here changes production behaviour, routing, actionability, live, or final_r —
+# it only classifies slices for the operator. USD PnL is the AUTHORITATIVE metric
+# for every decision; R is auxiliary. Decisions are made ONLY on
+# window == 'forward_since_activation'; 'historical_backfill' is hypothesis-only.
+
+enabled: true
+
+# ---- Slice grouping key (order matters for the report grouping) --------------
+slice_keys:
+  - asset_class
+  - mode            # trade_mode from proposed_signals (scalp/intraday/swing/invest)
+  - entry_mode      # PULLBACK_LIMIT / STRUCTURAL_RETEST / BREAKOUT_CONTINUATION /
+                    # MOMENTUM_TAKER_NOW / LIMIT_THEN_TAKER_TIMEOUT / NO_CHASE_SKIP
+  - branch          # old_paper | new_logic_shadow
+  - window          # forward_since_activation | historical_backfill
+# Secondary (reported as sub-breakdowns, not primary verdict key):
+secondary_keys:
+  - market_regime
+  - setup_type      # aka playbook
+  - catalyst_bucket # news_supported? -> {catalyst, no_catalyst, unknown}
+  - liquidity_bucket # data_quality / DATA_GAP_LATE -> {ok, thin, data_gap_late}
+
+# ---- Verdict thresholds ------------------------------------------------------
+# Evaluated top-to-bottom; first matching rule wins. All gates on forward window.
+verdicts:
+  min_trades_for_verdict: 30          # legacy fallback for the clean-sample gate
+  min_clean_trades_for_verdict: 30    # < this many CLEAN (non-DGL) closed trades -> INSUFFICIENT_CLEAN_SAMPLE
+  data_gap_late_block_pct: 0.30       # DATA_GAP_LATE share > this -> DATA_QUALITY_BLOCKED
+
+  disable:                            # kill candidates
+    net_pnl_usd_max: 0.0              # net_usd <= 0 -> DISABLE
+    profit_factor_min: 1.15           # PF < 1.15 -> DISABLE
+
+  keep_shadow:                        # alive but not yet a paper candidate
+    profit_factor_min: 1.15           # 1.15 <= PF < watch.profit_factor_min
+
+  watch:
+    profit_factor_min: 1.20           # PF in [1.20, paper_candidate) + net_usd>0 -> WATCH
+
+  paper_candidate:
+    profit_factor_min: 1.25
+    net_pnl_usd_min: 0.0              # strictly > 0 enforced in code
+    paired_delta_usd_min: 0.0         # paired new-vs-old delta > 0 (forward)
+    max_drawdown_r_acceptable: 8.0    # forward maxDD in R must be <= this
+
+  promote_review:                     # strongest: surfaced for operator promotion review
+    trades_min: 100
+    profit_factor_min: 1.35
+    paired_delta_usd_min: 0.0         # > 0
+    drawdown_not_worse_than_old: true # forward maxDD_usd(new) <= maxDD_usd(old)
+
+# ---- Profit-protection model (mirrors paper_execution_accounting Model F) -----
+# Used by the shared simulator so calibration/sweep exits match the authoritative
+# paper book. These are REPORTED, not re-tuned here (tuning lives in the sweep).
+protection:
+  risk_model: early_mfe_protection_v1
+  arm_breakeven_at_r: 0.6
+  lock_at_r: 1.0
+  lock_level_r: 0.5
+  tp3_is_runner: true
+  # Comparison baselines to report deltas against:
+  compare_baselines:
+    - legacy_touch          # naive highest-TP-touched (over-optimistic)
+    - first_tp_close         # close fully at TP1
+    - no_protection          # original stop, no BE/lock
+
+# ---- Sizing / cost model for USD (mirror of the paper book) ------------------
+sizing:
+  equity_usd: 5000.0
+  risk_pct: 0.005
+  max_leverage: 5
+
+# ---- Parameter sweep grids (READ-ONLY; never auto-applied) -------------------
+parameter_sweep:
+  enabled: true
+  structural_stop_atr_buffer: [0.1, 0.2, 0.35, 0.5]
+  breakout_trigger_offset_atr: [0.05, 0.1, 0.2]
+  pullback_zone_depth_atr: [current, shallow, deeper]
+  maker_trade_through_bps: [current, 2, 5, 10]
+  limit_then_taker_timeout_bars: [0, 2, 4, 8]   # 0 = off
+  taker_fallback_enabled: [true, false]
+  # cap the number of (signal x variant) simulations per refresh to stay cheap
+  max_signals: 400
+
+# ---- Sequential promotion gate (SPRT early-stopping; READ-ONLY, evaluation-only) --------
+# Replaces the "wait a fixed 14d/60-trade window" wall with a sequential test on the paired
+# per-signal forward edge (B minus A, in R). A mode that is clearly better or clearly not-better
+# crosses an accept/reject boundary early (days, not weeks); only ambiguous modes run the full
+# window. SEQ_ACCEPT is NOT auto-promotion — it still needs operator sign-off. Backfill never counts.
+sequential_gate:
+  enabled: true
+  alpha: 0.05          # false-ACCEPT probability (promote a non-edge) — kept strict
+  beta: 0.20           # false-REJECT probability (kill a real edge) — power 0.80
+  min_edge_r: 0.10     # H1: minimum meaningful per-signal edge (B-A) in R worth detecting
+  min_n_accept: 20     # ACCEPT requires at least this many PAIRED obs (guard vs lucky small n)
+  min_n_reject: 10     # REJECT requires at least this many (don't kill on 2 noisy trades)
+  max_n: 60            # truncation: at this n fall back to the fixed gate (mirrors min_forward_trades)
+
+# ---- Shadow-testing scope (PAPER/SHADOW read-model ONLY — never live/proposed_signals) --------
+# Controls WHICH (asset_class, mode) combos the paper-shadow A/B engine simulates, and which
+# branches. Reversible config; changing it does not touch live, final_r, routing, or actionability.
+#   exclude       — drop the combo from shadow A/B entirely (e.g. already live in paper, or data-broken).
+#   new_logic_only — simulate ONLY new_logic_shadow (B); skip the deprecated old_paper (A) baseline.
+#                    Judged on B's own forward PnL (absolute), not "B beats A".
+shadow_scope:
+  exclude:
+    - {asset_class: stocks, mode: intraday}   # already live in paper mode → no need to shadow-test
+  new_logic_only:
+    - {asset_class: stocks, mode: swing}      # old A baseline deprecated → track only new logic B
+    - {asset_class: stocks, mode: invest}
+
+# Separate forward lane for the CURRENT stocks-intraday paper candidates.  The
+# general A/B scope above intentionally remains unchanged for legacy reports;
+# this lane consumes fresh A/B proposals (including no-entry/missed candidates)
+# and writes only paper_shadow_execution_outcomes.  C-tier/stale proposals are
+# diagnosed by the stock pipeline, never simulated as trades.
+stocks_intraday_forward_shadow:
+  enabled: true
+  lookback_hours: 336
+  tiers: [A, B]
+  branches: [new_logic_shadow]
+  entry_modes: [PULLBACK_LIMIT, BREAKOUT_CONTINUATION]
+  require_rth_created: true
+  # v2 starts a clean causal window. v1 is invalid for promotion because the
+  # stock direction overlay could be recomputed with future candles and did not
+  # rebuild stop/TP geometry when it flipped the side.
+  activation_meta_key: stocks_intraday_forward_shadow_v2_activated_at
+
+# Separate evidence ledger for the active stocks-intraday candidate lane. It is
+# deliberately NOT part of the generic A/B calibration because that report
+# excludes stocks intraday by design. This evaluator is shadow-only: even a
+# positive verdict is an operator-review flag, never a promotion or a routing
+# change. Dirty/no-coverage rows are diagnostics only.
+stocks_intraday_forward_evaluator:
+  enabled: true
+  shadow_lane: stocks_intraday_forward
+  branch: new_logic_shadow
+  entry_modes: [PULLBACK_LIMIT, BREAKOUT_CONTINUATION]
+  fee_profile: stock_etf_default
+  min_forward_days: 28
+  min_clean_closed: 30
+  min_profit_factor: 1.25
+  require_positive_net_usd: true

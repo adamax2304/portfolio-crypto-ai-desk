@@ -1,0 +1,33 @@
+archived_sweep_profiles:
+  archived_at: "2026-10-19T23:04:22+00:00"
+  reason: "Keep only the current positive-evidence candidates active; preserve all outcomes for audit"
+  immutable_live_audit_retained: true
+  active_profiles:
+    crypto:
+      - crypto_fast_flush_reclaim_fast_1m_paper_v3
+      - crypto_fast_flush_reclaim_asia_1m_paper_v1
+      - crypto_fast_flush_reclaim_europe_1m_paper_v1
+      - crypto_fast_flush_reclaim_shallow_1m_paper_v1
+      - crypto_fast_flush_reclaim_shallow_flex_1m_paper_v1
+    stocks:
+      - stocks_liquidity_shock_held_1m_structure_targets_paper_v1
+  archived_strategies:
+    - crypto_liquidity_sweep_v1
+    - crypto_liquidity_sweep_reclaim_v2
+    - crypto_htf_liquidity_reclaim_v1
+  archived_profiles:
+    - crypto_liquidity_sweep_reversal_5m_v1
+    - crypto_liquidity_sweep_reclaim_5m_hold2_paper_v2
+    - crypto_liquidity_sweep_reclaim_15m_hold1_paper_v2
+    - crypto_fast_flush_reclaim_balanced_1m_paper_v3
+    - crypto_fast_flush_reclaim_held_1m_paper_v3
+    - crypto_fast_flush_reclaim_control_5m_paper_v3
+    - crypto_fast_flush_europe_moderate_1m_paper_v1
+    - crypto_fast_flush_reclaim_fast_1m_atr_targets_paper_v3
+    - crypto_fast_flush_reclaim_structure_confirm_1m_paper_v1
+    - crypto_fast_flush_medium_deep_r_control_paper_v1
+    - crypto_fast_flush_medium_deep_r_extended_paper_v1
+    - crypto_fast_flush_medium_deep_structure_hybrid_paper_v1
+    - stocks_liquidity_shock_fast_1m_paper_v1
+    - stocks_liquidity_shock_held_1m_paper_v1
+    - stocks_liquidity_shock_held_1m_buffer_015_paper_v1

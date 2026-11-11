@@ -1,0 +1,79 @@
+quality_agents:
+  enabled: true
+
+  # Evidence phase. Recommendations are persisted and measured but do not
+  # change Paper eligibility, live route flags, size, or order submission.
+  operation_mode: shadow
+
+  hard_block_allowlist:
+    - INVALID_SYMBOL
+    - MISSING_GEOMETRY
+    - INVALID_DIRECTIONAL_GEOMETRY
+    - CURRENT_PRICE_NOT_REVALIDATED
+    - VENUE_UNAVAILABLE
+    - PROTECTIVE_STOP_MISSING
+    - EVENT_HALT_ACTIVE
+    - WRONG_ENTITY_CONFIRMED
+
+  agents:
+    news_entity:
+      enabled: true
+      mode: shadow
+      ttl_minutes: 30
+    event_risk:
+      enabled: true
+      mode: shadow
+      ttl_minutes: 30
+    market_regime:
+      enabled: true
+      mode: shadow
+      ttl_minutes: 20
+    execution_sanity:
+      enabled: true
+      mode: shadow
+      ttl_minutes: 10
+    post_trade_forensics:
+      enabled: true
+      mode: diagnostic
+      ttl_minutes: 1440
+    llm_cached_advisory:
+      # Do not let historical LLM cache entries influence active Paper modes.
+      enabled: false
+      mode: shadow
+      ttl_minutes: 45
+
+  market_snapshot_max_age_minutes: 90
+
+  llm_advisory_refresh:
+    # Disabled: active strategies currently use deterministic market/risk logic.
+    enabled: false
+    interval_minutes: 15
+    stale_after_minutes: 45
+    lookback_hours: 8
+    # Spend inference only where a live/Paper A/B candidate is still in play.
+    # The complete news stream remains available to deterministic collectors.
+    candidate_scope: active_ab
+    candidate_lookback_hours: 48
+    candidate_statuses: [generated, waiting_for_entry, triggered, tp1_hit, tp2_hit]
+    candidate_tiers: [A, B]
+    excluded_modes: [scalp]
+    max_active_symbols: 80
+    max_events: 16
+    # Four fresh event/symbol assessments per tick are enough to drain the
+    # active-candidate queue without paying to classify unrelated headlines.
+    max_assessments_per_run: 4
+    max_symbols_per_event: 2
+    ttl_minutes: 360
+    min_confidence: 0.50
+    max_tokens: 400
+    max_retries: 1
+
+  retention:
+    runs_days: 180
+    signal_verdict_days: 180
+    market_verdict_days: 90
+    resolved_incident_days: 90
+    reducer_days: 180
+    post_trade_days: 730
+    llm_assessment_days: 180
+    experiment_assignment_days: 365

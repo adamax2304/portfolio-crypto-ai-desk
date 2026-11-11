@@ -1,0 +1,615 @@
+{
+  "generated_at": "2026-10-04T13:28:34.484125+00:00",
+  "crypto_europe_session": {
+    "split": {
+      "train_end": "2026-09-21T20:10:00+00:00",
+      "validation_end": "2026-09-26T20:05:00+00:00"
+    },
+    "variants": {
+      "us_strict_control": {
+        "parameters": {
+          "min_flush_atr": 1.25,
+          "max_flush_atr": 3.25,
+          "min_flush_pct": 0.75,
+          "max_flush_pct": 2.5,
+          "min_rvol": 1.05,
+          "min_oi_drop_pct": 0.5,
+          "max_oi_drop_pct": 3.0,
+          "min_liq_percentile": 0.9,
+          "max_spread_bps": 18.0,
+          "min_stop_distance_pct": 0.01,
+          "max_stop_distance_pct": 0.015,
+          "sessions": [
+            "us"
+          ]
+        },
+        "train": {
+          "trades": 13,
+          "net_usd": 64.46,
+          "net_r": 6.446,
+          "pf": 5.89,
+          "winrate": 0.846,
+          "max_drawdown_usd": 11.94,
+          "costs_usd": 20.62
+        },
+        "validation": {
+          "trades": 3,
+          "net_usd": 4.66,
+          "net_r": 0.466,
+          "pf": 1.408,
+          "winrate": 0.667,
+          "max_drawdown_usd": 11.42,
+          "costs_usd": 4.64
+        },
+        "test": {
+          "trades": 4,
+          "net_usd": 27.49,
+          "net_r": 2.749,
+          "pf": null,
+          "winrate": 1.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 5.69
+        },
+        "all": {
+          "trades": 20,
+          "net_usd": 96.61,
+          "net_r": 9.661,
+          "pf": 4.927,
+          "winrate": 0.85,
+          "max_drawdown_usd": 11.94,
+          "costs_usd": 30.96
+        }
+      },
+      "europe_strict": {
+        "parameters": {
+          "min_flush_atr": 1.25,
+          "max_flush_atr": 3.25,
+          "min_flush_pct": 0.75,
+          "max_flush_pct": 2.5,
+          "min_rvol": 1.05,
+          "min_oi_drop_pct": 0.5,
+          "max_oi_drop_pct": 3.0,
+          "min_liq_percentile": 0.9,
+          "max_spread_bps": 18.0,
+          "min_stop_distance_pct": 0.01,
+          "max_stop_distance_pct": 0.015,
+          "sessions": [
+            "europe"
+          ]
+        },
+        "train": {
+          "trades": 0,
+          "net_usd": 0,
+          "net_r": 0,
+          "pf": null,
+          "winrate": 0.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 0
+        },
+        "validation": {
+          "trades": 1,
+          "net_usd": 1.06,
+          "net_r": 0.106,
+          "pf": null,
+          "winrate": 1.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 1.92
+        },
+        "test": {
+          "trades": 1,
+          "net_usd": -6.3,
+          "net_r": -0.63,
+          "pf": 0.0,
+          "winrate": 0.0,
+          "max_drawdown_usd": 6.3,
+          "costs_usd": 1.51
+        },
+        "all": {
+          "trades": 2,
+          "net_usd": -5.25,
+          "net_r": -0.525,
+          "pf": 0.168,
+          "winrate": 0.5,
+          "max_drawdown_usd": 6.3,
+          "costs_usd": 3.43
+        }
+      },
+      "europe_moderate": {
+        "parameters": {
+          "min_flush_atr": 1.25,
+          "max_flush_atr": 3.25,
+          "min_flush_pct": 0.6,
+          "max_flush_pct": 2.5,
+          "min_rvol": 1.0,
+          "min_oi_drop_pct": 0.25,
+          "max_oi_drop_pct": 3.0,
+          "min_liq_percentile": 0.8,
+          "max_spread_bps": 18.0,
+          "min_stop_distance_pct": 0.0075,
+          "max_stop_distance_pct": 0.015,
+          "sessions": [
+            "europe"
+          ]
+        },
+        "train": {
+          "trades": 2,
+          "net_usd": 13.48,
+          "net_r": 1.348,
+          "pf": null,
+          "winrate": 1.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 4.08
+        },
+        "validation": {
+          "trades": 4,
+          "net_usd": 19.88,
+          "net_r": 1.988,
+          "pf": null,
+          "winrate": 1.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 8.0
+        },
+        "test": {
+          "trades": 2,
+          "net_usd": -0.85,
+          "net_r": -0.085,
+          "pf": 0.865,
+          "winrate": 0.5,
+          "max_drawdown_usd": 6.3,
+          "costs_usd": 3.45
+        },
+        "all": {
+          "trades": 8,
+          "net_usd": 32.5,
+          "net_r": 3.25,
+          "pf": 6.155,
+          "winrate": 0.875,
+          "max_drawdown_usd": 6.3,
+          "costs_usd": 15.53
+        }
+      },
+      "europe_medium_deep": {
+        "parameters": {
+          "min_flush_atr": 2.0,
+          "max_flush_atr": 5.0,
+          "min_flush_pct": 1.5,
+          "max_flush_pct": 2.75,
+          "min_rvol": 1.0,
+          "min_oi_drop_pct": 0.25,
+          "max_oi_drop_pct": 5.0,
+          "min_liq_percentile": 0.9,
+          "max_spread_bps": 18.0,
+          "min_stop_distance_pct": 0.0075,
+          "max_stop_distance_pct": 0.015,
+          "sessions": [
+            "europe"
+          ]
+        },
+        "train": {
+          "trades": 2,
+          "net_usd": 8.67,
+          "net_r": 0.867,
+          "pf": null,
+          "winrate": 1.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 4.09
+        },
+        "validation": {
+          "trades": 3,
+          "net_usd": 16.51,
+          "net_r": 1.651,
+          "pf": null,
+          "winrate": 1.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 5.77
+        },
+        "test": {
+          "trades": 1,
+          "net_usd": 5.45,
+          "net_r": 0.545,
+          "pf": null,
+          "winrate": 1.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 1.94
+        },
+        "all": {
+          "trades": 6,
+          "net_usd": 30.63,
+          "net_r": 3.063,
+          "pf": null,
+          "winrate": 1.0,
+          "max_drawdown_usd": 0.0,
+          "costs_usd": 11.79
+        }
+      }
+    },
+    "source_rows": 465,
+    "distinct_events": 465,
+    "period": [
+      "2026-09-07T22:40:00+00:00",
+      "2026-09-28T20:45:00+00:00"
+    ]
+  },
+  "stocks_stop_buffer": {
+    "input_clean_independent_rows": 48,
+    "reconstructed_common_entries": 48,
+    "date_period": [
+      "2026-08-04T14:15:00+00:00",
+      "2026-10-01T14:15:00+00:00"
+    ],
+    "split": {
+      "train_end": "2026-09-18T13:45:00+00:00",
+      "validation_end": "2026-09-25T13:45:00+00:00"
+    },
+    "paired_common_entries": 48,
+    "train_only_winner": "buffer_0.15_atr",
+    "variants": {
+      "buffer_0.10_atr": {
+        "buffer_atr": 0.1,
+        "valid_trades": 48,
+        "geometry_rejections": {},
+        "train": {
+          "trades": 25,
+          "net_usd": 58.0,
+          "net_r": 5.8,
+          "pf": 2.226,
+          "winrate": 0.72,
+          "max_drawdown_usd": 16.34,
+          "costs_usd": 24.45
+        },
+        "validation": {
+          "trades": 10,
+          "net_usd": 20.42,
+          "net_r": 2.042,
+          "pf": 1.977,
+          "winrate": 0.7,
+          "max_drawdown_usd": 12.69,
+          "costs_usd": 10.68
+        },
+        "test": {
+          "trades": 13,
+          "net_usd": -20.04,
+          "net_r": -2.004,
+          "pf": 0.579,
+          "winrate": 0.462,
+          "max_drawdown_usd": 41.99,
+          "costs_usd": 12.24
+        },
+        "all": {
+          "trades": 48,
+          "net_usd": 58.38,
+          "net_r": 5.838,
+          "pf": 1.504,
+          "winrate": 0.646,
+          "max_drawdown_usd": 41.99,
+          "costs_usd": 47.37
+        },
+        "paired_common_sample": {
+          "trades": 48,
+          "net_usd": 58.38,
+          "net_r": 5.838,
+          "pf": 1.504,
+          "winrate": 0.646,
+          "max_drawdown_usd": 41.99,
+          "costs_usd": 47.37
+        },
+        "test_diagnostics": {
+          "close_reasons": {
+            "tp2": 2,
+            "breakeven_stop": 2,
+            "time_exit": 7,
+            "original_stop": 2
+          },
+          "mean_mfe_r": 0.612,
+          "mean_mae_r": -0.54
+        }
+      },
+      "buffer_0.15_atr": {
+        "buffer_atr": 0.15,
+        "valid_trades": 48,
+        "geometry_rejections": {},
+        "train": {
+          "trades": 25,
+          "net_usd": 58.23,
+          "net_r": 5.823,
+          "pf": 2.24,
+          "winrate": 0.72,
+          "max_drawdown_usd": 16.23,
+          "costs_usd": 23.77
+        },
+        "validation": {
+          "trades": 10,
+          "net_usd": 17.8,
+          "net_r": 1.78,
+          "pf": 1.861,
+          "winrate": 0.7,
+          "max_drawdown_usd": 12.65,
+          "costs_usd": 10.4
+        },
+        "test": {
+          "trades": 13,
+          "net_usd": -19.28,
+          "net_r": -1.928,
+          "pf": 0.589,
+          "winrate": 0.462,
+          "max_drawdown_usd": 41.31,
+          "costs_usd": 11.93
+        },
+        "all": {
+          "trades": 48,
+          "net_usd": 56.76,
+          "net_r": 5.676,
+          "pf": 1.495,
+          "winrate": 0.646,
+          "max_drawdown_usd": 41.31,
+          "costs_usd": 46.1
+        },
+        "paired_common_sample": {
+          "trades": 48,
+          "net_usd": 56.76,
+          "net_r": 5.676,
+          "pf": 1.495,
+          "winrate": 0.646,
+          "max_drawdown_usd": 41.31,
+          "costs_usd": 46.1
+        },
+        "test_diagnostics": {
+          "close_reasons": {
+            "tp2": 2,
+            "breakeven_stop": 2,
+            "time_exit": 7,
+            "original_stop": 2
+          },
+          "mean_mfe_r": 0.601,
+          "mean_mae_r": -0.528
+        }
+      },
+      "buffer_0.20_atr": {
+        "buffer_atr": 0.2,
+        "valid_trades": 48,
+        "geometry_rejections": {},
+        "train": {
+          "trades": 25,
+          "net_usd": 54.46,
+          "net_r": 5.446,
+          "pf": 2.168,
+          "winrate": 0.72,
+          "max_drawdown_usd": 16.12,
+          "costs_usd": 23.1
+        },
+        "validation": {
+          "trades": 10,
+          "net_usd": 17.98,
+          "net_r": 1.798,
+          "pf": 1.878,
+          "winrate": 0.7,
+          "max_drawdown_usd": 12.61,
+          "costs_usd": 10.1
+        },
+        "test": {
+          "trades": 13,
+          "net_usd": -18.56,
+          "net_r": -1.856,
+          "pf": 0.599,
+          "winrate": 0.462,
+          "max_drawdown_usd": 40.66,
+          "costs_usd": 11.65
+        },
+        "all": {
+          "trades": 48,
+          "net_usd": 53.88,
+          "net_r": 5.388,
+          "pf": 1.475,
+          "winrate": 0.646,
+          "max_drawdown_usd": 40.66,
+          "costs_usd": 44.84
+        },
+        "paired_common_sample": {
+          "trades": 48,
+          "net_usd": 53.88,
+          "net_r": 5.388,
+          "pf": 1.475,
+          "winrate": 0.646,
+          "max_drawdown_usd": 40.66,
+          "costs_usd": 44.84
+        },
+        "test_diagnostics": {
+          "close_reasons": {
+            "tp2": 2,
+            "breakeven_stop": 2,
+            "time_exit": 7,
+            "original_stop": 2
+          },
+          "mean_mfe_r": 0.589,
+          "mean_mae_r": -0.515
+        }
+      },
+      "buffer_0.25_atr": {
+        "buffer_atr": 0.25,
+        "valid_trades": 48,
+        "geometry_rejections": {},
+        "train": {
+          "trades": 25,
+          "net_usd": 54.73,
+          "net_r": 5.473,
+          "pf": 2.182,
+          "winrate": 0.72,
+          "max_drawdown_usd": 16.02,
+          "costs_usd": 22.46
+        },
+        "validation": {
+          "trades": 10,
+          "net_usd": 18.14,
+          "net_r": 1.815,
+          "pf": 1.895,
+          "winrate": 0.7,
+          "max_drawdown_usd": 12.57,
+          "costs_usd": 9.81
+        },
+        "test": {
+          "trades": 13,
+          "net_usd": -17.87,
+          "net_r": -1.788,
+          "pf": 0.609,
+          "winrate": 0.462,
+          "max_drawdown_usd": 40.06,
+          "costs_usd": 11.38
+        },
+        "all": {
+          "trades": 48,
+          "net_usd": 55.0,
+          "net_r": 5.5,
+          "pf": 1.49,
+          "winrate": 0.646,
+          "max_drawdown_usd": 40.06,
+          "costs_usd": 43.65
+        },
+        "paired_common_sample": {
+          "trades": 48,
+          "net_usd": 55.0,
+          "net_r": 5.5,
+          "pf": 1.49,
+          "winrate": 0.646,
+          "max_drawdown_usd": 40.06,
+          "costs_usd": 43.65
+        },
+        "test_diagnostics": {
+          "close_reasons": {
+            "tp2": 2,
+            "breakeven_stop": 2,
+            "time_exit": 7,
+            "original_stop": 2
+          },
+          "mean_mfe_r": 0.581,
+          "mean_mae_r": -0.504
+        }
+      },
+      "buffer_0.30_atr": {
+        "buffer_atr": 0.3,
+        "valid_trades": 48,
+        "geometry_rejections": {},
+        "train": {
+          "trades": 25,
+          "net_usd": 51.78,
+          "net_r": 5.178,
+          "pf": 2.126,
+          "winrate": 0.72,
+          "max_drawdown_usd": 15.93,
+          "costs_usd": 21.91
+        },
+        "validation": {
+          "trades": 10,
+          "net_usd": 18.3,
+          "net_r": 1.83,
+          "pf": 1.911,
+          "winrate": 0.7,
+          "max_drawdown_usd": 12.53,
+          "costs_usd": 9.55
+        },
+        "test": {
+          "trades": 13,
+          "net_usd": -14.87,
+          "net_r": -1.487,
+          "pf": 0.67,
+          "winrate": 0.462,
+          "max_drawdown_usd": 39.48,
+          "costs_usd": 11.12
+        },
+        "all": {
+          "trades": 48,
+          "net_usd": 55.21,
+          "net_r": 5.521,
+          "pf": 1.497,
+          "winrate": 0.646,
+          "max_drawdown_usd": 39.48,
+          "costs_usd": 42.58
+        },
+        "paired_common_sample": {
+          "trades": 48,
+          "net_usd": 55.21,
+          "net_r": 5.521,
+          "pf": 1.497,
+          "winrate": 0.646,
+          "max_drawdown_usd": 39.48,
+          "costs_usd": 42.58
+        },
+        "test_diagnostics": {
+          "close_reasons": {
+            "tp2": 2,
+            "breakeven_stop": 1,
+            "time_exit": 8,
+            "original_stop": 2
+          },
+          "mean_mfe_r": 0.598,
+          "mean_mae_r": -0.515
+        }
+      },
+      "buffer_0.40_atr": {
+        "buffer_atr": 0.4,
+        "valid_trades": 48,
+        "geometry_rejections": {},
+        "train": {
+          "trades": 25,
+          "net_usd": 46.96,
+          "net_r": 4.695,
+          "pf": 2.024,
+          "winrate": 0.68,
+          "max_drawdown_usd": 15.74,
+          "costs_usd": 20.88
+        },
+        "validation": {
+          "trades": 10,
+          "net_usd": 18.38,
+          "net_r": 1.838,
+          "pf": 1.932,
+          "winrate": 0.7,
+          "max_drawdown_usd": 12.47,
+          "costs_usd": 9.1
+        },
+        "test": {
+          "trades": 13,
+          "net_usd": -13.81,
+          "net_r": -1.381,
+          "pf": 0.686,
+          "winrate": 0.462,
+          "max_drawdown_usd": 38.41,
+          "costs_usd": 10.64
+        },
+        "all": {
+          "trades": 48,
+          "net_usd": 51.52,
+          "net_r": 5.152,
+          "pf": 1.47,
+          "winrate": 0.625,
+          "max_drawdown_usd": 38.41,
+          "costs_usd": 40.62
+        },
+        "paired_common_sample": {
+          "trades": 48,
+          "net_usd": 51.52,
+          "net_r": 5.152,
+          "pf": 1.47,
+          "winrate": 0.625,
+          "max_drawdown_usd": 38.41,
+          "costs_usd": 40.62
+        },
+        "test_diagnostics": {
+          "close_reasons": {
+            "tp2": 2,
+            "breakeven_stop": 1,
+            "time_exit": 8,
+            "original_stop": 2
+          },
+          "mean_mfe_r": 0.581,
+          "mean_mae_r": -0.493
+        }
+      }
+    }
+  },
+  "method": {
+    "chronology": "60/20/20 train/validation/test; no holdout tuning",
+    "crypto": "same FAST 1m rows/outcomes, cascade-adjusted, modeled costs retained",
+    "stocks": "same HELD entries; only structural stop buffer changes; fixed $10 risk; TP ladder re-priced to 0.80R/1.35R; stop-first bars; costs/slippage retained",
+    "stock_common_sample": "reports paired results only where every stop candidate passes geometry"
+  }
+}

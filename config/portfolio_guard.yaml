@@ -1,0 +1,19 @@
+# Portfolio-level risk guard — combined crypto+stocks kill-switch for NEW paper signal generation.
+# 2026-07-13 audit: the only existing "combined book" mechanism (src/risk/circuit_breaker.py) is
+# diagnostic_only -- it labels, it never blocks. This one CAN and DOES block: wired into
+# src/signals/registry.register_ideas(), the single entry point both crypto and stocks funnel new
+# signals through. PAPER-only; never touches live/auto-live/manual-live (no order-placement code
+# exists anywhere in this project regardless).
+portfolio_guard:
+  enabled: true
+  lookback_hours: 24.0
+  # Don't judge a combined drawdown off a handful of trades -- the whole point of an aggregate is
+  # statistical power; a tiny sample crossing the threshold by chance would be a bad reason to
+  # pause every new signal, both asset classes, for the rest of the window.
+  min_resolved_trades: 6
+  # Actionable, size-weighted R-multiples (paper_execution_r from paper_execution_outcomes resolved
+  # through the authoritative paper_actionability contract; HALF_SIZE counts 0.5x, shadow/C/scalp
+  # count 0x). Model F -- NOT the legacy
+  # signal_outcomes.final_r other diagnostics use, and NOT raw USD, since crypto/stocks position
+  # sizing differ structurally). Combined across BOTH asset classes over lookback_hours.
+  pause_at_combined_r: -6.0

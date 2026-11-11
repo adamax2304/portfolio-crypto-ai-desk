@@ -1,0 +1,147 @@
+signal_id,symbol,mode,tier,regime,catalyst,covered,tf,actual_final_r,A_current,B_BE_0.5R,C_BE_1R,D_partial50_1R,E_33_33_runner,F_trail_1R,G_candle_close_stop,H_one_reentry,I_no_reentry
+sig_04a2956f93238455,ZEC/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_8decd4e1c4f47b1e,SAGA/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_85b6df5afca6737f,NIL/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.045,-1.0,-1.0,-1.0
+sig_8b6415f6a42254a5,TAO/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_8840649c39096d6b,INJ/USDT,swing,B,,no,True,5m,3.0,3.255,3.255,3.255,2.242,2.242,0.288,3.255,3.255,3.255
+sig_c5cfbfdb91bc047d,XLM/USDT,swing,B,,no,True,5m,3.0,3.2,0.0,3.2,2.2,2.2,2.986,3.2,3.2,3.2
+sig_e7b5abca227c9d96,XLM/USDT,intraday,B,,yes,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_8085412c633acbdc,ETH/USDT,intraday,B,,yes,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_e1d1f6ae9f0f60d3,JTO/USDT,swing,B,,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_e46d3a199dcf3512,NEAR/USDT,intraday,B,,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_773b48fd5b8ece9b,EPIC/USDT,intraday,B,,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_abcf205b14bc65a7,ENA/USDT,intraday,B,,yes,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_89ba144b0dea3645,ENA/USDT,intraday,B,,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_0576f62b9d5113fd,WLD/USDT,intraday,B,,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_a6bad9da0647a5da,BCH/USDT,intraday,B,,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_b45f7a6ff2aac8be,OPG/USDT,intraday,B,,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_988d171d834a507f,SUSHI/USDT,intraday,B,,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_e0ac6d51f679fa41,OPN/USDT,intraday,B,,no,True,5m,3.0,3.2,0.0,0.0,0.0,2.2,0.139,3.2,3.2,3.2
+sig_471a96fd32acbd87,ETH/USDT,intraday,B,,yes,True,5m,3.0,3.2,0.0,3.2,2.2,2.2,0.453,3.2,3.2,3.2
+sig_d519f27a44517aec,NEAR/USDT,swing,B,bearish trend,yes,True,5m,3.0,3.2,3.2,3.2,2.2,2.2,1.145,3.2,3.2,3.2
+sig_62dafe62f84018b5,FET/USDT,swing,B,bearish trend,no,True,5m,3.0,3.2,3.2,3.2,2.2,2.2,1.659,3.2,3.2,3.2
+sig_d853c5800c68558a,BTC/USDT,intraday,B,,yes,True,5m,3.0,3.2,3.2,3.2,2.2,2.2,1.634,3.2,3.2,3.2
+sig_a8c84a864370f3eb,PUMP/USDT,intraday,B,,no,True,5m,3.0,3.2,3.2,3.2,2.2,2.2,1.208,3.2,3.2,3.2
+sig_a41de7752a437326,ZRO/USDT,intraday,B,,no,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.179,-1.0,-1.0,-1.0
+sig_855d6356dbea8290,AVAX/USDT,swing,B,high-volatility danger,no,True,5m,3.0,4.074,0.0,0.0,0.829,2.866,0.871,4.074,4.074,4.074
+sig_4157a6047e72afc1,TON/USDT,intraday,B,bearish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_8874abdcb41b058e,SAHARA/USDT,swing,B,,no,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.041,-1.0,-1.0,-1.0
+sig_b420fd28e516020b,ALLO/USDT,swing,B,,no,True,5m,3.0,3.229,0.0,3.229,2.222,2.222,1.001,3.229,3.229,3.229
+sig_3c4bb622bf89f1d7,ALLO/USDT,intraday,B,,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_81df153d7da739cd,WLD/USDT,intraday,B,,yes,True,5m,3.0,3.2,0.0,0.0,0.6,2.2,0.238,3.2,3.2,3.2
+sig_ecd4d409e2905cde,NEAR/USDT,intraday,B,range/chop,yes,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.196,-1.0,-1.0,-1.0
+sig_3540b8ad5db05e8f,ZEC/USDT,swing,B,,yes,True,5m,3.0,3.2,0.0,0.0,0.6,2.2,0.233,3.2,3.2,3.2
+sig_282550410af0b004,XLM/USDT,swing,B,,no,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.16,-1.0,-1.0,-1.0
+sig_fe56da785741cb89,CHZ/USDT,swing,B,range/chop,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_86a01d13a3714093,IO/USDT,swing,B,,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_1c6faeaef55f8d51,ZEC/USDT,swing,B,bearish trend,yes,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_6c1288b8c2e6cdf4,IO/USDT,swing,B,,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_09fd9fc3b70afe92,CHZ/USDT,swing,B,,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_5a9e5f5386306226,ZEC/USDT,swing,B,,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_8442760b699c8bd0,STG/USDT,swing,B,,no,True,5m,3.0,3.841,3.841,3.841,2.688,2.688,2.705,3.841,3.841,3.841
+sig_d7bef8a7b8324e7c,SENT/USDT,swing,B,,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_5ce208fbfdea8d31,XLM/USDT,swing,B,,no,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.051,-1.0,-1.0,-1.0
+sig_d0145fae6f02bb21,BTC/USDT,intraday,B,,yes,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.183,-1.0,-1.0,-1.0
+sig_f5829c4313e35c37,ZEC/USDT,intraday,B,bearish trend,yes,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_e46c667a67df422a,TON/USDT,intraday,B,bearish trend,no,True,5m,3.0,6.308,0.0,0.0,0.0,4.568,0.269,6.308,6.308,6.308
+sig_80a2e6159037e56b,ZEC/USDT,intraday,B,,yes,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_a38c868327ddecd5,NEAR/USDT,intraday,B,,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_14191573ca883e84,STG/USDT,swing,B,,no,True,5m,3.0,3.453,3.453,3.453,2.393,2.393,1.367,3.453,3.453,3.453
+sig_5c8793762b0ed853,HMSTR/USDT,intraday,B,,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_480db727fe0a0b2e,ALLO/USDT,intraday,B,range/chop,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_a973e7e12c20bb7e,EPIC/USDT,intraday,B,,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_152ac53d04cafcfe,ID/USDT,intraday,B,range/chop,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_ed8a6043d3c1360c,PYTH/USDT,intraday,B,,yes,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_11067cb0dfa8c125,XPL/USDT,swing,B,,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_958a906fae834cd6,XPL/USDT,intraday,B,,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_94214c6a3e3df00c,ALLO/USDT,swing,B,,no,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.145,-1.0,-1.0,-1.0
+sig_0e689658d1242881,MEGA/USDT,intraday,B,,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_dbfc3a10c6517c43,ENJ/USDT,swing,B,,no,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.061,-1.0,-1.0,-1.0
+sig_307fe9b99e16e750,WLD/USDT,swing,B,,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_adf63369bc8de9a3,OPG/USDT,swing,B,,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,3.2,3.2,-1.0
+sig_ea74dd08ef3f11b4,RIF/USDT,swing,B,transition,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_8af9a8598dd98bbe,FET/USDT,swing,B,,no,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.356,-1.0,-1.0,-1.0
+sig_ae64f4828b8a537b,MEGA/USDT,intraday,B,,no,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.502,-1.0,-1.0,-1.0
+sig_98b4c50fa96d6026,OPG/USDT,intraday,B,,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,3.319,3.319,-1.0
+sig_996cdb28b3466ba5,WLD/USDT,intraday,B,bullish trend,no,True,5m,3.0,3.2,3.2,3.2,2.2,2.2,1.616,3.2,3.2,3.2
+sig_5fe7964186f68c58,ALLO/USDT,intraday,B,range/chop,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_c300b739fe1a2cbb,EDEN/USDT,swing,B,bullish trend,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_4f1fa02075701c86,TAO/USDT,swing,B,transition,yes,True,5m,3.0,3.2,0.0,3.2,2.2,2.2,0.616,3.2,3.2,3.2
+sig_da8622dd6495c29d,GENIUS/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_cfad151b59be10f5,MITO/USDT,intraday,B,,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_b1424ea4c0ffbef7,MITO/USDT,swing,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_efb60005c5ad7bb0,XPL/USDT,swing,B,bullish trend,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_05c0e0e23dfb6e38,EDEN/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_3aa3e9240bf7da62,CHIP/USDT,intraday,B,bullish trend,no,True,5m,3.0,3.2,3.2,3.2,2.2,2.2,0.915,3.2,3.2,3.2
+sig_141866e1f1ef85cb,TON/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.035,-1.0,-1.0,-1.0
+sig_baf47c7e183d4636,BANANAS31/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.027,-1.0,-1.0,-1.0
+sig_5aabbc0903cc4717,OPG/USDT,swing,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_9b2f1828aa34887a,CHIP/USDT,swing,B,bullish trend,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_659d3ac304eef62e,EIGEN/USDT,intraday,B,bullish trend,no,True,5m,3.0,3.2,0.0,3.2,2.2,2.2,1.862,3.2,3.2,3.2
+sig_9c37de1250c02f4f,MEGA/USDT,swing,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_874ec7ea5c685704,WLD/USDT,swing,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_67d3c6573153dbcf,XPL/USDT,intraday,B,,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_e3a7554313a1eff6,PENGU/USDT,intraday,B,,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_d2661d35b32651bf,ZRO/USDT,swing,B,,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_b24ada194ad669f3,ONDO/USDT,swing,B,,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_8a320b428bda38b5,DASH/USDT,swing,B,bullish trend,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_07dad5f7273f166e,BABY/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_9b477862402e6f3e,BTC/USDT,swing,B,,yes,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_54bd00aee6ac7e7b,NEAR/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_ec75ec4cd55a3970,NIGHT/USDT,swing,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_0da2a65849fd7906,PENGU/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_2beff2f35a16747b,ZRO/USDT,swing,B,bullish trend,no,True,5m,3.0,6.088,6.088,6.088,4.4,4.4,2.124,6.088,6.088,6.088
+sig_8e025cd71ca921d3,ZRO/USDT,intraday,B,bullish trend,no,True,5m,3.0,3.2,0.0,0.0,0.6,2.2,0.27,3.2,3.2,3.2
+sig_767de73923e3fa4a,XPL/USDT,swing,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_acc7ec3196f171e5,ALLO/USDT,swing,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_2a841e84d1622b79,ASTER/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_7f14a6436c67ea43,ALLO/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.07,-1.0,-1.0,-1.0
+sig_367b03e3f4cc0e49,RIF/USDT,swing,B,bullish trend,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_a223d543348efcd2,HMSTR/USDT,swing,B,,no,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.169,-1.0,-1.0,-1.0
+sig_2886dde27e77cdb0,SYN/USDT,swing,B,bullish trend,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_24a2b4d84a763ead,PHA/USDT,swing,B,transition,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_e07cf994ec5721bb,HMSTR/USDT,swing,B,bullish trend,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_b0b27635a9a97487,GPS/USDT,swing,B,bullish trend,no,True,5m,3.0,3.2,0.0,0.0,0.6,1.133,0.142,3.2,3.2,3.2
+sig_9f6799e671e4b510,ASTER/USDT,intraday,B,,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_a938871d7ad64082,GPS/USDT,swing,B,bullish trend,no,True,5m,3.0,3.2,0.0,3.2,2.2,2.2,0.27,3.2,3.2,3.2
+sig_e52b545dcf842795,BABY/USDT,swing,B,,no,True,5m,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_3a700eeac83b0b6e,SUI/USDT,swing,B,,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_1963bb7604160d97,XLM/USDT,swing,B,,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_9430eed918a3bae7,PENGU/USDT,intraday,B,,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_fcee1e578ede246b,DOT/USDT,intraday,B,,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_d14319a1e6db1742,PORTAL/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_3ff0d3c66fd53164,PORTAL/USDT,swing,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_038d5b303057d049,PORTAL/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_78242add59190cc4,SENT/USDT,swing,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.035,-1.0,-1.0,-1.0
+sig_579da1f4370576a4,SENT/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_da3e69f4abc59faf,JTO/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0
+sig_a404ac46ac00ee72,MEME/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.107,-1.0,-1.0,-1.0
+sig_bd26bd27c7a5e549,FIL/USDT,intraday,B,,no,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.139,-1.0,-1.0,-1.0
+sig_a493e7f78fe7b703,TAO/USDT,intraday,B,bullish trend,yes,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.056,-1.0,-1.0,-1.0
+sig_72a62f00fc9e1132,TIA/USDT,intraday,B,bullish trend,no,True,5m,1.0,-1.0,0.0,0.0,0.822,-0.119,1.198,-1.0,-1.0,-1.0
+sig_fabc1f91d0b29cf7,EPIC/USDT,intraday,B,bullish trend,no,True,5m,1.0,0.581,0.0,0.0,0.6,0.787,0.438,0.581,0.581,0.581
+sig_34ee9a2276ca393c,FIL/USDT,swing,B,bullish trend,no,True,5m,1.0,-1.0,0.0,0.0,0.6,-0.267,0.34,-1.0,-1.0,-1.0
+sig_3732f09533f66f19,WLD/USDT,swing,B,bullish trend,yes,True,5m,1.0,-1.0,0.0,0.0,0.6,-0.267,0.191,-1.0,-1.0,-1.0
+sig_3175e080a3f7e6cb,WLD/USDT,intraday,B,bullish trend,no,True,5m,1.0,-1.0,0.0,0.0,1.353,0.235,1.175,-1.0,-1.0,-1.0
+sig_fdcfbcca4d2d57ec,FIL/USDT,intraday,B,bullish trend,no,True,5m,2.0,-1.0,0.0,0.0,0.6,1.133,0.323,-1.0,-1.0,-1.0
+sig_e97033a7853c4c14,GPS/USDT,intraday,B,bullish trend,no,True,5m,1.0,-1.0,0.0,0.0,0.6,-0.267,0.299,-1.0,-1.0,-1.0
+sig_18c8f1b13f0fc9f4,BCH/USDT,intraday,B,,no,True,5m,1.0,-1.0,0.0,0.0,0.6,-0.267,0.207,-1.0,-1.0,-1.0
+sig_d276501bce8e208f,SOL/USDT,swing,B,bullish trend,yes,True,5m,2.0,-1.0,0.0,0.0,0.6,1.133,1.459,-1.0,-1.0,-1.0
+sig_795e11a401333af6,NIGHT/USDT,swing,B,bullish trend,no,True,5m,2.0,-1.0,0.0,0.0,0.0,1.365,0.143,-1.0,-1.0,-1.0
+sig_37393c0c5e5d2af9,ZEC/USDT,intraday,B,bullish trend,yes,True,5m,2.0,-1.0,0.0,0.0,0.6,1.133,1.172,-1.0,-1.0,-1.0
+sig_d2fe0e754b460a13,ZRO/USDT,intraday,B,bullish trend,no,True,5m,2.0,-1.0,0.0,0.0,0.0,1.133,0.177,-1.0,-1.0,-1.0
+sig_61b1a384681e50be,HOME/USDT,intraday,B,,no,True,5m,2.0,-1.0,0.0,0.0,0.6,1.133,0.466,-1.0,-1.0,-1.0
+sig_b2f5242b816f5815,NEAR/USDT,swing,B,,no,True,5m,1.0,-1.0,0.0,0.0,0.6,-0.267,0.218,-1.0,-1.0,-1.0
+sig_45c77fd91b9c2117,BABY/USDT,swing,B,bullish trend,no,True,5m,1.0,-1.0,0.0,0.0,0.0,0.071,0.418,-1.0,-1.0,-1.0
+sig_7379668865d7500b,WLD/USDT,intraday,B,bullish trend,no,True,5m,-1.0,-1.0,0.0,0.0,0.0,-1.0,0.197,-1.0,-1.0,-1.0
+sig_e547e8e956fa987f,PUMP/USDT,intraday,B,,no,True,5m,1.0,-1.0,0.0,0.0,0.6,-0.267,0.349,-1.0,-1.0,-1.0
+sig_e6cf0dd6fc04b113,SUI/USDT,intraday,B,,no,True,5m,1.0,-1.0,0.0,0.0,0.6,-0.267,0.273,-1.0,-1.0,-1.0
+sig_4880b78cabef64c4,MEME/USDT,swing,B,bullish trend,no,True,5m,1.0,-1.0,0.0,0.0,0.6,-0.266,0.522,-1.0,-1.0,-1.0
+sig_4a4a23bad950c796,TAO/USDT,swing,B,bullish trend,yes,True,5m,1.0,-1.0,0.0,0.0,0.652,-0.232,0.973,-1.0,-1.0,-1.0
+sig_a02e8f8d71d496db,BANANAS31/USDT,swing,B,bullish trend,no,True,5m,1.0,-1.0,0.0,0.0,0.6,-0.267,0.288,-1.0,-1.0,-1.0
+sig_5f7cdf63d3e0af1c,NOT/USDT,swing,B,transition,no,True,5m,1.0,-1.0,0.0,0.0,0.6,-0.267,0.273,-1.0,-1.0,-1.0
+sig_08c44b6d9d8686cf,ATOM/USDT,swing,B,,no,True,5m,2.0,-0.215,0.0,0.0,0.688,1.277,0.964,-0.215,-0.215,-0.215
+sig_d46308fc1e5a464c,CRV/USDT,swing,B,,yes,True,5m,1.0,-1.0,0.0,0.0,0.6,-0.267,1.05,-1.0,-1.0,-1.0
+sig_d346742b2dcc1bff,CHIP/USDT,swing,B,,no,True,5m,2.0,-1.0,0.0,0.0,0.777,1.423,0.513,-1.0,-1.0,-1.0
+sig_8330e6ba516f9f92,ALLO/USDT,swing,B,,no,True,5m,1.0,-1.0,0.0,0.0,0.655,-0.23,0.632,-1.0,-1.0,-1.0
+sig_514eb2fab601f19d,BANK/USDT,swing,B,,no,True,5m,1.0,-1.0,0.0,0.0,0.6,-0.267,0.346,-1.0,-1.0,-1.0

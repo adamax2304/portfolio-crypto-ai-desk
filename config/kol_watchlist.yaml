@@ -1,0 +1,22 @@
+sources:
+  - name: Manual KOL notes
+    type: manual
+    description: Add observed X/Telegram/Discord/KOL crowd notes to data/raw/social/manual_social_mentions.yaml.
+
+tracked_topics:
+  - BTC direction
+  - ETH beta
+  - SOL ecosystem
+  - AI coins
+  - Memes
+  - Exchange listings
+  - Unlock risk
+  - Macro/geopolitics
+
+tracked_accounts:
+  # Free live X/KOL ingestion is intentionally not automated in the MVP.
+  # Add account names here as a research checklist, then paste notable signals
+  # into data/raw/social/manual_social_mentions.yaml.
+  - name: example_account
+    platform: X
+    notes: Replace with accounts you actually trust.

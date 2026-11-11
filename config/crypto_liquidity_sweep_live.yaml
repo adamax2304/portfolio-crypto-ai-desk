@@ -1,0 +1,40 @@
+# Version-pinned live handoff for the observed-liquidity-sweep reversal.
+# The detector stays shadow-isolated; this bridge consumes only its new, clean
+# point-in-time rows and routes them through the common MEXC/Bybit preflight.
+crypto_liquidity_sweep_live:
+  # Archived 2026-09-30 after negative Shadow and live evidence. Historical
+  # decisions remain in the immutable live ledger, but no new capture is legal.
+  enabled: false
+  route_id: crypto_liquidity_sweep_live_v1
+  source_strategy_id: crypto_liquidity_sweep_v1
+  source_profile_id: crypto_liquidity_sweep_reversal_5m_v1
+  source_shadow_lane: shadow_crypto_liquidity_sweep
+  live_strategy_version: crypto_liquidity_sweep_reversal_5m_live_v1
+  mode: liquidity_sweep
+  entry_mode: LIQUIDITY_SWEEP
+  risk_bucket: crypto_liquidity_sweep
+  # Global live risk is $10; this route is a micro-canary at $2.50 risk at the
+  # protected stop while execution-equivalent v3 evidence accumulates.
+  risk_multiplier: 0.25
+  fixed_risk_usdt: 10.0
+  allowed_directions: [long]
+  market_regime_filter:
+    enabled: true
+    block_unknown: false
+    blocked_regimes:
+      - risk_off
+      - btc_risk_off
+      - bearish
+      - bearish_trend
+      - downtrend
+      - short
+      - short_bias
+      - high_volatility_danger
+    blocked_keywords: [risk_off, bearish, downtrend, short]
+  # The decision becomes valid only after the observed 5m candle closes.
+  # The derivatives tick can spend 1-2 minutes refreshing multi-venue public
+  # data before the bridge runs, so keep a full 5m handoff window. Venue
+  # preflight still re-checks current price, contract, margin, stop and all
+  # three native TP legs before submission.
+  max_capture_age_seconds: 300
+  required_data_status: ok

@@ -1,0 +1,54 @@
+# Fee profiles — PAPER accounting only. Fees vary by exchange / account VIP tier /
+# pair / order type / API-vs-manual / region / promos. DO NOT treat any rate as
+# universal or permanent — override with your account's ACTUAL rate. Rates are
+# per-side; open uses the entry order type, close uses the exit order type.
+fee_profiles:
+  bybit_non_vip_usdt_perp:
+    maker_fee_rate: 0.0002     # 0.02%
+    taker_fee_rate: 0.00055    # 0.055%
+    source_url: "https://www.bybit.com/en/help-center/article/Trading-Fee-Structure"
+    source_note: "Bybit non-VIP USDT perpetual default. VIP tiers are lower — override per account."
+    last_verified: "2026-06-24 (operator to re-verify account-specific rate)"
+  mexc_default_futures:
+    maker_fee_rate: 0.0000
+    taker_fee_rate: 0.0002     # 0.02% — varies by pair/account/promo
+    source_url: "https://www.mexc.com/fee"
+    source_note: "MEXC futures default; pair/account/event dependent. Override if API fee differs."
+    last_verified: "2026-06-24 (placeholder — verify per pair)"
+  mexc_conservative_api:
+    maker_fee_rate: 0.0004
+    taker_fee_rate: 0.0006
+    source_url: "https://www.mexc.com/fee"
+    source_note: "Conservative MEXC API futures assumption for execution tests."
+    last_verified: "2026-06-24"
+  conservative_taker:
+    maker_fee_rate: 0.0004
+    taker_fee_rate: 0.0008
+    source_url: ""
+    source_note: "Deliberately high stress-test; not a real venue rate."
+    last_verified: "2026-06-24"
+  custom_account_override:
+    maker_fee_rate: 0.0002
+    taker_fee_rate: 0.00055
+    source_url: ""
+    source_note: "EDIT ME with your real account maker/taker after pulling from the exchange account/API."
+    last_verified: "unset"
+  stock_etf_default:
+    maker_fee_rate: 0.0        # US retail equities/ETFs are commission-free
+    taker_fee_rate: 0.0001     # ~1bp effective (SEC/TAF/reg fees proxy); spread is in slippage
+    source_url: ""
+    source_note: "US equity/ETF paper model: commission-free + ~1bp effective fee. NOT a crypto-perp profile. No perp funding (funding=0)."
+    last_verified: "2026-07-01 (operator to set broker-specific commission if any)"
+  zero:
+    maker_fee_rate: 0.0
+    taker_fee_rate: 0.0
+    source_url: ""
+    source_note: "No-fee baseline for comparison only (also zeroes slippage in the sim)."
+    last_verified: "n/a"
+
+# back-compat alias (old key used by paper_portfolio default)
+fee_profile_aliases:
+  bybit_default_futures: bybit_non_vip_usdt_perp
+
+default_entry_order_type: taker   # paper assumes taker entry+exit unless overridden
+default_exit_order_type: taker

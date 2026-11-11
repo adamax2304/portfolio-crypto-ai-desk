@@ -1,0 +1,502 @@
+{
+  "generated_at": "2026-08-12T23:49:36.022129+00:00",
+  "db_path": "C:\\Users\\adama\\Documents\\crypto-ai-desk\\db\\crypto_ai_desk.sqlite",
+  "fee_profile": "bybit_non_vip_usdt_perp",
+  "rows_loaded": 450,
+  "paired_signals": 351,
+  "skipped": {
+    "bad_geom": 0,
+    "no_candles": 92,
+    "current_no_fill": 7
+  },
+  "candle_sources": {
+    "rolling": 198,
+    "deep_history": 160
+  },
+  "baseline_vs_ledger": {
+    "n": 0,
+    "ledger_net": 0,
+    "sim_net": 0,
+    "drift": 0,
+    "median_abs_drift": 0.0,
+    "p90_abs_drift": 0.0
+  },
+  "all": [
+    {
+      "variant": "current_recorded_geometry",
+      "n": 351,
+      "entered": 351,
+      "skipped": 0,
+      "net": 1334.22,
+      "delta": 0.0,
+      "winrate": 39.0,
+      "pf": 1.28,
+      "mdd": -1210.78,
+      "stops": 180,
+      "locks": 81,
+      "tp3": 57
+    },
+    {
+      "variant": "T110_1.10_2.10_3.20",
+      "n": 351,
+      "entered": 351,
+      "skipped": 0,
+      "net": 1580.77,
+      "delta": 246.55,
+      "winrate": 38.5,
+      "pf": 1.33,
+      "mdd": -1094.92,
+      "stops": 181,
+      "locks": 80,
+      "tp3": 56
+    },
+    {
+      "variant": "T115_1.15_2.15_3.30",
+      "n": 351,
+      "entered": 351,
+      "skipped": 0,
+      "net": 1691.01,
+      "delta": 356.79,
+      "winrate": 39.3,
+      "pf": 1.35,
+      "mdd": -1075.82,
+      "stops": 178,
+      "locks": 84,
+      "tp3": 55
+    },
+    {
+      "variant": "T120_1.20_2.20_3.40",
+      "n": 351,
+      "entered": 351,
+      "skipped": 0,
+      "net": 1642.32,
+      "delta": 308.1,
+      "winrate": 39.6,
+      "pf": 1.35,
+      "mdd": -1211.62,
+      "stops": 177,
+      "locks": 88,
+      "tp3": 52
+    },
+    {
+      "variant": "T130_1.30_2.30_3.60",
+      "n": 351,
+      "entered": 351,
+      "skipped": 0,
+      "net": 1949.15,
+      "delta": 614.93,
+      "winrate": 40.5,
+      "pf": 1.42,
+      "mdd": -1134.05,
+      "stops": 174,
+      "locks": 92,
+      "tp3": 51
+    },
+    {
+      "variant": "T140_1.40_2.40_3.80",
+      "n": 351,
+      "entered": 351,
+      "skipped": 0,
+      "net": 1869.6,
+      "delta": 535.38,
+      "winrate": 40.5,
+      "pf": 1.4,
+      "mdd": -1116.0,
+      "stops": 174,
+      "locks": 96,
+      "tp3": 47
+    }
+  ],
+  "clean_no_gap_gt60": [
+    {
+      "variant": "current_recorded_geometry",
+      "n": 128,
+      "entered": 128,
+      "skipped": 0,
+      "net": 1713.75,
+      "delta": 0.0,
+      "winrate": 44.5,
+      "pf": 2.13,
+      "mdd": -320.06,
+      "stops": 57,
+      "locks": 29,
+      "tp3": 29
+    },
+    {
+      "variant": "T110_1.10_2.10_3.20",
+      "n": 128,
+      "entered": 128,
+      "skipped": 0,
+      "net": 1762.42,
+      "delta": 48.67,
+      "winrate": 43.8,
+      "pf": 2.16,
+      "mdd": -291.76,
+      "stops": 57,
+      "locks": 30,
+      "tp3": 27
+    },
+    {
+      "variant": "T115_1.15_2.15_3.30",
+      "n": 128,
+      "entered": 128,
+      "skipped": 0,
+      "net": 1911.64,
+      "delta": 197.88,
+      "winrate": 45.3,
+      "pf": 2.3,
+      "mdd": -286.76,
+      "stops": 55,
+      "locks": 32,
+      "tp3": 27
+    },
+    {
+      "variant": "T120_1.20_2.20_3.40",
+      "n": 128,
+      "entered": 128,
+      "skipped": 0,
+      "net": 1945.89,
+      "delta": 232.14,
+      "winrate": 46.1,
+      "pf": 2.35,
+      "mdd": -347.59,
+      "stops": 54,
+      "locks": 34,
+      "tp3": 26
+    },
+    {
+      "variant": "T130_1.30_2.30_3.60",
+      "n": 128,
+      "entered": 128,
+      "skipped": 0,
+      "net": 2006.92,
+      "delta": 293.16,
+      "winrate": 46.1,
+      "pf": 2.39,
+      "mdd": -332.6,
+      "stops": 54,
+      "locks": 35,
+      "tp3": 25
+    },
+    {
+      "variant": "T140_1.40_2.40_3.80",
+      "n": 128,
+      "entered": 128,
+      "skipped": 0,
+      "net": 1880.92,
+      "delta": 167.17,
+      "winrate": 46.1,
+      "pf": 2.3,
+      "mdd": -317.61,
+      "stops": 54,
+      "locks": 38,
+      "tp3": 22
+    }
+  ],
+  "recent_14d": [
+    {
+      "variant": "current_recorded_geometry",
+      "n": 122,
+      "entered": 122,
+      "skipped": 0,
+      "net": 1324.64,
+      "delta": 0.0,
+      "winrate": 43.4,
+      "pf": 1.9,
+      "mdd": -236.58,
+      "stops": 55,
+      "locks": 31,
+      "tp3": 23
+    },
+    {
+      "variant": "T110_1.10_2.10_3.20",
+      "n": 122,
+      "entered": 122,
+      "skipped": 0,
+      "net": 1312.89,
+      "delta": -11.75,
+      "winrate": 41.8,
+      "pf": 1.86,
+      "mdd": -236.58,
+      "stops": 57,
+      "locks": 31,
+      "tp3": 21
+    },
+    {
+      "variant": "T115_1.15_2.15_3.30",
+      "n": 122,
+      "entered": 122,
+      "skipped": 0,
+      "net": 1447.97,
+      "delta": 123.33,
+      "winrate": 43.4,
+      "pf": 1.99,
+      "mdd": -236.58,
+      "stops": 55,
+      "locks": 33,
+      "tp3": 21
+    },
+    {
+      "variant": "T120_1.20_2.20_3.40",
+      "n": 122,
+      "entered": 122,
+      "skipped": 0,
+      "net": 1545.51,
+      "delta": 220.87,
+      "winrate": 44.3,
+      "pf": 2.07,
+      "mdd": -236.58,
+      "stops": 54,
+      "locks": 34,
+      "tp3": 21
+    },
+    {
+      "variant": "T130_1.30_2.30_3.60",
+      "n": 122,
+      "entered": 122,
+      "skipped": 0,
+      "net": 1620.54,
+      "delta": 295.9,
+      "winrate": 45.1,
+      "pf": 2.14,
+      "mdd": -236.58,
+      "stops": 53,
+      "locks": 36,
+      "tp3": 20
+    },
+    {
+      "variant": "T140_1.40_2.40_3.80",
+      "n": 122,
+      "entered": 122,
+      "skipped": 0,
+      "net": 1558.81,
+      "delta": 234.17,
+      "winrate": 45.1,
+      "pf": 2.1,
+      "mdd": -236.58,
+      "stops": 53,
+      "locks": 38,
+      "tp3": 18
+    }
+  ],
+  "late_test": [
+    {
+      "variant": "T130_1.30_2.30_3.60",
+      "n": 117,
+      "entered": 117,
+      "skipped": 0,
+      "net": 1727.4,
+      "delta": 295.9,
+      "avg_delta": 2.53,
+      "ci90": [
+        -274.42,
+        906.54
+      ],
+      "wr": 0.47,
+      "stops": 49,
+      "tp3": 20,
+      "avoided_losers": 0,
+      "missed_winners": 0,
+      "mdd": -154.27,
+      "current_n": 0
+    },
+    {
+      "variant": "T140_1.40_2.40_3.80",
+      "n": 117,
+      "entered": 117,
+      "skipped": 0,
+      "net": 1665.67,
+      "delta": 234.17,
+      "avg_delta": 2.0,
+      "ci90": [
+        -383.39,
+        904.95
+      ],
+      "wr": 0.47,
+      "stops": 49,
+      "tp3": 18,
+      "avoided_losers": 0,
+      "missed_winners": 0,
+      "mdd": -154.27,
+      "current_n": 0
+    },
+    {
+      "variant": "T120_1.20_2.20_3.40",
+      "n": 117,
+      "entered": 117,
+      "skipped": 0,
+      "net": 1652.37,
+      "delta": 220.87,
+      "avg_delta": 1.89,
+      "ci90": [
+        -343.81,
+        822.44
+      ],
+      "wr": 0.462,
+      "stops": 50,
+      "tp3": 21,
+      "avoided_losers": 0,
+      "missed_winners": 0,
+      "mdd": -154.14,
+      "current_n": 0
+    },
+    {
+      "variant": "T115_1.15_2.15_3.30",
+      "n": 117,
+      "entered": 117,
+      "skipped": 0,
+      "net": 1554.83,
+      "delta": 123.33,
+      "avg_delta": 1.05,
+      "ci90": [
+        -442.78,
+        713.53
+      ],
+      "wr": 0.453,
+      "stops": 51,
+      "tp3": 21,
+      "avoided_losers": 0,
+      "missed_winners": 0,
+      "mdd": -154.14,
+      "current_n": 0
+    },
+    {
+      "variant": "current_recorded_geometry",
+      "n": 117,
+      "entered": 117,
+      "skipped": 0,
+      "net": 1431.5,
+      "delta": 0.0,
+      "avg_delta": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ],
+      "wr": 0.453,
+      "stops": 51,
+      "tp3": 23,
+      "avoided_losers": 0,
+      "missed_winners": 0,
+      "mdd": -168.71,
+      "current_n": 0
+    },
+    {
+      "variant": "T110_1.10_2.10_3.20",
+      "n": 117,
+      "entered": 117,
+      "skipped": 0,
+      "net": 1419.75,
+      "delta": -11.75,
+      "avg_delta": -0.1,
+      "ci90": [
+        -565.2,
+        572.82
+      ],
+      "wr": 0.436,
+      "stops": 53,
+      "tp3": 21,
+      "avoided_losers": 0,
+      "missed_winners": 0,
+      "mdd": -154.14,
+      "current_n": 0
+    }
+  ],
+  "by_direction_all": [
+    {
+      "variant": "current_recorded_geometry",
+      "direction": "long",
+      "entered": 331,
+      "net": 939.18,
+      "wr": 38.7,
+      "pf": 1.2
+    },
+    {
+      "variant": "current_recorded_geometry",
+      "direction": "short",
+      "entered": 20,
+      "net": 395.04,
+      "wr": 45.0,
+      "pf": 2.72
+    },
+    {
+      "variant": "T110_1.10_2.10_3.20",
+      "direction": "long",
+      "entered": 331,
+      "net": 1148.03,
+      "wr": 38.1,
+      "pf": 1.25
+    },
+    {
+      "variant": "T110_1.10_2.10_3.20",
+      "direction": "short",
+      "entered": 20,
+      "net": 432.74,
+      "wr": 45.0,
+      "pf": 2.89
+    },
+    {
+      "variant": "T115_1.15_2.15_3.30",
+      "direction": "long",
+      "entered": 331,
+      "net": 1239.41,
+      "wr": 39.0,
+      "pf": 1.27
+    },
+    {
+      "variant": "T115_1.15_2.15_3.30",
+      "direction": "short",
+      "entered": 20,
+      "net": 451.59,
+      "wr": 45.0,
+      "pf": 2.97
+    },
+    {
+      "variant": "T120_1.20_2.20_3.40",
+      "direction": "long",
+      "entered": 331,
+      "net": 1171.88,
+      "wr": 39.3,
+      "pf": 1.26
+    },
+    {
+      "variant": "T120_1.20_2.20_3.40",
+      "direction": "short",
+      "entered": 20,
+      "net": 470.44,
+      "wr": 45.0,
+      "pf": 3.05
+    },
+    {
+      "variant": "T130_1.30_2.30_3.60",
+      "direction": "long",
+      "entered": 331,
+      "net": 1441.12,
+      "wr": 40.2,
+      "pf": 1.32
+    },
+    {
+      "variant": "T130_1.30_2.30_3.60",
+      "direction": "short",
+      "entered": 20,
+      "net": 508.03,
+      "wr": 45.0,
+      "pf": 3.21
+    },
+    {
+      "variant": "T140_1.40_2.40_3.80",
+      "direction": "long",
+      "entered": 331,
+      "net": 1325.57,
+      "wr": 40.2,
+      "pf": 1.3
+    },
+    {
+      "variant": "T140_1.40_2.40_3.80",
+      "direction": "short",
+      "entered": 20,
+      "net": 544.03,
+      "wr": 45.0,
+      "pf": 3.35
+    }
+  ]
+}

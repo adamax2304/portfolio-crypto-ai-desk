@@ -1,0 +1,14 @@
+# Read-only MEXC-native parity comparison. The partial profile now mirrors the
+# active live three-TP exit; the legacy full-runner profile remains its control.
+mexc_swing_exit_variants_shadow:
+  feature_flag: true
+  strategy_id: mexc_swing_exit_variants_v1
+  shadow_lane: shadow_mexc_exit_variants
+  interval: Min1
+  max_hold_hours: 168
+  baseline_profile_id: mexc_model_f_runner_v1
+  partial_profile_id: mexc_partial_tp_33_33_34_v1
+  partial_weights: [0.33, 0.33, 0.34]
+  # Do not treat a one-minute candle that contains conflicting stop/target
+  # events as evidence.  It is logged as ambiguous and excluded.
+  exclude_ambiguous_intrabar: true

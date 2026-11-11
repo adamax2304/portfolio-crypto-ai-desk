@@ -1,0 +1,795 @@
+# Paper Monitor Status (latest)
+
+Lifecycle-aware view. Display semantics only — no trade field changed.
+
+## Counts by display group
+| group | count |
+|---|---|
+| OPEN_ACTIVE | 0 |
+| WAITING_FOR_ENTRY | 0 |
+| REVIEW_ONLY_SHADOW | 0 |
+| ENTERED_UNRESOLVED_EXPIRED | 8 |
+| NO_ENTRY_EXPIRED | 321 |
+| CLOSED_WIN | 377 |
+| CLOSED_LOSS | 13 |
+| CLOSED_FLAT | 49 |
+| UNKNOWN_INCONSISTENT | 0 |
+
+## Operator splits
+- Open actionable: 0
+- Waiting for entry: 0
+- Entered unresolved (expired-after-entry): 8
+- Review/Shadow: 0
+- No-entry / stale / moved-away: 321
+- Closed: 377W / 13L / 49flat
+- Needs review (inconsistent): 0
+
+## Items
+- **SOFI** long (stocks/intraday/C) — 🔴 CLOSED LOSS -1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · stopped out / closed at a losing R
+- **VRT** long (stocks/intraday/C) — ⌛ EXPIRED AFTER ENTRY — entered, no TP/SL within window (not a missed entry) · touched=True · alerted=False · source=legacy touch · entry was filled but neither TP nor SL hit before the validity window ended
+- **ANET** long (stocks/intraday/C) — ⌛ EXPIRED AFTER ENTRY — entered, no TP/SL within window (not a missed entry) · touched=True · alerted=False · source=legacy touch · entry was filled but neither TP nor SL hit before the validity window ended
+- **NET** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **QQQ** long (stocks/intraday/C) — ⌛ EXPIRED AFTER ENTRY — entered, no TP/SL within window (not a missed entry) · touched=True · alerted=False · source=legacy touch · entry was filled but neither TP nor SL hit before the validity window ended
+- **XLK** long (stocks/intraday/C) — 🔴 CLOSED LOSS -1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · stopped out / closed at a losing R
+- **ORCL** long (stocks/intraday/C) — ⌛ EXPIRED AFTER ENTRY — entered, no TP/SL within window (not a missed entry) · touched=True · alerted=False · source=legacy touch · entry was filled but neither TP nor SL hit before the validity window ended
+- **ETN** long (stocks/intraday/C) — 🔴 CLOSED LOSS -1.0R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (original_stop)
+- **HUT** long (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=True · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **AMGN** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **CRWD** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **SMH** long (stocks/intraday/C) — 🔴 CLOSED LOSS -1.0R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (original_stop)
+- **AMD** long (stocks/intraday/C) — ⌛ EXPIRED AFTER ENTRY — entered, no TP/SL within window (not a missed entry) · touched=True · alerted=False · source=legacy touch · entry was filled but neither TP nor SL hit before the validity window ended
+- **ASML** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **SMCI** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **CLSK** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **GOOGL** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **NFLX** long (stocks/intraday/C) — ⌛ EXPIRED AFTER ENTRY — entered, no TP/SL within window (not a missed entry) · touched=True · alerted=False · source=legacy touch · entry was filled but neither TP nor SL hit before the validity window ended
+- **PLTR** long (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=True · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **REGN** long (stocks/intraday/A) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **REGN** long (stocks/intraday/A) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **REGN** long (stocks/intraday/A) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **PEPE/USDT** short (crypto/intraday/B) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=True · source=legacy touch · closed at a winning R
+- **UNI/USDT** short (crypto/intraday/B) — 🔴 CLOSED LOSS -1.0R (legacy touch) · touched=True · alerted=True · source=legacy touch · stopped out / closed at a losing R
+- **ZEC/USDT** short (crypto/intraday/B) — ⚪ CLOSED FLAT 0R · touched=True · alerted=True · source=paper execution · closed flat by paper execution (breakeven_stop)
+- **MAR** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **PEP** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **LLY** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **KO** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **GE** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **CMCSA** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **LMT** long (stocks/intraday/C) — 🔴 CLOSED LOSS -1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · stopped out / closed at a losing R
+- **UBER** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **IWM** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **XLF** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **MS** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **RDDT** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **RIOT** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **BLK** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **SBUX** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **DIA** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **XLV** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **DIS** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **MSFT** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **TXN** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **JPM** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **GS** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **TSLA** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **AXP** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **XLY** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **COST** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **APP** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **WMT** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **BKNG** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **XLI** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **MSTR** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **XLU** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **ISRG** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **XLC** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **AAPL** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **BAC** long (stocks/intraday/C) — 🔴 CLOSED LOSS -1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · stopped out / closed at a losing R
+- **AVGO** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **MARA** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **QCOM** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **TSM** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **NKE** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **SNOW** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **BX** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **SPY** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **VRTX** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **HOOD** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **XOM** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **GOOGL** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **DDOG** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **REGN** long (stocks/intraday/C) — ✅ CLOSED WIN +3.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **DXCM** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **TSLA** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **CRCL** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **DELL** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **AMGN** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **BIIB** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **GILD** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **VRTX** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **UNH** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **ABNB** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **HD** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **CRM** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **COP** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **IBM** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **MCD** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **AMZN** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **XLE** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **MA** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **NOW** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **NVDA** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **ORCL** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **ADBE** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **PYPL** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **XLK** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **AFRM** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **NFLX** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **SHOP** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **SMCI** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **COIN** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **DXCM** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **WMT** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **BAC** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **SNOW** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **RDDT** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **IBM** short (stocks/intraday/C) — ⌛ EXPIRED AFTER ENTRY — entered, no TP/SL within window (not a missed entry) · touched=True · alerted=True · source=legacy touch · entry was filled but neither TP nor SL hit before the validity window ended
+- **CRM** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **DXCM** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **NOW** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **AXP** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **NVDA** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **DELL** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=True · source=legacy touch · closed at a winning R
+- **COIN** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=True · source=legacy touch · closed at a winning R
+- **MSTR** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **COP** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **AFRM** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **ADBE** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **XOM** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **SMCI** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **CRCL** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **DDOG** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **XLE** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **NFLX** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **BIIB** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **HD** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **SBUX** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **MCD** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **COST** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **UBER** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **JPM** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **AMGN** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **VRTX** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **GILD** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **GS** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **BLK** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **LLY** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **DIS** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **AMZN** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **XLU** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **IWM** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **GE** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **XLI** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **XLY** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **MS** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **XLV** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **RIOT** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **DIA** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **KO** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **TXN** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **AAPL** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **XLF** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **CMCSA** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **ABNB** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **APP** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **QCOM** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **XLC** long (stocks/intraday/C) — 🔴 CLOSED LOSS -1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · stopped out / closed at a losing R
+- **AVGO** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **MARA** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **PYPL** short (stocks/intraday/C) — 🔴 CLOSED LOSS -1.0R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (original_stop)
+- **ISRG** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **LMT** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **SHOP** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **NKE** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **PEP** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **MAR** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **UNH** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **MA** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **MSFT** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **GOOGL** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **XLK** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **ORCL** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **TSM** long (stocks/intraday/C) — ⌛ EXPIRED AFTER ENTRY — entered, no TP/SL within window (not a missed entry) · touched=True · alerted=False · source=legacy touch · entry was filled but neither TP nor SL hit before the validity window ended
+- **BKNG** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **NVO** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **VRT** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **CRWD** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **PANW** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **CLSK** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **INTC** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **ETN** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **REGN** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **NOW** short (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **INTU** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **BAC** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **SOFI** short (stocks/intraday/C) — 🔴 CLOSED LOSS -1.0R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (original_stop)
+- **MU** short (stocks/intraday/C) — 🔴 CLOSED LOSS -1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · stopped out / closed at a losing R
+- **ARM** short (stocks/intraday/C) — 🔴 CLOSED LOSS -1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · stopped out / closed at a losing R
+- **HOOD** short (stocks/intraday/C) — 🔴 CLOSED LOSS -1.0R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (original_stop)
+- **AMGN** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **BA** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **ZEC/USDT** short (crypto/intraday/B) — ⚪ CLOSED FLAT 0R · touched=True · alerted=True · source=paper execution · closed flat by paper execution (breakeven_stop)
+- **ZEC/USDT** short (crypto/intraday/B) — ⚪ CLOSED FLAT 0R · touched=True · alerted=True · source=paper execution · closed flat by paper execution (breakeven_stop)
+- **RDDT** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=True · alerted=True · source=paper execution · closed flat by paper execution (breakeven_stop)
+- **RDDT** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=True · alerted=True · source=paper execution · closed flat by paper execution (breakeven_stop)
+- **UNH** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **KLAC** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **NKE** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **NVO** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **PYPL** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **BX** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **SOFI** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **ISRG** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **MSFT** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **HUT** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **META** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **LRCX** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **BIIB** long (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **NVO** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **DIS** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **UBER** long (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **COST** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **MAR** long (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=True · alerted=False · source=paper execution · closed flat by paper execution (breakeven_stop)
+- **RDDT** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **GILD** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **SNOW** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **AMGN** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **COP** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **GILD** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **AMGN** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **TXN** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **LMT** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **CSCO** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **CRCL** short (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AFRM** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **BIIB** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **SMH** short (stocks/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLK** short (stocks/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLI** short (stocks/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **ETN** short (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_execution_path_gap)
+- **PLTR** short (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_execution_path_gap)
+- **SOFI** short (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_execution_path_gap)
+- **AMAT** short (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_execution_path_gap)
+- **LRCX** short (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_execution_path_gap)
+- **TSLA** short (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_execution_path_gap)
+- **DELL** short (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_execution_path_gap)
+- **BA** short (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_execution_path_gap)
+- **QQQ** short (stocks/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **DIA** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **BIIB** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **NVDA** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **IBM** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **IBM** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **AMD** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **META** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **NVO** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=True · source=legacy touch · closed at a winning R
+- **BX** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **XOM** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **MRVL** short (stocks/intraday/B) — ✅ CLOSED WIN +1.0R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (expiry_profit_lock)
+- **CMCSA** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **AVGO** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **ASML** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **ANET** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **MU** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **SMH** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **XLK** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **ETN** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **MSFT** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **HD** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **HUT** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **TSM** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **CLSK** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **GS** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **BKNG** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **BIIB** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **NET** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **TXN** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **MAR** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **JPM** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **XLY** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **QCOM** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **PANW** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **DDOG** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **ASML** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **ISRG** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **DELL** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **PLTR** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **DDOG** short (stocks/intraday/B) — ✅ CLOSED WIN +0.0R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (expired_flat)
+- **ARM** long (stocks/intraday/B) — ⚪ CLOSED FLAT 0R · touched=False · alerted=True · source=paper execution · closed flat by paper execution (breakeven_stop)
+- **NKE** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **PYPL** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **ARM** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **SMH** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **NFLX** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **NVO** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **XLC** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **LLY** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **NOW** short (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AXP** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **ARM** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **TXN** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **PEP** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **PANW** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **SPY** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **MARA** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **SMCI** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=True · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **TXN** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **TSLA** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **ISRG** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **UBER** short (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **BKNG** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **COIN** short (stocks/intraday/B) — ✅ CLOSED WIN +0.2R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (expiry_breakeven)
+- **TSLA** short (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AXP** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **RDDT** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **REGN** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **GILD** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **AAPL** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **DIS** long (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **DELL** short (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_execution_path_gap)
+- **RDDT** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **LLY** long (stocks/intraday/A) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_execution_path_gap)
+- **PUMP/USDT** long (crypto/intraday/B) — ⚪ CLOSED FLAT 0R · touched=False · alerted=True · source=paper execution · closed flat by paper execution (breakeven_stop)
+- **LRCX** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **DIA** long (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=True · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **APP** short (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **MS** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **MSTR** long (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_execution_path_gap)
+- **ADA/USDT** long (crypto/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **MAR** long (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_execution_path_gap)
+- **GOOGL** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **PANW** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **HD** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **CRWD** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=True · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **ARM** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **XLY** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **NFLX** short (stocks/intraday/B) — ✅ CLOSED WIN +1.0R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (expiry_profit_lock)
+- **XLY** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **VRT** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **KO** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **TSM** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **NKE** long (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=True · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **BX** short (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **MS** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **QCOM** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **WMT** long (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **LLY** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **PYPL** long (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **VRT** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **NVDA** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **KLAC** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **XOM** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **LRCX** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **WMT** long (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLF** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **PYPL** long (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **LLY** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **VRT** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **XLF** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **NVDA** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **KLAC** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **XOM** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **LRCX** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **AXP** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **AXP** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **DIS** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **UBER** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **XLY** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **GILD** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **PYPL** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **XLF** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **CSCO** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **MSFT** long (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **CMCSA** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **DXCM** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **CSCO** long (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_execution_path_gap)
+- **DDOG** long (stocks/intraday/A) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **XLV** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (breakeven_stop)
+- **META** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **AAPL** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **HUT** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **SNOW** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **UBER** long (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **KLAC** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **IWM** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **CLSK** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **NVO** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **SBUX** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **HUT** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **COST** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **NOW** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **WMT** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **SOFI** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **ISRG** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **UBER** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **CSCO** long (stocks/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **PUMP/USDT** long (crypto/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **BIIB** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **VRTX** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **AMGN** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **PYPL** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **WMT** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **HUT** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **NFLX** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **NVO** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **KO** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **PEP** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **RIOT** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **MARA** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **CLSK** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **AMAT** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **SMH** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **BIIB** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **MCD** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **CRWD** long (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=True · alerted=True · source=paper execution · closed flat by paper execution (expired_flat)
+- **DDOG** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **PYPL** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **SBUX** short (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **GS** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=True · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **XLE** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **KLAC** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **DIA** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **RDDT** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **LRCX** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **AMZN** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **RIOT** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **IBM** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **ORCL** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **BA** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **BAC** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **JPM** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **RIOT** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **KO** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **HUT** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **XLY** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **AMZN** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **IBM** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **ORCL** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **RDDT** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **ANET** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **MARA** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **SMH** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **INTU** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **ETN** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **HOOD** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **BLK** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **BLK** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **RIOT** short (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **MARA** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **BROCCOLI714/USDT** long (crypto/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **CRWD** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **PANW** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **PLTR** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **AMD** long (stocks/intraday/A) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AMD** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **DDOG** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **NVDA** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **SMCI** long (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AVGO** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **UBER** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=True · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **KO** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **PEP** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **XLU** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **CLSK** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **MARA** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **HUT** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **TSM** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **ASML** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **MRVL** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **META** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **DDOG** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **QCOM** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **APP** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **KLAC** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **LRCX** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **AMZN** long (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (breakeven_stop)
+- **ASML** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **XLU** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **CLSK** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **MARA** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **HUT** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **PEP** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **TSM** long (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **STRK/USDT** long (crypto/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **HUT** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **NKE** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **MSFT** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **SMCI** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **NET** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **QCOM** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **DIS** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=True · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **AMD** long (stocks/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **IBM** short (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **V** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **XLE** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **MA** short (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **CRCL** short (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **CLSK** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **HOOD** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **VRTX** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **XOM** long (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **BIIB** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=True · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **BAC** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **MS** short (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLF** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **CRCL** long (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **IBM** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **LMT** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=True · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **AMD** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **NOW** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **SHOP** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **REGN** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **SNOW** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **VRT** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **BA** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **KO** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **NET** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **XLF** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **JPM** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **LTC/USDT** long (crypto/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **UNH** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **KO** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **NVDA** long (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **SMCI** long (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=True · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **UNI/USDT** long (crypto/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **TSLA** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **REGN** long (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **KLAC** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **QQQ** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **COIN** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **DELL** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **DDOG** short (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **CRCL** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **COIN** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **XLY** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **ZK/USDT** long (crypto/scalp/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **DXCM** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **MRVL** short (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AMZN** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **RIOT** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **CLSK** short (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **IWM** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **KLAC** short (stocks/intraday/C) — ✅ CLOSED WIN +2.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **MS** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **ONG/USDT** long (crypto/scalp/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **INJ/USDT** long (crypto/scalp/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **VIRTUAL/USDT** long (crypto/scalp/B) — ⚪ CLOSED FLAT 0R · touched=False · alerted=True · source=paper execution · closed flat by paper execution (expired_flat)
+- **DELL** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (breakeven_stop)
+- **DDOG** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **CSCO** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **UNH** long (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **VIRTUAL/USDT** long (crypto/scalp/B) — ⚪ CLOSED FLAT 0R · touched=False · alerted=True · source=paper execution · closed flat by paper execution (expired_flat)
+- **PENGU/USDT** long (crypto/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **TAO/USDT** long (crypto/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **INJ/USDT** long (crypto/scalp/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **TUT/USDT** long (crypto/scalp/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **COTI/USDT** long (crypto/intraday/B) — ⚪ CLOSED FLAT 0R · touched=False · alerted=True · source=paper execution · closed flat by paper execution (expired_flat)
+- **SNOW** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **PLTR** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **DXCM** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **XPL/USDT** long (crypto/scalp/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **GOOGL** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **COST** short (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **CRCL** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **IBM** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **LRCX** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **UBER** long (stocks/intraday/C) — ✅ CLOSED WIN +1.0R (legacy touch) · touched=True · alerted=False · source=legacy touch · closed at a winning R
+- **CRCL** long (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **MA** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **MAR** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **ETN** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **SOFI** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **ANET** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **XLI** short (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **VRT** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **KLAC** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **GE** long (stocks/intraday/A) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **GE** long (stocks/intraday/A) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **DIA** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **PEP** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **GE** long (stocks/intraday/A) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **AMZN** short (stocks/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **META** short (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **AMD** long (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **XLC** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **UNH** short (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **ORCL** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **DELL** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **BIIB** long (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **PEP** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **XLF** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **BICO/USDT** short (crypto/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **GOOGL** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **XLF** long (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (breakeven_stop)
+- **WMT** long (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (breakeven_stop)
+- **BICO/USDT** long (crypto/scalp/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **TST/USDT** long (crypto/scalp/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **COP** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **COIN** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **GILD** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **KITE/USDT** long (crypto/intraday/B) — ⚪ CLOSED FLAT 0R · touched=False · alerted=True · source=paper execution · closed flat by paper execution (expired_flat)
+- **ZBT/USDT** long (crypto/scalp/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **TUT/USDT** long (crypto/scalp/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **HEI/USDT** long (crypto/scalp/B) — ⚪ CLOSED FLAT 0R · touched=False · alerted=True · source=paper execution · closed flat by paper execution (expired_flat)
+- **SYN/USDT** long (crypto/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **HFT/USDT** long (crypto/scalp/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **LLY** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **ZEC/USDT** short (crypto/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **DIA** long (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLV** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **PLTR** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **JPM** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AMD** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **JPM** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **TSLA** short (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **TSLA** short (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **TSLA** short (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **ONDO/USDT** long (crypto/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **OPN/USDT** long (crypto/scalp/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **ONDO/USDT** long (crypto/scalp/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **FIL/USDT** long (crypto/scalp/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **ZAMA/USDT** long (crypto/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **VIRTUAL/USDT** long (crypto/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **KITE/USDT** long (crypto/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **ADA/USDT** long (crypto/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **ZAMA/USDT** long (crypto/scalp/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **KAITO/USDT** long (crypto/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **ZAMA/USDT** long (crypto/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **IWM** short (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **SMCI** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **XLE** long (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **SMH** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **XLY** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **DIA** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **SPY** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **NVDA** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **LLY** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **GOOGL** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **PUMP/USDT** long (crypto/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AMZN** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **PENGU/USDT** long (crypto/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AVGO** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **ALLO/USDT** long (crypto/intraday/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **TSLA** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **DIA** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **NEAR/USDT** short (crypto/scalp/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **UNH** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AAPL** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **COIN** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **QQQ** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **SMH** short (stocks/intraday/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=False · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AMD** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **AAPL** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLK** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **AAPL** long (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **UNH** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **UNH** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **UNH** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **UNH** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **UNH** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **UNH** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **GOOGL** long (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **JPM** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **JPM** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XOM** long (stocks/intraday/B) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=True · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **JPM** long (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **SMCI** long (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **GOOGL** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **UNH** long (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **LLY** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLV** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLF** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLF** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLF** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **LLY** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLV** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLV** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **DIA** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **LLY** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLF** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLF** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **COIN** long (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **XLV** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLV** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLV** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLV** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLV** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLV** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **UNH** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLV** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLF** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **JPM** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLF** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AMD** long (stocks/invest/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AMD** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AMD** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AMD** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AMD** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **COIN** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (no_entry)
+- **AMD** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **LLY** long (stocks/invest/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLV** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **LLY** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **LLY** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **LLY** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **LLY** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **LLY** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **UNH** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **LLY** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **UNH** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **LLY** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **LLY** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **UNH** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **MSTR** short (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **JPM** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **DIA** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **PLTR** short (stocks/invest/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **PLTR** short (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **NFLX** short (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **NFLX** short (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **NFLX** short (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **NFLX** short (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **META** short (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **PLTR** short (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **SMH** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **SMH** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **MSTR** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **SMH** long (stocks/invest/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **SMH** long (stocks/invest/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **SMH** long (stocks/invest/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **SMH** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **NFLX** short (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **JPM** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **JPM** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **JPM** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **NFLX** short (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLF** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **NFLX** short (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **JPM** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **NFLX** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **NFLX** short (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **JPM** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **NFLX** short (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **JPM** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **DIA** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **XLF** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **DIA** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XOM** short (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLE** short (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **SMH** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AMD** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XOM** short (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AMD** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **XLE** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **AMD** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AMZN** short (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **AMZN** short (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **IWM** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **MSFT** short (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **MSFT** short (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **META** short (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **META** short (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **UNH** long (stocks/swing/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **UNH** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **UNH** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **TSLA** short (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)
+- **TSLA** short (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **LLY** long (stocks/invest/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **MSFT** short (stocks/intraday/C) — ⚪ CLOSED FLAT 0R · touched=False · alerted=False · source=paper execution · closed flat by paper execution (expired_flat)
+- **LLY** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **UNH** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **LLY** long (stocks/swing/C) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=False · source=paper execution · closed by paper execution (profit_lock_stop)
+- **SMH** long (stocks/swing/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **SMH** long (stocks/swing/B) — ✅ CLOSED WIN +0.5R (paper execution) · touched=True · alerted=True · source=paper execution · closed by paper execution (profit_lock_stop)
+- **DIA** long (stocks/intraday/C) — ❌ NO ENTRY — price never reached the entry before the window ended · touched=False · alerted=False · source=legacy touch · paper entry invalidated before execution (invalid_stock_intraday_entry_not_point_in_time)

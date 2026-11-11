@@ -1,0 +1,167 @@
+# Strategy evidence and promotion governance.
+#
+# This file owns experiment stages and evidence thresholds only. It never
+# calculates indicators, changes stops/targets, sizes a position, or submits
+# an order. Live routes remain operator-controlled in config/live_routes.yaml.
+strategy_governance:
+  version: strategy_governance_v1
+  activated_at: "2026-09-28T20:05:00+00:00"
+  evaluation_db_path: db/strategy_governance.sqlite
+
+  evidence_contract:
+    paper_exit_version: live_exit_parity_v3_incremental
+    minimum_clean_closed: 30
+    target_clean_closed: 50
+    minimum_profit_factor: 1.25
+    minimum_expectancy_r: 0.0
+    require_positive_net_after_costs: true
+    maximum_drawdown_r: 8.0
+    minimum_stock_rth_sessions: 30
+
+  micro_canary:
+    risk_usdt: 2.50
+    minimum_closed_before_decision: 10
+    target_closed: 20
+    minimum_profit_factor: 1.00
+    require_positive_net_after_costs: true
+    maximum_drawdown_r: 5.0
+    minimum_paired_v3_trades_at_target: 10
+    maximum_mean_absolute_paper_live_delta_r: 0.35
+
+  # Frozen means that a parameter edit requires a deliberate new version and
+  # a new evidence cohort. The runtime bridge refuses new captures when this
+  # fingerprint no longer matches; already-open positions are never touched.
+  frozen_strategies:
+    crypto_liquidity_sweep_v1:
+      expected_sha256: 6b290d4d0f94c45442a764c427f534b0d6970885a9446c69040e178b430a45f3
+      inputs:
+        - path: config/shadow_crypto_liquidity_sweep.yaml
+          block: crypto_liquidity_sweep_v1
+          fields:
+            - strategy_id
+            - profile_id
+            - shadow_lane
+            - timeframe
+            - primary_exchange
+            - max_symbols
+            - level_lookback_bars
+            - level_touch_tolerance_bps
+            - min_sweep_bps
+            - min_wick_share
+            - min_close_location
+            - min_rvol
+            - liquidation_window_minutes
+            - min_liquidation_notional_usd
+            - liquidation_sources
+            - min_oi_drop_pct
+            - derivatives_freshness_minutes
+            - liquidity_freshness_minutes
+            - max_spread_bps
+            - block_sessions
+            - stop_buffer_atr
+            - max_stop_distance_pct
+            - target_r
+            - max_holding_bars
+            - fee_profile
+        - path: config/crypto_liquidity_sweep_live.yaml
+          block: crypto_liquidity_sweep_live
+          fields:
+            - route_id
+            - source_strategy_id
+            - source_profile_id
+            - source_shadow_lane
+            - live_strategy_version
+            - mode
+            - entry_mode
+            - risk_bucket
+            - risk_multiplier
+            - fixed_risk_usdt
+            - allowed_directions
+            - market_regime_filter
+            - max_capture_age_seconds
+            - required_data_status
+
+  strategies:
+    crypto_liquidity_sweep_v1:
+      asset_class: crypto
+      stage: archived
+      activation_at: "2026-09-28T20:05:00+00:00"
+      route_key: crypto_liquidity_sweep
+      live_strategy_version: crypto_liquidity_sweep_reversal_5m_live_v1
+      profile_ids: [crypto_liquidity_sweep_reversal_5m_v1]
+      source_outcome_table: crypto_liquidity_sweep_v1_shadow_outcomes
+      # The old 5m aggregate shadow simulator is not accepted as v3 parity.
+      # At target_closed the canary pauses unless a compatible paired v3 lane
+      # has accumulated enough trades.
+      paired_paper_exit_version: live_exit_parity_v3_incremental
+
+    crypto_liquidity_sweep_reclaim_v2:
+      asset_class: crypto
+      stage: archived
+      activation_at: "2026-09-28T20:05:00+00:00"
+      profile_ids:
+        - crypto_liquidity_sweep_reclaim_5m_hold2_paper_v2
+        - crypto_liquidity_sweep_reclaim_15m_hold1_paper_v2
+      source_outcome_table: crypto_liquidity_sweep_reclaim_v2_paper_outcomes
+      live_allowed: false
+
+    crypto_fast_flush_reclaim_v3:
+      asset_class: crypto
+      stage: paper
+      activation_at: "2026-09-29T00:00:00+00:00"
+      profile_ids:
+        - crypto_fast_flush_reclaim_fast_1m_paper_v3
+        - crypto_fast_flush_reclaim_asia_1m_paper_v1
+        - crypto_fast_flush_reclaim_europe_1m_paper_v1
+        - crypto_fast_flush_reclaim_shallow_1m_paper_v1
+        - crypto_fast_flush_reclaim_shallow_flex_1m_paper_v1
+      source_outcome_table: crypto_fast_flush_reclaim_v3_paper_outcomes
+      live_allowed: false
+
+    stocks_rth_breakout_research_v1:
+      asset_class: stocks
+      stage: paper
+      activation_at: "2026-09-28T20:05:00+00:00"
+      profile_ids: [stocks_intraday_breakout_1bar_paper_v1]
+      entry_modes: [BREAKOUT_CONTINUATION]
+      require_rth_sessions: 30
+      live_allowed: false
+
+    stocks_liquidity_shock_reclaim_v1:
+      asset_class: stocks
+      stage: paper
+      activation_at: "2026-09-29T00:00:00+00:00"
+      profile_ids:
+        - stocks_liquidity_shock_held_1m_structure_targets_paper_v1
+      source_outcome_table: stocks_liquidity_shock_reclaim_v1_paper_outcomes
+      require_rth_sessions: 30
+      live_allowed: false
+
+  profile_registry:
+    crypto_swing_t130: [crypto_swing_paper_t130_v1]
+    crypto_swing_breakout_reclaim_v2: [crypto_swing_breakout_reclaim_paper_v2]
+    crypto_swing_pullback_confirmed_retest: [crypto_swing_pullback_confirmed_retest_paper_v1]
+    crypto_swing_fib_impulse_retest: [crypto_swing_fib_impulse_retest_paper_v1]
+    crypto_intraday_level_hold_v2: [crypto_intraday_level_hold_v2_paper_v1]
+    crypto_intraday_breakout: [crypto_intraday_breakout_paper_v1]
+    crypto_intraday_pullback: [crypto_intraday_pullback_paper_v1]
+    crypto_fast_flush_reclaim_v3:
+      - crypto_fast_flush_reclaim_fast_1m_paper_v3
+      - crypto_fast_flush_reclaim_asia_1m_paper_v1
+      - crypto_fast_flush_reclaim_europe_1m_paper_v1
+      - crypto_fast_flush_reclaim_shallow_1m_paper_v1
+      - crypto_fast_flush_reclaim_shallow_flex_1m_paper_v1
+    stocks_rth_breakout_research_v1: [stocks_intraday_breakout_1bar_paper_v1]
+    stocks_liquidity_shock_reclaim_v1:
+      - stocks_liquidity_shock_held_1m_structure_targets_paper_v1
+    stocks_intraday_pullback: [stocks_intraday_pullback_vwap_paper_v2]
+    stocks_catalyst_rs: [stocks_catalyst_rs_paper_v1]
+    stocks_swing_event_rs_pullback:
+      - stocks_swing_event_rs_pullback_quality_paper_v1
+      - stocks_swing_event_rs_pullback_flow_paper_v1
+
+  llm_policy:
+    enabled: true
+    advisory_only: true
+    allowed_uses: [news_context, entity_linkage, narrative_summary, research, post_trade_diagnostics]
+    forbidden_uses: [entry_permission, trade_veto, score_change, tier_change, size_change, stop_change, target_change, live_routing]

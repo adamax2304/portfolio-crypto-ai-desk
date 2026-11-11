@@ -1,0 +1,65 @@
+enabled: true
+fail_open: true
+paper_only: true
+live_enabled: false
+registry:
+  require_two_sources_for_paper: true
+  allow_ticker_only_mapping: false
+providers:
+  coingecko:
+    enabled: true
+    base_url: https://api.coingecko.com/api/v3
+  coinmetrics_community:
+    enabled: true
+    base_url: https://community-api.coinmetrics.io/v4
+    min_interval_seconds: 1.1
+  defillama:
+    enabled: true
+    base_url: https://api.llama.fi
+  goplus:
+    enabled: true
+    base_url: https://api.gopluslabs.io/api/v1
+    min_interval_seconds: 2.1
+  honeypot_is:
+    enabled: true
+    base_url: https://api.honeypot.is/v2
+  solana_rpc:
+    enabled: true
+    url: https://api.mainnet-beta.solana.com
+chain_map:
+  ethereum: {name: ethereum, chain_id: '1', defillama: Ethereum, honeypot_chain_id: 1}
+  binance-smart-chain: {name: bsc, chain_id: '56', defillama: BSC, honeypot_chain_id: 56}
+  arbitrum-one: {name: arbitrum, chain_id: '42161', defillama: Arbitrum, honeypot_chain_id: 42161}
+  base: {name: base, chain_id: '8453', defillama: Base, honeypot_chain_id: 8453}
+  optimism: {name: optimism, chain_id: '10', defillama: Optimism, honeypot_chain_id: 10}
+  optimistic-ethereum: {name: optimism, chain_id: '10', defillama: Optimism, honeypot_chain_id: 10}
+  polygon-pos: {name: polygon, chain_id: '137', defillama: Polygon, honeypot_chain_id: 137}
+  avalanche: {name: avalanche, chain_id: '43114', defillama: Avalanche, honeypot_chain_id: 43114}
+  solana: {name: solana, chain_id: solana, defillama: Solana}
+assets:
+  BTC: {coingecko_id: bitcoin, native: true, coinmetrics_asset: btc}
+  ETH: {coingecko_id: ethereum, native: true, coinmetrics_asset: eth, defillama_chain: Ethereum}
+  SOL: {coingecko_id: solana, native: true, coinmetrics_asset: sol, defillama_chain: Solana}
+  BNB: {coingecko_id: binancecoin, native: true, coinmetrics_asset: bnb, defillama_chain: BSC}
+  AVAX: {coingecko_id: avalanche-2, native: true, coinmetrics_asset: avax, defillama_chain: Avalanche}
+  DOGE: {coingecko_id: dogecoin, native: true, coinmetrics_asset: doge}
+  XRP: {coingecko_id: ripple, native: true, coinmetrics_asset: xrp}
+  ADA: {coingecko_id: cardano, native: true, coinmetrics_asset: ada}
+  LINK: {coingecko_id: chainlink, preferred_chain: ethereum}
+  UNI: {coingecko_id: uniswap, preferred_chain: ethereum}
+  AAVE: {coingecko_id: aave, preferred_chain: ethereum}
+  ARB: {coingecko_id: arbitrum, preferred_chain: arbitrum-one}
+  OP: {coingecko_id: optimism, preferred_chain: optimistic-ethereum}
+  POL: {coingecko_id: polygon-ecosystem-token, preferred_chain: ethereum}
+paper_policy:
+  hard_block_verified_honeypot: true
+  hard_block_verified_blacklist: true
+  hard_block_sell_tax_pct: 25.0
+  soft_reduce_sell_tax_pct: 8.0
+  soft_reduce_top10_holder_pct: 70.0
+  soft_reduce_mintable: true
+  max_security_age_hours: 36
+wallet_flows:
+  enabled: false
+  addresses: []
+  note: No free provider has a complete trustworthy exchange-wallet label set. Interface stays disabled until addresses are curated.

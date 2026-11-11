@@ -1,0 +1,12 @@
+# Versioned provenance profile for raw crypto-intraday PULLBACK_LIMIT entries.
+# It does not change entry/stop/TP geometry; the point-in-time tracker remains
+# the execution authority. Live eligibility is controlled separately by
+# config/live_routes.yaml and config/mexc_live_canary.yaml.
+crypto_intraday_pullback_paper:
+  enabled: false
+  live_enabled: false
+  profile_id: crypto_intraday_pullback_paper_v1
+  activated_at: "2026-09-18T00:00:00+00:00"
+  asset_class: crypto
+  mode: intraday
+  source_entry_mode: PULLBACK_LIMIT

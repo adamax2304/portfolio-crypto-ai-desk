@@ -1,0 +1,32 @@
+project:
+  name: crypto-ai-desk
+  timezone: Asia/Nicosia
+
+exchange:
+  default: binance
+  market_type: spot
+  rate_limit: true
+
+data:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  reports_dir: data/reports
+  db_path: db/crypto_ai_desk.sqlite
+  ohlcv_limit:
+    15m: 220
+    1h: 220
+    4h: 220
+    1d: 180
+
+reports:
+  max_trade_ideas: 5
+  max_watchlist: 10
+  minimum_idea_score: 70
+  minimum_watchlist_score: 55
+  context_file: data/processed/context_for_llm.md
+
+execution:
+  default_timeframe: 1h
+  setup_timeframe: 1h
+  regime_timeframe: 4h
+  intraday_timeframe: 15m

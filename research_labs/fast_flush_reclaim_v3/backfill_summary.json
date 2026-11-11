@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-09-28T22:39:13Z",
+  "research_database": "research_labs/fast_flush_reclaim_v3/market_data.sqlite",
+  "candidate_events": 2680,
+  "requested_exchange_windows": 1676,
+  "failed_exchange_windows": 348,
+  "event_selection": "independent five-minute SELL-liquidation episodes; no outcome-based sampling",
+  "ohlcv_1m_rows": 1061195,
+  "exchanges": {
+    "bybit": {
+      "rows": 665691,
+      "symbols": 59,
+      "first_at": "2026-06-22T02:03:00Z",
+      "last_at": "2026-09-28T22:23:00Z",
+      "role": "primary replay source"
+    },
+    "binance": {
+      "rows": 395504,
+      "symbols": 76,
+      "first_at": "2026-08-24T09:40:00Z",
+      "last_at": "2026-09-28T22:39:00Z",
+      "role": "secondary and forward archive source",
+      "note": "Most failed exchange windows were Binance HTTP 418 responses after the historical burst. The resumable loader now uses two workers, pacing and retry backoff."
+    }
+  },
+  "replay_ohlcv_missing_events": 0,
+  "forward_archive_active": true
+}

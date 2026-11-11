@@ -1,0 +1,248 @@
+{
+  "generated_at": "2026-10-06T00:25:01.384738+00:00",
+  "period": [
+    "2026-07-24T13:45:00+00:00",
+    "2026-10-05T19:15:00+00:00"
+  ],
+  "split_at": "2026-09-22T15:00:00+00:00",
+  "coverage": {
+    "symbols": 91,
+    "archived_rows": {
+      "1m": 0,
+      "15m": 0
+    },
+    "missing": {},
+    "rejections": {
+      "FLUSH_TOO_SMALL": 21418,
+      "FAST_1M_RECLAIM:RECLAIM_WINDOW_EXPIRED": 1740,
+      "HELD_1M_RECLAIM:RECLAIM_WINDOW_EXPIRED": 2299,
+      "HELD_1M_STRUCTURE_TARGETS:RECLAIM_WINDOW_EXPIRED": 2299,
+      "HELD_1M_WIDER_STOP_015:RECLAIM_WINDOW_EXPIRED": 2299,
+      "FAST_1M_RECLAIM:STOP_TOO_TIGHT_FOR_COSTS": 226,
+      "HELD_1M_STRUCTURE_TARGETS:INVALID_TARGET_GEOMETRY": 67,
+      "RTH_WINDOW_NOT_ALLOWED": 17329,
+      "RVOL_TOO_WEAK": 1042,
+      "FLUSH_PCT_TOO_SMALL": 884,
+      "NOT_IDIOSYNCRATIC": 310,
+      "NEGATIVE_FUNDAMENTAL_CATALYST": 726,
+      "UNCONTROLLED_CASCADE": 374,
+      "SECTOR_CASCADE": 7,
+      "HELD_1M_RECLAIM:STOP_TOO_TIGHT_FOR_COSTS": 62,
+      "HELD_1M_STRUCTURE_TARGETS:STOP_TOO_TIGHT_FOR_COSTS": 62,
+      "HELD_1M_WIDER_STOP_015:STOP_TOO_TIGHT_FOR_COSTS": 50,
+      "HELD_1M_STRUCTURE_TARGETS:NO_PURE_STRUCTURAL_TARGETS": 23,
+      "BAR_LIQUIDITY_TOO_LOW": 185,
+      "FAST_1M_RECLAIM:STOP_TOO_WIDE": 16,
+      "HELD_1M_RECLAIM:STOP_TOO_WIDE": 8,
+      "HELD_1M_STRUCTURE_TARGETS:STOP_TOO_WIDE": 8,
+      "HELD_1M_WIDER_STOP_015:STOP_TOO_WIDE": 8
+    },
+    "news_status": {
+      "clear": 1644,
+      "no_recent_symbol_news": 1305,
+      "negative_fundamental_catalyst": 726
+    }
+  },
+  "profile_results": {
+    "FAST_1M_RECLAIM": {
+      "parameters": {
+        "min_flush_atr": 1.5,
+        "max_flush_atr": 3.5,
+        "min_flush_pct": 0.8,
+        "min_rvol": 1.7,
+        "min_idiosyncratic_drop_pct": 0.3,
+        "max_market_drop_pct": 0.6,
+        "max_sector_drop_pct": 1.1,
+        "min_level_breach_atr": 0.15
+      },
+      "train": {
+        "trades": 36,
+        "net_usd": -5.54,
+        "net_r": -0.553,
+        "pf": 0.948,
+        "winrate": 0.556,
+        "max_drawdown_usd": 27.18,
+        "costs_usd": 44.91
+      },
+      "holdout": {
+        "trades": 21,
+        "net_usd": 0.55,
+        "net_r": 0.055,
+        "pf": 1.007,
+        "winrate": 0.571,
+        "max_drawdown_usd": 33.03,
+        "costs_usd": 26.9
+      },
+      "all": {
+        "trades": 57,
+        "net_usd": -4.99,
+        "net_r": -0.499,
+        "pf": 0.973,
+        "winrate": 0.561,
+        "max_drawdown_usd": 33.03,
+        "costs_usd": 71.81
+      },
+      "raw_all": {
+        "trades": 64,
+        "net_usd": -31.66,
+        "net_r": -3.166,
+        "pf": 0.857,
+        "winrate": 0.531,
+        "max_drawdown_usd": 48.48,
+        "costs_usd": 76.87
+      }
+    },
+    "HELD_1M_RECLAIM": {
+      "parameters": {
+        "min_flush_atr": 1.1,
+        "max_flush_atr": 3.5,
+        "min_flush_pct": 0.8,
+        "min_rvol": 1.7,
+        "min_idiosyncratic_drop_pct": 0.2,
+        "max_market_drop_pct": 0.6,
+        "max_sector_drop_pct": 1.1,
+        "min_level_breach_atr": 0.05
+      },
+      "train": {
+        "trades": 24,
+        "net_usd": 78.38,
+        "net_r": 7.838,
+        "pf": 3.238,
+        "winrate": 0.75,
+        "max_drawdown_usd": 11.86,
+        "costs_usd": 23.78
+      },
+      "holdout": {
+        "trades": 18,
+        "net_usd": -8.14,
+        "net_r": -0.814,
+        "pf": 0.876,
+        "winrate": 0.556,
+        "max_drawdown_usd": 40.93,
+        "costs_usd": 17.55
+      },
+      "all": {
+        "trades": 42,
+        "net_usd": 70.24,
+        "net_r": 7.024,
+        "pf": 1.698,
+        "winrate": 0.667,
+        "max_drawdown_usd": 40.93,
+        "costs_usd": 41.32
+      },
+      "raw_all": {
+        "trades": 46,
+        "net_usd": 31.7,
+        "net_r": 3.169,
+        "pf": 1.228,
+        "winrate": 0.609,
+        "max_drawdown_usd": 61.08,
+        "costs_usd": 44.03
+      }
+    },
+    "HELD_1M_STRUCTURE_TARGETS": {
+      "parameters": {
+        "min_flush_atr": 1.1,
+        "max_flush_atr": 3.5,
+        "min_flush_pct": 0.8,
+        "min_rvol": 1.7,
+        "min_idiosyncratic_drop_pct": 0.2,
+        "max_market_drop_pct": 0.6,
+        "max_sector_drop_pct": 1.1,
+        "min_level_breach_atr": 0.05
+      },
+      "train": {
+        "trades": 21,
+        "net_usd": 89.59,
+        "net_r": 8.959,
+        "pf": 4.81,
+        "winrate": 0.81,
+        "max_drawdown_usd": 11.0,
+        "costs_usd": 21.25
+      },
+      "holdout": {
+        "trades": 18,
+        "net_usd": 9.78,
+        "net_r": 0.979,
+        "pf": 1.161,
+        "winrate": 0.611,
+        "max_drawdown_usd": 41.04,
+        "costs_usd": 17.73
+      },
+      "all": {
+        "trades": 39,
+        "net_usd": 99.38,
+        "net_r": 9.938,
+        "pf": 2.179,
+        "winrate": 0.718,
+        "max_drawdown_usd": 41.04,
+        "costs_usd": 38.99
+      },
+      "raw_all": {
+        "trades": 41,
+        "net_usd": 82.23,
+        "net_r": 8.223,
+        "pf": 1.811,
+        "winrate": 0.683,
+        "max_drawdown_usd": 45.93,
+        "costs_usd": 40.3
+      }
+    },
+    "HELD_1M_WIDER_STOP_015": {
+      "parameters": {
+        "min_flush_atr": 1.1,
+        "max_flush_atr": 3.5,
+        "min_flush_pct": 0.8,
+        "min_rvol": 1.7,
+        "min_idiosyncratic_drop_pct": 0.2,
+        "max_market_drop_pct": 0.6,
+        "max_sector_drop_pct": 1.1,
+        "min_level_breach_atr": 0.05
+      },
+      "train": {
+        "trades": 24,
+        "net_usd": 78.53,
+        "net_r": 7.853,
+        "pf": 3.26,
+        "winrate": 0.75,
+        "max_drawdown_usd": 11.79,
+        "costs_usd": 23.14
+      },
+      "holdout": {
+        "trades": 18,
+        "net_usd": -9.85,
+        "net_r": -0.985,
+        "pf": 0.847,
+        "winrate": 0.556,
+        "max_drawdown_usd": 40.18,
+        "costs_usd": 17.07
+      },
+      "all": {
+        "trades": 42,
+        "net_usd": 68.69,
+        "net_r": 6.869,
+        "pf": 1.692,
+        "winrate": 0.667,
+        "max_drawdown_usd": 40.18,
+        "costs_usd": 40.21
+      },
+      "raw_all": {
+        "trades": 46,
+        "net_usd": 33.15,
+        "net_r": 3.315,
+        "pf": 1.246,
+        "winrate": 0.609,
+        "max_drawdown_usd": 59.88,
+        "costs_usd": 42.87
+      }
+    }
+  },
+  "method": {
+    "chronological_train_pct": 70,
+    "holdout_pct": 30,
+    "intrabar_assumption": "stop_first",
+    "independence_adjustment": "one symbol/day; one sector/15m; max three market-wide",
+    "news_clock": "canonical available_at <= decision_at",
+    "costs": "stock_etf_default plus configured two-sided slippage"
+  }
+}

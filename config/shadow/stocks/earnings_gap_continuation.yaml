@@ -1,0 +1,33 @@
+stocks_earnings_gap_continuation:
+  feature_flag: false
+  # v1 mixed general Catalyst-RS event types with earnings.  v2 is a fresh,
+  # strictly earnings-only evidence cohort; v1 stays in its own historical rows.
+  strategy_id: stocks_earnings_gap_continuation_v2
+  profile_id: stocks_earnings_gap_continuation_v2
+  shadow_lane: shadow_stocks_earnings_gap_continuation_v2
+  allowed_directional_event_types: [earnings]
+  excluded_event_types:
+    - legal_risk
+    - offering_dilution
+    - sec_filing
+    - analyst_action
+    - calendar_risk
+    - macro_headline
+    - geopolitical_risk
+  exploratory_single_secondary_enabled: false
+  exploratory_secondary_event_types: []
+  catalyst_lookback_hours: 168
+  catalyst_freshness_hours: 24
+  min_gap_or_impulse_pct: 3.0
+  min_rvol: 1.5
+  min_rs_spy_pct: 0.15
+  min_rs_sector_pct: 0.10
+  strict_min_gap_or_impulse_pct: 5.0
+  strict_min_rvol: 2.0
+  strict_min_rs_spy_pct: 0.25
+  strict_min_rs_sector_pct: 0.15
+  force_same_day_exit: true
+  min_clean_closed: 30
+  min_forward_days: 28
+  min_profit_factor: 1.25
+  report_path: reports/STOCKS_EARNINGS_GAP_CONTINUATION_SHADOW.md

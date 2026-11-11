@@ -1,0 +1,48 @@
+live_routes:
+  version: live_routes_order_engine_test_v1
+  routes:
+    crypto_swing_breakout:
+      enabled: false
+      mode: swing
+      entry_mode: BREAKOUT_CONTINUATION
+      risk_usdt: 5.0
+    crypto_swing_limit_then_taker:
+      enabled: true
+      mode: swing
+      entry_mode: LIMIT_THEN_TAKER_TIMEOUT
+      risk_usdt: 5.0
+    crypto_swing_pullback:
+      enabled: false
+      mode: swing
+      entry_mode: PULLBACK_LIMIT
+      risk_usdt: 5.0
+    crypto_intraday_level_hold_v2:
+      enabled: false
+      mode: intraday
+      entry_mode: LEVEL_HOLD_V2
+      risk_usdt: 5.0
+    crypto_intraday_breakout:
+      enabled: true
+      mode: intraday
+      entry_mode: BREAKOUT_CONTINUATION
+      risk_usdt: 5.0
+    crypto_intraday_pullback:
+      enabled: true
+      mode: intraday
+      entry_mode: PULLBACK_LIMIT
+      risk_usdt: 5.0
+    stocks_intraday_breakout:
+      enabled: true
+      mode: stock_intraday
+      entry_mode: BREAKOUT_CONTINUATION
+      risk_usdt: 5.0
+    crypto_liquidity_sweep:
+      enabled: true
+      mode: liquidity_sweep
+      entry_mode: LIQUIDITY_SWEEP
+      risk_usdt: 5.0
+    crypto_invest:
+      enabled: true
+      mode: invest
+      entry_mode: REGIME_RECLAIM
+      risk_usdt: 5.0

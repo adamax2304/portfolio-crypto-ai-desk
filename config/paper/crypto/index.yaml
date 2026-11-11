@@ -1,0 +1,24 @@
+asset_class: crypto
+description: Authoritative navigation index for Production Paper crypto lanes.
+live_routing: configured separately; this index never enables live execution
+strategies:
+  - strategy_id: crypto_intraday_breakout
+    mode: intraday
+    entry_mode: BREAKOUT_CONTINUATION
+    status: paper_active_research
+    config: config/crypto_intraday_breakout_paper.yaml
+  - strategy_id: crypto_fast_flush_reclaim_v3
+    mode: liquidity_sweep
+    entry_mode: FAST_FLUSH_RECLAIM
+    status: paper
+    config: config/paper/crypto/fast_flush_reclaim_v3.yaml
+    profile_ids:
+      - crypto_fast_flush_reclaim_fast_1m_paper_v3
+      - crypto_fast_flush_reclaim_asia_1m_paper_v1
+      - crypto_fast_flush_reclaim_europe_1m_paper_v1
+      - crypto_fast_flush_reclaim_shallow_1m_paper_v1
+      - crypto_fast_flush_reclaim_shallow_flex_1m_paper_v1
+shared:
+  entry_mode_policy: config/paper_entry_mode_policy.yaml
+  execution_policy: config/paper_execution_policy.yaml
+  portfolio: config/paper_portfolio.yaml

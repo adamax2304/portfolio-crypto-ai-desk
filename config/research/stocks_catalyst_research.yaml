@@ -1,0 +1,60 @@
+# Offline research only.  Results are never read by Paper or live routing.
+stocks_catalyst_research:
+  enabled: true
+  history_root: data/history/stocks
+  parquet_roots:
+    - research_labs/technical_trend_reclaim/data/stocks/yahoo
+    - research_labs/technical_trend_reclaim/data/stocks/mexc_contract
+  timeframe: 15m
+  daily_timeframe: 1d
+  # Yahoo supplies only about 60 days of 15m RTH bars. This gate verifies that
+  # the complete point-in-time news window is covered; it does not pretend to
+  # be an 18-month intraday validation. Longer-horizon modes use the 18-month
+  # 1h/1d archive in their own adapters.
+  minimum_history_days: 45
+  train_days: 252
+  test_days: 63
+  step_days: 63
+  minimum_train_closed: 20
+  minimum_train_pf: 1.10
+  variants:
+    - variant_id: catalyst_rs_strict_5pct_rvol15
+      family: catalyst_rs
+      enabled: true
+      overrides:
+        exploratory_single_secondary_enabled: false
+        min_gap_or_impulse_pct: 5.0
+        min_rvol: 1.5
+        min_rs_spy_pct: 0.25
+        min_rs_sector_pct: 0.15
+    - variant_id: catalyst_rs_strict_5pct_rvol20
+      family: catalyst_rs
+      enabled: true
+      overrides:
+        exploratory_single_secondary_enabled: false
+        min_gap_or_impulse_pct: 5.0
+        min_rvol: 2.0
+        min_rs_spy_pct: 0.25
+        min_rs_sector_pct: 0.15
+    - variant_id: earnings_gap_3pct_rvol15
+      family: earnings_gap
+      enabled: true
+      overrides:
+        allowed_directional_event_types: [earnings]
+        excluded_event_types: [legal_risk, offering_dilution, sec_filing, analyst_action, calendar_risk, macro_headline, geopolitical_risk]
+        exploratory_single_secondary_enabled: false
+        min_gap_or_impulse_pct: 3.0
+        min_rvol: 1.5
+        min_rs_spy_pct: 0.15
+        min_rs_sector_pct: 0.10
+    - variant_id: earnings_gap_5pct_rvol20
+      family: earnings_gap
+      enabled: true
+      overrides:
+        allowed_directional_event_types: [earnings]
+        excluded_event_types: [legal_risk, offering_dilution, sec_filing, analyst_action, calendar_risk, macro_headline, geopolitical_risk]
+        exploratory_single_secondary_enabled: false
+        min_gap_or_impulse_pct: 5.0
+        min_rvol: 2.0
+        min_rs_spy_pct: 0.25
+        min_rs_sector_pct: 0.15
